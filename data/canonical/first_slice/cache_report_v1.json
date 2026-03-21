@@ -17,14 +17,14 @@
     "candidate_pairs_total": 96,
     "selection_limit": 20,
     "shortlist_limit": 5,
-    "cache_complete_pairs_total": 24,
+    "cache_complete_pairs_total": 29,
     "selected_pairs_total": 20,
     "shortlisted_total": 5,
     "skipped_candidates_total": 91,
     "skipped_by_reason": {
+      "selection_window_limit": 18,
       "missing_current_brochure_cache": 3,
-      "missing_firm_detail_cache": 60,
-      "selection_window_limit": 13,
+      "missing_firm_detail_cache": 55,
       "unsupported_brochure_type": 3,
       "no_scored_evidence": 2,
       "shortlist_window_limit": 10
@@ -38,58 +38,13 @@
   },
   "next_refresh_targets": {
     "queue_limit_per_reason": 10,
-    "actionable_gap_total": 63,
+    "actionable_gap_total": 58,
     "groups": [
       {
         "skip_reason": "missing_firm_detail_cache",
         "refresh_action": "fetch_firm_detail",
-        "candidate_count": 60,
+        "candidate_count": 55,
         "targets": [
-          {
-            "firm_id": "144039",
-            "firm_name": "",
-            "sec_number": "",
-            "current_submitted_at": "20260223",
-            "prior_submitted_at": "20260123",
-            "current_file_name": "144039_422189_2_20260223.pdf",
-            "prior_file_name": "144039_422189_1_20260123.pdf"
-          },
-          {
-            "firm_id": "134374",
-            "firm_name": "",
-            "sec_number": "",
-            "current_submitted_at": "20260223",
-            "prior_submitted_at": "20260109",
-            "current_file_name": "134374_421266_3_20260223.pdf",
-            "prior_file_name": "134374_421266_2_20260109.pdf"
-          },
-          {
-            "firm_id": "131738",
-            "firm_name": "",
-            "sec_number": "",
-            "current_submitted_at": "20260223",
-            "prior_submitted_at": "20260128",
-            "current_file_name": "131738_121546_17_20260223.pdf",
-            "prior_file_name": "131738_121546_16_20260128.pdf"
-          },
-          {
-            "firm_id": "326354",
-            "firm_name": "",
-            "sec_number": "",
-            "current_submitted_at": "20260220",
-            "prior_submitted_at": "20260115",
-            "current_file_name": "326354_423486_1_20260220.pdf",
-            "prior_file_name": "326354_385084_7_20260115.pdf"
-          },
-          {
-            "firm_id": "319640",
-            "firm_name": "",
-            "sec_number": "",
-            "current_submitted_at": "20260220",
-            "prior_submitted_at": "20260102",
-            "current_file_name": "319640_423527_1_20260220.pdf",
-            "prior_file_name": "319640_369612_5_20260102.pdf"
-          },
           {
             "firm_id": "310441",
             "firm_name": "",
@@ -134,6 +89,51 @@
             "prior_submitted_at": "20260102",
             "current_file_name": "269866_423457_1_20260219.pdf",
             "prior_file_name": "269866_421380_1_20260102.pdf"
+          },
+          {
+            "firm_id": "153316",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260219",
+            "prior_submitted_at": "20260122",
+            "current_file_name": "153316_423452_1_20260219.pdf",
+            "prior_file_name": "153316_422131_1_20260122.pdf"
+          },
+          {
+            "firm_id": "325723",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260218",
+            "prior_submitted_at": "20260102",
+            "current_file_name": "325723_387061_8_20260218.pdf",
+            "prior_file_name": "325723_387061_7_20260102.pdf"
+          },
+          {
+            "firm_id": "325012",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260218",
+            "prior_submitted_at": "20260122",
+            "current_file_name": "325012_379116_12_20260218.pdf",
+            "prior_file_name": "325012_379116_11_20260122.pdf"
+          },
+          {
+            "firm_id": "312695",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260218",
+            "prior_submitted_at": "20260108",
+            "current_file_name": "312695_342981_24_20260218.pdf",
+            "prior_file_name": "312695_342981_23_20260108.pdf"
+          },
+          {
+            "firm_id": "161000",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260218",
+            "prior_submitted_at": "20260105",
+            "current_file_name": "161000_140583_17_20260218.pdf",
+            "prior_file_name": "161000_140583_16_20260105.pdf"
           }
         ]
       },
@@ -143,13 +143,13 @@
         "candidate_count": 3,
         "targets": [
           {
-            "firm_id": "173129",
+            "firm_id": "319640",
             "firm_name": "",
             "sec_number": "",
-            "current_submitted_at": "20260223",
-            "prior_submitted_at": "20260113",
-            "current_file_name": "173129_357943_13_20260223.pdf",
-            "prior_file_name": "173129_357943_12_20260113.pdf"
+            "current_submitted_at": "20260220",
+            "prior_submitted_at": "20260102",
+            "current_file_name": "319640_423527_1_20260220.pdf",
+            "prior_file_name": "319640_369612_5_20260102.pdf"
           },
           {
             "firm_id": "311647",
@@ -183,15 +183,15 @@
       "current_file_name": "173129_357943_13_20260223.pdf",
       "prior_file_name": "173129_357943_12_20260113.pdf",
       "skip_stage": "selection",
-      "skip_reason": "missing_current_brochure_cache",
+      "skip_reason": "selection_window_limit",
       "cache_status": {
         "firm_detail_cached": true,
-        "current_brochure_pdf_cached": false,
-        "prior_brochure_pdf_cached": false,
+        "current_brochure_pdf_cached": true,
+        "prior_brochure_pdf_cached": true,
         "current_text_snapshot_cached": false,
         "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": false,
-        "prior_brochure_cache_available": false
+        "current_brochure_cache_available": true,
+        "prior_brochure_cache_available": true
       }
     },
     {
@@ -203,15 +203,15 @@
       "current_file_name": "144039_422189_2_20260223.pdf",
       "prior_file_name": "144039_422189_1_20260123.pdf",
       "skip_stage": "selection",
-      "skip_reason": "missing_firm_detail_cache",
+      "skip_reason": "selection_window_limit",
       "cache_status": {
-        "firm_detail_cached": false,
-        "current_brochure_pdf_cached": false,
-        "prior_brochure_pdf_cached": false,
+        "firm_detail_cached": true,
+        "current_brochure_pdf_cached": true,
+        "prior_brochure_pdf_cached": true,
         "current_text_snapshot_cached": false,
         "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": false,
-        "prior_brochure_cache_available": false
+        "current_brochure_cache_available": true,
+        "prior_brochure_cache_available": true
       }
     },
     {
@@ -223,15 +223,15 @@
       "current_file_name": "134374_421266_3_20260223.pdf",
       "prior_file_name": "134374_421266_2_20260109.pdf",
       "skip_stage": "selection",
-      "skip_reason": "missing_firm_detail_cache",
+      "skip_reason": "selection_window_limit",
       "cache_status": {
-        "firm_detail_cached": false,
-        "current_brochure_pdf_cached": false,
-        "prior_brochure_pdf_cached": false,
+        "firm_detail_cached": true,
+        "current_brochure_pdf_cached": true,
+        "prior_brochure_pdf_cached": true,
         "current_text_snapshot_cached": false,
         "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": false,
-        "prior_brochure_cache_available": false
+        "current_brochure_cache_available": true,
+        "prior_brochure_cache_available": true
       }
     },
     {
@@ -243,15 +243,15 @@
       "current_file_name": "131738_121546_17_20260223.pdf",
       "prior_file_name": "131738_121546_16_20260128.pdf",
       "skip_stage": "selection",
-      "skip_reason": "missing_firm_detail_cache",
+      "skip_reason": "selection_window_limit",
       "cache_status": {
-        "firm_detail_cached": false,
-        "current_brochure_pdf_cached": false,
-        "prior_brochure_pdf_cached": false,
+        "firm_detail_cached": true,
+        "current_brochure_pdf_cached": true,
+        "prior_brochure_pdf_cached": true,
         "current_text_snapshot_cached": false,
         "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": false,
-        "prior_brochure_cache_available": false
+        "current_brochure_cache_available": true,
+        "prior_brochure_cache_available": true
       }
     },
     {
@@ -263,15 +263,15 @@
       "current_file_name": "326354_423486_1_20260220.pdf",
       "prior_file_name": "326354_385084_7_20260115.pdf",
       "skip_stage": "selection",
-      "skip_reason": "missing_firm_detail_cache",
+      "skip_reason": "selection_window_limit",
       "cache_status": {
-        "firm_detail_cached": false,
-        "current_brochure_pdf_cached": false,
-        "prior_brochure_pdf_cached": false,
+        "firm_detail_cached": true,
+        "current_brochure_pdf_cached": true,
+        "prior_brochure_pdf_cached": true,
         "current_text_snapshot_cached": false,
         "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": false,
-        "prior_brochure_cache_available": false
+        "current_brochure_cache_available": true,
+        "prior_brochure_cache_available": true
       }
     },
     {
@@ -283,9 +283,9 @@
       "current_file_name": "319640_423527_1_20260220.pdf",
       "prior_file_name": "319640_369612_5_20260102.pdf",
       "skip_stage": "selection",
-      "skip_reason": "missing_firm_detail_cache",
+      "skip_reason": "missing_current_brochure_cache",
       "cache_status": {
-        "firm_detail_cached": false,
+        "firm_detail_cached": true,
         "current_brochure_pdf_cached": false,
         "prior_brochure_pdf_cached": false,
         "current_text_snapshot_cached": false,
