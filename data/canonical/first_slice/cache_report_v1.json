@@ -36,6 +36,143 @@
       "shortlist": 10
     }
   },
+  "next_refresh_targets": {
+    "queue_limit_per_reason": 10,
+    "actionable_gap_total": 64,
+    "groups": [
+      {
+        "skip_reason": "missing_firm_detail_cache",
+        "refresh_action": "fetch_firm_detail",
+        "candidate_count": 61,
+        "targets": [
+          {
+            "firm_id": "173129",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260223",
+            "prior_submitted_at": "20260113",
+            "current_file_name": "173129_357943_13_20260223.pdf",
+            "prior_file_name": "173129_357943_12_20260113.pdf"
+          },
+          {
+            "firm_id": "144039",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260223",
+            "prior_submitted_at": "20260123",
+            "current_file_name": "144039_422189_2_20260223.pdf",
+            "prior_file_name": "144039_422189_1_20260123.pdf"
+          },
+          {
+            "firm_id": "134374",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260223",
+            "prior_submitted_at": "20260109",
+            "current_file_name": "134374_421266_3_20260223.pdf",
+            "prior_file_name": "134374_421266_2_20260109.pdf"
+          },
+          {
+            "firm_id": "131738",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260223",
+            "prior_submitted_at": "20260128",
+            "current_file_name": "131738_121546_17_20260223.pdf",
+            "prior_file_name": "131738_121546_16_20260128.pdf"
+          },
+          {
+            "firm_id": "326354",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260220",
+            "prior_submitted_at": "20260115",
+            "current_file_name": "326354_423486_1_20260220.pdf",
+            "prior_file_name": "326354_385084_7_20260115.pdf"
+          },
+          {
+            "firm_id": "319640",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260220",
+            "prior_submitted_at": "20260102",
+            "current_file_name": "319640_423527_1_20260220.pdf",
+            "prior_file_name": "319640_369612_5_20260102.pdf"
+          },
+          {
+            "firm_id": "310441",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260220",
+            "prior_submitted_at": "20260106",
+            "current_file_name": "310441_384121_6_20260220.pdf",
+            "prior_file_name": "310441_384121_5_20260106.pdf"
+          },
+          {
+            "firm_id": "155782",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260220",
+            "prior_submitted_at": "20260121",
+            "current_file_name": "155782_423500_1_20260220.pdf",
+            "prior_file_name": "155782_422071_1_20260121.pdf"
+          },
+          {
+            "firm_id": "338956",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260219",
+            "prior_submitted_at": "20260116",
+            "current_file_name": "338956_419573_3_20260219.pdf",
+            "prior_file_name": "338956_419573_2_20260116.pdf"
+          },
+          {
+            "firm_id": "283979",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260219",
+            "prior_submitted_at": "20260126",
+            "current_file_name": "283979_258733_18_20260219.pdf",
+            "prior_file_name": "283979_258733_17_20260126.pdf"
+          }
+        ]
+      },
+      {
+        "skip_reason": "missing_current_brochure_cache",
+        "refresh_action": "cache_current_brochure",
+        "candidate_count": 3,
+        "targets": [
+          {
+            "firm_id": "140923",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260220",
+            "prior_submitted_at": "20260129",
+            "current_file_name": "140923_58540_31_20260220.pdf",
+            "prior_file_name": "140923_58540_30_20260129.pdf"
+          },
+          {
+            "firm_id": "311647",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260206",
+            "prior_submitted_at": "20260129",
+            "current_file_name": "311647_340756_13_20260206.pdf",
+            "prior_file_name": "311647_340756_12_20260129.pdf"
+          },
+          {
+            "firm_id": "289485",
+            "firm_name": "",
+            "sec_number": "",
+            "current_submitted_at": "20260204",
+            "prior_submitted_at": "20260129",
+            "current_file_name": "289485_422679_1_20260204.pdf",
+            "prior_file_name": "289485_417033_2_20260129.pdf"
+          }
+        ]
+      }
+    ]
+  },
   "skipped_candidates": [
     {
       "firm_id": "173129",

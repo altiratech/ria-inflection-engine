@@ -94,6 +94,65 @@ def cache_gap_reason(cache_status: dict[str, bool]) -> str | None:
     return None
 
 
+def refresh_action_for_reason(skip_reason: str) -> str | None:
+    action_map = {
+        "missing_firm_detail_cache": "fetch_firm_detail",
+        "missing_current_brochure_cache": "cache_current_brochure",
+        "missing_prior_brochure_cache": "cache_prior_brochure",
+    }
+    return action_map.get(skip_reason)
+
+
+def submitted_sort_key(entry: dict[str, object]) -> tuple[str, str]:
+    return str(entry.get("current_submitted_at", "")), str(entry.get("firm_id", ""))
+
+
+def next_refresh_targets(
+    skipped_candidates: list[dict[str, object]],
+    *,
+    queue_limit_per_reason: int = 10,
+) -> dict[str, object]:
+    actionable_reasons = [
+        "missing_firm_detail_cache",
+        "missing_current_brochure_cache",
+        "missing_prior_brochure_cache",
+    ]
+    grouped_targets: list[dict[str, object]] = []
+    actionable_total = 0
+
+    for reason in actionable_reasons:
+        matching_entries = [entry for entry in skipped_candidates if entry["skip_reason"] == reason]
+        if not matching_entries:
+            continue
+        actionable_total += len(matching_entries)
+        matching_entries.sort(key=submitted_sort_key, reverse=True)
+        grouped_targets.append(
+            {
+                "skip_reason": reason,
+                "refresh_action": refresh_action_for_reason(reason),
+                "candidate_count": len(matching_entries),
+                "targets": [
+                    {
+                        "firm_id": entry["firm_id"],
+                        "firm_name": entry.get("firm_name", ""),
+                        "sec_number": entry.get("sec_number", ""),
+                        "current_submitted_at": entry["current_submitted_at"],
+                        "prior_submitted_at": entry["prior_submitted_at"],
+                        "current_file_name": entry["current_file_name"],
+                        "prior_file_name": entry["prior_file_name"],
+                    }
+                    for entry in matching_entries[:queue_limit_per_reason]
+                ],
+            }
+        )
+
+    return {
+        "queue_limit_per_reason": queue_limit_per_reason,
+        "actionable_gap_total": actionable_total,
+        "groups": grouped_targets,
+    }
+
+
 def cache_report_entry(
     pair: dict,
     *,
@@ -135,6 +194,7 @@ def build_cache_report(
 ) -> dict[str, object]:
     reason_counts = Counter(entry["skip_reason"] for entry in skipped_candidates)
     stage_counts = Counter(entry["skip_stage"] for entry in skipped_candidates)
+    refresh_targets = next_refresh_targets(skipped_candidates)
     return {
         "version": source_version,
         "mode": "cache_only" if cache_only else "default",
@@ -153,6 +213,7 @@ def build_cache_report(
             "skipped_by_reason": dict(reason_counts),
             "skipped_by_stage": dict(stage_counts),
         },
+        "next_refresh_targets": refresh_targets,
         "skipped_candidates": skipped_candidates,
     }
 

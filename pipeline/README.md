@@ -24,4 +24,4 @@ Current first-slice outputs:
 - `shortlist_v1.json` and `shortlist_v1.csv`
 - `top_delta_<firm_id>.json`
 - `cohort_v1.json`
-- `cache_report_v1.json` with skip reasons, cache-gap counts, and selection-window leftovers
+- `cache_report_v1.json` with skip reasons, cache-gap counts, selection-window leftovers, and a compact `next_refresh_targets` recache queue

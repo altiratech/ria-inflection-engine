@@ -3,7 +3,15 @@ from __future__ import annotations
 from pipeline.brochures import parse_brochure_member
 from pipeline.iapd import ArchiveFile
 from pipeline.remote_zip import ZipMember
-from pipeline.run_first_slice import build_cache_report, cache_gap_reason, cache_report_entry, cache_status_for_pair, pair_has_complete_cache
+from pipeline.run_first_slice import (
+    build_cache_report,
+    cache_gap_reason,
+    cache_report_entry,
+    cache_status_for_pair,
+    next_refresh_targets,
+    pair_has_complete_cache,
+    refresh_action_for_reason,
+)
 
 
 def make_archive(display_name: str, uploaded_on: str, file_name: str) -> ArchiveFile:
@@ -131,6 +139,77 @@ def test_cache_gap_reason_prioritizes_missing_cache_layers() -> None:
     )
 
 
+def test_refresh_action_for_reason_maps_actionable_cache_gaps() -> None:
+    assert refresh_action_for_reason("missing_firm_detail_cache") == "fetch_firm_detail"
+    assert refresh_action_for_reason("missing_current_brochure_cache") == "cache_current_brochure"
+    assert refresh_action_for_reason("missing_prior_brochure_cache") == "cache_prior_brochure"
+    assert refresh_action_for_reason("selection_window_limit") is None
+
+
+def test_next_refresh_targets_groups_and_limits_actionable_queue() -> None:
+    pair_a = make_pair("123456")
+    pair_b = make_pair("223456")
+    pair_c = make_pair("323456")
+    missing_detail_status = {
+        "firm_detail_cached": False,
+        "current_brochure_pdf_cached": False,
+        "prior_brochure_pdf_cached": False,
+        "current_text_snapshot_cached": False,
+        "prior_text_snapshot_cached": False,
+        "current_brochure_cache_available": False,
+        "prior_brochure_cache_available": False,
+    }
+    missing_current_status = {
+        "firm_detail_cached": True,
+        "current_brochure_pdf_cached": False,
+        "prior_brochure_pdf_cached": True,
+        "current_text_snapshot_cached": False,
+        "prior_text_snapshot_cached": True,
+        "current_brochure_cache_available": False,
+        "prior_brochure_cache_available": True,
+    }
+    skipped_candidates = [
+        cache_report_entry(
+            pair_a,
+            cache_status=missing_detail_status,
+            skip_stage="selection",
+            skip_reason="missing_firm_detail_cache",
+        ),
+        cache_report_entry(
+            pair_b,
+            cache_status=missing_detail_status,
+            skip_stage="selection",
+            skip_reason="missing_firm_detail_cache",
+        ),
+        cache_report_entry(
+            pair_c,
+            cache_status=missing_current_status,
+            skip_stage="selection",
+            skip_reason="missing_current_brochure_cache",
+        ),
+        cache_report_entry(
+            pair_c,
+            cache_status=missing_current_status,
+            skip_stage="selection",
+            skip_reason="selection_window_limit",
+        ),
+    ]
+
+    queue = next_refresh_targets(skipped_candidates, queue_limit_per_reason=1)
+
+    assert queue["actionable_gap_total"] == 3
+    assert queue["queue_limit_per_reason"] == 1
+    assert [group["skip_reason"] for group in queue["groups"]] == [
+        "missing_firm_detail_cache",
+        "missing_current_brochure_cache",
+    ]
+    assert queue["groups"][0]["refresh_action"] == "fetch_firm_detail"
+    assert queue["groups"][0]["candidate_count"] == 2
+    assert len(queue["groups"][0]["targets"]) == 1
+    assert queue["groups"][1]["refresh_action"] == "cache_current_brochure"
+    assert queue["groups"][1]["candidate_count"] == 1
+
+
 def test_build_cache_report_summarizes_skip_reasons() -> None:
     pair = make_pair("123456")
     detail = {"basicInformation": {"firmName": "Example Wealth", "iaSECNumber": "801-123456"}}
@@ -181,4 +260,6 @@ def test_build_cache_report_summarizes_skip_reasons() -> None:
     assert report["summary"]["skipped_by_reason"]["missing_current_brochure_cache"] == 1
     assert report["summary"]["skipped_by_stage"]["selection"] == 1
     assert report["summary"]["skipped_by_stage"]["brochure"] == 1
+    assert report["next_refresh_targets"]["actionable_gap_total"] == 2
+    assert report["next_refresh_targets"]["groups"][0]["refresh_action"] == "fetch_firm_detail"
     assert report["skipped_candidates"][1]["firm_name"] == "Example Wealth"
