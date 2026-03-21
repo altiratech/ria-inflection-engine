@@ -10,6 +10,7 @@ from pipeline.run_first_slice import (
     cache_gap_reason,
     cache_report_entry,
     cache_status_for_pair,
+    merge_shortlist_with_promotions,
     next_refresh_targets,
     pair_has_complete_cache,
     refresh_action_for_reason,
@@ -428,3 +429,23 @@ def test_selection_window_comparison_artifact_flags_candidate_above_floor() -> N
     assert artifact["comparisons"][0]["would_enter_shortlist"] is True
     assert artifact["comparisons"][0]["score_gap_to_shortlist_floor"] == 1.33
     assert "Would clear the shortlist floor" in artifact["comparisons"][0]["comparison_summary"]
+
+
+def test_merge_shortlist_with_promotions_displaces_floor_candidate() -> None:
+    shortlisted = [
+        {"firm_id": "111111", "score": {"overall_score": 9.2}},
+        {"firm_id": "222222", "score": {"overall_score": 5.4}},
+    ]
+    promoted_candidates = [
+        {"firm_id": "333333", "score": {"overall_score": 8.1}},
+    ]
+
+    final_shortlist, promoted_ids, displaced_ids = merge_shortlist_with_promotions(
+        shortlisted,
+        promoted_candidates,
+        shortlist_limit=2,
+    )
+
+    assert [item["firm_id"] for item in final_shortlist] == ["111111", "333333"]
+    assert promoted_ids == {"333333"}
+    assert displaced_ids == {"222222"}

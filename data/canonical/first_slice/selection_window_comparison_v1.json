@@ -3,67 +3,20 @@
   "selection_limit": 20,
   "shortlist_limit": 5,
   "shortlist_floor": {
-    "firm_id": "322607",
-    "firm_name": "NOBLE WEALTH MANAGEMENT P.B.C.",
+    "firm_id": "317916",
+    "firm_name": "25 FINANCIAL",
     "score": {
-      "marketing_rule_relevance": 2.53,
-      "client_service_mix_change": 7.03,
-      "operational_complexity_change": 5.15,
+      "marketing_rule_relevance": 7.69,
+      "client_service_mix_change": 8.82,
+      "operational_complexity_change": 7.69,
       "confidence": 10.0,
-      "overall_score": 5.28
+      "overall_score": 8.26
     }
   },
-  "deferred_candidates_total": 9,
-  "scored_candidates_total": 2,
-  "would_enter_shortlist_total": 1,
+  "deferred_candidates_total": 8,
+  "scored_candidates_total": 1,
+  "would_enter_shortlist_total": 0,
   "comparisons": [
-    {
-      "selection_position": 24,
-      "deferred_rank": 4,
-      "firm_id": "312325",
-      "firm_name": "EDGEROCK WEALTH MANAGEMENT",
-      "sec_number": "121314",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260205",
-      "prior_submitted_at": "20260129",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": true,
-        "prior_text_snapshot_cached": true,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "comparison_status": "scored",
-      "shadow_score": {
-        "marketing_rule_relevance": 8.88,
-        "client_service_mix_change": 10.0,
-        "operational_complexity_change": 10.0,
-        "confidence": 7.3,
-        "overall_score": 9.34
-      },
-      "score_gap_to_shortlist_floor": 4.06,
-      "dimension_gaps_to_shortlist_floor": {
-        "marketing_rule_relevance": 6.35,
-        "client_service_mix_change": 2.97,
-        "operational_complexity_change": 4.85,
-        "confidence": -2.7,
-        "overall_score": 4.06
-      },
-      "would_enter_shortlist": true,
-      "comparison_summary": "Would clear the shortlist floor by 4.06; deferred only because the evaluation window filled first.",
-      "top_evidence": {
-        "section_title": "Material Changes",
-        "change_summary": "added; added terms: the, and, edgerock, you, fees, are, for, our",
-        "focus_term": "financial planning",
-        "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: alternative, billing, custody; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: co...",
-        "current_excerpt": "...ure in Item 5 (Fees and Compensation) with the following: \u2022 The section labeled Financial Planning & Consulting Services has been added . EdgeRock now offers Financial Planning via a sperate agreement and separate fee. \u2022 The section Fees -...",
-        "composite": 9.16
-      },
-      "comparison_rank": 1
-    },
     {
       "selection_position": 21,
       "deferred_rank": 1,
@@ -91,16 +44,16 @@
         "confidence": 7.25,
         "overall_score": 5.14
       },
-      "score_gap_to_shortlist_floor": -0.14,
+      "score_gap_to_shortlist_floor": -3.12,
       "dimension_gaps_to_shortlist_floor": {
-        "marketing_rule_relevance": 1.19,
-        "client_service_mix_change": -0.68,
-        "operational_complexity_change": -0.3,
+        "marketing_rule_relevance": -3.97,
+        "client_service_mix_change": -2.47,
+        "operational_complexity_change": -2.84,
         "confidence": -2.75,
-        "overall_score": -0.14
+        "overall_score": -3.12
       },
       "would_enter_shortlist": false,
-      "comparison_summary": "Trails the shortlist floor by 0.14, mostly on confidence.",
+      "comparison_summary": "Trails the shortlist floor by 3.12; the largest gap is marketing-rule signal.",
       "top_evidence": {
         "section_title": "Client Contact w ith Portfolio",
         "change_summary": "modified; added terms: thrivent, pursuant, introdu, cing, policy, r2-26; removed terms: pursuan, fees, what, introducing, olicy, thr, ivent, r1-26",
@@ -109,7 +62,7 @@
         "current_excerpt": "...ry business. The Thrivent Code sets forth business conduct principles regarding compliance with la ws and regulations, fiduciary duty of investment advisers, conflicts of interest, personal securities transactions and confidentiality. Thriv...",
         "composite": 5.27
       },
-      "comparison_rank": 2
+      "comparison_rank": 1
     },
     {
       "selection_position": 22,
@@ -134,7 +87,7 @@
       "comparison_skip_stage": "brochure",
       "comparison_skip_reason": "unsupported_brochure_type",
       "comparison_summary": "Comparison unavailable because this pair still resolves to an unsupported brochure type.",
-      "comparison_rank": 3
+      "comparison_rank": 2
     },
     {
       "selection_position": 23,
@@ -159,11 +112,11 @@
       "comparison_skip_stage": "score",
       "comparison_skip_reason": "no_scored_evidence",
       "comparison_summary": "Comparison unavailable because the pair still produced no scored evidence after normalization.",
-      "comparison_rank": 4
+      "comparison_rank": 3
     },
     {
-      "selection_position": 25,
-      "deferred_rank": 5,
+      "selection_position": 24,
+      "deferred_rank": 4,
       "firm_id": "284598",
       "firm_name": "TLW WEALTH MANAGEMENT, LLC",
       "sec_number": "114938",
@@ -184,11 +137,11 @@
       "comparison_skip_stage": "brochure",
       "comparison_skip_reason": "unsupported_brochure_type",
       "comparison_summary": "Comparison unavailable because this pair still resolves to an unsupported brochure type.",
-      "comparison_rank": 5
+      "comparison_rank": 4
     },
     {
-      "selection_position": 26,
-      "deferred_rank": 6,
+      "selection_position": 25,
+      "deferred_rank": 5,
       "firm_id": "285961",
       "firm_name": "FACET",
       "sec_number": "108767",
@@ -209,11 +162,11 @@
       "comparison_skip_stage": "score",
       "comparison_skip_reason": "no_scored_evidence",
       "comparison_summary": "Comparison unavailable because the pair still produced no scored evidence after normalization.",
-      "comparison_rank": 6
+      "comparison_rank": 5
     },
     {
-      "selection_position": 27,
-      "deferred_rank": 7,
+      "selection_position": 26,
+      "deferred_rank": 6,
       "firm_id": "298006",
       "firm_name": "ALBERT INVESTMENTS, LLC",
       "sec_number": "114361",
@@ -234,11 +187,11 @@
       "comparison_skip_stage": "score",
       "comparison_skip_reason": "no_scored_evidence",
       "comparison_summary": "Comparison unavailable because the pair still produced no scored evidence after normalization.",
-      "comparison_rank": 7
+      "comparison_rank": 6
     },
     {
-      "selection_position": 28,
-      "deferred_rank": 8,
+      "selection_position": 27,
+      "deferred_rank": 7,
       "firm_id": "147615",
       "firm_name": "KEENER FINANCIAL PLANNING",
       "sec_number": "115127",
@@ -259,11 +212,11 @@
       "comparison_skip_stage": "brochure",
       "comparison_skip_reason": "unsupported_brochure_type",
       "comparison_summary": "Comparison unavailable because this pair still resolves to an unsupported brochure type.",
-      "comparison_rank": 8
+      "comparison_rank": 7
     },
     {
-      "selection_position": 29,
-      "deferred_rank": 9,
+      "selection_position": 28,
+      "deferred_rank": 8,
       "firm_id": "289764",
       "firm_name": "SGROI WEALTH ADVISORY GROUP LLC",
       "sec_number": "112067",
@@ -284,7 +237,7 @@
       "comparison_skip_stage": "brochure",
       "comparison_skip_reason": "unsupported_brochure_type",
       "comparison_summary": "Comparison unavailable because this pair still resolves to an unsupported brochure type.",
-      "comparison_rank": 9
+      "comparison_rank": 8
     }
   ]
 }

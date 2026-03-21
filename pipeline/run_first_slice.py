@@ -535,6 +535,29 @@ def build_selection_window_comparison_artifact(
     }
 
 
+def merge_shortlist_with_promotions(
+    shortlisted: list[dict[str, object]],
+    promoted_candidates: list[dict[str, object]],
+    *,
+    shortlist_limit: int,
+) -> tuple[list[dict[str, object]], set[str], set[str]]:
+    merged_by_firm = {item["firm_id"]: item for item in shortlisted}
+    original_ids = set(merged_by_firm)
+    for candidate in promoted_candidates:
+        merged_by_firm[candidate["firm_id"]] = candidate
+
+    merged = sorted(
+        merged_by_firm.values(),
+        key=lambda item: item["score"]["overall_score"],
+        reverse=True,
+    )
+    final_shortlist = merged[:shortlist_limit]
+    final_ids = {item["firm_id"] for item in final_shortlist}
+    promoted_ids = final_ids - original_ids
+    displaced_ids = original_ids - final_ids
+    return final_shortlist, promoted_ids, displaced_ids
+
+
 def filing_rows(zip_path: Path, *, firm_ids: set[str]) -> dict[str, dict]:
     rows_by_firm: dict[str, dict] = {}
     with zipfile.ZipFile(zip_path) as archive:
@@ -694,6 +717,8 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
     selection_limit = selection["cohort_size"] * 4
     shortlist_limit = selection["cohort_size"]
     pair_cache_statuses = [cache_status_for_pair(raw_root, snapshot_root, pair) for pair in pairs]
+    pair_lookup = {pair["firm_id"]: pair for pair in pairs}
+    cache_status_lookup = {pair["firm_id"]: cache_status for pair, cache_status in zip(pairs, pair_cache_statuses)}
     cache_complete_pairs_total = sum(1 for status in pair_cache_statuses if pair_has_complete_cache(status))
     prioritized_pairs = sorted(
         zip(pairs, pair_cache_statuses),
@@ -715,7 +740,9 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
     }
 
     shortlisted: list[dict] = []
+    scored_selected: list[dict] = []
     selected_pairs = []
+    selected_details_by_firm: dict[str, dict[str, object]] = {}
     skipped_candidates: list[dict[str, object]] = []
     for pair, cache_status in prioritized_pairs:
         if len(selected_pairs) >= selection_limit:
@@ -760,11 +787,11 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
             )
             continue
         selected_pairs.append((pair, detail))
+        selected_details_by_firm[pair["firm_id"]] = detail
 
     if not selected_pairs:
         raise RuntimeError("No active brochure pairs were available for the first slice.")
 
-    pair_lookup = {pair["firm_id"]: pair for pair in pairs}
     selected_firm_ids = {pair["firm_id"] for pair, _ in selected_pairs}
     selection_window_firm_ids = {
         str(entry["firm_id"]) for entry in skipped_candidates if entry["skip_reason"] == "selection_window_limit"
@@ -774,18 +801,7 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
     filing_context_prior = filing_rows(filing_zip_paths["prior"], firm_ids=filing_context_firm_ids)
 
     for pair, detail in selected_pairs:
-        cache_status = cache_status_for_pair(raw_root, snapshot_root, pair)
-        if len(shortlisted) >= shortlist_limit:
-            skipped_candidates.append(
-                cache_report_entry(
-                    pair,
-                    cache_status=cache_status,
-                    skip_stage="shortlist",
-                    skip_reason="shortlist_window_limit",
-                    detail=detail,
-                )
-            )
-            continue
+        cache_status = cache_status_lookup[pair["firm_id"]]
         scored_delta, skip_info = evaluate_pair(
             pair=pair,
             detail=detail,
@@ -812,10 +828,75 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
                 )
             )
             continue
-        shortlisted.append(scored_delta)
+        scored_selected.append(scored_delta)
 
-    if not shortlisted:
+    if not scored_selected:
         raise RuntimeError("No scored firms were produced for the first slice.")
+
+    scored_selected.sort(key=lambda item: item["score"]["overall_score"], reverse=True)
+    shortlisted = scored_selected[:shortlist_limit]
+
+    initial_selection_window_payload = build_selection_window_artifact(
+        source_version=source_config["version"],
+        selection_limit=selection_limit,
+        selected_pairs_total=len(selected_pairs),
+        shortlisted_total=len(shortlisted),
+        raw_root=raw_root,
+        skipped_candidates=skipped_candidates,
+    )
+    shortlist_floor = shortlisted[-1]
+    shortlist_underfilled = len(shortlisted) < shortlist_limit
+    selection_window_evaluations: dict[str, tuple[dict[str, object] | None, dict[str, object] | None]] = {}
+    promotion_candidates: list[dict[str, object]] = []
+    for selection_entry in initial_selection_window_payload["deferred_candidates"]:
+        pair = pair_lookup[str(selection_entry["firm_id"])]
+        detail = load_cached_firm_detail(firm_detail_cache_path(raw_root, str(selection_entry["firm_id"])))
+        scored_delta, skip_info = evaluate_pair(
+            pair=pair,
+            detail=detail,
+            cache_status=selection_entry["cache_status"],
+            raw_root=raw_root,
+            snapshot_root=snapshot_root,
+            source_config=source_config,
+            cache_only=cache_only,
+            selection=selection,
+            rubric=rubric,
+            themes_payload=themes_payload,
+            filing_context_current=filing_context_current,
+            filing_context_prior=filing_context_prior,
+        )
+        firm_id = str(selection_entry["firm_id"])
+        selection_window_evaluations[firm_id] = (scored_delta, skip_info)
+        if scored_delta is not None and (
+            shortlist_underfilled or scored_delta["score"]["overall_score"] >= shortlist_floor["score"]["overall_score"]
+        ):
+            promotion_candidates.append(scored_delta)
+
+    shortlisted, promoted_ids, _displaced_ids = merge_shortlist_with_promotions(
+        shortlisted,
+        promotion_candidates,
+        shortlist_limit=shortlist_limit,
+    )
+    shortlist_ids = {item["firm_id"] for item in shortlisted}
+    if promoted_ids:
+        skipped_candidates = [
+            entry
+            for entry in skipped_candidates
+            if not (entry["skip_reason"] == "selection_window_limit" and str(entry["firm_id"]) in promoted_ids)
+        ]
+    for scored_delta in scored_selected:
+        firm_id = scored_delta["firm_id"]
+        if firm_id in shortlist_ids:
+            continue
+        skipped_candidates.append(
+            cache_report_entry(
+                pair_lookup[firm_id],
+                cache_status=cache_status_lookup[firm_id],
+                skip_stage="shortlist",
+                skip_reason="shortlist_window_limit",
+                detail=selected_details_by_firm[firm_id],
+            )
+        )
 
     shortlisted.sort(key=lambda item: item["score"]["overall_score"], reverse=True)
     shortlist_rows = [shortlist_row(item) for item in shortlisted]
@@ -855,22 +936,25 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
     shortlist_floor = shortlisted[-1]
     selection_window_comparisons = []
     for selection_entry in selection_window_payload["deferred_candidates"]:
-        pair = pair_lookup[str(selection_entry["firm_id"])]
-        detail = load_cached_firm_detail(firm_detail_cache_path(raw_root, str(selection_entry["firm_id"])))
-        scored_delta, skip_info = evaluate_pair(
-            pair=pair,
-            detail=detail,
-            cache_status=selection_entry["cache_status"],
-            raw_root=raw_root,
-            snapshot_root=snapshot_root,
-            source_config=source_config,
-            cache_only=cache_only,
-            selection=selection,
-            rubric=rubric,
-            themes_payload=themes_payload,
-            filing_context_current=filing_context_current,
-            filing_context_prior=filing_context_prior,
-        )
+        firm_id = str(selection_entry["firm_id"])
+        scored_delta, skip_info = selection_window_evaluations.get(firm_id, (None, None))
+        if scored_delta is None and skip_info is None:
+            pair = pair_lookup[firm_id]
+            detail = load_cached_firm_detail(firm_detail_cache_path(raw_root, firm_id))
+            scored_delta, skip_info = evaluate_pair(
+                pair=pair,
+                detail=detail,
+                cache_status=selection_entry["cache_status"],
+                raw_root=raw_root,
+                snapshot_root=snapshot_root,
+                source_config=source_config,
+                cache_only=cache_only,
+                selection=selection,
+                rubric=rubric,
+                themes_payload=themes_payload,
+                filing_context_current=filing_context_current,
+                filing_context_prior=filing_context_prior,
+            )
         selection_window_comparisons.append(
             selection_window_comparison_entry(
                 selection_entry,

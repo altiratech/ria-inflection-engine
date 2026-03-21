@@ -22,18 +22,18 @@
     "shortlisted_total": 5,
     "skipped_candidates_total": 91,
     "skipped_by_reason": {
-      "selection_window_limit": 9,
+      "selection_window_limit": 8,
       "missing_current_brochure_cache": 12,
       "missing_firm_detail_cache": 55,
-      "unsupported_brochure_type": 3,
-      "no_scored_evidence": 2,
-      "shortlist_window_limit": 10
+      "unsupported_brochure_type": 10,
+      "no_scored_evidence": 4,
+      "shortlist_window_limit": 2
     },
     "skipped_by_stage": {
-      "selection": 76,
-      "brochure": 3,
-      "score": 2,
-      "shortlist": 10
+      "selection": 75,
+      "brochure": 10,
+      "score": 4,
+      "shortlist": 2
     }
   },
   "next_refresh_targets": {
@@ -285,26 +285,6 @@
       "prior_submitted_at": "20260130",
       "current_file_name": "340592_422777_1_20260205.pdf",
       "prior_file_name": "340592_422474_1_20260130.pdf",
-      "skip_stage": "selection",
-      "skip_reason": "selection_window_limit",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": true,
-        "prior_text_snapshot_cached": true,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      }
-    },
-    {
-      "firm_id": "312325",
-      "firm_name": "",
-      "sec_number": "",
-      "current_submitted_at": "20260205",
-      "prior_submitted_at": "20260129",
-      "current_file_name": "312325_390010_7_20260205.pdf",
-      "prior_file_name": "312325_390010_6_20260129.pdf",
       "skip_stage": "selection",
       "skip_reason": "selection_window_limit",
       "cache_status": {
@@ -1871,8 +1851,8 @@
       "prior_submitted_at": "20260130",
       "current_file_name": "325523_381027_14_20260224.pdf",
       "prior_file_name": "325523_381027_13_20260130.pdf",
-      "skip_stage": "shortlist",
-      "skip_reason": "shortlist_window_limit",
+      "skip_stage": "brochure",
+      "skip_reason": "unsupported_brochure_type",
       "cache_status": {
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
@@ -1881,7 +1861,9 @@
         "prior_text_snapshot_cached": true,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
-      }
+      },
+      "current_brochure_type": "part_2b",
+      "prior_brochure_type": "part_2b"
     },
     {
       "firm_id": "173129",
@@ -1891,8 +1873,8 @@
       "prior_submitted_at": "20260113",
       "current_file_name": "173129_357943_13_20260223.pdf",
       "prior_file_name": "173129_357943_12_20260113.pdf",
-      "skip_stage": "shortlist",
-      "skip_reason": "shortlist_window_limit",
+      "skip_stage": "brochure",
+      "skip_reason": "unsupported_brochure_type",
       "cache_status": {
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
@@ -1901,7 +1883,9 @@
         "prior_text_snapshot_cached": false,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
-      }
+      },
+      "current_brochure_type": "part_2b",
+      "prior_brochure_type": "part_2b"
     },
     {
       "firm_id": "144039",
@@ -1911,8 +1895,8 @@
       "prior_submitted_at": "20260123",
       "current_file_name": "144039_422189_2_20260223.pdf",
       "prior_file_name": "144039_422189_1_20260123.pdf",
-      "skip_stage": "shortlist",
-      "skip_reason": "shortlist_window_limit",
+      "skip_stage": "brochure",
+      "skip_reason": "unsupported_brochure_type",
       "cache_status": {
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
@@ -1921,7 +1905,9 @@
         "prior_text_snapshot_cached": false,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
-      }
+      },
+      "current_brochure_type": "part_2b",
+      "prior_brochure_type": "part_2b"
     },
     {
       "firm_id": "134374",
@@ -1931,8 +1917,8 @@
       "prior_submitted_at": "20260109",
       "current_file_name": "134374_421266_3_20260223.pdf",
       "prior_file_name": "134374_421266_2_20260109.pdf",
-      "skip_stage": "shortlist",
-      "skip_reason": "shortlist_window_limit",
+      "skip_stage": "score",
+      "skip_reason": "no_scored_evidence",
       "cache_status": {
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
@@ -1951,8 +1937,8 @@
       "prior_submitted_at": "20260128",
       "current_file_name": "131738_121546_17_20260223.pdf",
       "prior_file_name": "131738_121546_16_20260128.pdf",
-      "skip_stage": "shortlist",
-      "skip_reason": "shortlist_window_limit",
+      "skip_stage": "brochure",
+      "skip_reason": "unsupported_brochure_type",
       "cache_status": {
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
@@ -1961,27 +1947,9 @@
         "prior_text_snapshot_cached": false,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
-      }
-    },
-    {
-      "firm_id": "326354",
-      "firm_name": "BELL CITY WEALTH, INC.",
-      "sec_number": "128174",
-      "current_submitted_at": "20260220",
-      "prior_submitted_at": "20260115",
-      "current_file_name": "326354_423486_1_20260220.pdf",
-      "prior_file_name": "326354_385084_7_20260115.pdf",
-      "skip_stage": "shortlist",
-      "skip_reason": "shortlist_window_limit",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      }
+      },
+      "current_brochure_type": "part_2b",
+      "prior_brochure_type": "part_2b"
     },
     {
       "firm_id": "144516",
@@ -1991,8 +1959,8 @@
       "prior_submitted_at": "20260130",
       "current_file_name": "144516_39101_37_20260220.pdf",
       "prior_file_name": "144516_39101_36_20260130.pdf",
-      "skip_stage": "shortlist",
-      "skip_reason": "shortlist_window_limit",
+      "skip_stage": "brochure",
+      "skip_reason": "unsupported_brochure_type",
       "cache_status": {
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
@@ -2001,7 +1969,9 @@
         "prior_text_snapshot_cached": true,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
-      }
+      },
+      "current_brochure_type": "part_2b",
+      "prior_brochure_type": "part_2b"
     },
     {
       "firm_id": "140923",
@@ -2011,8 +1981,8 @@
       "prior_submitted_at": "20260129",
       "current_file_name": "140923_58540_31_20260220.pdf",
       "prior_file_name": "140923_58540_30_20260129.pdf",
-      "skip_stage": "shortlist",
-      "skip_reason": "shortlist_window_limit",
+      "skip_stage": "brochure",
+      "skip_reason": "unsupported_brochure_type",
       "cache_status": {
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
@@ -2021,7 +1991,9 @@
         "prior_text_snapshot_cached": false,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
-      }
+      },
+      "current_brochure_type": "part_2b",
+      "prior_brochure_type": "part_2b"
     },
     {
       "firm_id": "148216",
@@ -2031,6 +2003,48 @@
       "prior_submitted_at": "20260130",
       "current_file_name": "148216_43634_26_20260218.pdf",
       "prior_file_name": "148216_43634_25_20260130.pdf",
+      "skip_stage": "brochure",
+      "skip_reason": "unsupported_brochure_type",
+      "cache_status": {
+        "firm_detail_cached": true,
+        "current_brochure_pdf_cached": true,
+        "prior_brochure_pdf_cached": true,
+        "current_text_snapshot_cached": true,
+        "prior_text_snapshot_cached": true,
+        "current_brochure_cache_available": true,
+        "prior_brochure_cache_available": true
+      },
+      "current_brochure_type": "part_2b",
+      "prior_brochure_type": "part_2b"
+    },
+    {
+      "firm_id": "283014",
+      "firm_name": "HILLTOP WEALTH ADVISORS, LLC",
+      "sec_number": "107408",
+      "current_submitted_at": "20260213",
+      "prior_submitted_at": "20260130",
+      "current_file_name": "283014_250828_22_20260213.pdf",
+      "prior_file_name": "283014_250828_21_20260130.pdf",
+      "skip_stage": "score",
+      "skip_reason": "no_scored_evidence",
+      "cache_status": {
+        "firm_detail_cached": true,
+        "current_brochure_pdf_cached": true,
+        "prior_brochure_pdf_cached": true,
+        "current_text_snapshot_cached": true,
+        "prior_text_snapshot_cached": true,
+        "current_brochure_cache_available": true,
+        "prior_brochure_cache_available": true
+      }
+    },
+    {
+      "firm_id": "313013",
+      "firm_name": "LCR WEALTH MANAGEMENT LLC",
+      "sec_number": "121653",
+      "current_submitted_at": "20260226",
+      "prior_submitted_at": "20260113",
+      "current_file_name": "313013_344137_18_20260226.pdf",
+      "prior_file_name": "313013_344137_17_20260113.pdf",
       "skip_stage": "shortlist",
       "skip_reason": "shortlist_window_limit",
       "cache_status": {
@@ -2044,13 +2058,13 @@
       }
     },
     {
-      "firm_id": "283014",
-      "firm_name": "HILLTOP WEALTH ADVISORS, LLC",
-      "sec_number": "107408",
-      "current_submitted_at": "20260213",
-      "prior_submitted_at": "20260130",
-      "current_file_name": "283014_250828_22_20260213.pdf",
-      "prior_file_name": "283014_250828_21_20260130.pdf",
+      "firm_id": "322607",
+      "firm_name": "NOBLE WEALTH MANAGEMENT P.B.C.",
+      "sec_number": "126632",
+      "current_submitted_at": "20260225",
+      "prior_submitted_at": "20260126",
+      "current_file_name": "322607_372199_10_20260225.pdf",
+      "prior_file_name": "322607_372199_9_20260126.pdf",
       "skip_stage": "shortlist",
       "skip_reason": "shortlist_window_limit",
       "cache_status": {

@@ -81,7 +81,7 @@ The command:
 
 Cache-only reruns now reuse existing brochure text snapshots before touching PDF extraction and skip uncached firm-detail candidates instead of falling through to live IAPD fetches. The cache report now also includes a compact `next_refresh_targets` queue so the largest missing cache gaps turn into an explicit local recache list. Uncached runs still need `pypdf`, so the shared fastlane interpreter remains the supported default for fresh pulls.
 
-The `20`-pair evaluation window now prioritizes firms that are already ready for a full local comparison (detail + brochure cache available) before falling back to raw recency order, which makes cache-only reruns less sensitive to archive arrival order.
+The `20`-pair evaluation window now prioritizes firms that are already ready for a full local comparison (detail + brochure cache available) before falling back to raw recency order, which makes cache-only reruns less sensitive to archive arrival order. Every pair inside that window is then scored locally before the top `5` firms are chosen, and fully cached deferred firms can now displace the shortlist floor when the comparison artifact shows they truly beat it.
 
 To preview the recache queue without fetching anything:
 

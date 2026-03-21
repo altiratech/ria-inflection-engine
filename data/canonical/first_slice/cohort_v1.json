@@ -1,6 +1,18 @@
 {
   "selected_firms": [
     {
+      "firm_id": "326354",
+      "firm_name": "BELL CITY WEALTH, INC.",
+      "current_submitted_at": "20260220",
+      "prior_submitted_at": "20260115"
+    },
+    {
+      "firm_id": "312325",
+      "firm_name": "EDGEROCK WEALTH MANAGEMENT",
+      "current_submitted_at": "20260205",
+      "prior_submitted_at": "20260129"
+    },
+    {
       "firm_id": "310682",
       "firm_name": "BLVD PRIVATE WEALTH, LLC",
       "current_submitted_at": "20260227",
@@ -17,18 +29,6 @@
       "firm_name": "25 FINANCIAL",
       "current_submitted_at": "20260226",
       "prior_submitted_at": "20260122"
-    },
-    {
-      "firm_id": "313013",
-      "firm_name": "LCR WEALTH MANAGEMENT LLC",
-      "current_submitted_at": "20260226",
-      "prior_submitted_at": "20260113"
-    },
-    {
-      "firm_id": "322607",
-      "firm_name": "NOBLE WEALTH MANAGEMENT P.B.C.",
-      "current_submitted_at": "20260225",
-      "prior_submitted_at": "20260126"
     }
   ]
 }

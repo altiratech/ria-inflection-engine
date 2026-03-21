@@ -3,8 +3,8 @@
   "selection_limit": 20,
   "selected_pairs_total": 20,
   "shortlisted_total": 5,
-  "deferred_candidates_total": 9,
-  "deferred_candidates_with_detail_cache": 9,
+  "deferred_candidates_total": 8,
+  "deferred_candidates_with_detail_cache": 8,
   "deferred_candidates": [
     {
       "selection_position": 21,
@@ -78,29 +78,6 @@
     {
       "selection_position": 24,
       "deferred_rank": 4,
-      "firm_id": "312325",
-      "firm_name": "EDGEROCK WEALTH MANAGEMENT",
-      "sec_number": "121314",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260205",
-      "prior_submitted_at": "20260129",
-      "current_file_name": "312325_390010_7_20260205.pdf",
-      "prior_file_name": "312325_390010_6_20260129.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": true,
-        "prior_text_snapshot_cached": true,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 25,
-      "deferred_rank": 5,
       "firm_id": "284598",
       "firm_name": "TLW WEALTH MANAGEMENT, LLC",
       "sec_number": "114938",
@@ -122,8 +99,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 26,
-      "deferred_rank": 6,
+      "selection_position": 25,
+      "deferred_rank": 5,
       "firm_id": "285961",
       "firm_name": "FACET",
       "sec_number": "108767",
@@ -145,8 +122,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 27,
-      "deferred_rank": 7,
+      "selection_position": 26,
+      "deferred_rank": 6,
       "firm_id": "298006",
       "firm_name": "ALBERT INVESTMENTS, LLC",
       "sec_number": "114361",
@@ -168,8 +145,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 28,
-      "deferred_rank": 8,
+      "selection_position": 27,
+      "deferred_rank": 7,
       "firm_id": "147615",
       "firm_name": "KEENER FINANCIAL PLANNING",
       "sec_number": "115127",
@@ -191,8 +168,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 29,
-      "deferred_rank": 9,
+      "selection_position": 28,
+      "deferred_rank": 8,
       "firm_id": "289764",
       "firm_name": "SGROI WEALTH ADVISORY GROUP LLC",
       "sec_number": "112067",
