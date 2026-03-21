@@ -1,0 +1,21 @@
+{
+  "version": "2026-03-20.first-slice.v1",
+  "reports_metadata_url": "https://reports.adviserinfo.sec.gov/reports/foia/reports_metadata.json",
+  "iapd_firm_detail_url_template": "https://api.adviserinfo.sec.gov/search/firm/{firm_id}?hl=true&nrows=12&query=smith&r=25&sort=score+desc&wt=json",
+  "browser_headers": {
+    "origin": "https://adviserinfo.sec.gov",
+    "referer_base": "https://adviserinfo.sec.gov/firm/summary/",
+    "user_agent": "Mozilla/5.0",
+    "accept": "application/json, text/plain, */*"
+  },
+  "sec_reference_urls": {
+    "current_registered_adviser_data": "https://www.sec.gov/data-research/sec-markets-data/information-about-registered-investment-advisers-exempt-reporting-advisers",
+    "historical_adv_data": "https://www.sec.gov/foia-services/frequently-requested-documents/form-adv-data"
+  },
+  "selection": {
+    "cohort_size": 5,
+    "require_consecutive_archives": true,
+    "require_single_brochure_file_per_month": true,
+    "minimum_sections_per_snapshot": 4
+  }
+}

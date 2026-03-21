@@ -1,0 +1,51 @@
+{
+  "version": "2026-03-20.sec-themes.v1",
+  "themes": [
+    {
+      "theme_id": "marketing_rule_2025_12_16",
+      "name": "Advisers Act marketing rule disclosures",
+      "source_url": "https://www.sec.gov/files/exams-riskalert-mrkt-rule-2512-508.pdf",
+      "source_date": "2025-12-16",
+      "keywords": [
+        "compensated testimonial",
+        "endorsement",
+        "marketing rule",
+        "performance",
+        "promoter",
+        "rating",
+        "solicitor",
+        "testimonial",
+        "third-party ratings"
+      ]
+    },
+    {
+      "theme_id": "exam_priorities_2026_compliance",
+      "name": "2026 examination priorities: compliance program readiness",
+      "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+      "source_date": "2025-11-17",
+      "keywords": [
+        "compliance program",
+        "fiduciary duty",
+        "newly registered",
+        "policies and procedures",
+        "standards of conduct"
+      ]
+    },
+    {
+      "theme_id": "exam_priorities_2026_operations",
+      "name": "2026 examination priorities: operations and data protection",
+      "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+      "source_date": "2025-11-17",
+      "keywords": [
+        "artificial intelligence",
+        "cybersecurity",
+        "custody rule",
+        "regulation s-p",
+        "outsourcing",
+        "records",
+        "resilience",
+        "vendor"
+      ]
+    }
+  ]
+}

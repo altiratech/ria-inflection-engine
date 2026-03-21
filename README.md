@@ -59,3 +59,15 @@ Treat these docs as authoritative:
 ## Build Rule
 
 Do not drift into a broad RIA operating system before the inflection loop works.
+
+## First Slice CLI
+
+Run the local-first first slice with:
+
+`python3 -m pipeline.run_first_slice`
+
+The command:
+- caches raw SEC/IAPD pulls under `data/raw/`
+- stores extracted brochure text under `data/snapshots/`
+- writes committed shortlist + delta outputs under `data/canonical/first_slice/`
+- mirrors the JSON/CSV artifacts under `artifacts/first_slice/`

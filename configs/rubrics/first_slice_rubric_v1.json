@@ -1,0 +1,87 @@
+{
+  "version": "2026-03-20.first-slice-rubric.v1",
+  "dimensions": {
+    "marketing_rule_relevance": {
+      "weight": 0.35,
+      "keywords": [
+        "advertisement",
+        "advertising",
+        "compensated",
+        "endorsement",
+        "performance",
+        "promoter",
+        "rating",
+        "review",
+        "social media",
+        "solicitor",
+        "testimonial",
+        "third-party"
+      ],
+      "preferred_sections": [
+        "item_4",
+        "item_5",
+        "item_14",
+        "item_18"
+      ]
+    },
+    "client_service_mix_change": {
+      "weight": 0.3,
+      "keywords": [
+        "advisory",
+        "client",
+        "clients",
+        "consulting",
+        "family office",
+        "financial planning",
+        "high net worth",
+        "individual",
+        "institutional",
+        "portfolio management",
+        "retirement",
+        "service",
+        "services",
+        "trust"
+      ],
+      "preferred_sections": [
+        "item_4",
+        "item_5",
+        "item_7",
+        "item_8"
+      ]
+    },
+    "operational_complexity_change": {
+      "weight": 0.25,
+      "keywords": [
+        "alternative",
+        "billing",
+        "branch",
+        "compliance",
+        "custody",
+        "cybersecurity",
+        "discretionary",
+        "non-discretionary",
+        "outsourcing",
+        "private fund",
+        "subadviser",
+        "third-party",
+        "vendor",
+        "wrap fee"
+      ],
+      "preferred_sections": [
+        "item_4",
+        "item_7",
+        "item_10",
+        "item_12",
+        "item_15"
+      ]
+    },
+    "confidence": {
+      "weight": 0.1
+    }
+  },
+  "materiality": {
+    "cosmetic_similarity_floor": 0.985,
+    "minimum_word_delta": 20,
+    "maximum_terms_per_excerpt": 8
+  }
+}
