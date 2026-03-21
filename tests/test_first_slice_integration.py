@@ -66,3 +66,5 @@ def test_text_to_shortlist_row_flow() -> None:
     assert row["firm_id"] == "131738"
     assert row["overall_score"] > 0
     assert row["top_section"] in {"Advisory Business", "Fees and Compensation"}
+    assert row["top_rationale"]
+    assert row["top_excerpt"]

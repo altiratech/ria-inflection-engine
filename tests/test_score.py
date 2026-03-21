@@ -44,3 +44,6 @@ def test_score_firm_delta_emits_evidence_and_theme_links() -> None:
     assert scored["score"]["overall_score"] > 0
     assert scored["evidence"][0]["section_key"] == "item_5"
     assert scored["themes"][0]["theme_id"] == "marketing_rule_2025_12_16"
+    assert "third-party ratings" in scored["evidence"][0]["current_excerpt"].lower()
+    assert scored["evidence"][0]["focus_term"] in {"third-party", "rating", "testimonial", "advertising", "endorsement"}
+    assert "marketing-rule signal" in scored["evidence"][0]["score_rationale"]

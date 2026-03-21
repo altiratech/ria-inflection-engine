@@ -136,6 +136,9 @@ def shortlist_row(delta_payload: dict) -> dict[str, object]:
         "raum_prior": filing_context.get("raum_prior", ""),
         "top_section": evidence["section_title"],
         "top_evidence": evidence["change_summary"],
+        "top_focus_term": evidence.get("focus_term", ""),
+        "top_rationale": evidence.get("score_rationale", ""),
+        "top_excerpt": evidence.get("current_excerpt", ""),
     }
 
 

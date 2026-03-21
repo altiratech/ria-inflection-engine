@@ -14,14 +14,14 @@ The founding loop is:
 
 ## Current Repo Status
 
-This repo is a fresh scaffold.
+This repo now has a first executable local slice.
 
-The current goal is to establish:
-- the founding docs
-- implementation guardrails
-- a stable repo shape
-
-before major code expands.
+Current shipped capabilities:
+- cache the latest SEC brochure + filing archives and IAPD firm detail inputs locally
+- pair consecutive brochure snapshots for a starter national cohort
+- normalize brochure sections into deterministic deltas
+- score buying-moment signals against the locked rubric and SEC themes
+- publish ranked JSON/CSV shortlist artifacts with focus terms, anchored excerpts, and concise rationales
 
 ## Canonical Build Truth
 

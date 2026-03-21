@@ -67,7 +67,9 @@
       "section_key": "item_14",
       "section_title": "Client Referrals and Other Compensation",
       "change_summary": "modified; added terms: and, these, blvd, fee, accounts, may, fees, business; removed terms: financial, generally, are, advice, respect, upon, plan, basis",
-      "current_excerpt": "A. Economic Benefits Provided by Third Parties for Advice Rendered to Clients (Includes Sales Awards or Other Prizes) B. Factors That Will Trigger a Non -Periodic Review of Client Accounts but is compensated by account holders through co...",
+      "current_excerpt": "These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers, hum...",
+      "focus_term": "consulting",
+      "score_rationale": "service-mix signal: consulting; marketing-rule signal: compensated; SEC theme match: 2026 examination priorities: operations and data protection",
       "composite": 9.46,
       "matched_themes": [
         "2026 examination priorities: operations and data protection"
@@ -77,7 +79,9 @@
       "section_key": "item_4",
       "section_title": "Advisory Business",
       "change_summary": "modified; added terms: the, blvd, and, restrictions, management, fees, assets, for; removed terms: applicable, onflicts, inter, est",
-      "current_excerpt": "A. Description of the Advisory Firm B. Types of Advisory Services Held Away Assets \u2013 Pontera Pontera under types of advisory services offered \u2013 We may leverage the Pontera Order Management System (\"Pontera\") to implement investment selec...",
+      "current_excerpt": "BLVD has the following assets under management: Discretionary Amounts: Non -discretionary Amounts: Date Calculated: $ 220,351,220.00 $0.00 December 2025 Portfolio Management and Held Away Assets \u2013 Pontera Fees Total Assets Under Manageme...",
+      "focus_term": "portfolio management",
+      "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: compliance, discretionary, wrap fee; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination prioriti...",
       "composite": 8.11,
       "matched_themes": [
         "Advisers Act marketing rule disclosures",
@@ -88,7 +92,9 @@
       "section_key": "item_5",
       "section_title": "Fees and Compensation",
       "change_summary": "modified; added terms: rrangements; removed terms: the, fee, management, assets, blvd, fees, and, under",
-      "current_excerpt": "A. Fee Schedule 6 $20,000,001 - $25,000,000 0.50% $25,000,001 - $30,000,000 0.40% $30,000,001 - $35,000,000 0.30% $35,000,001 \u2013 And Up 0.20% The advisory fee is calculated using the value of the assets under management on the last busine...",
+      "current_excerpt": "(*The daily rate is calculated by dividing the quarterly asset -based fee rate by the number of days in the quarter) Financial Planning Fees Fixed Fees The negotiated fixed fee for creating client financial plans is between $1,000 and $2...",
+      "focus_term": "financial planning",
+      "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: billing",
       "composite": 8.11,
       "matched_themes": []
     }
@@ -163,7 +169,22 @@
           ]
         }
       ],
-      "evidence_excerpt": "A. Economic Benefits Provided by Third Parties for Advice Rendered to Clients (Includes Sales Awards or Other Prizes) B. Factors That Will Trigger a Non -Periodic Review of Client Accounts but is compensated by account holders through co..."
+      "focus_terms": [
+        "consulting",
+        "compensated",
+        "compliance",
+        "custody",
+        "vendor",
+        "these"
+      ],
+      "evidence_focus_term": "consulting",
+      "evidence_focus_hits": [
+        "consulting",
+        "compliance",
+        "these"
+      ],
+      "evidence_excerpt": "These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers, hum...",
+      "score_rationale": "service-mix signal: consulting; marketing-rule signal: compensated; SEC theme match: 2026 examination priorities: operations and data protection"
     },
     {
       "section_key": "item_4",
@@ -244,7 +265,28 @@
           ]
         }
       ],
-      "evidence_excerpt": "A. Description of the Advisory Firm B. Types of Advisory Services Held Away Assets \u2013 Pontera Pontera under types of advisory services offered \u2013 We may leverage the Pontera Order Management System (\"Pontera\") to implement investment selec..."
+      "focus_terms": [
+        "portfolio management",
+        "financial planning",
+        "consulting",
+        "retirement",
+        "trust",
+        "wrap fee",
+        "discretionary",
+        "compliance",
+        "performance",
+        "policies and procedures",
+        "restrictions",
+        "assets"
+      ],
+      "evidence_focus_term": "portfolio management",
+      "evidence_focus_hits": [
+        "portfolio management",
+        "discretionary",
+        "assets"
+      ],
+      "evidence_excerpt": "BLVD has the following assets under management: Discretionary Amounts: Non -discretionary Amounts: Date Calculated: $ 220,351,220.00 $0.00 December 2025 Portfolio Management and Held Away Assets \u2013 Pontera Fees Total Assets Under Manageme...",
+      "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: compliance, discretionary, wrap fee; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination prioriti..."
     },
     {
       "section_key": "item_5",
@@ -296,7 +338,20 @@
         ]
       },
       "matched_themes": [],
-      "evidence_excerpt": "A. Fee Schedule 6 $20,000,001 - $25,000,000 0.50% $25,000,001 - $30,000,000 0.40% $30,000,001 - $35,000,000 0.30% $35,000,001 \u2013 And Up 0.20% The advisory fee is calculated using the value of the assets under management on the last busine..."
+      "focus_terms": [
+        "portfolio management",
+        "financial planning",
+        "consulting",
+        "retirement",
+        "billing",
+        "rrangements"
+      ],
+      "evidence_focus_term": "financial planning",
+      "evidence_focus_hits": [
+        "financial planning"
+      ],
+      "evidence_excerpt": "(*The daily rate is calculated by dividing the quarterly asset -based fee rate by the number of days in the quarter) Financial Planning Fees Fixed Fees The negotiated fixed fee for creating client financial plans is between $1,000 and $2...",
+      "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: billing"
     },
     {
       "section_key": "item_9",
@@ -352,7 +407,27 @@
         "operational_complexity_change": []
       },
       "matched_themes": [],
-      "evidence_excerpt": "A. Criminal or Civil Actions B. Administrative Proceedings C. Self-regulatory Organization (SRO) Proceedings Neither BLVD nor its representatives are registered as, or have pending applications to become, a broker/dealer or a representat..."
+      "focus_terms": [
+        "compensated",
+        "hours",
+        "trading",
+        "chris",
+        "edward",
+        "brady",
+        "compensation",
+        "outside",
+        "during"
+      ],
+      "evidence_focus_term": "hours",
+      "evidence_focus_hits": [
+        "hours",
+        "trading",
+        "compensation",
+        "outside",
+        "during"
+      ],
+      "evidence_excerpt": "His involvement is limited, averaging 2 hours per month during trading hours and 4 hours outside trading hours, with no portion of his yearly compensation expected to be derived from this business.",
+      "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: compensated"
     },
     {
       "section_key": "item_12",
@@ -398,7 +473,17 @@
         "operational_complexity_change": []
       },
       "matched_themes": [],
-      "evidence_excerpt": "A. Factors Used to Select Custodians and/or Broker/Dealers While BLVD has no formal soft dollar\u2019s program in which soft dollars are used to pay for third party services, BLVD may receive research, products, or other services from custodi..."
+      "focus_terms": [
+        "broker",
+        "dollar"
+      ],
+      "evidence_focus_term": "broker",
+      "evidence_focus_hits": [
+        "broker",
+        "dollar"
+      ],
+      "evidence_excerpt": "Factors Used to Select Custodians and/or Broker/Dealers While BLVD has no formal soft dollar\u2019s program in which soft dollars are used to pay for third party services, BLVD may receive research, products, or other services from custodians...",
+      "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: review"
     },
     {
       "section_key": "item_10",
@@ -456,7 +541,22 @@
         ]
       },
       "matched_themes": [],
-      "evidence_excerpt": "A. Registration as a Broker/Dealer or Broker/Dealer Representative B. Registration as a Futures Commission Merchant, Commodity Pool Operator, or a Commodity Trading Advisor C. Registration Relationships Material to this Advisory Business..."
+      "focus_terms": [
+        "compliance",
+        "registration",
+        "always",
+        "which",
+        "broker/dealer",
+        "representative"
+      ],
+      "evidence_focus_term": "registration",
+      "evidence_focus_hits": [
+        "registration",
+        "broker/dealer",
+        "representative"
+      ],
+      "evidence_excerpt": "Registration as a Broker/Dealer or Broker/Dealer Representative B. Registration as a Futures Commission Merchant, Commodity Pool Operator, or a Commodity Trading Advisor C.",
+      "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: compliance"
     },
     {
       "section_key": "item_16",
@@ -511,7 +611,20 @@
         ]
       },
       "matched_themes": [],
-      "evidence_excerpt": "BLVD provides discretionary investment advisory services to clients. The advisory contract established with each client sets forth the discretionary authority for trading. Where investment discretion has been granted, BLVD generally mana..."
+      "focus_terms": [
+        "discretionary",
+        "authority",
+        "issuer",
+        "security",
+        "neither"
+      ],
+      "evidence_focus_term": "discretionary",
+      "evidence_focus_hits": [
+        "discretionary",
+        "authority"
+      ],
+      "evidence_excerpt": "The advisory contract established with each client sets forth the discretionary authority for trading.",
+      "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: discretionary"
     },
     {
       "section_key": "item_18",
@@ -552,7 +665,17 @@
         "operational_complexity_change": []
       },
       "matched_themes": [],
-      "evidence_excerpt": "A. Balance Sheet B. Financial Conditions Reasonably Likely to Impair Ability to Meet Contractual Commitments to Clients C. Bankruptcy Petitions in Previous Ten Years"
+      "focus_terms": [
+        "clients",
+        "client"
+      ],
+      "evidence_focus_term": "clients",
+      "evidence_focus_hits": [
+        "clients",
+        "client"
+      ],
+      "evidence_excerpt": "Financial Conditions Reasonably Likely to Impair Ability to Meet Contractual Commitments to Clients C. Bankruptcy Petitions in Previous Ten Years",
+      "score_rationale": "service-mix signal: client, clients"
     },
     {
       "section_key": "item_8",
@@ -619,7 +742,21 @@
           ]
         }
       ],
-      "evidence_excerpt": "Loss A. Methods of Analysis and Investment Strategies B. Material Risks Involved favorable risk -expected return profile \u2013 i.e., if for that level of risk an alternative portfolio exists which has better expected returns. Technical analy..."
+      "focus_terms": [
+        "performance",
+        "rating",
+        "alternative",
+        "compliance",
+        "credit"
+      ],
+      "evidence_focus_term": "rating",
+      "evidence_focus_hits": [
+        "rating",
+        "compliance",
+        "credit"
+      ],
+      "evidence_excerpt": "Revenues and cash flows may be adversely affected by: changes in local re al estate market conditions due to changes in national or local economic conditions or changes in local property market characteristics; competition from other pro...",
+      "score_rationale": "service-mix signal: client, clients, individual; SEC theme match: Advisers Act marketing rule disclosures"
     },
     {
       "section_key": "item_6",
@@ -662,7 +799,23 @@
         "operational_complexity_change": []
       },
       "matched_themes": [],
-      "evidence_excerpt": "Methods of Analysis BLVD \u2019s methods of analysis include Fundamental analysis, Modern portfolio theory and technical analysis. Fundamental analysis involves the analysis of financial statements, the general financial health of companies, ..."
+      "focus_terms": [
+        "compensated",
+        "analysis",
+        "portfolio",
+        "expected",
+        "theory",
+        "investors"
+      ],
+      "evidence_focus_term": "portfolio",
+      "evidence_focus_hits": [
+        "portfolio",
+        "expected",
+        "theory",
+        "investors"
+      ],
+      "evidence_excerpt": "Modern portfolio theory assumes that investors are risk averse, meaning that given two portfolios that offer the same expected return, investors will prefer the less risky one.",
+      "score_rationale": "service-mix signal: client, individual; marketing-rule signal: compensated"
     },
     {
       "section_key": "item_11",
@@ -715,7 +868,21 @@
         "operational_complexity_change": []
       },
       "matched_themes": [],
-      "evidence_excerpt": "Transactions and Personal Trading D. Selection of Other Advisers or Managers and How This Adviser is Compensated for Those Selections A. Code of Ethics B. Recommendations Involving Material Financial Interests C. Investing Personal Money..."
+      "focus_terms": [
+        "institutional",
+        "compensated",
+        "securities",
+        "representatives",
+        "trading"
+      ],
+      "evidence_focus_term": "securities",
+      "evidence_focus_hits": [
+        "securities",
+        "representatives",
+        "trading"
+      ],
+      "evidence_excerpt": "Such transactions may create a conflict of interest; however, BLVD will never engage in trading that operates to the client \u2019s disadvantage if representatives of BLVD buy or sell securities at or around the same time as clients.",
+      "score_rationale": "service-mix signal: institutional"
     },
     {
       "section_key": "item_7",
@@ -753,7 +920,11 @@
         "operational_complexity_change": []
       },
       "matched_themes": [],
-      "evidence_excerpt": "A. Methods of Analysis and Investment Strategies B. Material Risks Involved Methods of Analysis BLVD \u2019s methods of analysis include Fundamental analysis, Modern portfolio theory and Technical analysis. Fundamental analysis involves the a..."
+      "focus_terms": [],
+      "evidence_focus_term": "",
+      "evidence_focus_hits": [],
+      "evidence_excerpt": "A. Methods of Analysis and Investment Strategies B. Material Risks Involved Methods of Analysis BLVD \u2019s methods of analysis include Fundamental analysis, Modern portfolio theory and Technical analysis. Fundamental analysis involves the a...",
+      "score_rationale": ""
     },
     {
       "section_key": "item_13",
@@ -813,7 +984,27 @@
         ]
       },
       "matched_themes": [],
-      "evidence_excerpt": "A. Frequency and Nature of Periodic Reviews and Who Makes Those Reviews All financial planning relationships are reviewed upon financial plan creation and plan delivery. Financial planning clients are provided a one-time financial plan c..."
+      "focus_terms": [
+        "financial planning",
+        "institutional",
+        "retirement",
+        "custody",
+        "schwab",
+        "financial",
+        "generally",
+        "receive",
+        "available"
+      ],
+      "evidence_focus_term": "institutional",
+      "evidence_focus_hits": [
+        "institutional",
+        "custody",
+        "schwab",
+        "generally",
+        "available"
+      ],
+      "evidence_excerpt": "Schwab \u2019s services include brokerage services that are related to the execution of securities transactions, custody, research, including that in the form of advice, analyses and reports, and access to mutual funds and other investments t...",
+      "score_rationale": "service-mix signal: financial planning, institutional, retirement"
     }
   ]
 }
