@@ -74,11 +74,18 @@ def test_text_to_shortlist_row_flow() -> None:
 def test_load_brochure_text_prefers_snapshot_cache(tmp_path, monkeypatch) -> None:
     snapshot_path = tmp_path / "brochure.txt"
     snapshot_path.write_text("cached snapshot text")
+    seen = {}
 
-    def fail_write_member_cache(*args, **kwargs):
-        raise AssertionError("existing snapshots should not fetch or read brochure PDFs")
+    def fake_ensure_text_snapshot(member, pdf_path, seen_snapshot_path, *, user_agent: str, allow_download: bool):
+        seen["member"] = member.file_name
+        seen["pdf_path"] = pdf_path
+        seen["snapshot_path"] = seen_snapshot_path
+        seen["user_agent"] = user_agent
+        seen["allow_download"] = allow_download
+        assert seen_snapshot_path.exists()
+        return False
 
-    monkeypatch.setattr("pipeline.run_first_slice.write_member_cache", fail_write_member_cache)
+    monkeypatch.setattr("pipeline.run_first_slice.ensure_text_snapshot", fake_ensure_text_snapshot)
 
     member = ZipMember(
         archive_url="https://example.com/archive.zip",
@@ -93,3 +100,7 @@ def test_load_brochure_text_prefers_snapshot_cache(tmp_path, monkeypatch) -> Non
     text = load_brochure_text(member, tmp_path / "brochure.pdf", snapshot_path, user_agent="test-agent")
 
     assert text == "cached snapshot text"
+    assert seen["member"] == "123456_1_1_20260228.pdf"
+    assert seen["snapshot_path"] == snapshot_path
+    assert seen["user_agent"] == "test-agent"
+    assert seen["allow_download"] is True

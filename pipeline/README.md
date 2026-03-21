@@ -28,6 +28,7 @@ Current first-slice outputs:
 - `top_delta_<firm_id>.json`
 - `cohort_v1.json`
 - `cache_report_v1.json` with skip reasons, cache-gap counts, selection-window leftovers, and a compact `next_refresh_targets` recache queue
+- `cache_report_v1.json` now also includes a `snapshot_backfill` summary for the explicit brochure-text preflight stage
 - `selection_window_v1.json` with deferred selection-window candidates and cached-detail enrichment when available
 - `selection_window_comparison_v1.json` with shadow-scored comparisons between deferred fully cached firms and the shortlist floor
 

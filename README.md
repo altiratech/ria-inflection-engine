@@ -79,7 +79,7 @@ The command:
 - writes `selection_window_comparison_v1.json` with shadow-scored “why not shortlisted” comparisons against the shortlist floor
 - mirrors the JSON/CSV artifacts under `artifacts/first_slice/`
 
-Cache-only reruns now reuse existing brochure text snapshots before touching PDF extraction and skip uncached firm-detail candidates instead of falling through to live IAPD fetches. The cache report now also includes a compact `next_refresh_targets` queue so the largest missing cache gaps turn into an explicit local recache list. Uncached runs still need `pypdf`, so the shared fastlane interpreter remains the supported default for fresh pulls.
+Cache-only reruns now reuse existing brochure text snapshots before touching PDF extraction, run an explicit snapshot-backfill preflight for the selected window plus deferred comparison bench, and skip uncached firm-detail candidates instead of falling through to live IAPD fetches. The cache report now also includes a `snapshot_backfill` summary plus a compact `next_refresh_targets` queue so the slow path and the largest missing cache gaps are both explicit. Uncached runs still need `pypdf`, so the shared fastlane interpreter remains the supported default for fresh pulls.
 
 The `20`-pair evaluation window now prioritizes firms that are already ready for a full local comparison (detail + brochure cache available) before falling back to raw recency order, which makes cache-only reruns less sensitive to archive arrival order. Every pair inside that window is then scored locally before the top `5` firms are chosen, and fully cached deferred firms can now displace the shortlist floor when the comparison artifact shows they truly beat it.
 

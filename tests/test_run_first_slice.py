@@ -4,6 +4,7 @@ from pipeline.brochures import parse_brochure_member
 from pipeline.iapd import ArchiveFile
 from pipeline.remote_zip import ZipMember
 from pipeline.run_first_slice import (
+    backfill_brochure_text_snapshots,
     build_selection_window_comparison_artifact,
     build_cache_report,
     build_selection_window_artifact,
@@ -295,6 +296,12 @@ def test_build_cache_report_summarizes_skip_reasons() -> None:
         shortlisted_total=1,
         cache_complete_pairs_total=1,
         skipped_candidates=skipped_candidates,
+        snapshot_backfill_summary={
+            "scope": "selected_pairs_plus_deferred_comparison_candidates",
+            "eligible_snapshot_tasks_total": 2,
+            "snapshots_already_cached": 1,
+            "snapshots_generated": 1,
+        },
     )
 
     assert report["mode"] == "cache_only"
@@ -305,9 +312,60 @@ def test_build_cache_report_summarizes_skip_reasons() -> None:
     assert report["summary"]["skipped_by_reason"]["missing_current_brochure_cache"] == 1
     assert report["summary"]["skipped_by_stage"]["selection"] == 1
     assert report["summary"]["skipped_by_stage"]["brochure"] == 1
+    assert report["snapshot_backfill"]["snapshots_generated"] == 1
     assert report["next_refresh_targets"]["actionable_gap_total"] == 2
     assert report["next_refresh_targets"]["groups"][0]["refresh_action"] == "fetch_firm_detail"
     assert report["skipped_candidates"][1]["firm_name"] == "Example Wealth"
+
+
+def test_backfill_brochure_text_snapshots_reports_generated_and_cached(tmp_path, monkeypatch) -> None:
+    cached_snapshot = tmp_path / "cached.txt"
+    cached_snapshot.write_text("cached")
+    generated_snapshot = tmp_path / "generated.txt"
+    progress_messages: list[str] = []
+
+    def fake_ensure_text_snapshot(member, pdf_path, snapshot_path, *, user_agent: str, allow_download: bool):
+        assert member == "member-2"
+        assert pdf_path == tmp_path / "generated.pdf"
+        assert user_agent == "test-agent"
+        assert allow_download is False
+        snapshot_path.write_text("generated")
+        return True
+
+    monkeypatch.setattr("pipeline.run_first_slice.ensure_text_snapshot", fake_ensure_text_snapshot)
+
+    summary = backfill_brochure_text_snapshots(
+        [
+            {
+                "firm_id": "123456",
+                "snapshot_kind": "current",
+                "submitted_at": "20260228",
+                "file_name": "cached.pdf",
+                "member": "member-1",
+                "pdf_path": tmp_path / "cached.pdf",
+                "snapshot_path": cached_snapshot,
+            },
+            {
+                "firm_id": "123456",
+                "snapshot_kind": "prior",
+                "submitted_at": "20260131",
+                "file_name": "generated.pdf",
+                "member": "member-2",
+                "pdf_path": tmp_path / "generated.pdf",
+                "snapshot_path": generated_snapshot,
+            },
+        ],
+        user_agent="test-agent",
+        allow_download=False,
+        progress=progress_messages.append,
+    )
+
+    assert summary["eligible_snapshot_tasks_total"] == 2
+    assert summary["snapshots_already_cached"] == 1
+    assert summary["snapshots_generated"] == 1
+    assert generated_snapshot.read_text() == "generated"
+    assert progress_messages[0].startswith("snapshot_backfill_queue")
+    assert progress_messages[1].startswith("snapshot_backfill_complete")
 
 
 def test_build_selection_window_artifact_enriches_cached_detail(tmp_path) -> None:

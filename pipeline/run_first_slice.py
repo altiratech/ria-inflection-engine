@@ -3,14 +3,15 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-from pathlib import Path
 from collections import Counter
+from collections.abc import Callable
+from pathlib import Path
 import zipfile
 
-from pipeline.brochures import brochure_type, parse_brochure_member, snapshot_text
+from pipeline.brochures import brochure_type, ensure_text_snapshot, parse_brochure_member
 from pipeline.iapd import ArchiveFile, download_file, fetch_firm_detail, fetch_json, select_latest_archives
 from pipeline.normalize import build_section_deltas, sectionize_brochure
-from pipeline.remote_zip import list_zip_members, write_member_cache
+from pipeline.remote_zip import list_zip_members
 from pipeline.score import DIMENSION_LABELS, score_firm_delta
 
 
@@ -195,6 +196,7 @@ def build_cache_report(
     shortlisted_total: int,
     cache_complete_pairs_total: int,
     skipped_candidates: list[dict[str, object]],
+    snapshot_backfill_summary: dict[str, object] | None = None,
 ) -> dict[str, object]:
     reason_counts = Counter(entry["skip_reason"] for entry in skipped_candidates)
     stage_counts = Counter(entry["skip_stage"] for entry in skipped_candidates)
@@ -216,6 +218,13 @@ def build_cache_report(
             "skipped_candidates_total": len(skipped_candidates),
             "skipped_by_reason": dict(reason_counts),
             "skipped_by_stage": dict(stage_counts),
+        },
+        "snapshot_backfill": snapshot_backfill_summary
+        or {
+            "scope": "selected_pairs_plus_deferred_comparison_candidates",
+            "eligible_snapshot_tasks_total": 0,
+            "snapshots_already_cached": 0,
+            "snapshots_generated": 0,
         },
         "next_refresh_targets": refresh_targets,
         "skipped_candidates": skipped_candidates,
@@ -667,14 +676,127 @@ def write_shortlist_csv(path: Path, rows: list[dict[str, object]]) -> Path:
     return path
 
 
+def brochure_snapshot_task(pair: dict, *, snapshot_kind: str, raw_root: Path, snapshot_root: Path) -> dict[str, object]:
+    member_key = f"{snapshot_kind}_member"
+    archive_key = f"{snapshot_kind}_archive"
+    member = pair[member_key]
+    archive = pair[archive_key]
+    return {
+        "firm_id": pair["firm_id"],
+        "snapshot_kind": snapshot_kind,
+        "submitted_at": member.submitted_at,
+        "file_name": member.member.file_name,
+        "member": member.member,
+        "pdf_path": brochure_member_cache_path(raw_root, archive, pair["firm_id"], member.member.file_name),
+        "snapshot_path": text_snapshot_path(snapshot_root, archive, pair["firm_id"], member.member.file_name),
+    }
+
+
+def build_snapshot_backfill_tasks(
+    *,
+    selected_pairs: list[tuple[dict, dict]],
+    deferred_selection_entries: list[dict[str, object]],
+    pair_lookup: dict[str, dict],
+    cache_status_lookup: dict[str, dict[str, bool]],
+    raw_root: Path,
+    snapshot_root: Path,
+) -> list[dict[str, object]]:
+    tasks_by_snapshot: dict[str, dict[str, object]] = {}
+
+    def register_pair(pair: dict) -> None:
+        cache_status = cache_status_lookup[pair["firm_id"]]
+        for snapshot_kind, cache_flag in (
+            ("current", "current_brochure_cache_available"),
+            ("prior", "prior_brochure_cache_available"),
+        ):
+            if not cache_status[cache_flag]:
+                continue
+            task = brochure_snapshot_task(
+                pair,
+                snapshot_kind=snapshot_kind,
+                raw_root=raw_root,
+                snapshot_root=snapshot_root,
+            )
+            tasks_by_snapshot[str(task["snapshot_path"])] = task
+
+    for pair, _detail in selected_pairs:
+        register_pair(pair)
+    for selection_entry in deferred_selection_entries:
+        register_pair(pair_lookup[str(selection_entry["firm_id"])])
+
+    return sorted(
+        tasks_by_snapshot.values(),
+        key=lambda task: (
+            str(task["firm_id"]),
+            0 if str(task["snapshot_kind"]) == "current" else 1,
+            str(task["submitted_at"]),
+            str(task["file_name"]),
+        ),
+    )
+
+
+def backfill_brochure_text_snapshots(
+    tasks: list[dict[str, object]],
+    *,
+    user_agent: str,
+    allow_download: bool,
+    progress: Callable[[str], None] | None = None,
+) -> dict[str, object]:
+    summary = {
+        "scope": "selected_pairs_plus_deferred_comparison_candidates",
+        "eligible_snapshot_tasks_total": len(tasks),
+        "snapshots_already_cached": 0,
+        "snapshots_generated": 0,
+    }
+    if progress is not None:
+        progress(
+            "snapshot_backfill_queue: "
+            f"{summary['eligible_snapshot_tasks_total']} brochure snapshots "
+            "across the selected window and deferred comparison bench."
+        )
+    for task in tasks:
+        snapshot_path = task["snapshot_path"]
+        if not isinstance(snapshot_path, Path):
+            raise TypeError("snapshot_path must be a Path.")
+        if snapshot_path.exists():
+            summary["snapshots_already_cached"] += 1
+            continue
+        generated = ensure_text_snapshot(
+            task["member"],
+            task["pdf_path"],
+            snapshot_path,
+            user_agent=user_agent,
+            allow_download=allow_download,
+        )
+        if generated:
+            summary["snapshots_generated"] += 1
+        else:
+            summary["snapshots_already_cached"] += 1
+    if progress is not None:
+        progress(
+            "snapshot_backfill_complete: "
+            f"{summary['snapshots_generated']} generated, "
+            f"{summary['snapshots_already_cached']} already cached."
+        )
+    return summary
+
+
+def refresh_skipped_candidate_cache_statuses(
+    skipped_candidates: list[dict[str, object]],
+    cache_status_lookup: dict[str, dict[str, bool]],
+) -> None:
+    for entry in skipped_candidates:
+        firm_id = str(entry["firm_id"])
+        if firm_id in cache_status_lookup:
+            entry["cache_status"] = cache_status_lookup[firm_id]
+
+
 def load_brochure_text(member, pdf_path: Path, snapshot_path: Path, *, user_agent: str, allow_download: bool = True) -> str:
-    if snapshot_path.exists():
-        return snapshot_path.read_text()
-    cached_pdf_path = write_member_cache(member, pdf_path, user_agent=user_agent, allow_download=allow_download)
-    return snapshot_text(None, snapshot_path, source_pdf_path=cached_pdf_path)
+    ensure_text_snapshot(member, pdf_path, snapshot_path, user_agent=user_agent, allow_download=allow_download)
+    return snapshot_path.read_text()
 
 
-def run(*, cache_only: bool = False) -> dict[str, Path]:
+def run(*, cache_only: bool = False, progress: Callable[[str], None] | None = None) -> dict[str, Path]:
     source_config = load_json_file(REPO_ROOT / "configs" / "sources" / "first_slice_sources.json")
     rubric = load_json_file(REPO_ROOT / "configs" / "rubrics" / "first_slice_rubric_v1.json")
     themes_payload = load_json_file(REPO_ROOT / "configs" / "themes" / "sec_regulatory_themes_v1.json")
@@ -799,6 +921,40 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
     filing_context_firm_ids = selected_firm_ids | selection_window_firm_ids
     filing_context_current = filing_rows(filing_zip_paths["current"], firm_ids=filing_context_firm_ids)
     filing_context_prior = filing_rows(filing_zip_paths["prior"], firm_ids=filing_context_firm_ids)
+    deferred_selection_entries = build_selection_window_artifact(
+        source_version=source_config["version"],
+        selection_limit=selection_limit,
+        selected_pairs_total=len(selected_pairs),
+        shortlisted_total=0,
+        raw_root=raw_root,
+        skipped_candidates=skipped_candidates,
+    )["deferred_candidates"]
+    snapshot_backfill_tasks = build_snapshot_backfill_tasks(
+        selected_pairs=selected_pairs,
+        deferred_selection_entries=deferred_selection_entries,
+        pair_lookup=pair_lookup,
+        cache_status_lookup=cache_status_lookup,
+        raw_root=raw_root,
+        snapshot_root=snapshot_root,
+    )
+    snapshot_backfill_summary = backfill_brochure_text_snapshots(
+        snapshot_backfill_tasks,
+        user_agent=source_config["browser_headers"]["user_agent"],
+        allow_download=not cache_only,
+        progress=progress,
+    )
+    cache_status_lookup = {pair["firm_id"]: cache_status_for_pair(raw_root, snapshot_root, pair) for pair in pairs}
+    refresh_skipped_candidate_cache_statuses(skipped_candidates, cache_status_lookup)
+    initial_selection_window_payload = build_selection_window_artifact(
+        source_version=source_config["version"],
+        selection_limit=selection_limit,
+        selected_pairs_total=len(selected_pairs),
+        shortlisted_total=0,
+        raw_root=raw_root,
+        skipped_candidates=skipped_candidates,
+    )
+    if progress is not None:
+        progress(f"selected_window_scoring: {len(selected_pairs)} active pairs queued for scoring.")
 
     for pair, detail in selected_pairs:
         cache_status = cache_status_lookup[pair["firm_id"]]
@@ -835,19 +991,15 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
 
     scored_selected.sort(key=lambda item: item["score"]["overall_score"], reverse=True)
     shortlisted = scored_selected[:shortlist_limit]
-
-    initial_selection_window_payload = build_selection_window_artifact(
-        source_version=source_config["version"],
-        selection_limit=selection_limit,
-        selected_pairs_total=len(selected_pairs),
-        shortlisted_total=len(shortlisted),
-        raw_root=raw_root,
-        skipped_candidates=skipped_candidates,
-    )
     shortlist_floor = shortlisted[-1]
     shortlist_underfilled = len(shortlisted) < shortlist_limit
     selection_window_evaluations: dict[str, tuple[dict[str, object] | None, dict[str, object] | None]] = {}
     promotion_candidates: list[dict[str, object]] = []
+    if progress is not None:
+        progress(
+            "deferred_comparison_scoring: "
+            f"{len(initial_selection_window_payload['deferred_candidates'])} deferred pairs queued for comparison."
+        )
     for selection_entry in initial_selection_window_payload["deferred_candidates"]:
         pair = pair_lookup[str(selection_entry["firm_id"])]
         detail = load_cached_firm_detail(firm_detail_cache_path(raw_root, str(selection_entry["firm_id"])))
@@ -924,6 +1076,7 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
         shortlisted_total=len(shortlisted),
         cache_complete_pairs_total=cache_complete_pairs_total,
         skipped_candidates=skipped_candidates,
+        snapshot_backfill_summary=snapshot_backfill_summary,
     )
     selection_window_payload = build_selection_window_artifact(
         source_version=source_config["version"],
@@ -1014,7 +1167,7 @@ def main() -> None:
         help="Reuse only existing local SEC/IAPD/raw brochure caches and skip uncached candidates instead of fetching live data.",
     )
     args = parser.parse_args()
-    output_paths = run(cache_only=args.cache_only)
+    output_paths = run(cache_only=args.cache_only, progress=lambda message: print(message, flush=True))
     for label, path in output_paths.items():
         print(f"{label}: {path}")
 

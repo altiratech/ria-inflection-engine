@@ -36,6 +36,12 @@
       "shortlist": 2
     }
   },
+  "snapshot_backfill": {
+    "scope": "selected_pairs_plus_deferred_comparison_candidates",
+    "eligible_snapshot_tasks_total": 58,
+    "snapshots_already_cached": 58,
+    "snapshots_generated": 0
+  },
   "next_refresh_targets": {
     "queue_limit_per_reason": 10,
     "actionable_gap_total": 67,
@@ -1879,8 +1885,8 @@
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
         "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
+        "current_text_snapshot_cached": true,
+        "prior_text_snapshot_cached": true,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
       },
@@ -1901,8 +1907,8 @@
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
         "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
+        "current_text_snapshot_cached": true,
+        "prior_text_snapshot_cached": true,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
       },
@@ -1923,8 +1929,8 @@
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
         "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
+        "current_text_snapshot_cached": true,
+        "prior_text_snapshot_cached": true,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
       }
@@ -1943,8 +1949,8 @@
         "firm_detail_cached": true,
         "current_brochure_pdf_cached": true,
         "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
+        "current_text_snapshot_cached": true,
+        "prior_text_snapshot_cached": true,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
       },
@@ -1988,7 +1994,7 @@
         "current_brochure_pdf_cached": true,
         "prior_brochure_pdf_cached": true,
         "current_text_snapshot_cached": true,
-        "prior_text_snapshot_cached": false,
+        "prior_text_snapshot_cached": true,
         "current_brochure_cache_available": true,
         "prior_brochure_cache_available": true
       },

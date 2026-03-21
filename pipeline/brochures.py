@@ -5,7 +5,7 @@ import io
 from pathlib import Path
 import re
 
-from pipeline.remote_zip import ZipMember
+from pipeline.remote_zip import ZipMember, write_member_cache
 
 
 BROCHURE_FILE_PATTERN = re.compile(r"^(?P<firm_id>\d+)_(?P<version_id>\d+)_(?P<sequence>\d+)_(?P<submitted>\d{8})\.pdf$")
@@ -59,6 +59,21 @@ def snapshot_text(pdf_bytes: bytes | None, destination: Path, *, source_pdf_path
     text = extract_pdf_text(pdf_bytes)
     destination.write_text(text)
     return text
+
+
+def ensure_text_snapshot(
+    member: ZipMember,
+    pdf_path: Path,
+    snapshot_path: Path,
+    *,
+    user_agent: str,
+    allow_download: bool = True,
+) -> bool:
+    if snapshot_path.exists():
+        return False
+    cached_pdf_path = write_member_cache(member, pdf_path, user_agent=user_agent, allow_download=allow_download)
+    snapshot_text(None, snapshot_path, source_pdf_path=cached_pdf_path)
+    return True
 
 
 def brochure_type(text: str) -> str:
