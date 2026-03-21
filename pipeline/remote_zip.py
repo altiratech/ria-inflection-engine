@@ -97,10 +97,19 @@ def parse_central_directory(directory_bytes: bytes, archive_url: str) -> list[Zi
     return members
 
 
-def list_zip_members(archive_url: str, *, user_agent: str, cache_path: Path | None = None) -> list[ZipMember]:
+def list_zip_members(
+    archive_url: str,
+    *,
+    user_agent: str,
+    cache_path: Path | None = None,
+    allow_download: bool = True,
+) -> list[ZipMember]:
     if cache_path and cache_path.exists():
         payload = json.loads(cache_path.read_text())
         return [ZipMember.from_dict(item) for item in payload["members"]]
+    if not allow_download:
+        missing_path = cache_path or Path("<no cache path>")
+        raise FileNotFoundError(f"Missing cached ZIP member index: {missing_path}")
 
     tail_bytes = fetch_range_bytes(archive_url, end=TAIL_WINDOW_BYTES, user_agent=user_agent)
     central_directory_size, central_directory_offset = parse_end_of_central_directory(tail_bytes)
@@ -147,9 +156,11 @@ def read_member_bytes(member: ZipMember, *, user_agent: str) -> bytes:
     raise ValueError(f"Unsupported ZIP compression method {member.compression_method} for {member.file_name}.")
 
 
-def write_member_cache(member: ZipMember, destination: Path, *, user_agent: str) -> Path:
+def write_member_cache(member: ZipMember, destination: Path, *, user_agent: str, allow_download: bool = True) -> Path:
     if destination.exists():
         return destination
+    if not allow_download:
+        raise FileNotFoundError(f"Missing cached ZIP member payload: {destination}")
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_bytes(read_member_bytes(member, user_agent=user_agent))
     return destination

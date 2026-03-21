@@ -4,7 +4,8 @@ import json
 from pathlib import Path
 
 from pipeline.normalize import build_section_deltas, sectionize_brochure
-from pipeline.run_first_slice import shortlist_row
+from pipeline.remote_zip import ZipMember
+from pipeline.run_first_slice import load_brochure_text, shortlist_row
 from pipeline.score import score_firm_delta
 
 
@@ -68,3 +69,27 @@ def test_text_to_shortlist_row_flow() -> None:
     assert row["top_section"] in {"Advisory Business", "Fees and Compensation"}
     assert row["top_rationale"]
     assert row["top_excerpt"]
+
+
+def test_load_brochure_text_prefers_snapshot_cache(tmp_path, monkeypatch) -> None:
+    snapshot_path = tmp_path / "brochure.txt"
+    snapshot_path.write_text("cached snapshot text")
+
+    def fail_write_member_cache(*args, **kwargs):
+        raise AssertionError("existing snapshots should not fetch or read brochure PDFs")
+
+    monkeypatch.setattr("pipeline.run_first_slice.write_member_cache", fail_write_member_cache)
+
+    member = ZipMember(
+        archive_url="https://example.com/archive.zip",
+        file_name="123456_1_1_20260228.pdf",
+        compressed_size=10,
+        uncompressed_size=10,
+        compression_method=0,
+        crc32=0,
+        local_header_offset=0,
+    )
+
+    text = load_brochure_text(member, tmp_path / "brochure.pdf", snapshot_path, user_agent="test-agent")
+
+    assert text == "cached snapshot text"

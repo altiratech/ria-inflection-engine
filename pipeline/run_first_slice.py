@@ -42,6 +42,10 @@ def archive_index_cache_path(raw_root: Path, archive: ArchiveFile) -> Path:
     return raw_root / "sec" / "brochure_indexes" / f"{archive.file_name}.json"
 
 
+def firm_detail_cache_path(raw_root: Path, firm_id: str) -> Path:
+    return raw_root / "adviserinfo" / "firm_detail" / f"{firm_id}.json"
+
+
 def filing_rows(zip_path: Path, *, firm_ids: set[str]) -> dict[str, dict]:
     rows_by_firm: dict[str, dict] = {}
     with zipfile.ZipFile(zip_path) as archive:
@@ -151,7 +155,14 @@ def write_shortlist_csv(path: Path, rows: list[dict[str, object]]) -> Path:
     return path
 
 
-def run() -> dict[str, Path]:
+def load_brochure_text(member, pdf_path: Path, snapshot_path: Path, *, user_agent: str, allow_download: bool = True) -> str:
+    if snapshot_path.exists():
+        return snapshot_path.read_text()
+    cached_pdf_path = write_member_cache(member, pdf_path, user_agent=user_agent, allow_download=allow_download)
+    return snapshot_text(None, snapshot_path, source_pdf_path=cached_pdf_path)
+
+
+def run(*, cache_only: bool = False) -> dict[str, Path]:
     source_config = load_json_file(REPO_ROOT / "configs" / "sources" / "first_slice_sources.json")
     rubric = load_json_file(REPO_ROOT / "configs" / "rubrics" / "first_slice_rubric_v1.json")
     themes_payload = load_json_file(REPO_ROOT / "configs" / "themes" / "sec_regulatory_themes_v1.json")
@@ -166,6 +177,7 @@ def run() -> dict[str, Path]:
         source_config["reports_metadata_url"],
         raw_root / "sec" / "reports_metadata" / "reports_metadata.json",
         headers={"User-Agent": source_config["browser_headers"]["user_agent"]},
+        allow_download=not cache_only,
     )
     prior_brochure_archive, latest_brochure_archive = select_latest_archives(reports_metadata, "advBrochures", count=2)
     prior_filing_archive, latest_filing_archive = select_latest_archives(reports_metadata, "advFilingData", count=2)
@@ -174,11 +186,13 @@ def run() -> dict[str, Path]:
         latest_brochure_archive.url,
         user_agent=source_config["browser_headers"]["user_agent"],
         cache_path=archive_index_cache_path(raw_root, latest_brochure_archive),
+        allow_download=not cache_only,
     )
     prior_members = list_zip_members(
         prior_brochure_archive.url,
         user_agent=source_config["browser_headers"]["user_agent"],
         cache_path=archive_index_cache_path(raw_root, prior_brochure_archive),
+        allow_download=not cache_only,
     )
 
     pairs = candidate_pairs(
@@ -190,8 +204,16 @@ def run() -> dict[str, Path]:
     )
 
     filing_zip_paths = {
-        "current": download_file(latest_filing_archive.url, filing_zip_cache_path(raw_root, latest_filing_archive)),
-        "prior": download_file(prior_filing_archive.url, filing_zip_cache_path(raw_root, prior_filing_archive)),
+        "current": download_file(
+            latest_filing_archive.url,
+            filing_zip_cache_path(raw_root, latest_filing_archive),
+            allow_download=not cache_only,
+        ),
+        "prior": download_file(
+            prior_filing_archive.url,
+            filing_zip_cache_path(raw_root, prior_filing_archive),
+            allow_download=not cache_only,
+        ),
     }
 
     shortlisted: list[dict] = []
@@ -199,11 +221,15 @@ def run() -> dict[str, Path]:
     for pair in pairs:
         if len(selected_pairs) >= selection["cohort_size"] * 4:
             break
-        detail = fetch_firm_detail(
-            source_config,
-            pair["firm_id"],
-            raw_root / "adviserinfo" / "firm_detail" / f"{pair['firm_id']}.json",
-        )
+        try:
+            detail = fetch_firm_detail(
+                source_config,
+                pair["firm_id"],
+                firm_detail_cache_path(raw_root, pair["firm_id"]),
+                allow_download=not cache_only,
+            )
+        except FileNotFoundError:
+            continue
         if detail.get("basicInformation", {}).get("iaScope") != "ACTIVE":
             continue
         selected_pairs.append((pair, detail))
@@ -218,25 +244,31 @@ def run() -> dict[str, Path]:
     for pair, detail in selected_pairs:
         if len(shortlisted) >= selection["cohort_size"]:
             break
-        current_pdf_path = write_member_cache(
+        current_pdf_path = brochure_member_cache_path(
+            raw_root, pair["current_archive"], pair["firm_id"], pair["current_member"].member.file_name
+        )
+        prior_pdf_path = brochure_member_cache_path(
+            raw_root, pair["prior_archive"], pair["firm_id"], pair["prior_member"].member.file_name
+        )
+        current_snapshot_path = text_snapshot_path(
+            snapshot_root, pair["current_archive"], pair["firm_id"], pair["current_member"].member.file_name
+        )
+        prior_snapshot_path = text_snapshot_path(
+            snapshot_root, pair["prior_archive"], pair["firm_id"], pair["prior_member"].member.file_name
+        )
+        current_text = load_brochure_text(
             pair["current_member"].member,
-            brochure_member_cache_path(
-                raw_root, pair["current_archive"], pair["firm_id"], pair["current_member"].member.file_name
-            ),
+            current_pdf_path,
+            current_snapshot_path,
             user_agent=source_config["browser_headers"]["user_agent"],
+            allow_download=not cache_only,
         )
-        prior_pdf_path = write_member_cache(
+        prior_text = load_brochure_text(
             pair["prior_member"].member,
-            brochure_member_cache_path(raw_root, pair["prior_archive"], pair["firm_id"], pair["prior_member"].member.file_name),
+            prior_pdf_path,
+            prior_snapshot_path,
             user_agent=source_config["browser_headers"]["user_agent"],
-        )
-        current_text = snapshot_text(
-            current_pdf_path.read_bytes(),
-            text_snapshot_path(snapshot_root, pair["current_archive"], pair["firm_id"], pair["current_member"].member.file_name),
-        )
-        prior_text = snapshot_text(
-            prior_pdf_path.read_bytes(),
-            text_snapshot_path(snapshot_root, pair["prior_archive"], pair["firm_id"], pair["prior_member"].member.file_name),
+            allow_download=not cache_only,
         )
         if brochure_type(current_text) != "part_2a" or brochure_type(prior_text) != "part_2a":
             continue
@@ -320,8 +352,13 @@ def run() -> dict[str, Path]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run the local-only first slice for the RIA Inflection Engine.")
-    parser.parse_args()
-    output_paths = run()
+    parser.add_argument(
+        "--cache-only",
+        action="store_true",
+        help="Reuse only existing local SEC/IAPD/raw brochure caches and skip uncached candidates instead of fetching live data.",
+    )
+    args = parser.parse_args()
+    output_paths = run(cache_only=args.cache_only)
     for label, path in output_paths.items():
         print(f"{label}: {path}")
 

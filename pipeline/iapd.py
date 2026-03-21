@@ -29,9 +29,17 @@ def browser_headers(source_config: dict[str, Any], *, referer_suffix: str = "") 
     }
 
 
-def fetch_json(url: str, destination: Path, *, headers: dict[str, str] | None = None) -> dict[str, Any]:
+def fetch_json(
+    url: str,
+    destination: Path,
+    *,
+    headers: dict[str, str] | None = None,
+    allow_download: bool = True,
+) -> dict[str, Any]:
     if destination.exists():
         return json.loads(destination.read_text())
+    if not allow_download:
+        raise FileNotFoundError(f"Missing cached JSON payload: {destination}")
     destination.parent.mkdir(parents=True, exist_ok=True)
     request = urllib.request.Request(url, headers=headers or {})
     with urllib.request.urlopen(request, timeout=60) as response:
@@ -40,9 +48,11 @@ def fetch_json(url: str, destination: Path, *, headers: dict[str, str] | None = 
     return payload
 
 
-def download_file(url: str, destination: Path) -> Path:
+def download_file(url: str, destination: Path, *, allow_download: bool = True) -> Path:
     if destination.exists():
         return destination
+    if not allow_download:
+        raise FileNotFoundError(f"Missing cached file payload: {destination}")
     destination.parent.mkdir(parents=True, exist_ok=True)
     request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(request, timeout=120) as response:
@@ -80,9 +90,20 @@ def select_latest_archives(metadata: dict[str, Any], report_type: str, *, count:
     return files[-count:]
 
 
-def fetch_firm_detail(source_config: dict[str, Any], firm_id: str, destination: Path) -> dict[str, Any]:
+def fetch_firm_detail(
+    source_config: dict[str, Any],
+    firm_id: str,
+    destination: Path,
+    *,
+    allow_download: bool = True,
+) -> dict[str, Any]:
     url = source_config["iapd_firm_detail_url_template"].format(firm_id=firm_id)
-    payload = fetch_json(url, destination, headers=browser_headers(source_config, referer_suffix=firm_id))
+    payload = fetch_json(
+        url,
+        destination,
+        headers=browser_headers(source_config, referer_suffix=firm_id),
+        allow_download=allow_download,
+    )
     hits = payload.get("hits", {}).get("hits", [])
     if not hits:
         raise ValueError(f"No IAPD firm detail payload found for firm {firm_id}.")

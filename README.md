@@ -64,10 +64,16 @@ Do not drift into a broad RIA operating system before the inflection loop works.
 
 Run the local-first first slice with:
 
-`python3 -m pipeline.run_first_slice`
+`/Users/ryanjameson/Desktop/Lifehub/.venv-fastlane/bin/python -m pipeline.run_first_slice`
+
+For fully local reruns against the existing raw/snapshot cache:
+
+`python3 -m pipeline.run_first_slice --cache-only`
 
 The command:
 - caches raw SEC/IAPD pulls under `data/raw/`
 - stores extracted brochure text under `data/snapshots/`
 - writes committed shortlist + delta outputs under `data/canonical/first_slice/`
 - mirrors the JSON/CSV artifacts under `artifacts/first_slice/`
+
+Cache-only reruns now reuse existing brochure text snapshots before touching PDF extraction and skip uncached firm-detail candidates instead of falling through to live IAPD fetches. Uncached runs still need `pypdf`, so the shared fastlane interpreter remains the supported default for fresh pulls.
