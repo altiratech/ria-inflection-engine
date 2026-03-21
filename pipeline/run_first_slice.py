@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
+from collections import Counter
 import zipfile
 
 from pipeline.brochures import brochure_type, parse_brochure_member, snapshot_text
@@ -44,6 +45,116 @@ def archive_index_cache_path(raw_root: Path, archive: ArchiveFile) -> Path:
 
 def firm_detail_cache_path(raw_root: Path, firm_id: str) -> Path:
     return raw_root / "adviserinfo" / "firm_detail" / f"{firm_id}.json"
+
+
+def brochure_cache_is_available(pdf_path: Path, snapshot_path: Path) -> bool:
+    return pdf_path.exists() or snapshot_path.exists()
+
+
+def cache_status_for_pair(raw_root: Path, snapshot_root: Path, pair: dict) -> dict[str, bool]:
+    firm_id = pair["firm_id"]
+    current_pdf_path = brochure_member_cache_path(
+        raw_root, pair["current_archive"], firm_id, pair["current_member"].member.file_name
+    )
+    prior_pdf_path = brochure_member_cache_path(
+        raw_root, pair["prior_archive"], firm_id, pair["prior_member"].member.file_name
+    )
+    current_snapshot_path = text_snapshot_path(
+        snapshot_root, pair["current_archive"], firm_id, pair["current_member"].member.file_name
+    )
+    prior_snapshot_path = text_snapshot_path(
+        snapshot_root, pair["prior_archive"], firm_id, pair["prior_member"].member.file_name
+    )
+    return {
+        "firm_detail_cached": firm_detail_cache_path(raw_root, firm_id).exists(),
+        "current_brochure_pdf_cached": current_pdf_path.exists(),
+        "prior_brochure_pdf_cached": prior_pdf_path.exists(),
+        "current_text_snapshot_cached": current_snapshot_path.exists(),
+        "prior_text_snapshot_cached": prior_snapshot_path.exists(),
+        "current_brochure_cache_available": brochure_cache_is_available(current_pdf_path, current_snapshot_path),
+        "prior_brochure_cache_available": brochure_cache_is_available(prior_pdf_path, prior_snapshot_path),
+    }
+
+
+def pair_has_complete_cache(cache_status: dict[str, bool]) -> bool:
+    return (
+        cache_status["firm_detail_cached"]
+        and cache_status["current_brochure_cache_available"]
+        and cache_status["prior_brochure_cache_available"]
+    )
+
+
+def cache_gap_reason(cache_status: dict[str, bool]) -> str | None:
+    if not cache_status["firm_detail_cached"]:
+        return "missing_firm_detail_cache"
+    if not cache_status["current_brochure_cache_available"]:
+        return "missing_current_brochure_cache"
+    if not cache_status["prior_brochure_cache_available"]:
+        return "missing_prior_brochure_cache"
+    return None
+
+
+def cache_report_entry(
+    pair: dict,
+    *,
+    cache_status: dict[str, bool],
+    skip_stage: str,
+    skip_reason: str,
+    detail: dict | None = None,
+    extra: dict[str, object] | None = None,
+) -> dict[str, object]:
+    basic_information = (detail or {}).get("basicInformation", {})
+    return {
+        "firm_id": pair["firm_id"],
+        "firm_name": basic_information.get("firmName", ""),
+        "sec_number": basic_information.get("iaSECNumber", ""),
+        "current_submitted_at": pair["current_member"].submitted_at,
+        "prior_submitted_at": pair["prior_member"].submitted_at,
+        "current_file_name": pair["current_member"].member.file_name,
+        "prior_file_name": pair["prior_member"].member.file_name,
+        "skip_stage": skip_stage,
+        "skip_reason": skip_reason,
+        "cache_status": cache_status,
+        **(extra or {}),
+    }
+
+
+def build_cache_report(
+    *,
+    source_version: str,
+    cache_only: bool,
+    prior_brochure_archive: ArchiveFile,
+    latest_brochure_archive: ArchiveFile,
+    candidate_pairs_total: int,
+    selection_limit: int,
+    shortlist_limit: int,
+    selected_pairs_total: int,
+    shortlisted_total: int,
+    cache_complete_pairs_total: int,
+    skipped_candidates: list[dict[str, object]],
+) -> dict[str, object]:
+    reason_counts = Counter(entry["skip_reason"] for entry in skipped_candidates)
+    stage_counts = Counter(entry["skip_stage"] for entry in skipped_candidates)
+    return {
+        "version": source_version,
+        "mode": "cache_only" if cache_only else "default",
+        "brochure_archive_pair": [
+            {"display_name": prior_brochure_archive.display_name, "year": prior_brochure_archive.year, "url": prior_brochure_archive.url},
+            {"display_name": latest_brochure_archive.display_name, "year": latest_brochure_archive.year, "url": latest_brochure_archive.url},
+        ],
+        "summary": {
+            "candidate_pairs_total": candidate_pairs_total,
+            "selection_limit": selection_limit,
+            "shortlist_limit": shortlist_limit,
+            "cache_complete_pairs_total": cache_complete_pairs_total,
+            "selected_pairs_total": selected_pairs_total,
+            "shortlisted_total": shortlisted_total,
+            "skipped_candidates_total": len(skipped_candidates),
+            "skipped_by_reason": dict(reason_counts),
+            "skipped_by_stage": dict(stage_counts),
+        },
+        "skipped_candidates": skipped_candidates,
+    }
 
 
 def filing_rows(zip_path: Path, *, firm_ids: set[str]) -> dict[str, dict]:
@@ -202,6 +313,10 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
         prior_members,
         selection["require_single_brochure_file_per_month"],
     )
+    selection_limit = selection["cohort_size"] * 4
+    shortlist_limit = selection["cohort_size"]
+    pair_cache_statuses = [cache_status_for_pair(raw_root, snapshot_root, pair) for pair in pairs]
+    cache_complete_pairs_total = sum(1 for status in pair_cache_statuses if pair_has_complete_cache(status))
 
     filing_zip_paths = {
         "current": download_file(
@@ -218,9 +333,19 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
 
     shortlisted: list[dict] = []
     selected_pairs = []
-    for pair in pairs:
-        if len(selected_pairs) >= selection["cohort_size"] * 4:
-            break
+    skipped_candidates: list[dict[str, object]] = []
+    for pair, cache_status in zip(pairs, pair_cache_statuses):
+        if len(selected_pairs) >= selection_limit:
+            skip_reason = cache_gap_reason(cache_status) or "selection_window_limit"
+            skipped_candidates.append(
+                cache_report_entry(
+                    pair,
+                    cache_status=cache_status,
+                    skip_stage="selection",
+                    skip_reason=skip_reason,
+                )
+            )
+            continue
         try:
             detail = fetch_firm_detail(
                 source_config,
@@ -229,8 +354,27 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
                 allow_download=not cache_only,
             )
         except FileNotFoundError:
+            skipped_candidates.append(
+                cache_report_entry(
+                    pair,
+                    cache_status=cache_status,
+                    skip_stage="selection",
+                    skip_reason="missing_firm_detail_cache",
+                )
+            )
             continue
-        if detail.get("basicInformation", {}).get("iaScope") != "ACTIVE":
+        ia_scope = detail.get("basicInformation", {}).get("iaScope")
+        if ia_scope != "ACTIVE":
+            skipped_candidates.append(
+                cache_report_entry(
+                    pair,
+                    cache_status=cache_status,
+                    skip_stage="selection",
+                    skip_reason="inactive_scope",
+                    detail=detail,
+                    extra={"ia_scope": ia_scope or ""},
+                )
+            )
             continue
         selected_pairs.append((pair, detail))
 
@@ -242,8 +386,18 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
     filing_context_prior = filing_rows(filing_zip_paths["prior"], firm_ids=selected_firm_ids)
 
     for pair, detail in selected_pairs:
-        if len(shortlisted) >= selection["cohort_size"]:
-            break
+        cache_status = cache_status_for_pair(raw_root, snapshot_root, pair)
+        if len(shortlisted) >= shortlist_limit:
+            skipped_candidates.append(
+                cache_report_entry(
+                    pair,
+                    cache_status=cache_status,
+                    skip_stage="shortlist",
+                    skip_reason="shortlist_window_limit",
+                    detail=detail,
+                )
+            )
+            continue
         current_pdf_path = brochure_member_cache_path(
             raw_root, pair["current_archive"], pair["firm_id"], pair["current_member"].member.file_name
         )
@@ -256,26 +410,78 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
         prior_snapshot_path = text_snapshot_path(
             snapshot_root, pair["prior_archive"], pair["firm_id"], pair["prior_member"].member.file_name
         )
-        current_text = load_brochure_text(
-            pair["current_member"].member,
-            current_pdf_path,
-            current_snapshot_path,
-            user_agent=source_config["browser_headers"]["user_agent"],
-            allow_download=not cache_only,
-        )
-        prior_text = load_brochure_text(
-            pair["prior_member"].member,
-            prior_pdf_path,
-            prior_snapshot_path,
-            user_agent=source_config["browser_headers"]["user_agent"],
-            allow_download=not cache_only,
-        )
-        if brochure_type(current_text) != "part_2a" or brochure_type(prior_text) != "part_2a":
+        try:
+            current_text = load_brochure_text(
+                pair["current_member"].member,
+                current_pdf_path,
+                current_snapshot_path,
+                user_agent=source_config["browser_headers"]["user_agent"],
+                allow_download=not cache_only,
+            )
+        except FileNotFoundError:
+            skipped_candidates.append(
+                cache_report_entry(
+                    pair,
+                    cache_status=cache_status,
+                    skip_stage="brochure",
+                    skip_reason="missing_current_brochure_cache",
+                    detail=detail,
+                )
+            )
+            continue
+        try:
+            prior_text = load_brochure_text(
+                pair["prior_member"].member,
+                prior_pdf_path,
+                prior_snapshot_path,
+                user_agent=source_config["browser_headers"]["user_agent"],
+                allow_download=not cache_only,
+            )
+        except FileNotFoundError:
+            skipped_candidates.append(
+                cache_report_entry(
+                    pair,
+                    cache_status=cache_status,
+                    skip_stage="brochure",
+                    skip_reason="missing_prior_brochure_cache",
+                    detail=detail,
+                )
+            )
+            continue
+        current_brochure_type = brochure_type(current_text)
+        prior_brochure_type = brochure_type(prior_text)
+        if current_brochure_type != "part_2a" or prior_brochure_type != "part_2a":
+            skipped_candidates.append(
+                cache_report_entry(
+                    pair,
+                    cache_status=cache_status,
+                    skip_stage="brochure",
+                    skip_reason="unsupported_brochure_type",
+                    detail=detail,
+                    extra={
+                        "current_brochure_type": current_brochure_type,
+                        "prior_brochure_type": prior_brochure_type,
+                    },
+                )
+            )
             continue
 
         current_sections = sectionize_brochure(current_text)
         prior_sections = sectionize_brochure(prior_text)
         if len(current_sections) < selection["minimum_sections_per_snapshot"] or len(prior_sections) < selection["minimum_sections_per_snapshot"]:
+            skipped_candidates.append(
+                cache_report_entry(
+                    pair,
+                    cache_status=cache_status,
+                    skip_stage="normalize",
+                    skip_reason="insufficient_sections",
+                    detail=detail,
+                    extra={
+                        "current_section_count": len(current_sections),
+                        "prior_section_count": len(prior_sections),
+                    },
+                )
+            )
             continue
 
         current_row = filing_context_current.get(pair["firm_id"], {})
@@ -304,6 +510,15 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
         try:
             scored_delta = score_firm_delta(context, section_deltas, rubric, themes_payload["themes"])
         except ValueError:
+            skipped_candidates.append(
+                cache_report_entry(
+                    pair,
+                    cache_status=cache_status,
+                    skip_stage="score",
+                    skip_reason="no_scored_evidence",
+                    detail=detail,
+                )
+            )
             continue
         shortlisted.append(scored_delta)
 
@@ -324,12 +539,27 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
         "firms": shortlisted,
     }
     top_delta_payload = shortlisted[0]
+    cache_report_payload = build_cache_report(
+        source_version=source_config["version"],
+        cache_only=cache_only,
+        prior_brochure_archive=prior_brochure_archive,
+        latest_brochure_archive=latest_brochure_archive,
+        candidate_pairs_total=len(pairs),
+        selection_limit=selection_limit,
+        shortlist_limit=shortlist_limit,
+        selected_pairs_total=len(selected_pairs),
+        shortlisted_total=len(shortlisted),
+        cache_complete_pairs_total=cache_complete_pairs_total,
+        skipped_candidates=skipped_candidates,
+    )
 
     output_paths = {
         "canonical_shortlist_json": write_json(canonical_root / "shortlist_v1.json", canonical_payload),
         "canonical_top_delta_json": write_json(canonical_root / f"top_delta_{top_delta_payload['firm_id']}.json", top_delta_payload),
         "artifact_shortlist_json": write_json(artifact_root / "shortlist_v1.json", canonical_payload),
         "artifact_top_delta_json": write_json(artifact_root / f"top_delta_{top_delta_payload['firm_id']}.json", top_delta_payload),
+        "canonical_cache_report_json": write_json(canonical_root / "cache_report_v1.json", cache_report_payload),
+        "artifact_cache_report_json": write_json(artifact_root / "cache_report_v1.json", cache_report_payload),
     }
     output_paths["canonical_shortlist_csv"] = write_shortlist_csv(canonical_root / "shortlist_v1.csv", shortlist_rows)
     output_paths["artifact_shortlist_csv"] = write_shortlist_csv(artifact_root / "shortlist_v1.csv", shortlist_rows)

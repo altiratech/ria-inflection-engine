@@ -19,3 +19,9 @@ Current first-slice modules:
 - `brochures.py` for snapshot-first brochure text reuse, PDF extraction, and brochure-type checks
 - `normalize.py` for section extraction and deterministic deltas
 - `score.py` for rubric scoring, subsection-aware excerpt selection, and rationale packaging
+
+Current first-slice outputs:
+- `shortlist_v1.json` and `shortlist_v1.csv`
+- `top_delta_<firm_id>.json`
+- `cohort_v1.json`
+- `cache_report_v1.json` with skip reasons, cache-gap counts, and selection-window leftovers

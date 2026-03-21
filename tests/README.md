@@ -11,3 +11,6 @@ Current first-slice coverage:
 - `test_normalize.py`
 - `test_score.py`
 - `test_first_slice_integration.py`
+- `test_brochures.py`
+- `test_iapd.py`
+- `test_run_first_slice.py`
