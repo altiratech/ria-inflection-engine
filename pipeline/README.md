@@ -12,6 +12,8 @@ Recommended subfolders:
 Current first-slice entrypoint:
 - `/Users/ryanjameson/Desktop/Lifehub/.venv-fastlane/bin/python -m pipeline.run_first_slice`
 - `python3 -m pipeline.run_first_slice --cache-only` for snapshot- and raw-cache-only reruns
+- `python3 -m pipeline.refresh_queue --limit 5` to preview the recache queue
+- `python3 -m pipeline.refresh_queue --apply --limit 5` to hydrate queued cache gaps
 
 Current first-slice modules:
 - `remote_zip.py` for byte-range ZIP indexing and member extraction
@@ -19,6 +21,7 @@ Current first-slice modules:
 - `brochures.py` for snapshot-first brochure text reuse, PDF extraction, and brochure-type checks
 - `normalize.py` for section extraction and deterministic deltas
 - `score.py` for rubric scoring, subsection-aware excerpt selection, and rationale packaging
+- `refresh_queue.py` for previewing and applying the `next_refresh_targets` recache queue
 
 Current first-slice outputs:
 - `shortlist_v1.json` and `shortlist_v1.csv`

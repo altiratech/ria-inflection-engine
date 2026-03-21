@@ -14,3 +14,4 @@ Current first-slice coverage:
 - `test_brochures.py`
 - `test_iapd.py`
 - `test_run_first_slice.py`
+- `test_refresh_queue.py`

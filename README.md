@@ -78,3 +78,13 @@ The command:
 - mirrors the JSON/CSV artifacts under `artifacts/first_slice/`
 
 Cache-only reruns now reuse existing brochure text snapshots before touching PDF extraction and skip uncached firm-detail candidates instead of falling through to live IAPD fetches. The cache report now also includes a compact `next_refresh_targets` queue so the largest missing cache gaps turn into an explicit local recache list. Uncached runs still need `pypdf`, so the shared fastlane interpreter remains the supported default for fresh pulls.
+
+To preview the recache queue without fetching anything:
+
+`python3 -m pipeline.refresh_queue --limit 5`
+
+To actually hydrate queued targets:
+
+`python3 -m pipeline.refresh_queue --apply --limit 5`
+
+Use `--action fetch_firm_detail` or `--action cache_current_brochure` to narrow the queue. Add `--generate-snapshots` when hydrating brochure PDFs if you also want text snapshots generated.
