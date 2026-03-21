@@ -82,7 +82,7 @@
           "section_key": "item_14",
           "section_title": "Client Referrals and Other Compensation",
           "change_summary": "modified; added terms: and, these, blvd, fee, accounts, may, fees, business; removed terms: financial, generally, are, advice, respect, upon, plan, basis",
-          "current_excerpt": "These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers, hum...",
+          "current_excerpt": "...rprise. These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers...",
           "focus_term": "consulting",
           "score_rationale": "service-mix signal: consulting; marketing-rule signal: compensated; SEC theme match: 2026 examination priorities: operations and data protection",
           "composite": 9.46,
@@ -94,8 +94,8 @@
           "section_key": "item_4",
           "section_title": "Advisory Business",
           "change_summary": "modified; added terms: the, blvd, and, restrictions, management, fees, assets, for; removed terms: applicable, onflicts, inter, est",
-          "current_excerpt": "BLVD has the following assets under management: Discretionary Amounts: Non -discretionary Amounts: Date Calculated: $ 220,351,220.00 $0.00 December 2025 Portfolio Management and Held Away Assets \u2013 Pontera Fees Total Assets Under Manageme...",
-          "focus_term": "portfolio management",
+          "current_excerpt": "Financial Planning Financial plans and financial planning may include, but are not limited to: investment planning; insurance planning; tax concerns; retirement planning; education planning; debt/credit planning; charitable planning; con...",
+          "focus_term": "financial planning",
           "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: compliance, discretionary, wrap fee; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination prioriti...",
           "composite": 8.11,
           "matched_themes": [
@@ -107,8 +107,8 @@
           "section_key": "item_5",
           "section_title": "Fees and Compensation",
           "change_summary": "modified; added terms: rrangements; removed terms: the, fee, management, assets, blvd, fees, and, under",
-          "current_excerpt": "(*The daily rate is calculated by dividing the quarterly asset -based fee rate by the number of days in the quarter) Financial Planning Fees Fixed Fees The negotiated fixed fee for creating client financial plans is between $1,000 and $2...",
-          "focus_term": "financial planning",
+          "current_excerpt": "Retirement Plan Consulting Our Retirement Plan Consulting services are billed on a fee based on the percentage of Plan assets under management. The total estimated fee, as well as the ultimate fee charged, is based on the scope and compl...",
+          "focus_term": "consulting",
           "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: billing",
           "composite": 8.11,
           "matched_themes": []
@@ -196,9 +196,10 @@
           "evidence_focus_hits": [
             "consulting",
             "compliance",
+            "vendor",
             "these"
           ],
-          "evidence_excerpt": "These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers, hum...",
+          "evidence_excerpt": "...rprise. These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers...",
           "score_rationale": "service-mix signal: consulting; marketing-rule signal: compensated; SEC theme match: 2026 examination priorities: operations and data protection"
         },
         {
@@ -294,13 +295,13 @@
             "restrictions",
             "assets"
           ],
-          "evidence_focus_term": "portfolio management",
+          "evidence_focus_term": "financial planning",
           "evidence_focus_hits": [
-            "portfolio management",
-            "discretionary",
-            "assets"
+            "financial planning",
+            "retirement",
+            "trust"
           ],
-          "evidence_excerpt": "BLVD has the following assets under management: Discretionary Amounts: Non -discretionary Amounts: Date Calculated: $ 220,351,220.00 $0.00 December 2025 Portfolio Management and Held Away Assets \u2013 Pontera Fees Total Assets Under Manageme...",
+          "evidence_excerpt": "Financial Planning Financial plans and financial planning may include, but are not limited to: investment planning; insurance planning; tax concerns; retirement planning; education planning; debt/credit planning; charitable planning; con...",
           "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: compliance, discretionary, wrap fee; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination prioriti..."
         },
         {
@@ -361,11 +362,13 @@
             "billing",
             "rrangements"
           ],
-          "evidence_focus_term": "financial planning",
+          "evidence_focus_term": "consulting",
           "evidence_focus_hits": [
-            "financial planning"
+            "consulting",
+            "retirement",
+            "rrangements"
           ],
-          "evidence_excerpt": "(*The daily rate is calculated by dividing the quarterly asset -based fee rate by the number of days in the quarter) Financial Planning Fees Fixed Fees The negotiated fixed fee for creating client financial plans is between $1,000 and $2...",
+          "evidence_excerpt": "Retirement Plan Consulting Our Retirement Plan Consulting services are billed on a fee based on the percentage of Plan assets under management. The total estimated fee, as well as the ultimate fee charged, is based on the scope and compl...",
           "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: billing"
         },
         {
@@ -433,15 +436,18 @@
             "outside",
             "during"
           ],
-          "evidence_focus_term": "hours",
+          "evidence_focus_term": "compensated",
           "evidence_focus_hits": [
+            "compensated",
             "hours",
             "trading",
-            "compensation",
+            "chris",
+            "edward",
+            "brady",
             "outside",
             "during"
           ],
-          "evidence_excerpt": "His involvement is limited, averaging 2 hours per month during trading hours and 4 hours outside trading hours, with no portion of his yearly compensation expected to be derived from this business.",
+          "evidence_excerpt": "Chris Edward Brady serves as a non -compensated consultant for Legacy Tobacconist, advising retail operators on business decisions and filing support. He contributes a few hours monthly during and outside trading hours.",
           "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: compensated"
         },
         {
@@ -497,7 +503,7 @@
             "broker",
             "dollar"
           ],
-          "evidence_excerpt": "Factors Used to Select Custodians and/or Broker/Dealers While BLVD has no formal soft dollar\u2019s program in which soft dollars are used to pay for third party services, BLVD may receive research, products, or other services from custodians...",
+          "evidence_excerpt": "A. Factors Used to Select Custodians and/or Broker/Dealers While BLVD has no formal soft dollar\u2019s program in which soft dollars are used to pay for third party services, BLVD may receive research, products, or other services from custodi...",
           "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: review"
         },
         {
@@ -570,7 +576,7 @@
             "broker/dealer",
             "representative"
           ],
-          "evidence_excerpt": "Registration as a Broker/Dealer or Broker/Dealer Representative B. Registration as a Futures Commission Merchant, Commodity Pool Operator, or a Commodity Trading Advisor C.",
+          "evidence_excerpt": "A. Registration as a Broker/Dealer or Broker/Dealer Representative B. Registration as a Futures Commission Merchant, Commodity Pool Operator, or a Commodity Trading Advisor",
           "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: compliance"
         },
         {
@@ -633,12 +639,13 @@
             "security",
             "neither"
           ],
-          "evidence_focus_term": "discretionary",
+          "evidence_focus_term": "authority",
           "evidence_focus_hits": [
-            "discretionary",
-            "authority"
+            "authority",
+            "issuer",
+            "security"
           ],
-          "evidence_excerpt": "The advisory contract established with each client sets forth the discretionary authority for trading.",
+          "evidence_excerpt": "BLVD will not ask for, nor accept voting authority for client securities. Clients will receive proxies directly from the issuer of the security or the custodian. Clients should direct all proxy questions to the issuer of the security.",
           "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: discretionary"
         },
         {
@@ -689,7 +696,7 @@
             "clients",
             "client"
           ],
-          "evidence_excerpt": "Financial Conditions Reasonably Likely to Impair Ability to Meet Contractual Commitments to Clients C. Bankruptcy Petitions in Previous Ten Years",
+          "evidence_excerpt": "Contractual Commitments to Clients C. Bankruptcy Petitions in Previous Ten Years",
           "score_rationale": "service-mix signal: client, clients"
         },
         {
@@ -764,13 +771,14 @@
             "compliance",
             "credit"
           ],
-          "evidence_focus_term": "rating",
+          "evidence_focus_term": "performance",
           "evidence_focus_hits": [
+            "performance",
             "rating",
             "compliance",
             "credit"
           ],
-          "evidence_excerpt": "Revenues and cash flows may be adversely affected by: changes in local re al estate market conditions due to changes in national or local economic conditions or changes in local property market characteristics; competition from other pro...",
+          "evidence_excerpt": "...ctor, which historically has experienced significant fluctuations and cycles in performance. Revenues and cash flows may be adversely affected by: changes in local re al estate market conditions due to changes in national or local economic...",
           "score_rationale": "service-mix signal: client, clients, individual; SEC theme match: Advisers Act marketing rule disclosures"
         },
         {
@@ -822,14 +830,15 @@
             "theory",
             "investors"
           ],
-          "evidence_focus_term": "portfolio",
+          "evidence_focus_term": "compensated",
           "evidence_focus_hits": [
+            "compensated",
             "portfolio",
             "expected",
             "theory",
             "investors"
           ],
-          "evidence_excerpt": "Modern portfolio theory assumes that investors are risk averse, meaning that given two portfolios that offer the same expected return, investors will prefer the less risky one.",
+          "evidence_excerpt": "...refer the less risky one. Thus, an investor will take on increased risk only if compensated by higher expected returns. Conversel y, an investor who wants higher expected returns must accept more risk. The exact trade -off will be the same...",
           "score_rationale": "service-mix signal: client, individual; marketing-rule signal: compensated"
         },
         {
@@ -896,7 +905,7 @@
             "representatives",
             "trading"
           ],
-          "evidence_excerpt": "Such transactions may create a conflict of interest; however, BLVD will never engage in trading that operates to the client \u2019s disadvantage if representatives of BLVD buy or sell securities at or around the same time as clients.",
+          "evidence_excerpt": "From time to time, representatives of BLVD may buy or sell securities for themselves at or around the same time as clients. This may provide an opportunity for representatives of BLVD to buy or sell securities before or after recommendin...",
           "score_rationale": "service-mix signal: institutional"
         },
         {
@@ -1016,9 +1025,10 @@
             "custody",
             "schwab",
             "generally",
+            "receive",
             "available"
           ],
-          "evidence_excerpt": "Schwab \u2019s services include brokerage services that are related to the execution of securities transactions, custody, research, including that in the form of advice, analyses and reports, and access to mutual funds and other investments t...",
+          "evidence_excerpt": "With respect to Schwab, BLVD receives access to Schwab \u2019s institutional trading and custody services, which are typically not available to Schwab retail investors. These services generally are available to independent investment advisers...",
           "score_rationale": "service-mix signal: financial planning, institutional, retirement"
         }
       ]
@@ -1091,7 +1101,7 @@
           "section_key": "item_12",
           "section_title": "Brokerage Practices",
           "change_summary": "modified; added terms: schwab, and, the, our, that, your, account, you; removed terms: any, soft, dollar, arrangements, executio, requires, execu, tion",
-          "current_excerpt": "These services include: \u2022 Educational conferences and events \u2022 Consulting on technology and busine ss needs \u2022 Consulting on legal and compliance related needs \u2022 Publications and conferences on practice management and business succession ...",
+          "current_excerpt": "...ess E nterprise. These services include: \u2022 Educational conferences and events \u2022 Consulting on technology and busine ss needs \u2022 Consulting on legal and compliance related needs \u2022 Publications and conferences on practice management and busine...",
           "focus_term": "consulting",
           "score_rationale": "service-mix signal: consulting, institutional; ops-complexity signal: compliance, custody, vendor; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: operations and data protection",
           "composite": 9.21,
@@ -1104,8 +1114,8 @@
           "section_key": "item_14",
           "section_title": "Client Referrals and Other Compensation",
           "change_summary": "modified; added terms: the, schwab, and, for, benefit, products, pay, interest; removed terms: sapers, ton, provide",
-          "current_excerpt": "The products and services provi ded by Schwab, how they benefit us, and the related conflicts of interest are described above (see Item 12 \u2013 Brokerage Practices).",
-          "focus_term": "schwab",
+          "current_excerpt": "...erage Practices). It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm. It is Saperston Legacy Advisors, Inc. 's policy not to accept...",
+          "focus_term": "solicitor",
           "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: solicitor; SEC theme match: Advisers Act marketing rule disclosures",
           "composite": 7.97,
           "matched_themes": [
@@ -1219,9 +1229,10 @@
           "evidence_focus_hits": [
             "consulting",
             "compliance",
+            "vendor",
             "schwab"
           ],
-          "evidence_excerpt": "These services include: \u2022 Educational conferences and events \u2022 Consulting on technology and busine ss needs \u2022 Consulting on legal and compliance related needs \u2022 Publications and conferences on practice management and business succession ...",
+          "evidence_excerpt": "...ess E nterprise. These services include: \u2022 Educational conferences and events \u2022 Consulting on technology and busine ss needs \u2022 Consulting on legal and compliance related needs \u2022 Publications and conferences on practice management and busine...",
           "score_rationale": "service-mix signal: consulting, institutional; ops-complexity signal: compliance, custody, vendor; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: operations and data protection"
         },
         {
@@ -1289,14 +1300,15 @@
             "products",
             "interest"
           ],
-          "evidence_focus_term": "schwab",
+          "evidence_focus_term": "solicitor",
           "evidence_focus_hits": [
+            "solicitor",
             "schwab",
             "benefit",
             "products",
             "interest"
           ],
-          "evidence_excerpt": "The products and services provi ded by Schwab, how they benefit us, and the related conflicts of interest are described above (see Item 12 \u2013 Brokerage Practices).",
+          "evidence_excerpt": "...erage Practices). It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm. It is Saperston Legacy Advisors, Inc. 's policy not to accept...",
           "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: solicitor; SEC theme match: Advisers Act marketing rule disclosures"
         },
         {
@@ -1362,7 +1374,8 @@
           "evidence_focus_hits": [
             "custody",
             "schwab",
-            "assets"
+            "assets",
+            "receive"
           ],
           "evidence_excerpt": "Under government regulations, we are deemed to have custody of your assets if, for example, you authorize us to instruct Schwab to deduct our advisory fees directly from your account or if you grant us authority to move your money to ano...",
           "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: custody"
@@ -1435,12 +1448,15 @@
             "contro",
             "lling"
           ],
-          "evidence_focus_term": "portfolio management",
+          "evidence_focus_term": "legacy",
           "evidence_focus_hits": [
-            "portfolio management",
-            "investmen"
+            "legacy",
+            "investmen",
+            "shareholder",
+            "contro",
+            "lling"
           ],
-          "evidence_excerpt": "(SLAI) offers the following advisory services to our clients: INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT Our firm provides continuous advice to clients regarding the investment of client funds based on the in...",
+          "evidence_excerpt": "Saperston Legacy Advisors, Inc. is a S EC-registered investmen t adviser with its principal place of business located in New York. Saperston Legacy Advisors, Inc. (formerly Willard B. Saperston, Inc.) began conducting business in 1989. L...",
           "score_rationale": "service-mix signal: consulting, portfolio management"
         },
         {
@@ -1514,12 +1530,12 @@
           "evidence_focus_term": "portfolio management",
           "evidence_focus_hits": [
             "portfolio management",
-            "supervisory",
+            "billing",
             "maximum",
             "thereafter",
             "portfoli"
           ],
-          "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"IS S\") INDIVIDUAL PORTFOLIO MANAGEMENT FEES Advisory Fees: the maximum annual fee on the programs is 2% of assets under management, based upon the market value of assets accepted for management on the da...",
+          "evidence_excerpt": "INDIVIDUAL PORTFOLIO MANAGEMENT FEES Advisory Fees: the maximum annual fee on the programs is 2% of assets under management, based upon the market value of assets accepted for management on the date of such acceptance and thereafter usin...",
           "score_rationale": "service-mix signal: portfolio management, retirement"
         },
         {
@@ -1650,13 +1666,18 @@
             "rsons",
             "private"
           ],
-          "evidence_focus_term": "policies and procedures",
+          "evidence_focus_term": "compliance",
           "evidence_focus_hits": [
+            "compliance",
             "policies and procedures",
+            "plicable",
+            "saperston",
+            "eneral",
             "reports",
-            "rsons"
+            "rsons",
+            "private"
           ],
-          "evidence_excerpt": "Our Code of Ethics includes policies and procedures for the review of quarterly securities transactions reports as well as initial and annual securities holdings reports that must be submitted by the firm\u2019s access pe rsons.",
+          "evidence_excerpt": "...hical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws. Saperston Legacy Advisors, Inc. and our personnel owe a duty of loyalty, fairness and good faith towards ou...",
           "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
         },
         {
@@ -1738,7 +1759,13 @@
           "evidence_focus_term": "portfolio management",
           "evidence_focus_hits": [
             "portfolio management",
-            "portfolio"
+            "performance",
+            "compliance",
+            "portfolio",
+            "uidelines",
+            "triggered",
+            "karen",
+            "confirmations"
           ],
           "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
           "score_rationale": "SEC theme match: Advisers Act marketing rule disclosures"
@@ -1799,14 +1826,14 @@
             "jan/feb",
             "cover"
           ],
-          "evidence_focus_term": "saperston",
+          "evidence_focus_term": "compliance",
           "evidence_focus_hits": [
+            "compliance",
             "saperston",
             "kristina",
-            "jan/feb",
             "cover"
           ],
-          "evidence_excerpt": "Jan/Feb Material Changes COVER PAGE \u2013 E-mail Address \u2013 Kristina Saperston , President Email address changed from (OLD) ksap@saperstonlegacy.com to (NEW) ksaperston@saperston.com .",
+          "evidence_excerpt": "(NEW)Karen L. Saperston klsap@saperston.com replaced Kristina L. Sape rston as Chief Compliance Officer as well as contact person on cover page.",
           "score_rationale": ""
         },
         {
@@ -1886,9 +1913,11 @@
             "fiduciary duty",
             "investme",
             "product",
-            "inter"
+            "saperston",
+            "inter",
+            "additional"
           ],
-          "evidence_excerpt": "endeavors at all times to put the interest of its clients first as part of our fiduciary duty as a registered investment adviser; we take the following steps to address this conflict: \uf0b7 We disclose to clients the existence of all materia...",
+          "evidence_excerpt": "...endeavor at all times to put the inter est of the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional compensation itself creates a conflict of interest, and may affect the judgment of these...",
           "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -1943,10 +1972,9 @@
           "evidence_focus_term": "discretionary",
           "evidence_focus_hits": [
             "discretionary",
-            "determine",
-            "limit"
+            "determine"
           ],
-          "evidence_excerpt": "Our discretionary authority includes the ability to do the following without contacting the client: \uf0b7 determine the security to buy or sell; and/or \uf0b7 determine the amount of the security to buy or sell \uf0b7 Determine when to buy and sell Cl...",
+          "evidence_excerpt": "Clients may hire us to provide discretionary asset management services, in which case we place trades in a client's account without contacting the clie nt prior to each trade to obtain the client's permission. Our discretionary authority...",
           "score_rationale": ""
         }
       ]
@@ -2023,7 +2051,7 @@
           "section_key": "item_5",
           "section_title": "Fees and Compensation",
           "change_summary": "modified; added terms: the, fees, are, and, coordination, fee, planning, estate; removed terms: management, billing, written, mid",
-          "current_excerpt": "ONGOING FINANCIAL PLANNING 25, LLC charges a fixed fee based on complexity and unique Client needs for financial planning. Prior to the planning process the Client will be provided an estimated plan fee.",
+          "current_excerpt": "FIXED FEES Financial Planning Services are offered based on a flat fee between $2,000 and $5,000. Fees for financial plans are billed quarterly in arrears .",
           "focus_term": "financial planning",
           "score_rationale": "service-mix signal: financial planning",
           "composite": 6.52,
@@ -2033,8 +2061,8 @@
           "section_key": "item_8",
           "section_title": "Methods of Analysis, Investment Strategies and Risk of Loss",
           "change_summary": "modified; added terms: the, artificial, intelligence, service, and, our, companie, machine; removed terms: companies, securities, overa, declines, standardized, small, mid, cap",
-          "current_excerpt": "\u2022 Artificial Intelligence and Machine Learning Risk: Certain service providers utilized by the Firm to service client accounts have artificial intelligence components.",
-          "focus_term": "artificial intelligence",
+          "current_excerpt": "...ail to produce the intended results. If the advisor's assumptions regarding the performance of a specific asset class or fund are not realized in the expected time frame, the overall performance of the client's portfolio may suffer. \u2022 Equit...",
+          "focus_term": "performance",
           "score_rationale": "service-mix signal: client, clients, individual; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: operations and data protection",
           "composite": 5.69,
           "matched_themes": [
@@ -2128,7 +2156,12 @@
           "evidence_focus_term": "financial planning",
           "evidence_focus_hits": [
             "financial planning",
-            "planning"
+            "retirement",
+            "performance",
+            "alternative",
+            "estate",
+            "planning",
+            "independent"
           ],
           "evidence_excerpt": "ONGOING FINANCIAL PLANNING Ongoing financial planning services include a comprehensive evaluation of an investor's current and projected financial state and will be provided by using currently known variables to help project future cash ...",
           "score_rationale": "service-mix signal: financial planning, retirement; marketing-rule signal: compensated, performance; SEC theme match: Advisers Act marketing rule disclosures"
@@ -2199,7 +2232,7 @@
             "financial planning",
             "planning"
           ],
-          "evidence_excerpt": "ONGOING FINANCIAL PLANNING 25, LLC charges a fixed fee based on complexity and unique Client needs for financial planning. Prior to the planning process the Client will be provided an estimated plan fee.",
+          "evidence_excerpt": "FIXED FEES Financial Planning Services are offered based on a flat fee between $2,000 and $5,000. Fees for financial plans are billed quarterly in arrears .",
           "score_rationale": "service-mix signal: financial planning"
         },
         {
@@ -2284,14 +2317,17 @@
             "companie",
             "machine"
           ],
-          "evidence_focus_term": "artificial intelligence",
+          "evidence_focus_term": "performance",
           "evidence_focus_hits": [
+            "performance",
+            "rating",
             "artificial intelligence",
             "artificial",
             "intelligence",
+            "companie",
             "machine"
           ],
-          "evidence_excerpt": "\u2022 Artificial Intelligence and Machine Learning Risk: Certain service providers utilized by the Firm to service client accounts have artificial intelligence components.",
+          "evidence_excerpt": "...ail to produce the intended results. If the advisor's assumptions regarding the performance of a specific asset class or fund are not realized in the expected time frame, the overall performance of the client's portfolio may suffer. \u2022 Equit...",
           "score_rationale": "service-mix signal: client, clients, individual; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: operations and data protection"
         }
       ]
@@ -2355,7 +2391,7 @@
           "section_key": "item_11",
           "section_title": "Code of Ethics, Participation or Interest in Client Transactions and Personal Trading",
           "change_summary": "modified; added terms: inclu, ding, employ; removed terms: including, employee",
-          "current_excerpt": "Trading LCRWM \u2019s corporate Code of Ethics establishes standards of conduct that are expected of supe rvised persons and reflect LCRWM \u2019s fiduciary duties to its clientele .",
+          "current_excerpt": "Trading LCRWM \u2019s corporate Code of Ethics establishes standards of conduct that are expected of supe rvised persons and reflect LCRWM \u2019s fiduciary duties to its clientele . The Code of Ethics reflects LCRWM \u2019s commitment to high ethical ...",
           "focus_term": "standards of conduct",
           "score_rationale": "service-mix signal: trust; SEC theme match: 2026 examination priorities: compliance program readiness",
           "composite": 6.05,
@@ -2367,7 +2403,7 @@
           "section_key": "item_5",
           "section_title": "Fees and Compensation",
           "change_summary": "modified; added terms: the, fee, rate, calculation, and, annual, simple, envestnet; removed terms: during, authoriz",
-          "current_excerpt": "Fee Schedule: $0 to $2,000,000 1.50% $2,000,001 to $5,000,000 1.00% $5,000,001 to $10,000,000 0.85% $10,000,001 to $20,000,000 0.75% Greater than $20,000,000 See Negotiated Rate For select clients with small accounts or simple allocation...",
+          "current_excerpt": "...Rate For select clients with small accounts or simple allocations such as only alternative investments, LCR Wealth may calculate the fee and debit the account directly through Schwab instead of using our 3rd party billing and reporting pro...",
           "focus_term": "alternative",
           "score_rationale": "service-mix signal: portfolio management",
           "composite": 5.78,
@@ -2377,7 +2413,7 @@
           "section_key": "item_15",
           "section_title": "Custody",
           "change_summary": "modified",
-          "current_excerpt": "However, under the Advisers Act, LCRWM is deemed to have constructive custody of client assets, for example, because c lients authorize LCRWM to directly debit fees from client accounts.",
+          "current_excerpt": "Due to the role of the General Partner as general partner of the Fund and Mr. Garvey\u2019s role as the principal of the General Partner, LCRWM is deemed to have custody over the funds and securities held by the Fund .",
           "focus_term": "custody",
           "score_rationale": "ops-complexity signal: custody",
           "composite": 5.72,
@@ -2447,9 +2483,11 @@
           ],
           "evidence_focus_term": "standards of conduct",
           "evidence_focus_hits": [
-            "standards of conduct"
+            "standards of conduct",
+            "inclu",
+            "employ"
           ],
-          "evidence_excerpt": "Trading LCRWM \u2019s corporate Code of Ethics establishes standards of conduct that are expected of supe rvised persons and reflect LCRWM \u2019s fiduciary duties to its clientele .",
+          "evidence_excerpt": "Trading LCRWM \u2019s corporate Code of Ethics establishes standards of conduct that are expected of supe rvised persons and reflect LCRWM \u2019s fiduciary duties to its clientele . The Code of Ethics reflects LCRWM \u2019s commitment to high ethical ...",
           "score_rationale": "service-mix signal: trust; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -2514,10 +2552,12 @@
           "evidence_focus_hits": [
             "alternative",
             "billing",
+            "calculation",
+            "annual",
             "simple",
             "envestnet"
           ],
-          "evidence_excerpt": "Fee Schedule: $0 to $2,000,000 1.50% $2,000,001 to $5,000,000 1.00% $5,000,001 to $10,000,000 0.85% $10,000,001 to $20,000,000 0.75% Greater than $20,000,000 See Negotiated Rate For select clients with small accounts or simple allocation...",
+          "evidence_excerpt": "...Rate For select clients with small accounts or simple allocations such as only alternative investments, LCR Wealth may calculate the fee and debit the account directly through Schwab instead of using our 3rd party billing and reporting pro...",
           "score_rationale": "service-mix signal: portfolio management"
         },
         {
@@ -2561,7 +2601,7 @@
           "evidence_focus_hits": [
             "custody"
           ],
-          "evidence_excerpt": "However, under the Advisers Act, LCRWM is deemed to have constructive custody of client assets, for example, because c lients authorize LCRWM to directly debit fees from client accounts.",
+          "evidence_excerpt": "Due to the role of the General Partner as general partner of the Fund and Mr. Garvey\u2019s role as the principal of the General Partner, LCRWM is deemed to have custody over the funds and securities held by the Fund .",
           "score_rationale": "ops-complexity signal: custody"
         },
         {
@@ -2617,7 +2657,7 @@
           "evidence_focus_hits": [
             "affiliates"
           ],
-          "evidence_excerpt": "LCRWM suggests transactions be placed with Charles Schwab Corporation (together with all affiliates, \u201cSchwab\u201d) , which is not affiliated with LCRWM .",
+          "evidence_excerpt": "...gests transactions be placed with Charles Schwab Corporation (together with all affiliates, \u201cSchwab\u201d) , which is not affiliated with LCRWM . Clients are not required to designate this broker -dealer . Substantially all of LCRWM \u2019s clients h...",
           "score_rationale": "service-mix signal: retirement"
         },
         {
@@ -2682,9 +2722,10 @@
           ],
           "evidence_focus_term": "institutional",
           "evidence_focus_hits": [
-            "institutional"
+            "institutional",
+            "patter"
           ],
-          "evidence_excerpt": "In most cases, t hese will be institutional share classes bu t, in some cases, may be share classes with higher internal expense ratios than institutional share classes.",
+          "evidence_excerpt": "...und share classes that do not have trading costs. In most cases, t hese will be institutional share classes bu t, in some cases, may be share classes with higher internal expense ratios than institutional share classes. LCRWM will seek to s...",
           "score_rationale": "service-mix signal: institutional; SEC theme match: Advisers Act marketing rule disclosures"
         },
         {
@@ -2748,7 +2789,7 @@
           "evidence_focus_hits": [
             "performance"
           ],
-          "evidence_excerpt": "LCRWM does not charge any performance -based fees with respect to its general advisory clients. With respect to the Master Fund, a portion of its profits , if any, is distributed to its general partner , Iron Pillar Holdings Ltd.",
+          "evidence_excerpt": "LCRWM does not charge any performance -based fees with respect to its general advisory clients.",
           "score_rationale": "SEC theme match: Advisers Act marketing rule disclosures"
         }
       ]
@@ -2793,8 +2834,8 @@
           "section_key": "item_10",
           "section_title": "Other Financial Industry Activities and Affiliations",
           "change_summary": "modified; added terms: the, and, tax, sub-advisor, this, interest, compensation, conflict; removed terms: advisor, sub, broker-, ffiliated, non-, sub-advisors",
-          "current_excerpt": "This practice represent s a conflict of interest because it gives an incentive to recommend services based on the compensation amount received.",
-          "focus_term": "interest",
+          "current_excerpt": "...arate but affiliated by common ownership. Business Transition Group, LLC offers consulting services to business owners and specializes in generational transitions, sale preparation, and exit planning. Mr. Rhyme will receive additional compe...",
+          "focus_term": "consulting",
           "score_rationale": "service-mix signal: consulting",
           "composite": 5.28,
           "matched_themes": []
@@ -2871,13 +2912,16 @@
             "compensation",
             "conflict"
           ],
-          "evidence_focus_term": "interest",
+          "evidence_focus_term": "consulting",
           "evidence_focus_hits": [
+            "consulting",
+            "discretionary",
+            "sub-advisor",
             "interest",
             "compensation",
             "conflict"
           ],
-          "evidence_excerpt": "This practice represent s a conflict of interest because it gives an incentive to recommend services based on the compensation amount received.",
+          "evidence_excerpt": "...arate but affiliated by common ownership. Business Transition Group, LLC offers consulting services to business owners and specializes in generational transitions, sale preparation, and exit planning. Mr. Rhyme will receive additional compe...",
           "score_rationale": "service-mix signal: consulting"
         },
         {

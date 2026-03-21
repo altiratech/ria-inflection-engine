@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from pipeline.score import score_firm_delta
+from pipeline.score import anchored_excerpt, score_firm_delta
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -47,3 +47,38 @@ def test_score_firm_delta_emits_evidence_and_theme_links() -> None:
     assert "third-party ratings" in scored["evidence"][0]["current_excerpt"].lower()
     assert scored["evidence"][0]["focus_term"] in {"third-party", "rating", "testimonial", "advertising", "endorsement"}
     assert "marketing-rule signal" in scored["evidence"][0]["score_rationale"]
+
+
+def test_anchored_excerpt_prefers_service_subsection_over_aum_table() -> None:
+    text = """
+Held Away Assets – Pontera
+We may leverage the Pontera Order Management System to implement investment selection and rebalancing
+strategies on behalf of clients for their held away accounts.
+
+Financial Planning
+Financial plans and financial planning may include retirement planning, insurance planning, education planning,
+and charitable planning.
+
+Retirement Plan Consulting
+Our firm provides retirement plan consulting services to employer plan sponsors on an ongoing basis.
+
+BLVD has the following assets under management:
+Discretionary Amounts: Non-discretionary Amounts: Date Calculated:
+$220,351,220.00 $0.00 December 2025
+
+Portfolio Management and Held Away Assets – Pontera Fees
+Total Assets Under Management Annual Fees
+$0 - $1,000,000 1.00%
+$1,000,001 - $5,000,000 0.90%
+"""
+
+    excerpt, focus_term, excerpt_hits = anchored_excerpt(
+        text,
+        ["consulting", "financial planning", "portfolio management"],
+    )
+
+    lowered = excerpt.lower()
+    assert focus_term in {"consulting", "financial planning"}
+    assert any(hit in {"consulting", "financial planning"} for hit in excerpt_hits)
+    assert "retirement plan consulting" in lowered or "financial plans and financial planning" in lowered
+    assert "annual fees" not in lowered

@@ -32,6 +32,13 @@ GENERIC_FOCUS_TERMS = {
     "service",
     "services",
 }
+HEADING_PREFIX_PATTERN = re.compile(r"^(?:[A-Z]\.|[IVX]+\.)\s+")
+ITEM_PREFIX_PATTERN = re.compile(r"^item\s+\d+[a-z]?\s*[:.-]?\s*", re.IGNORECASE)
+NUMERIC_TOKEN_PATTERN = re.compile(r"\b\$?\d[\d,]*(?:\.\d+)?%?\b")
+TABLE_SIGNAL_PATTERN = re.compile(
+    r"\b(?:annual fees|assets under management|date calculated|fee schedule|discretionary amounts|non-?discretionary amounts)\b",
+    re.IGNORECASE,
+)
 
 
 def keyword_hits(text: str, keywords: list[str]) -> list[str]:
@@ -44,6 +51,25 @@ def preview(text: str, *, limit: int = 240) -> str:
     if len(collapsed) <= limit:
         return collapsed
     return f"{collapsed[: limit - 3]}..."
+
+
+def preview_around(text: str, anchor: str, *, limit: int = 240) -> str:
+    collapsed = " ".join(text.split())
+    if len(collapsed) <= limit or not anchor:
+        return collapsed
+
+    anchor_index = collapsed.lower().find(anchor.lower())
+    if anchor_index < 0 or anchor_index <= limit // 4:
+        return preview(collapsed, limit=limit)
+
+    start = max(0, anchor_index - limit // 3)
+    end = min(len(collapsed), start + limit)
+    snippet = collapsed[start:end].strip()
+    if start > 0:
+        snippet = f"...{snippet}"
+    if end < len(collapsed):
+        snippet = f"{snippet}..."
+    return snippet
 
 
 def is_specific_focus_term(term: str) -> bool:
@@ -69,9 +95,110 @@ def unique_terms(terms: list[str]) -> list[str]:
     return ordered
 
 
-def sentence_chunks(text: str) -> list[str]:
-    collapsed = " ".join(text.split())
-    return [chunk.strip() for chunk in re.split(r"(?<=[.!?])\s+", collapsed) if chunk.strip()]
+def clean_line(line: str) -> str:
+    return " ".join(line.split()).strip()
+
+
+def heading_probe(line: str) -> str:
+    probe = ITEM_PREFIX_PATTERN.sub("", line.strip())
+    probe = HEADING_PREFIX_PATTERN.sub("", probe)
+    return probe.strip(":-–— ")
+
+
+def is_heading_line(line: str) -> bool:
+    cleaned = clean_line(line)
+    if not cleaned:
+        return False
+
+    probe = heading_probe(cleaned)
+    words = probe.split()
+    if not words or len(words) > 12 or len(probe) > 100:
+        return False
+    if len(NUMERIC_TOKEN_PATTERN.findall(cleaned)) >= 2:
+        return False
+    if cleaned.endswith((".", "?", "!")) and not (
+        HEADING_PREFIX_PATTERN.match(cleaned) or ITEM_PREFIX_PATTERN.match(cleaned)
+    ):
+        return False
+
+    alpha_words = [word for word in words if re.search(r"[A-Za-z]", word)]
+    if not alpha_words:
+        return False
+    title_case_ratio = sum(word[:1].isupper() for word in alpha_words) / len(alpha_words)
+    return (
+        bool(HEADING_PREFIX_PATTERN.match(cleaned))
+        or bool(ITEM_PREFIX_PATTERN.match(cleaned))
+        or " – " in cleaned
+        or " - " in cleaned
+        or title_case_ratio >= 0.75
+    )
+
+
+def subsection_chunks(text: str) -> list[str]:
+    lines = [clean_line(line) for line in text.splitlines()]
+    chunks: list[list[str]] = []
+    current: list[str] = []
+
+    for line in lines:
+        if not line:
+            if current:
+                chunks.append(current)
+                current = []
+            continue
+        if is_heading_line(line):
+            if current:
+                chunks.append(current)
+            current = [line]
+            continue
+        if not current:
+            current = [line]
+        else:
+            current.append(line)
+
+    if current:
+        chunks.append(current)
+
+    merged: list[list[str]] = []
+    index = 0
+    while index < len(chunks):
+        current_chunk = chunks[index]
+        next_chunk = chunks[index + 1] if index + 1 < len(chunks) else None
+        if (
+            len(current_chunk) == 1
+            and is_heading_line(current_chunk[0])
+            and next_chunk is not None
+            and not (len(next_chunk) == 1 and is_heading_line(next_chunk[0]))
+        ):
+            merged.append(current_chunk + next_chunk)
+            index += 2
+            continue
+        merged.append(current_chunk)
+        index += 1
+
+    candidates: list[str] = []
+    seen: set[str] = set()
+    for chunk_lines in merged:
+        candidate = "\n".join(chunk_lines).strip()
+        if candidate and candidate not in seen:
+            seen.add(candidate)
+            candidates.append(candidate)
+    return candidates
+
+
+def table_like_penalty(text: str) -> float:
+    lines = [clean_line(line) for line in text.splitlines() if clean_line(line)]
+    if not lines:
+        return 0.0
+
+    numeric_line_count = sum(1 for line in lines if len(NUMERIC_TOKEN_PATTERN.findall(line)) >= 2)
+    penalty = 0.0
+    if numeric_line_count >= 2:
+        penalty += 1.5 + min(1.5, 0.25 * (numeric_line_count - 2))
+    if TABLE_SIGNAL_PATTERN.search(text):
+        penalty += 1.0
+    if numeric_line_count / len(lines) >= 0.35:
+        penalty += 0.75
+    return penalty
 
 
 def focus_terms_for_section(
@@ -98,7 +225,7 @@ def anchored_excerpt(text: str, focus_terms: list[str], *, limit: int = 240) -> 
     if not text.strip():
         return "", "", []
 
-    chunks = sentence_chunks(text)
+    chunks = subsection_chunks(text)
     if not chunks:
         snippet = preview(text, limit=limit)
         return snippet, "", []
@@ -108,27 +235,38 @@ def anchored_excerpt(text: str, focus_terms: list[str], *, limit: int = 240) -> 
     best_score = -1.0
 
     for index, chunk in enumerate(chunks):
-        lowered = chunk.lower()
+        collapsed = " ".join(chunk.split())
+        lowered = collapsed.lower()
         hits = [term for term in focus_terms if term.lower() in lowered]
         if not hits:
             continue
-        score = sum((3.0 if " " in term else 1.0) + min(len(term), 12) / 12 for term in hits)
+        ordered_hits = unique_terms(hits)
+        score = 0.0
+        for term in ordered_hits:
+            rank = focus_terms.index(term)
+            rank_weight = max(0.25, (len(focus_terms) - rank) / max(1, len(focus_terms)))
+            term_weight = 3.0 if " " in term else 1.0
+            score += term_weight + rank_weight + min(len(term), 12) / 12
+        if chunk.splitlines() and is_heading_line(chunk.splitlines()[0]):
+            score += 0.4
+        score -= table_like_penalty(chunk)
+        score -= max(0.0, (len(collapsed) - 480) / 600)
+        score += max(0.0, 0.25 - 0.03 * index)
         if score > best_score:
             best_score = score
             best_index = index
-            best_hits = hits
+            best_hits = ordered_hits
 
     if best_index < 0:
         snippet = preview(text, limit=limit)
         return snippet, "", []
 
     excerpt = chunks[best_index]
-    if len(excerpt) < 140 and best_index + 1 < len(chunks):
-        candidate = f"{excerpt} {chunks[best_index + 1]}".strip()
+    if len(" ".join(excerpt.split())) < 140 and best_index + 1 < len(chunks):
+        candidate = f"{excerpt}\n{chunks[best_index + 1]}".strip()
         if len(candidate) <= limit + 40:
             excerpt = candidate
-    if len(excerpt) > limit:
-        excerpt = preview(excerpt, limit=limit)
+    excerpt = preview_around(excerpt, best_hits[0], limit=limit)
     return excerpt, best_hits[0], best_hits
 
 

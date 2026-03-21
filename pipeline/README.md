@@ -17,4 +17,4 @@ Current first-slice modules:
 - `iapd.py` for reports metadata, filing ZIPs, and firm-detail pulls
 - `brochures.py` for PDF text extraction and brochure-type checks
 - `normalize.py` for section extraction and deterministic deltas
-- `score.py` for rubric scoring, anchored excerpt selection, and rationale packaging
+- `score.py` for rubric scoring, subsection-aware excerpt selection, and rationale packaging
