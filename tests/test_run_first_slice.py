@@ -5,6 +5,7 @@ from pipeline.iapd import ArchiveFile
 from pipeline.remote_zip import ZipMember
 from pipeline.run_first_slice import (
     build_cache_report,
+    build_selection_window_artifact,
     cache_gap_reason,
     cache_report_entry,
     cache_status_for_pair,
@@ -263,3 +264,50 @@ def test_build_cache_report_summarizes_skip_reasons() -> None:
     assert report["next_refresh_targets"]["actionable_gap_total"] == 2
     assert report["next_refresh_targets"]["groups"][0]["refresh_action"] == "fetch_firm_detail"
     assert report["skipped_candidates"][1]["firm_name"] == "Example Wealth"
+
+
+def test_build_selection_window_artifact_enriches_cached_detail(tmp_path) -> None:
+    pair = make_pair("123456")
+    raw_root = tmp_path / "raw"
+    detail_path = raw_root / "adviserinfo" / "firm_detail" / "123456.json"
+    detail_path.parent.mkdir(parents=True, exist_ok=True)
+    detail_path.write_text(
+        '{"hits": {"hits": [{"_source": {"iacontent": "{\\"basicInformation\\": {\\"firmName\\": \\"Example Wealth\\", \\"iaSECNumber\\": \\"801-123456\\", \\"iaScope\\": \\"ACTIVE\\"}}"}}]}}'
+    )
+
+    cache_status = {
+        "firm_detail_cached": True,
+        "current_brochure_pdf_cached": True,
+        "prior_brochure_pdf_cached": True,
+        "current_text_snapshot_cached": False,
+        "prior_text_snapshot_cached": False,
+        "current_brochure_cache_available": True,
+        "prior_brochure_cache_available": True,
+    }
+    skipped_candidates = [
+        cache_report_entry(
+            pair,
+            cache_status=cache_status,
+            skip_stage="selection",
+            skip_reason="selection_window_limit",
+        )
+    ]
+
+    artifact = build_selection_window_artifact(
+        source_version="first-slice-v1",
+        selection_limit=20,
+        selected_pairs_total=20,
+        shortlisted_total=5,
+        raw_root=raw_root,
+        skipped_candidates=skipped_candidates,
+    )
+
+    assert artifact["selection_limit"] == 20
+    assert artifact["selected_pairs_total"] == 20
+    assert artifact["shortlisted_total"] == 5
+    assert artifact["deferred_candidates_total"] == 1
+    assert artifact["deferred_candidates_with_detail_cache"] == 1
+    assert artifact["deferred_candidates"][0]["selection_position"] == 21
+    assert artifact["deferred_candidates"][0]["firm_name"] == "Example Wealth"
+    assert artifact["deferred_candidates"][0]["ia_scope"] == "ACTIVE"
+    assert artifact["deferred_candidates"][0]["detail_cache_available"] is True

@@ -28,3 +28,4 @@ Current first-slice outputs:
 - `top_delta_<firm_id>.json`
 - `cohort_v1.json`
 - `cache_report_v1.json` with skip reasons, cache-gap counts, selection-window leftovers, and a compact `next_refresh_targets` recache queue
+- `selection_window_v1.json` with deferred selection-window candidates and cached-detail enrichment when available

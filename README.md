@@ -75,6 +75,7 @@ The command:
 - stores extracted brochure text under `data/snapshots/`
 - writes committed shortlist + delta outputs under `data/canonical/first_slice/`
 - writes `cache_report_v1.json` with explicit skip reasons and cache-gap counts
+- writes `selection_window_v1.json` with deferred selection-window candidates enriched from any cached firm detail
 - mirrors the JSON/CSV artifacts under `artifacts/first_slice/`
 
 Cache-only reruns now reuse existing brochure text snapshots before touching PDF extraction and skip uncached firm-detail candidates instead of falling through to live IAPD fetches. The cache report now also includes a compact `next_refresh_targets` queue so the largest missing cache gaps turn into an explicit local recache list. Uncached runs still need `pypdf`, so the shared fastlane interpreter remains the supported default for fresh pulls.

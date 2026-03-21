@@ -218,6 +218,79 @@ def build_cache_report(
     }
 
 
+def selection_window_entry(
+    skipped_candidate: dict[str, object],
+    *,
+    raw_root: Path,
+    deferred_rank: int,
+    selection_limit: int,
+) -> dict[str, object]:
+    firm_id = str(skipped_candidate["firm_id"])
+    detail_path = firm_detail_cache_path(raw_root, firm_id)
+    detail_cache_available = detail_path.exists()
+    basic_information: dict[str, object] = {}
+    if detail_cache_available:
+        basic_information = load_cached_firm_detail(detail_path).get("basicInformation", {})
+
+    return {
+        "selection_position": selection_limit + deferred_rank,
+        "deferred_rank": deferred_rank,
+        "firm_id": firm_id,
+        "firm_name": basic_information.get("firmName", skipped_candidate.get("firm_name", "")),
+        "sec_number": basic_information.get("iaSECNumber", skipped_candidate.get("sec_number", "")),
+        "ia_scope": basic_information.get("iaScope", ""),
+        "detail_cache_available": detail_cache_available,
+        "current_submitted_at": skipped_candidate["current_submitted_at"],
+        "prior_submitted_at": skipped_candidate["prior_submitted_at"],
+        "current_file_name": skipped_candidate["current_file_name"],
+        "prior_file_name": skipped_candidate["prior_file_name"],
+        "cache_status": skipped_candidate["cache_status"],
+        "diagnostic_note": f"Deferred because the current {selection_limit}-pair selection window filled before this pair was evaluated for scoring.",
+    }
+
+
+def build_selection_window_artifact(
+    *,
+    source_version: str,
+    selection_limit: int,
+    selected_pairs_total: int,
+    shortlisted_total: int,
+    raw_root: Path,
+    skipped_candidates: list[dict[str, object]],
+) -> dict[str, object]:
+    deferred_candidates = [
+        entry for entry in skipped_candidates if entry["skip_reason"] == "selection_window_limit"
+    ]
+    deferred_entries = [
+        selection_window_entry(
+            entry,
+            raw_root=raw_root,
+            deferred_rank=index,
+            selection_limit=selection_limit,
+        )
+        for index, entry in enumerate(deferred_candidates, start=1)
+    ]
+    return {
+        "version": source_version,
+        "selection_limit": selection_limit,
+        "selected_pairs_total": selected_pairs_total,
+        "shortlisted_total": shortlisted_total,
+        "deferred_candidates_total": len(deferred_entries),
+        "deferred_candidates_with_detail_cache": sum(1 for entry in deferred_entries if entry["detail_cache_available"]),
+        "deferred_candidates": deferred_entries,
+    }
+
+
+def load_cached_firm_detail(path: Path) -> dict[str, object]:
+    payload = load_json_file(path)
+    if "basicInformation" in payload:
+        return payload
+    hits = payload.get("hits", {}).get("hits", [])
+    if not hits:
+        return {}
+    return json.loads(hits[0]["_source"]["iacontent"])
+
+
 def filing_rows(zip_path: Path, *, firm_ids: set[str]) -> dict[str, dict]:
     rows_by_firm: dict[str, dict] = {}
     with zipfile.ZipFile(zip_path) as archive:
@@ -613,6 +686,14 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
         cache_complete_pairs_total=cache_complete_pairs_total,
         skipped_candidates=skipped_candidates,
     )
+    selection_window_payload = build_selection_window_artifact(
+        source_version=source_config["version"],
+        selection_limit=selection_limit,
+        selected_pairs_total=len(selected_pairs),
+        shortlisted_total=len(shortlisted),
+        raw_root=raw_root,
+        skipped_candidates=skipped_candidates,
+    )
 
     output_paths = {
         "canonical_shortlist_json": write_json(canonical_root / "shortlist_v1.json", canonical_payload),
@@ -621,6 +702,8 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
         "artifact_top_delta_json": write_json(artifact_root / f"top_delta_{top_delta_payload['firm_id']}.json", top_delta_payload),
         "canonical_cache_report_json": write_json(canonical_root / "cache_report_v1.json", cache_report_payload),
         "artifact_cache_report_json": write_json(artifact_root / "cache_report_v1.json", cache_report_payload),
+        "canonical_selection_window_json": write_json(canonical_root / "selection_window_v1.json", selection_window_payload),
+        "artifact_selection_window_json": write_json(artifact_root / "selection_window_v1.json", selection_window_payload),
     }
     output_paths["canonical_shortlist_csv"] = write_shortlist_csv(canonical_root / "shortlist_v1.csv", shortlist_rows)
     output_paths["artifact_shortlist_csv"] = write_shortlist_csv(artifact_root / "shortlist_v1.csv", shortlist_rows)
