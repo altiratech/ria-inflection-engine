@@ -12,6 +12,7 @@ from pipeline.run_first_slice import (
     next_refresh_targets,
     pair_has_complete_cache,
     refresh_action_for_reason,
+    selection_priority_tuple,
 )
 
 
@@ -209,6 +210,46 @@ def test_next_refresh_targets_groups_and_limits_actionable_queue() -> None:
     assert len(queue["groups"][0]["targets"]) == 1
     assert queue["groups"][1]["refresh_action"] == "cache_current_brochure"
     assert queue["groups"][1]["candidate_count"] == 1
+
+
+def test_selection_priority_prefers_evaluation_ready_pairs() -> None:
+    complete_pair = make_pair("123456")
+    more_recent_incomplete_pair = make_pair("223456")
+    more_recent_incomplete_pair["current_member"] = parse_brochure_member(
+        ZipMember(
+            archive_url=more_recent_incomplete_pair["current_archive"].url,
+            file_name="223456_1_1_20260301.pdf",
+            compressed_size=10,
+            uncompressed_size=10,
+            compression_method=0,
+            crc32=0,
+            local_header_offset=0,
+        )
+    )
+    assert more_recent_incomplete_pair["current_member"] is not None
+
+    complete_status = {
+        "firm_detail_cached": True,
+        "current_brochure_pdf_cached": True,
+        "prior_brochure_pdf_cached": True,
+        "current_text_snapshot_cached": False,
+        "prior_text_snapshot_cached": False,
+        "current_brochure_cache_available": True,
+        "prior_brochure_cache_available": True,
+    }
+    incomplete_status = {
+        "firm_detail_cached": True,
+        "current_brochure_pdf_cached": False,
+        "prior_brochure_pdf_cached": True,
+        "current_text_snapshot_cached": False,
+        "prior_text_snapshot_cached": False,
+        "current_brochure_cache_available": False,
+        "prior_brochure_cache_available": True,
+    }
+
+    assert selection_priority_tuple(complete_pair, complete_status) > selection_priority_tuple(
+        more_recent_incomplete_pair, incomplete_status
+    )
 
 
 def test_build_cache_report_summarizes_skip_reasons() -> None:

@@ -291,6 +291,17 @@ def load_cached_firm_detail(path: Path) -> dict[str, object]:
     return json.loads(hits[0]["_source"]["iacontent"])
 
 
+def selection_priority_tuple(pair: dict, cache_status: dict[str, bool]) -> tuple[int, int, int, int, str, str]:
+    return (
+        1 if pair_has_complete_cache(cache_status) else 0,
+        1 if cache_status["firm_detail_cached"] else 0,
+        1 if cache_status["current_brochure_cache_available"] else 0,
+        1 if cache_status["prior_brochure_cache_available"] else 0,
+        pair["current_member"].submitted_at,
+        pair["firm_id"],
+    )
+
+
 def filing_rows(zip_path: Path, *, firm_ids: set[str]) -> dict[str, dict]:
     rows_by_firm: dict[str, dict] = {}
     with zipfile.ZipFile(zip_path) as archive:
@@ -451,6 +462,11 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
     shortlist_limit = selection["cohort_size"]
     pair_cache_statuses = [cache_status_for_pair(raw_root, snapshot_root, pair) for pair in pairs]
     cache_complete_pairs_total = sum(1 for status in pair_cache_statuses if pair_has_complete_cache(status))
+    prioritized_pairs = sorted(
+        zip(pairs, pair_cache_statuses),
+        key=lambda item: selection_priority_tuple(item[0], item[1]),
+        reverse=True,
+    )
 
     filing_zip_paths = {
         "current": download_file(
@@ -468,7 +484,7 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
     shortlisted: list[dict] = []
     selected_pairs = []
     skipped_candidates: list[dict[str, object]] = []
-    for pair, cache_status in zip(pairs, pair_cache_statuses):
+    for pair, cache_status in prioritized_pairs:
         if len(selected_pairs) >= selection_limit:
             skip_reason = cache_gap_reason(cache_status) or "selection_window_limit"
             skipped_candidates.append(

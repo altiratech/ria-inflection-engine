@@ -3,219 +3,12 @@
   "selection_limit": 20,
   "selected_pairs_total": 20,
   "shortlisted_total": 5,
-  "deferred_candidates_total": 18,
-  "deferred_candidates_with_detail_cache": 18,
+  "deferred_candidates_total": 9,
+  "deferred_candidates_with_detail_cache": 9,
   "deferred_candidates": [
     {
       "selection_position": 21,
       "deferred_rank": 1,
-      "firm_id": "173129",
-      "firm_name": "ZURAW FINANCIAL ADVISORS, LLC",
-      "sec_number": "80364",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260223",
-      "prior_submitted_at": "20260113",
-      "current_file_name": "173129_357943_13_20260223.pdf",
-      "prior_file_name": "173129_357943_12_20260113.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 22,
-      "deferred_rank": 2,
-      "firm_id": "144039",
-      "firm_name": "J. FREEMAN & ASSOCIATES",
-      "sec_number": "135397",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260223",
-      "prior_submitted_at": "20260123",
-      "current_file_name": "144039_422189_2_20260223.pdf",
-      "prior_file_name": "144039_422189_1_20260123.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 23,
-      "deferred_rank": 3,
-      "firm_id": "134374",
-      "firm_name": "KB FINANCIAL ADVISORS LLC",
-      "sec_number": "135226",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260223",
-      "prior_submitted_at": "20260109",
-      "current_file_name": "134374_421266_3_20260223.pdf",
-      "prior_file_name": "134374_421266_2_20260109.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 24,
-      "deferred_rank": 4,
-      "firm_id": "131738",
-      "firm_name": "SIERRA PACIFIC PRIVATE WEALTH, LLC",
-      "sec_number": "123728",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260223",
-      "prior_submitted_at": "20260128",
-      "current_file_name": "131738_121546_17_20260223.pdf",
-      "prior_file_name": "131738_121546_16_20260128.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 25,
-      "deferred_rank": 5,
-      "firm_id": "326354",
-      "firm_name": "BELL CITY WEALTH, INC.",
-      "sec_number": "128174",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260220",
-      "prior_submitted_at": "20260115",
-      "current_file_name": "326354_423486_1_20260220.pdf",
-      "prior_file_name": "326354_385084_7_20260115.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": false,
-        "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 26,
-      "deferred_rank": 6,
-      "firm_id": "144516",
-      "firm_name": "NICHOLAS HOFFMAN & COMPANY, LLC",
-      "sec_number": "68306",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260220",
-      "prior_submitted_at": "20260130",
-      "current_file_name": "144516_39101_37_20260220.pdf",
-      "prior_file_name": "144516_39101_36_20260130.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": true,
-        "prior_text_snapshot_cached": true,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 27,
-      "deferred_rank": 7,
-      "firm_id": "140923",
-      "firm_name": "L & S ADVISORS, INC",
-      "sec_number": "66849",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260220",
-      "prior_submitted_at": "20260129",
-      "current_file_name": "140923_58540_31_20260220.pdf",
-      "prior_file_name": "140923_58540_30_20260129.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": true,
-        "prior_text_snapshot_cached": false,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 28,
-      "deferred_rank": 8,
-      "firm_id": "148216",
-      "firm_name": "PEDDOCK CAPITAL ADVISORS, LLC",
-      "sec_number": "69611",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260218",
-      "prior_submitted_at": "20260130",
-      "current_file_name": "148216_43634_26_20260218.pdf",
-      "prior_file_name": "148216_43634_25_20260130.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": true,
-        "prior_text_snapshot_cached": true,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 29,
-      "deferred_rank": 9,
-      "firm_id": "283014",
-      "firm_name": "HILLTOP WEALTH ADVISORS, LLC",
-      "sec_number": "107408",
-      "ia_scope": "ACTIVE",
-      "detail_cache_available": true,
-      "current_submitted_at": "20260213",
-      "prior_submitted_at": "20260130",
-      "current_file_name": "283014_250828_22_20260213.pdf",
-      "prior_file_name": "283014_250828_21_20260130.pdf",
-      "cache_status": {
-        "firm_detail_cached": true,
-        "current_brochure_pdf_cached": true,
-        "prior_brochure_pdf_cached": true,
-        "current_text_snapshot_cached": true,
-        "prior_text_snapshot_cached": true,
-        "current_brochure_cache_available": true,
-        "prior_brochure_cache_available": true
-      },
-      "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
-    },
-    {
-      "selection_position": 30,
-      "deferred_rank": 10,
       "firm_id": "18387",
       "firm_name": "THRIVENT INVESTMENT MANAGEMENT INC.",
       "sec_number": "29618",
@@ -237,8 +30,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 31,
-      "deferred_rank": 11,
+      "selection_position": 22,
+      "deferred_rank": 2,
       "firm_id": "306943",
       "firm_name": "MUELLER WEALTH",
       "sec_number": "132250",
@@ -260,8 +53,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 32,
-      "deferred_rank": 12,
+      "selection_position": 23,
+      "deferred_rank": 3,
       "firm_id": "340592",
       "firm_name": "VELARIS WEALTH MANAGEMENT",
       "sec_number": "135459",
@@ -283,8 +76,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 33,
-      "deferred_rank": 13,
+      "selection_position": 24,
+      "deferred_rank": 4,
       "firm_id": "312325",
       "firm_name": "EDGEROCK WEALTH MANAGEMENT",
       "sec_number": "121314",
@@ -306,8 +99,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 34,
-      "deferred_rank": 14,
+      "selection_position": 25,
+      "deferred_rank": 5,
       "firm_id": "284598",
       "firm_name": "TLW WEALTH MANAGEMENT, LLC",
       "sec_number": "114938",
@@ -329,8 +122,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 35,
-      "deferred_rank": 15,
+      "selection_position": 26,
+      "deferred_rank": 6,
       "firm_id": "285961",
       "firm_name": "FACET",
       "sec_number": "108767",
@@ -352,8 +145,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 36,
-      "deferred_rank": 16,
+      "selection_position": 27,
+      "deferred_rank": 7,
       "firm_id": "298006",
       "firm_name": "ALBERT INVESTMENTS, LLC",
       "sec_number": "114361",
@@ -375,8 +168,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 37,
-      "deferred_rank": 17,
+      "selection_position": 28,
+      "deferred_rank": 8,
       "firm_id": "147615",
       "firm_name": "KEENER FINANCIAL PLANNING",
       "sec_number": "115127",
@@ -398,8 +191,8 @@
       "diagnostic_note": "Deferred because the current 20-pair selection window filled before this pair was evaluated for scoring."
     },
     {
-      "selection_position": 38,
-      "deferred_rank": 18,
+      "selection_position": 29,
+      "deferred_rank": 9,
       "firm_id": "289764",
       "firm_name": "SGROI WEALTH ADVISORY GROUP LLC",
       "sec_number": "112067",
