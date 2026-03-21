@@ -29,6 +29,7 @@ Current first-slice outputs:
 - `cohort_v1.json`
 - `cache_report_v1.json` with skip reasons, cache-gap counts, selection-window leftovers, and a compact `next_refresh_targets` recache queue
 - `selection_window_v1.json` with deferred selection-window candidates and cached-detail enrichment when available
+- `selection_window_comparison_v1.json` with shadow-scored comparisons between deferred fully cached firms and the shortlist floor
 
 Selection behavior note:
 - the `20`-pair evaluation window now prefers evaluation-ready pairs (detail + brochure cache available) before raw recency order

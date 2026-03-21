@@ -4,6 +4,7 @@ from pipeline.brochures import parse_brochure_member
 from pipeline.iapd import ArchiveFile
 from pipeline.remote_zip import ZipMember
 from pipeline.run_first_slice import (
+    build_selection_window_comparison_artifact,
     build_cache_report,
     build_selection_window_artifact,
     cache_gap_reason,
@@ -13,6 +14,7 @@ from pipeline.run_first_slice import (
     pair_has_complete_cache,
     refresh_action_for_reason,
     selection_priority_tuple,
+    selection_window_comparison_entry,
 )
 
 
@@ -352,3 +354,77 @@ def test_build_selection_window_artifact_enriches_cached_detail(tmp_path) -> Non
     assert artifact["deferred_candidates"][0]["firm_name"] == "Example Wealth"
     assert artifact["deferred_candidates"][0]["ia_scope"] == "ACTIVE"
     assert artifact["deferred_candidates"][0]["detail_cache_available"] is True
+
+
+def test_selection_window_comparison_artifact_flags_candidate_above_floor() -> None:
+    shortlist_floor = {
+        "firm_id": "floor-1",
+        "firm_name": "Floor Wealth",
+        "score": {
+            "marketing_rule_relevance": 4.0,
+            "client_service_mix_change": 5.0,
+            "operational_complexity_change": 4.5,
+            "confidence": 8.0,
+            "overall_score": 4.92,
+        },
+    }
+    selection_entry = {
+        "selection_position": 21,
+        "deferred_rank": 1,
+        "firm_id": "123456",
+        "firm_name": "Example Wealth",
+        "sec_number": "801-123456",
+        "ia_scope": "ACTIVE",
+        "detail_cache_available": True,
+        "current_submitted_at": "20260228",
+        "prior_submitted_at": "20260131",
+        "cache_status": {
+            "firm_detail_cached": True,
+            "current_brochure_pdf_cached": True,
+            "prior_brochure_pdf_cached": True,
+            "current_text_snapshot_cached": False,
+            "prior_text_snapshot_cached": False,
+            "current_brochure_cache_available": True,
+            "prior_brochure_cache_available": True,
+        },
+    }
+    scored_delta = {
+        "score": {
+            "marketing_rule_relevance": 6.0,
+            "client_service_mix_change": 7.0,
+            "operational_complexity_change": 5.5,
+            "confidence": 8.5,
+            "overall_score": 6.25,
+        },
+        "evidence": [
+            {
+                "section_title": "Item 4",
+                "change_summary": "Added retirement plan consulting language.",
+                "focus_term": "retirement plan consulting",
+                "score_rationale": "Strong service-mix signal.",
+                "current_excerpt": "We now offer retirement plan consulting services.",
+                "composite": 6.4,
+            }
+        ],
+    }
+    compared = selection_window_comparison_entry(
+        selection_entry,
+        shortlist_floor=shortlist_floor,
+        scored_delta=scored_delta,
+    )
+
+    artifact = build_selection_window_comparison_artifact(
+        source_version="first-slice-v1",
+        selection_limit=20,
+        shortlist_limit=5,
+        shortlist_floor=shortlist_floor,
+        comparisons=[compared],
+    )
+
+    assert artifact["deferred_candidates_total"] == 1
+    assert artifact["scored_candidates_total"] == 1
+    assert artifact["would_enter_shortlist_total"] == 1
+    assert artifact["comparisons"][0]["comparison_rank"] == 1
+    assert artifact["comparisons"][0]["would_enter_shortlist"] is True
+    assert artifact["comparisons"][0]["score_gap_to_shortlist_floor"] == 1.33
+    assert "Would clear the shortlist floor" in artifact["comparisons"][0]["comparison_summary"]

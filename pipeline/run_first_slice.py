@@ -11,10 +11,14 @@ from pipeline.brochures import brochure_type, parse_brochure_member, snapshot_te
 from pipeline.iapd import ArchiveFile, download_file, fetch_firm_detail, fetch_json, select_latest_archives
 from pipeline.normalize import build_section_deltas, sectionize_brochure
 from pipeline.remote_zip import list_zip_members, write_member_cache
-from pipeline.score import score_firm_delta
+from pipeline.score import DIMENSION_LABELS, score_firm_delta
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+COMPARISON_DIMENSION_LABELS = {
+    **DIMENSION_LABELS,
+    "confidence": "confidence",
+}
 
 
 def load_json_file(path: Path) -> dict:
@@ -302,6 +306,235 @@ def selection_priority_tuple(pair: dict, cache_status: dict[str, bool]) -> tuple
     )
 
 
+def evaluate_pair(
+    *,
+    pair: dict,
+    detail: dict,
+    cache_status: dict[str, bool],
+    raw_root: Path,
+    snapshot_root: Path,
+    source_config: dict,
+    cache_only: bool,
+    selection: dict,
+    rubric: dict,
+    themes_payload: dict,
+    filing_context_current: dict[str, dict],
+    filing_context_prior: dict[str, dict],
+) -> tuple[dict[str, object] | None, dict[str, object] | None]:
+    current_pdf_path = brochure_member_cache_path(
+        raw_root, pair["current_archive"], pair["firm_id"], pair["current_member"].member.file_name
+    )
+    prior_pdf_path = brochure_member_cache_path(
+        raw_root, pair["prior_archive"], pair["firm_id"], pair["prior_member"].member.file_name
+    )
+    current_snapshot_path = text_snapshot_path(
+        snapshot_root, pair["current_archive"], pair["firm_id"], pair["current_member"].member.file_name
+    )
+    prior_snapshot_path = text_snapshot_path(
+        snapshot_root, pair["prior_archive"], pair["firm_id"], pair["prior_member"].member.file_name
+    )
+    try:
+        current_text = load_brochure_text(
+            pair["current_member"].member,
+            current_pdf_path,
+            current_snapshot_path,
+            user_agent=source_config["browser_headers"]["user_agent"],
+            allow_download=not cache_only,
+        )
+    except FileNotFoundError:
+        return None, {"skip_stage": "brochure", "skip_reason": "missing_current_brochure_cache"}
+    try:
+        prior_text = load_brochure_text(
+            pair["prior_member"].member,
+            prior_pdf_path,
+            prior_snapshot_path,
+            user_agent=source_config["browser_headers"]["user_agent"],
+            allow_download=not cache_only,
+        )
+    except FileNotFoundError:
+        return None, {"skip_stage": "brochure", "skip_reason": "missing_prior_brochure_cache"}
+
+    current_brochure_type = brochure_type(current_text)
+    prior_brochure_type = brochure_type(prior_text)
+    if current_brochure_type != "part_2a" or prior_brochure_type != "part_2a":
+        return None, {
+            "skip_stage": "brochure",
+            "skip_reason": "unsupported_brochure_type",
+            "extra": {
+                "current_brochure_type": current_brochure_type,
+                "prior_brochure_type": prior_brochure_type,
+            },
+        }
+
+    current_sections = sectionize_brochure(current_text)
+    prior_sections = sectionize_brochure(prior_text)
+    if len(current_sections) < selection["minimum_sections_per_snapshot"] or len(prior_sections) < selection["minimum_sections_per_snapshot"]:
+        return None, {
+            "skip_stage": "normalize",
+            "skip_reason": "insufficient_sections",
+            "extra": {
+                "current_section_count": len(current_sections),
+                "prior_section_count": len(prior_sections),
+            },
+        }
+
+    current_row = filing_context_current.get(pair["firm_id"], {})
+    prior_row = filing_context_prior.get(pair["firm_id"], {})
+    context = firm_context(
+        detail,
+        pair["firm_id"],
+        pair,
+        filing_context={
+            "filing_id_current": current_row.get("FilingID", ""),
+            "filing_id_prior": prior_row.get("FilingID", ""),
+            "raum_current": current_row.get("5F2c", ""),
+            "raum_prior": prior_row.get("5F2c", ""),
+            "state_current": current_row.get("1F1-State", ""),
+            "state_prior": prior_row.get("1F1-State", ""),
+        },
+    )
+
+    section_deltas = build_section_deltas(
+        prior_sections,
+        current_sections,
+        cosmetic_similarity_floor=rubric["materiality"]["cosmetic_similarity_floor"],
+        minimum_word_delta=rubric["materiality"]["minimum_word_delta"],
+        maximum_terms_per_excerpt=rubric["materiality"]["maximum_terms_per_excerpt"],
+    )
+    try:
+        scored_delta = score_firm_delta(context, section_deltas, rubric, themes_payload["themes"])
+    except ValueError:
+        return None, {"skip_stage": "score", "skip_reason": "no_scored_evidence"}
+    return scored_delta, None
+
+
+def score_gap_to_shortlist_floor(candidate_score: dict[str, float], floor_score: dict[str, float]) -> dict[str, float]:
+    return {
+        key: round(candidate_score[key] - floor_score[key], 2)
+        for key in [
+            "marketing_rule_relevance",
+            "client_service_mix_change",
+            "operational_complexity_change",
+            "confidence",
+            "overall_score",
+        ]
+    }
+
+
+def comparison_summary(candidate_score: dict[str, float], floor_score: dict[str, float]) -> str:
+    gaps = score_gap_to_shortlist_floor(candidate_score, floor_score)
+    overall_gap = gaps["overall_score"]
+    dimension_gaps = {
+        key: value
+        for key, value in gaps.items()
+        if key not in {"overall_score"}
+    }
+    weakest_dimension = min(dimension_gaps, key=dimension_gaps.get)
+    weakest_label = COMPARISON_DIMENSION_LABELS[weakest_dimension]
+    if overall_gap >= 0:
+        return f"Would clear the shortlist floor by {overall_gap:.2f}; deferred only because the evaluation window filled first."
+    if overall_gap >= -0.5:
+        return f"Trails the shortlist floor by {abs(overall_gap):.2f}, mostly on {weakest_label}."
+    return f"Trails the shortlist floor by {abs(overall_gap):.2f}; the largest gap is {weakest_label}."
+
+
+def comparison_unavailable_summary(skip_info: dict[str, object]) -> str:
+    reason = str(skip_info["skip_reason"])
+    if reason == "unsupported_brochure_type":
+        return "Comparison unavailable because this pair still resolves to an unsupported brochure type."
+    if reason == "no_scored_evidence":
+        return "Comparison unavailable because the pair still produced no scored evidence after normalization."
+    if reason == "insufficient_sections":
+        return "Comparison unavailable because the brochure snapshots did not yield enough sections for scoring."
+    if reason == "missing_current_brochure_cache":
+        return "Comparison unavailable because the current brochure cache is still incomplete."
+    if reason == "missing_prior_brochure_cache":
+        return "Comparison unavailable because the prior brochure cache is still incomplete."
+    return f"Comparison unavailable because this pair skipped at {skip_info['skip_stage']}."
+
+
+def selection_window_comparison_entry(
+    selection_entry: dict[str, object],
+    *,
+    shortlist_floor: dict[str, object],
+    scored_delta: dict[str, object] | None = None,
+    skip_info: dict[str, object] | None = None,
+) -> dict[str, object]:
+    base = {
+        "selection_position": selection_entry["selection_position"],
+        "deferred_rank": selection_entry["deferred_rank"],
+        "firm_id": selection_entry["firm_id"],
+        "firm_name": selection_entry["firm_name"],
+        "sec_number": selection_entry["sec_number"],
+        "ia_scope": selection_entry["ia_scope"],
+        "detail_cache_available": selection_entry["detail_cache_available"],
+        "current_submitted_at": selection_entry["current_submitted_at"],
+        "prior_submitted_at": selection_entry["prior_submitted_at"],
+        "cache_status": selection_entry["cache_status"],
+    }
+    if scored_delta is None:
+        return {
+            **base,
+            "comparison_status": "not_scored",
+            "comparison_skip_stage": skip_info["skip_stage"] if skip_info else "",
+            "comparison_skip_reason": skip_info["skip_reason"] if skip_info else "",
+            "comparison_summary": comparison_unavailable_summary(skip_info or {"skip_stage": "", "skip_reason": ""}),
+        }
+
+    floor_score = shortlist_floor["score"]
+    candidate_score = scored_delta["score"]
+    gaps = score_gap_to_shortlist_floor(candidate_score, floor_score)
+    top_evidence = scored_delta["evidence"][0]
+    return {
+        **base,
+        "comparison_status": "scored",
+        "shadow_score": candidate_score,
+        "score_gap_to_shortlist_floor": gaps["overall_score"],
+        "dimension_gaps_to_shortlist_floor": gaps,
+        "would_enter_shortlist": candidate_score["overall_score"] >= floor_score["overall_score"],
+        "comparison_summary": comparison_summary(candidate_score, floor_score),
+        "top_evidence": {
+            "section_title": top_evidence["section_title"],
+            "change_summary": top_evidence["change_summary"],
+            "focus_term": top_evidence.get("focus_term", ""),
+            "score_rationale": top_evidence.get("score_rationale", ""),
+            "current_excerpt": top_evidence.get("current_excerpt", ""),
+            "composite": top_evidence["composite"],
+        },
+    }
+
+
+def build_selection_window_comparison_artifact(
+    *,
+    source_version: str,
+    selection_limit: int,
+    shortlist_limit: int,
+    shortlist_floor: dict[str, object],
+    comparisons: list[dict[str, object]],
+) -> dict[str, object]:
+    scored_candidates = [entry for entry in comparisons if entry["comparison_status"] == "scored"]
+    scored_candidates.sort(key=lambda entry: entry["shadow_score"]["overall_score"], reverse=True)
+    unscored_candidates = [entry for entry in comparisons if entry["comparison_status"] != "scored"]
+    ordered = scored_candidates + unscored_candidates
+    for rank, entry in enumerate(ordered, start=1):
+        entry["comparison_rank"] = rank
+
+    return {
+        "version": source_version,
+        "selection_limit": selection_limit,
+        "shortlist_limit": shortlist_limit,
+        "shortlist_floor": {
+            "firm_id": shortlist_floor["firm_id"],
+            "firm_name": shortlist_floor["firm_name"],
+            "score": shortlist_floor["score"],
+        },
+        "deferred_candidates_total": len(comparisons),
+        "scored_candidates_total": len(scored_candidates),
+        "would_enter_shortlist_total": sum(1 for entry in scored_candidates if entry["would_enter_shortlist"]),
+        "comparisons": ordered,
+    }
+
+
 def filing_rows(zip_path: Path, *, firm_ids: set[str]) -> dict[str, dict]:
     rows_by_firm: dict[str, dict] = {}
     with zipfile.ZipFile(zip_path) as archive:
@@ -531,9 +764,14 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
     if not selected_pairs:
         raise RuntimeError("No active brochure pairs were available for the first slice.")
 
+    pair_lookup = {pair["firm_id"]: pair for pair in pairs}
     selected_firm_ids = {pair["firm_id"] for pair, _ in selected_pairs}
-    filing_context_current = filing_rows(filing_zip_paths["current"], firm_ids=selected_firm_ids)
-    filing_context_prior = filing_rows(filing_zip_paths["prior"], firm_ids=selected_firm_ids)
+    selection_window_firm_ids = {
+        str(entry["firm_id"]) for entry in skipped_candidates if entry["skip_reason"] == "selection_window_limit"
+    }
+    filing_context_firm_ids = selected_firm_ids | selection_window_firm_ids
+    filing_context_current = filing_rows(filing_zip_paths["current"], firm_ids=filing_context_firm_ids)
+    filing_context_prior = filing_rows(filing_zip_paths["prior"], firm_ids=filing_context_firm_ids)
 
     for pair, detail in selected_pairs:
         cache_status = cache_status_for_pair(raw_root, snapshot_root, pair)
@@ -548,125 +786,29 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
                 )
             )
             continue
-        current_pdf_path = brochure_member_cache_path(
-            raw_root, pair["current_archive"], pair["firm_id"], pair["current_member"].member.file_name
+        scored_delta, skip_info = evaluate_pair(
+            pair=pair,
+            detail=detail,
+            cache_status=cache_status,
+            raw_root=raw_root,
+            snapshot_root=snapshot_root,
+            source_config=source_config,
+            cache_only=cache_only,
+            selection=selection,
+            rubric=rubric,
+            themes_payload=themes_payload,
+            filing_context_current=filing_context_current,
+            filing_context_prior=filing_context_prior,
         )
-        prior_pdf_path = brochure_member_cache_path(
-            raw_root, pair["prior_archive"], pair["firm_id"], pair["prior_member"].member.file_name
-        )
-        current_snapshot_path = text_snapshot_path(
-            snapshot_root, pair["current_archive"], pair["firm_id"], pair["current_member"].member.file_name
-        )
-        prior_snapshot_path = text_snapshot_path(
-            snapshot_root, pair["prior_archive"], pair["firm_id"], pair["prior_member"].member.file_name
-        )
-        try:
-            current_text = load_brochure_text(
-                pair["current_member"].member,
-                current_pdf_path,
-                current_snapshot_path,
-                user_agent=source_config["browser_headers"]["user_agent"],
-                allow_download=not cache_only,
-            )
-        except FileNotFoundError:
+        if skip_info is not None:
             skipped_candidates.append(
                 cache_report_entry(
                     pair,
                     cache_status=cache_status,
-                    skip_stage="brochure",
-                    skip_reason="missing_current_brochure_cache",
+                    skip_stage=str(skip_info["skip_stage"]),
+                    skip_reason=str(skip_info["skip_reason"]),
                     detail=detail,
-                )
-            )
-            continue
-        try:
-            prior_text = load_brochure_text(
-                pair["prior_member"].member,
-                prior_pdf_path,
-                prior_snapshot_path,
-                user_agent=source_config["browser_headers"]["user_agent"],
-                allow_download=not cache_only,
-            )
-        except FileNotFoundError:
-            skipped_candidates.append(
-                cache_report_entry(
-                    pair,
-                    cache_status=cache_status,
-                    skip_stage="brochure",
-                    skip_reason="missing_prior_brochure_cache",
-                    detail=detail,
-                )
-            )
-            continue
-        current_brochure_type = brochure_type(current_text)
-        prior_brochure_type = brochure_type(prior_text)
-        if current_brochure_type != "part_2a" or prior_brochure_type != "part_2a":
-            skipped_candidates.append(
-                cache_report_entry(
-                    pair,
-                    cache_status=cache_status,
-                    skip_stage="brochure",
-                    skip_reason="unsupported_brochure_type",
-                    detail=detail,
-                    extra={
-                        "current_brochure_type": current_brochure_type,
-                        "prior_brochure_type": prior_brochure_type,
-                    },
-                )
-            )
-            continue
-
-        current_sections = sectionize_brochure(current_text)
-        prior_sections = sectionize_brochure(prior_text)
-        if len(current_sections) < selection["minimum_sections_per_snapshot"] or len(prior_sections) < selection["minimum_sections_per_snapshot"]:
-            skipped_candidates.append(
-                cache_report_entry(
-                    pair,
-                    cache_status=cache_status,
-                    skip_stage="normalize",
-                    skip_reason="insufficient_sections",
-                    detail=detail,
-                    extra={
-                        "current_section_count": len(current_sections),
-                        "prior_section_count": len(prior_sections),
-                    },
-                )
-            )
-            continue
-
-        current_row = filing_context_current.get(pair["firm_id"], {})
-        prior_row = filing_context_prior.get(pair["firm_id"], {})
-        context = firm_context(
-            detail,
-            pair["firm_id"],
-            pair,
-            filing_context={
-                "filing_id_current": current_row.get("FilingID", ""),
-                "filing_id_prior": prior_row.get("FilingID", ""),
-                "raum_current": current_row.get("5F2c", ""),
-                "raum_prior": prior_row.get("5F2c", ""),
-                "state_current": current_row.get("1F1-State", ""),
-                "state_prior": prior_row.get("1F1-State", ""),
-            },
-        )
-
-        section_deltas = build_section_deltas(
-            prior_sections,
-            current_sections,
-            cosmetic_similarity_floor=rubric["materiality"]["cosmetic_similarity_floor"],
-            minimum_word_delta=rubric["materiality"]["minimum_word_delta"],
-            maximum_terms_per_excerpt=rubric["materiality"]["maximum_terms_per_excerpt"],
-        )
-        try:
-            scored_delta = score_firm_delta(context, section_deltas, rubric, themes_payload["themes"])
-        except ValueError:
-            skipped_candidates.append(
-                cache_report_entry(
-                    pair,
-                    cache_status=cache_status,
-                    skip_stage="score",
-                    skip_reason="no_scored_evidence",
-                    detail=detail,
+                    extra=skip_info.get("extra"),
                 )
             )
             continue
@@ -710,6 +852,40 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
         raw_root=raw_root,
         skipped_candidates=skipped_candidates,
     )
+    shortlist_floor = shortlisted[-1]
+    selection_window_comparisons = []
+    for selection_entry in selection_window_payload["deferred_candidates"]:
+        pair = pair_lookup[str(selection_entry["firm_id"])]
+        detail = load_cached_firm_detail(firm_detail_cache_path(raw_root, str(selection_entry["firm_id"])))
+        scored_delta, skip_info = evaluate_pair(
+            pair=pair,
+            detail=detail,
+            cache_status=selection_entry["cache_status"],
+            raw_root=raw_root,
+            snapshot_root=snapshot_root,
+            source_config=source_config,
+            cache_only=cache_only,
+            selection=selection,
+            rubric=rubric,
+            themes_payload=themes_payload,
+            filing_context_current=filing_context_current,
+            filing_context_prior=filing_context_prior,
+        )
+        selection_window_comparisons.append(
+            selection_window_comparison_entry(
+                selection_entry,
+                shortlist_floor=shortlist_floor,
+                scored_delta=scored_delta,
+                skip_info=skip_info,
+            )
+        )
+    selection_window_comparison_payload = build_selection_window_comparison_artifact(
+        source_version=source_config["version"],
+        selection_limit=selection_limit,
+        shortlist_limit=shortlist_limit,
+        shortlist_floor=shortlist_floor,
+        comparisons=selection_window_comparisons,
+    )
 
     output_paths = {
         "canonical_shortlist_json": write_json(canonical_root / "shortlist_v1.json", canonical_payload),
@@ -720,6 +896,12 @@ def run(*, cache_only: bool = False) -> dict[str, Path]:
         "artifact_cache_report_json": write_json(artifact_root / "cache_report_v1.json", cache_report_payload),
         "canonical_selection_window_json": write_json(canonical_root / "selection_window_v1.json", selection_window_payload),
         "artifact_selection_window_json": write_json(artifact_root / "selection_window_v1.json", selection_window_payload),
+        "canonical_selection_window_comparison_json": write_json(
+            canonical_root / "selection_window_comparison_v1.json", selection_window_comparison_payload
+        ),
+        "artifact_selection_window_comparison_json": write_json(
+            artifact_root / "selection_window_comparison_v1.json", selection_window_comparison_payload
+        ),
     }
     output_paths["canonical_shortlist_csv"] = write_shortlist_csv(canonical_root / "shortlist_v1.csv", shortlist_rows)
     output_paths["artifact_shortlist_csv"] = write_shortlist_csv(artifact_root / "shortlist_v1.csv", shortlist_rows)
