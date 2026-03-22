@@ -32,6 +32,16 @@ def write_json(path: Path, payload: dict | list) -> Path:
     return path
 
 
+def clear_stale_top_delta_artifacts(root: Path, current_firm_id: str) -> None:
+    if not root.exists():
+        return
+    keep_name = f"top_delta_{current_firm_id}.json"
+    for path in root.glob("top_delta_*.json"):
+        if path.name == keep_name:
+            continue
+        path.unlink()
+
+
 def brochure_member_cache_path(raw_root: Path, archive: ArchiveFile, firm_id: str, file_name: str) -> Path:
     return raw_root / "sec" / "brochures" / archive.year / archive.display_name.lower().replace(" ", "_") / firm_id / file_name
 
@@ -1123,6 +1133,8 @@ def run(*, cache_only: bool = False, progress: Callable[[str], None] | None = No
         shortlist_floor=shortlist_floor,
         comparisons=selection_window_comparisons,
     )
+    clear_stale_top_delta_artifacts(canonical_root, str(top_delta_payload["firm_id"]))
+    clear_stale_top_delta_artifacts(artifact_root, str(top_delta_payload["firm_id"]))
 
     output_paths = {
         "canonical_shortlist_json": write_json(canonical_root / "shortlist_v1.json", canonical_payload),

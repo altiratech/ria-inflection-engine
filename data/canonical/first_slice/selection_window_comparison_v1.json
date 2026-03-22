@@ -6,11 +6,11 @@
     "firm_id": "317916",
     "firm_name": "25 FINANCIAL",
     "score": {
-      "marketing_rule_relevance": 7.69,
+      "marketing_rule_relevance": 4.32,
       "client_service_mix_change": 8.82,
-      "operational_complexity_change": 6.57,
+      "operational_complexity_change": 7.69,
       "confidence": 10.0,
-      "overall_score": 7.98
+      "overall_score": 7.08
     }
   },
   "deferred_candidates_total": 8,
@@ -38,29 +38,29 @@
       },
       "comparison_status": "scored",
       "shadow_score": {
-        "marketing_rule_relevance": 4.85,
+        "marketing_rule_relevance": 1.47,
         "client_service_mix_change": 6.35,
         "operational_complexity_change": 4.85,
         "confidence": 7.25,
-        "overall_score": 5.54
+        "overall_score": 4.36
       },
-      "score_gap_to_shortlist_floor": -2.44,
+      "score_gap_to_shortlist_floor": -2.72,
       "dimension_gaps_to_shortlist_floor": {
-        "marketing_rule_relevance": -2.84,
+        "marketing_rule_relevance": -2.85,
         "client_service_mix_change": -2.47,
-        "operational_complexity_change": -1.72,
+        "operational_complexity_change": -2.84,
         "confidence": -2.75,
-        "overall_score": -2.44
+        "overall_score": -2.72
       },
       "would_enter_shortlist": false,
-      "comparison_summary": "Trails the shortlist floor by 2.44; the largest gap is marketing-rule signal.",
+      "comparison_summary": "Trails the shortlist floor by 2.72; the largest gap is marketing-rule signal.",
       "top_evidence": {
         "section_title": "Client Contact w ith Portfolio",
         "change_summary": "modified; added terms: thrivent, pursuant, introdu, cing, policy, r2-26; removed terms: pursuan, fees, what, introducing, olicy, thr, ivent, r1-26",
-        "focus_term": "portfolio management",
-        "score_rationale": "service-mix signal: institutional, portfolio management, retirement; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: compliance program readiness",
-        "current_excerpt": "Investment Adviser Thrivent Asset Management is an indirect, wholly owned subsidiary of Thrivent Financial for Lutherans and the registered investment adviser providing portfolio management and fund administration services to",
-        "composite": 5.66
+        "focus_term": "alternative",
+        "score_rationale": "service-mix signal: institutional, portfolio management, retirement; SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection",
+        "current_excerpt": "...non- standard assets, which include but are not limited to Foreign Securities, Alternative Investments and Non- Marketable Securities , cash and cash equivalents. This creates conflicts of interest for Thrivent as we ha ve an incentive to...",
+        "composite": 4.48
       },
       "comparison_rank": 1
     },

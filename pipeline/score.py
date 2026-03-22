@@ -10,6 +10,48 @@ DIMENSION_LABELS = {
     "client_service_mix_change": "service-mix signal",
     "operational_complexity_change": "ops-complexity signal",
 }
+MARKETING_CONTEXT_WINDOW = 96
+MARKETING_RULE_CONTEXT_RULES = {
+    "compensated": {
+        "accept": ("testimonial", "endorsement", "promoter", "solicitor", "marketing", "advertising"),
+        "reject": (),
+    },
+    "performance": {
+        "accept": (
+            "gross performance",
+            "net performance",
+            "performance results",
+            "performance information",
+            "performance data",
+            "performance advertising",
+            "advertised performance",
+            "advertising",
+            "advertisement",
+            "testimonial",
+            "endorsement",
+        ),
+        "reject": (
+            "past performance",
+            "future performance",
+            "portfolio performance",
+            "investment performance",
+            "performance-based fee",
+            "performance based fee",
+        ),
+    },
+    "rating": {
+        "accept": ("third-party", "third party", "client", "public", "testimonial", "endorsement", "review"),
+        "reject": ("credit rating", "rating agency", "debt security", "bond rating", "security rating"),
+    },
+    "review": {
+        "accept": ("client", "online", "public", "google", "yelp", "third-party", "third party", "rating", "testimonial", "endorsement"),
+        "reject": ("review of accounts",),
+    },
+    "third-party": {
+        "accept": ("rating", "ratings", "testimonial", "endorsement", "promoter", "solicitor", "marketing", "advertising"),
+        "reject": ("service provider", "service providers", "research service", "research services"),
+    },
+}
 GENERIC_FOCUS_TERMS = {
     "account",
     "accounts",
@@ -35,6 +77,7 @@ GENERIC_FOCUS_TERMS = {
     "reviews",
     "service",
     "services",
+    "third-party",
     "wealth",
 }
 HEADING_PREFIX_PATTERN = re.compile(r"^(?:[A-Z]\.|[IVX]+\.)\s+")
@@ -50,12 +93,44 @@ def keyword_hits(text: str, keywords: list[str]) -> list[str]:
     return [keyword for keyword in keywords if keyword_pattern(keyword).search(text)]
 
 
+def marketing_rule_keyword_hits(text: str, keywords: list[str]) -> list[str]:
+    collapsed = " ".join(text.lower().split())
+    hits: list[str] = []
+    for keyword in keywords:
+        pattern = keyword_pattern(keyword)
+        matches = list(pattern.finditer(collapsed))
+        if not matches:
+            continue
+        if keyword in MARKETING_RULE_CONTEXT_RULES and not has_marketing_rule_context(collapsed, keyword, matches):
+            continue
+        hits.append(keyword)
+    return hits
+
+
+def has_marketing_rule_context(text: str, keyword: str, matches: list[re.Match[str]]) -> bool:
+    rule = MARKETING_RULE_CONTEXT_RULES[keyword]
+    accept_terms = rule["accept"]
+    reject_terms = rule["reject"]
+    for match in matches:
+        start = max(0, match.start() - MARKETING_CONTEXT_WINDOW)
+        end = min(len(text), match.end() + MARKETING_CONTEXT_WINDOW)
+        window = text[start:end]
+        if any(term in window for term in reject_terms):
+            continue
+        if accept_terms and not any(term in window for term in accept_terms):
+            continue
+        return True
+    return False
+
+
 @lru_cache(maxsize=256)
 def keyword_pattern(keyword: str) -> re.Pattern[str]:
     normalized = keyword.strip().lower()
     escaped = re.escape(normalized)
     escaped = escaped.replace(r"\ ", r"\s+")
     escaped = escaped.replace(r"\-", r"(?:-|\s+)")
+    if re.fullmatch(r"[a-z]+", normalized) and not normalized.endswith("s"):
+        escaped = f"{escaped}s?"
     return re.compile(rf"(?<![a-z0-9]){escaped}(?![a-z0-9])", re.IGNORECASE)
 
 
@@ -360,6 +435,7 @@ def score_dimension(
     *,
     keywords: list[str],
     preferred_sections: list[str],
+    keyword_matcher=keyword_hits,
 ) -> tuple[float, list[str]]:
     search_text = " ".join(
         [
@@ -368,7 +444,7 @@ def score_dimension(
             " ".join(delta.get("removed_terms", [])),
         ]
     )
-    hits = keyword_hits(search_text, keywords)
+    hits = keyword_matcher(search_text, keywords)
     hit_factor = min(1.0, len(hits) / 4)
     similarity_factor = min(1.0, max(0.0, 1.0 - float(delta["similarity"])) / 0.4)
     word_factor = min(1.0, abs(int(delta["word_delta"])) / 120)
@@ -400,7 +476,8 @@ def matched_themes(delta: dict[str, Any], themes: list[dict[str, Any]]) -> list[
     )
     matches = []
     for theme in themes:
-        hits = keyword_hits(search_text, theme["keywords"])
+        matcher = marketing_rule_keyword_hits if theme["theme_id"] == "marketing_rule_2025_12_16" else keyword_hits
+        hits = matcher(search_text, theme["keywords"])
         if hits:
             matches.append(
                 {
@@ -429,6 +506,7 @@ def score_firm_delta(
             delta,
             keywords=dimensions["marketing_rule_relevance"]["keywords"],
             preferred_sections=dimensions["marketing_rule_relevance"]["preferred_sections"],
+            keyword_matcher=marketing_rule_keyword_hits,
         )
         client_score, client_hits = score_dimension(
             delta,

@@ -11,6 +11,7 @@ from pipeline.run_first_slice import (
     cache_gap_reason,
     cache_report_entry,
     cache_status_for_pair,
+    clear_stale_top_delta_artifacts,
     merge_shortlist_with_promotions,
     next_refresh_targets,
     pair_has_complete_cache,
@@ -254,6 +255,17 @@ def test_selection_priority_prefers_evaluation_ready_pairs() -> None:
     assert selection_priority_tuple(complete_pair, complete_status) > selection_priority_tuple(
         more_recent_incomplete_pair, incomplete_status
     )
+
+
+def test_clear_stale_top_delta_artifacts_keeps_only_current_winner(tmp_path) -> None:
+    root = tmp_path / "first_slice"
+    root.mkdir(parents=True, exist_ok=True)
+    for firm_id in ["105849", "310682", "326354"]:
+        (root / f"top_delta_{firm_id}.json").write_text("{}")
+
+    clear_stale_top_delta_artifacts(root, "105849")
+
+    assert sorted(path.name for path in root.glob("top_delta_*.json")) == ["top_delta_105849.json"]
 
 
 def test_build_cache_report_summarizes_skip_reasons() -> None:

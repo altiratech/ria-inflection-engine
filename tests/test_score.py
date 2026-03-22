@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from pipeline.score import anchored_excerpt, keyword_hits, score_firm_delta
+from pipeline.score import anchored_excerpt, keyword_hits, marketing_rule_keyword_hits, score_firm_delta
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -127,6 +127,30 @@ def test_keyword_hits_uses_phrase_boundaries_instead_of_substrings() -> None:
     assert "registered investment advisor" in hits
 
 
+def test_marketing_rule_keyword_hits_require_marketing_context() -> None:
+    innocuous_text = (
+        "The lower the credit rating of a security, the greater the risk. "
+        "We also rely on third-party service providers for cybersecurity support, conduct a review of accounts, "
+        "and remind clients that past performance is not indicative of future returns."
+    )
+    signal_text = (
+        "The brochure discusses client reviews, third-party ratings, compensated testimonials, "
+        "and gross performance results used in advertising."
+    )
+
+    innocuous_hits = marketing_rule_keyword_hits(
+        innocuous_text,
+        ["rating", "third-party", "review", "compensated", "advertising", "performance"],
+    )
+    signal_hits = marketing_rule_keyword_hits(
+        signal_text,
+        ["rating", "third-party", "review", "compensated", "advertising", "performance"],
+    )
+
+    assert innocuous_hits == []
+    assert signal_hits == ["rating", "third-party", "review", "compensated", "advertising", "performance"]
+
+
 def test_score_firm_delta_does_not_promote_rating_from_operating_fragment() -> None:
     firm_context = {
         "firm_id": "326354",
@@ -167,3 +191,42 @@ def test_score_firm_delta_does_not_promote_rating_from_operating_fragment() -> N
     assert evidence["focus_term"] in {"consulting", "financial planning", "retirement", "trust"}
     assert "rating" not in evidence["score_rationale"].lower()
     assert "financial planning and consulting services" in evidence["current_excerpt"].lower()
+
+
+def test_score_firm_delta_does_not_treat_credit_ratings_as_marketing_rule_signal() -> None:
+    firm_context = {
+        "firm_id": "317916",
+        "firm_name": "25 Financial",
+        "state": "TX",
+        "sec_number": "801-317916",
+        "current_snapshot": {"submitted_at": "20260227", "file_name": "current.pdf"},
+        "prior_snapshot": {"submitted_at": "20260131", "file_name": "prior.pdf"},
+        "filing_context": {"raum_current": "210000000", "raum_prior": "198000000"},
+    }
+    section_deltas = [
+        {
+            "section_key": "item_8",
+            "section_title": "Methods",
+            "change_type": "modified",
+            "similarity": 0.73,
+            "previous_text": "The firm discusses investment risks.",
+            "current_text": (
+                "Generally, the lower the credit rating of a security, the greater the risk that the issuer will default "
+                "on its obligation. If a rating agency gives a debt security a lower rating, the value of the position may decline."
+            ),
+            "previous_word_count": 5,
+            "current_word_count": 35,
+            "word_delta": 30,
+            "added_terms": ["credit", "rating", "security", "issuer", "debt"],
+            "removed_terms": [],
+            "is_material": True,
+            "change_summary": "modified; added terms: credit, rating, security, issuer, debt",
+        }
+    ]
+
+    scored = score_firm_delta(firm_context, section_deltas, RUBRIC, THEMES)
+    evidence = scored["evidence"][0]
+
+    assert evidence["focus_term"] != "rating"
+    assert "marketing-rule signal" not in evidence["score_rationale"].lower()
+    assert evidence["matched_themes"] == []

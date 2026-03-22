@@ -1,6 +1,12 @@
 {
   "selected_firms": [
     {
+      "firm_id": "105849",
+      "firm_name": "SAPERSTON LEGACY ADVISORS, INC.",
+      "current_submitted_at": "20260228",
+      "prior_submitted_at": "20260130"
+    },
+    {
       "firm_id": "326354",
       "firm_name": "BELL CITY WEALTH, INC.",
       "current_submitted_at": "20260220",
@@ -16,12 +22,6 @@
       "firm_id": "310682",
       "firm_name": "BLVD PRIVATE WEALTH, LLC",
       "current_submitted_at": "20260227",
-      "prior_submitted_at": "20260130"
-    },
-    {
-      "firm_id": "105849",
-      "firm_name": "SAPERSTON LEGACY ADVISORS, INC.",
-      "current_submitted_at": "20260228",
       "prior_submitted_at": "20260130"
     },
     {
