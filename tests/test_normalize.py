@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pipeline.normalize import build_section_deltas, sectionize_brochure
+from pipeline.normalize import build_section_deltas, delta_terms, sectionize_brochure
 
 
 PREVIOUS_TEXT = """
@@ -102,3 +102,17 @@ def test_sectionize_brochure_strips_unicode_dash_prefix_from_title() -> None:
     sections = sectionize_brochure(UNICODE_DASH_TITLE_TEXT)
 
     assert sections[0]["section_title"] == "Methods of Analysis, Investment Strategies and Risk of Loss"
+
+
+def test_delta_terms_filters_common_glue_words() -> None:
+    previous = "The firm provides advisory services to clients."
+    current = "The firm provides advisory and consulting services to clients for retirement planning."
+
+    added, removed = delta_terms(previous, current, limit=8)
+
+    assert "consulting" in added
+    assert "retirement" in added
+    assert "planning" in added
+    assert "and" not in added
+    assert "for" not in added
+    assert "the" not in added

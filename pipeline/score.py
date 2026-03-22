@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from functools import lru_cache
 import re
 from typing import Any
 
@@ -20,6 +21,8 @@ GENERIC_FOCUS_TERMS = {
     "business",
     "client",
     "clients",
+    "discretionary",
+    "non-discretionary",
     "fee",
     "fees",
     "firm",
@@ -27,23 +30,33 @@ GENERIC_FOCUS_TERMS = {
     "individual",
     "individuals",
     "management",
+    "performance",
     "review",
     "reviews",
     "service",
     "services",
+    "wealth",
 }
 HEADING_PREFIX_PATTERN = re.compile(r"^(?:[A-Z]\.|[IVX]+\.)\s+")
 ITEM_PREFIX_PATTERN = re.compile(r"^item\s+\d+[a-z]?\s*[:.-]?\s*", re.IGNORECASE)
 NUMERIC_TOKEN_PATTERN = re.compile(r"\b\$?\d[\d,]*(?:\.\d+)?%?\b")
 TABLE_SIGNAL_PATTERN = re.compile(
-    r"\b(?:annual fees|assets under management|date calculated|fee schedule|discretionary amounts|non-?discretionary amounts)\b",
+    r"\b(?:annual fees|assets under management|date calculated|fee schedule|discretionary amounts|non-?discretionary amounts|discretionary assets|non-?discretionary assets)\b",
     re.IGNORECASE,
 )
 
 
 def keyword_hits(text: str, keywords: list[str]) -> list[str]:
-    lowered = text.lower()
-    return [keyword for keyword in keywords if keyword in lowered]
+    return [keyword for keyword in keywords if keyword_pattern(keyword).search(text)]
+
+
+@lru_cache(maxsize=256)
+def keyword_pattern(keyword: str) -> re.Pattern[str]:
+    normalized = keyword.strip().lower()
+    escaped = re.escape(normalized)
+    escaped = escaped.replace(r"\ ", r"\s+")
+    escaped = escaped.replace(r"\-", r"(?:-|\s+)")
+    return re.compile(rf"(?<![a-z0-9]){escaped}(?![a-z0-9])", re.IGNORECASE)
 
 
 def preview(text: str, *, limit: int = 240) -> str:
@@ -130,7 +143,7 @@ def is_heading_line(line: str) -> bool:
         or bool(ITEM_PREFIX_PATTERN.match(cleaned))
         or " – " in cleaned
         or " - " in cleaned
-        or title_case_ratio >= 0.75
+        or (len(alpha_words) >= 2 and title_case_ratio >= 0.75)
     )
 
 
@@ -185,6 +198,46 @@ def subsection_chunks(text: str) -> list[str]:
     return candidates
 
 
+def stitch_fragmented_lines(text: str) -> str:
+    lines = text.splitlines()
+    stitched_lines: list[str] = []
+    fragment_buffer: list[str] = []
+
+    def flush_fragments() -> None:
+        nonlocal fragment_buffer
+        if fragment_buffer:
+            stitched_lines.append(" ".join(fragment_buffer))
+            fragment_buffer = []
+
+    for raw_line in lines:
+        cleaned = clean_line(raw_line)
+        if not cleaned:
+            continue
+        words = cleaned.split()
+        is_short_fragment = (
+            len(words) <= 3
+            and len(cleaned) <= 24
+            and cleaned[-1] not in ".:;?!"
+            and not HEADING_PREFIX_PATTERN.match(cleaned)
+            and not ITEM_PREFIX_PATTERN.match(cleaned)
+        )
+        if is_short_fragment:
+            fragment_buffer.append(cleaned)
+            continue
+        flush_fragments()
+        stitched_lines.append(cleaned)
+
+    flush_fragments()
+    return "\n".join(stitched_lines)
+
+
+def trim_table_like_tail(text: str) -> str:
+    lines = [line for line in text.splitlines() if clean_line(line)]
+    while len(lines) > 1 and table_like_penalty(lines[-1]) >= 1.0:
+        lines.pop()
+    return "\n".join(lines).strip()
+
+
 def table_like_penalty(text: str) -> float:
     lines = [clean_line(line) for line in text.splitlines() if clean_line(line)]
     if not lines:
@@ -222,12 +275,13 @@ def focus_terms_for_section(
 
 
 def anchored_excerpt(text: str, focus_terms: list[str], *, limit: int = 240) -> tuple[str, str, list[str]]:
-    if not text.strip():
+    normalized_text = stitch_fragmented_lines(text)
+    if not normalized_text.strip():
         return "", "", []
 
-    chunks = subsection_chunks(text)
+    chunks = subsection_chunks(normalized_text)
     if not chunks:
-        snippet = preview(text, limit=limit)
+        snippet = preview(normalized_text, limit=limit)
         return snippet, "", []
 
     best_index = -1
@@ -263,9 +317,11 @@ def anchored_excerpt(text: str, focus_terms: list[str], *, limit: int = 240) -> 
 
     excerpt = chunks[best_index]
     if len(" ".join(excerpt.split())) < 140 and best_index + 1 < len(chunks):
-        candidate = f"{excerpt}\n{chunks[best_index + 1]}".strip()
-        if len(candidate) <= limit + 40:
+        next_chunk = chunks[best_index + 1]
+        candidate = f"{excerpt}\n{next_chunk}".strip()
+        if len(candidate) <= limit + 40 and table_like_penalty(next_chunk) < 1.0:
             excerpt = candidate
+    excerpt = trim_table_like_tail(excerpt)
     excerpt = preview_around(excerpt, best_hits[0], limit=limit)
     return excerpt, best_hits[0], best_hits
 

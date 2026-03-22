@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from pipeline.score import anchored_excerpt, score_firm_delta
+from pipeline.score import anchored_excerpt, keyword_hits, score_firm_delta
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -82,3 +82,88 @@ $1,000,001 - $5,000,000 0.90%
     assert any(hit in {"consulting", "financial planning"} for hit in excerpt_hits)
     assert "retirement plan consulting" in lowered or "financial plans and financial planning" in lowered
     assert "annual fees" not in lowered
+
+
+def test_anchored_excerpt_avoids_word_split_aum_line_when_narrative_exists() -> None:
+    text = """
+Business
+
+Description
+
+Bell
+
+City
+
+Wealth
+
+provides
+
+financial planning and consulting services to individuals, retirement plan sponsors,
+and trust clients.
+
+Discretionary assets: $145,000,000
+Non-discretionary assets: $0
+"""
+
+    excerpt, focus_term, excerpt_hits = anchored_excerpt(
+        text,
+        ["performance", "consulting", "retirement", "trust", "non-discretionary", "discretionary"],
+    )
+
+    lowered = excerpt.lower()
+    assert focus_term in {"consulting", "retirement", "trust"}
+    assert any(hit in {"consulting", "retirement", "trust"} for hit in excerpt_hits)
+    assert "financial planning and consulting services" in lowered
+    assert "non-discretionary assets" not in lowered
+
+
+def test_keyword_hits_uses_phrase_boundaries_instead_of_substrings() -> None:
+    text = "BCW began operating as a registered investment advisor in 2023."
+
+    hits = keyword_hits(text, ["rating", "review", "registered investment advisor"])
+
+    assert "rating" not in hits
+    assert "review" not in hits
+    assert "registered investment advisor" in hits
+
+
+def test_score_firm_delta_does_not_promote_rating_from_operating_fragment() -> None:
+    firm_context = {
+        "firm_id": "326354",
+        "firm_name": "Bell City Wealth, Inc.",
+        "state": "AL",
+        "sec_number": "801-326354",
+        "current_snapshot": {"submitted_at": "20260220", "file_name": "current.pdf"},
+        "prior_snapshot": {"submitted_at": "20260115", "file_name": "prior.pdf"},
+        "filing_context": {"raum_current": "145000000", "raum_prior": "0"},
+    }
+    section_deltas = [
+        {
+            "section_key": "item_4",
+            "section_title": "Advisory",
+            "change_type": "added",
+            "similarity": 0.0,
+            "previous_text": "",
+            "current_text": (
+                "Business\n\nFirm\n\nDescription\n\nBell\n\nCity\n\nWealth\n\n(\"BCW\") is an SEC-registered "
+                "investment advisor. BCW began operating as a Registered Investment Advisor in 2023.\n\n"
+                "Types of Advisory Services\n\nBCW provides financial planning and consulting services to "
+                "individuals, retirement plan sponsors, and trust clients.\n\n"
+                "Discretionary assets: $145,000,000\nNon-discretionary assets: $0\n"
+            ),
+            "previous_word_count": 0,
+            "current_word_count": 39,
+            "word_delta": 39,
+            "added_terms": ["bell", "city", "wealth", "financial", "planning", "consulting", "retirement", "trust"],
+            "removed_terms": [],
+            "is_material": True,
+            "change_summary": "added; added terms: bell, city, wealth, financial, planning, consulting, retirement, trust",
+        }
+    ]
+
+    scored = score_firm_delta(firm_context, section_deltas, RUBRIC, THEMES)
+    evidence = scored["evidence"][0]
+
+    assert evidence["focus_term"] in {"consulting", "financial planning", "retirement", "trust"}
+    assert "rating" not in evidence["score_rationale"].lower()
+    assert "financial planning and consulting services" in evidence["current_excerpt"].lower()

@@ -43,6 +43,15 @@
       ]
     },
     {
+      "theme_id": "exam_priorities_2026_compliance",
+      "theme_name": "2026 examination priorities: compliance program readiness",
+      "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+      "source_date": "2025-11-17",
+      "keyword_hits": [
+        "fiduciary duty"
+      ]
+    },
+    {
       "theme_id": "exam_priorities_2026_operations",
       "theme_name": "2026 examination priorities: operations and data protection",
       "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
@@ -56,33 +65,35 @@
     {
       "section_key": "item_4",
       "section_title": "Advisory",
-      "change_summary": "added; added terms: the, and, bcw, bell, city, wealth, for, financial",
-      "current_excerpt": "Non-discretionary assets: $0",
-      "focus_term": "non-discretionary",
-      "score_rationale": "marketing-rule signal: performance, rating; service-mix signal: consulting, retirement, trust; SEC theme match: Advisers Act marketing rule disclosures",
-      "composite": 9.55,
+      "change_summary": "added; added terms: bcw, bell, city, wealth, financial, planning, management, plan",
+      "current_excerpt": "...g. Types of Advisory Services BCW offers a large variety of services, including portfolio management, investment analysis and financial planning, retirement planning, and financial planning-focused estate planning for individuals and high n...",
+      "focus_term": "portfolio management",
+      "score_rationale": "service-mix signal: consulting, financial planning, high net worth; ops-complexity signal: compliance, wrap fee; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: compliance progra...",
+      "composite": 9.29,
       "matched_themes": [
-        "Advisers Act marketing rule disclosures"
+        "Advisers Act marketing rule disclosures",
+        "2026 examination priorities: compliance program readiness"
       ]
     },
     {
       "section_key": "item_8",
       "section_title": "Methods",
-      "change_summary": "modified; added terms: long-term, short-term, downside, emer, ging, strategies, loss, including; removed terms: and, the, term, performance, that, price, short, analysis",
-      "current_excerpt": "Past performance no",
-      "focus_term": "performance",
-      "score_rationale": "marketing-rule signal: compensated, performance, third-party; service-mix signal: trust; SEC theme match: Advisers Act marketing rule disclosures",
+      "change_summary": "modified; added terms: long-term, short-term, downside, emer, ging, strategies, loss, including; removed terms: term, performance, price, short, analysis, patterns, economic, page",
+      "current_excerpt": "...ically stored data, denial of service attacks on our website or websites of our third-party service providers, and the unauthorized release of confidential information are a few of the more common risks faced by us and other investment advi...",
+      "focus_term": "third-party",
+      "score_rationale": "marketing-rule signal: compensated, third-party; service-mix signal: trust; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: compliance program readiness",
       "composite": 9.15,
       "matched_themes": [
-        "Advisers Act marketing rule disclosures"
+        "Advisers Act marketing rule disclosures",
+        "2026 examination priorities: compliance program readiness"
       ]
     },
     {
       "section_key": "item_15",
       "section_title": "Custody",
-      "change_summary": "added; added terms: the, funds, bcw, custodian, securities, not, account, custody",
-      "current_excerpt": "Custody means holding,",
-      "focus_term": "custody",
+      "change_summary": "added; added terms: funds, bcw, custodian, securities, account, custody, does, fees",
+      "current_excerpt": "...rization permitting fees to be paid directly from the custodian. As part of the billing process, the client\u2019 s custodian is advised of the amount of the fee to be deducted from that client\u2019 s account. On at least a quarterly basis, the cust...",
+      "focus_term": "billing",
       "score_rationale": "ops-complexity signal: billing, custody; service-mix signal: advisory, client, clients",
       "composite": 7.84,
       "matched_themes": []
@@ -100,29 +111,28 @@
       "current_word_count": 985,
       "word_delta": 985,
       "added_terms": [
-        "the",
-        "and",
         "bcw",
         "bell",
         "city",
         "wealth",
-        "for",
-        "financial"
+        "financial",
+        "planning",
+        "management",
+        "plan"
       ],
       "removed_terms": [],
       "is_material": true,
-      "change_summary": "added; added terms: the, and, bcw, bell, city, wealth, for, financial",
+      "change_summary": "added; added terms: bcw, bell, city, wealth, financial, planning, management, plan",
       "scores": {
-        "marketing_rule_relevance": 10.0,
+        "marketing_rule_relevance": 9.25,
         "client_service_mix_change": 10.0,
         "operational_complexity_change": 10.0,
         "confidence": 5.5,
-        "composite": 9.55
+        "composite": 9.29
       },
       "matched_keywords": {
         "marketing_rule_relevance": [
           "performance",
-          "rating",
           "review"
         ],
         "client_service_mix_change": [
@@ -130,17 +140,19 @@
           "client",
           "clients",
           "consulting",
+          "financial planning",
+          "high net worth",
           "individual",
+          "portfolio management",
           "retirement",
           "service",
-          "services",
-          "trust"
+          "services"
         ],
         "operational_complexity_change": [
-          "alternative",
           "compliance",
           "discretionary",
-          "non-discretionary"
+          "non-discretionary",
+          "wrap fee"
         ]
       },
       "matched_themes": [
@@ -150,31 +162,44 @@
           "source_url": "https://www.sec.gov/files/exams-riskalert-mrkt-rule-2512-508.pdf",
           "source_date": "2025-12-16",
           "keyword_hits": [
-            "performance",
-            "rating"
+            "performance"
+          ]
+        },
+        {
+          "theme_id": "exam_priorities_2026_compliance",
+          "theme_name": "2026 examination priorities: compliance program readiness",
+          "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+          "source_date": "2025-11-17",
+          "keyword_hits": [
+            "fiduciary duty"
           ]
         }
       ],
       "focus_terms": [
-        "performance",
-        "rating",
+        "portfolio management",
+        "financial planning",
+        "high net worth",
         "consulting",
         "retirement",
-        "trust",
-        "non-discretionary",
-        "discretionary",
-        "alternative",
+        "wrap fee",
         "compliance",
-        "wealth",
-        "financial"
+        "fiduciary duty",
+        "financial",
+        "planning"
       ],
-      "evidence_focus_term": "non-discretionary",
+      "evidence_focus_term": "portfolio management",
       "evidence_focus_hits": [
-        "non-discretionary",
-        "discretionary"
+        "portfolio management",
+        "financial planning",
+        "high net worth",
+        "retirement",
+        "compliance",
+        "fiduciary duty",
+        "financial",
+        "planning"
       ],
-      "evidence_excerpt": "Non-discretionary assets: $0",
-      "score_rationale": "marketing-rule signal: performance, rating; service-mix signal: consulting, retirement, trust; SEC theme match: Advisers Act marketing rule disclosures"
+      "evidence_excerpt": "...g. Types of Advisory Services BCW offers a large variety of services, including portfolio management, investment analysis and financial planning, retirement planning, and financial planning-focused estate planning for individuals and high n...",
+      "score_rationale": "service-mix signal: consulting, financial planning, high net worth; ops-complexity signal: compliance, wrap fee; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: compliance progra..."
     },
     {
       "section_key": "item_8",
@@ -197,17 +222,17 @@
         "including"
       ],
       "removed_terms": [
-        "and",
-        "the",
         "term",
         "performance",
-        "that",
         "price",
         "short",
-        "analysis"
+        "analysis",
+        "patterns",
+        "economic",
+        "page"
       ],
       "is_material": true,
-      "change_summary": "modified; added terms: long-term, short-term, downside, emer, ging, strategies, loss, including; removed terms: and, the, term, performance, that, price, short, analysis",
+      "change_summary": "modified; added terms: long-term, short-term, downside, emer, ging, strategies, loss, including; removed terms: term, performance, price, short, analysis, patterns, economic, page",
       "scores": {
         "marketing_rule_relevance": 10.0,
         "client_service_mix_change": 10.0,
@@ -244,25 +269,36 @@
           "keyword_hits": [
             "performance"
           ]
+        },
+        {
+          "theme_id": "exam_priorities_2026_compliance",
+          "theme_name": "2026 examination priorities: compliance program readiness",
+          "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+          "source_date": "2025-11-17",
+          "keyword_hits": [
+            "fiduciary duty"
+          ]
         }
       ],
       "focus_terms": [
         "compensated",
-        "performance",
         "third-party",
         "trust",
+        "fiduciary duty",
         "long-term",
         "short-term",
         "downside",
         "strategies",
         "including"
       ],
-      "evidence_focus_term": "performance",
+      "evidence_focus_term": "third-party",
       "evidence_focus_hits": [
-        "performance"
+        "third-party",
+        "fiduciary duty",
+        "including"
       ],
-      "evidence_excerpt": "Past performance no",
-      "score_rationale": "marketing-rule signal: compensated, performance, third-party; service-mix signal: trust; SEC theme match: Advisers Act marketing rule disclosures"
+      "evidence_excerpt": "...ically stored data, denial of service attacks on our website or websites of our third-party service providers, and the unauthorized release of confidential information are a few of the more common risks faced by us and other investment advi...",
+      "score_rationale": "marketing-rule signal: compensated, third-party; service-mix signal: trust; SEC theme match: Advisers Act marketing rule disclosures, 2026 examination priorities: compliance program readiness"
     },
     {
       "section_key": "item_15",
@@ -275,18 +311,18 @@
       "current_word_count": 248,
       "word_delta": 248,
       "added_terms": [
-        "the",
         "funds",
         "bcw",
         "custodian",
         "securities",
-        "not",
         "account",
-        "custody"
+        "custody",
+        "does",
+        "fees"
       ],
       "removed_terms": [],
       "is_material": true,
-      "change_summary": "added; added terms: the, funds, bcw, custodian, securities, not, account, custody",
+      "change_summary": "added; added terms: funds, bcw, custodian, securities, account, custody, does, fees",
       "scores": {
         "marketing_rule_relevance": 6.62,
         "client_service_mix_change": 8.88,
@@ -316,76 +352,16 @@
         "custodian",
         "securities"
       ],
-      "evidence_focus_term": "custody",
+      "evidence_focus_term": "billing",
       "evidence_focus_hits": [
-        "custody"
+        "billing",
+        "custody",
+        "funds",
+        "custodian",
+        "securities"
       ],
-      "evidence_excerpt": "Custody means holding,",
+      "evidence_excerpt": "...rization permitting fees to be paid directly from the custodian. As part of the billing process, the client\u2019 s custodian is advised of the amount of the fee to be deducted from that client\u2019 s account. On at least a quarterly basis, the cust...",
       "score_rationale": "ops-complexity signal: billing, custody; service-mix signal: advisory, client, clients"
-    },
-    {
-      "section_key": "item_12",
-      "section_title": "Brokerage",
-      "change_type": "modified",
-      "similarity": 0.4671,
-      "previous_text": "A. Selection and Recommendation \n \nBCW has an established relationship with a broker -dealer/custodian that the Firm will recommend to \nclients for custody or client transactions. BCW suggests this broker -dealer/custodian be used based on \nexecution and custodial services offered, cost, quality of service and industry reputation. BCW has also \nconsidered factors such as commission price, speed and quality of execution, client management tools, \nand convenience of access for both the Firm and client in making its suggestion. \n \nAs an investment adviser, BCW has a fiduciary duty to seek the best execution for client transactions. \nWhile best execution is difficult to define and challenging to measure, there is some consensus that it \ndoes not solely mean the achievement of the best price on a given transaction. Rather, it appears to be a \ncollec tive consideration of factors concerning the trade in question. Such factors include the security \nbeing traded, the price of the trade, the speed of the execution, apparent conditions in the market, and \nthe specific needs of the client. \n \nBCW utilizes a custodian that it believes offers a competitive price based upon the custodian\u2019s market \naccess, the transaction confirmation and account statement practices, the execution, clearance and \nsettlement capabilities, and the reasonableness of the co mmission or its equivalent for the specific \ntransaction. The Firm will monitor the services offered by the custodian and make any changes, as \nappropriate. \n \nIt is the policy of the Firm to seek best execution in all portfolio trading activities for all investment \ndisciplines and products, regardless of whether commissions are charged. This applies to trading in any \ninstrument, security, or contract including e quities, bonds, and forward or derivative contracts. \n \nThe standards and procedures governing best execution are set forth in several written policies. \nGenerally, to achieve best execution, BCW considers the following factors, without limitation, in \nselecting brokers and intermediaries: \n \n\uf0d7 Execution capability; \n \n\uf0d7 Order size and market depth; \n \n\uf0d7 Availability of competing markets and \nliquidity; \n \n\uf0d7 Trading characteristics of the security; \n\uf0d7 Availability of accurate information \ncomparing markets; \n \n\uf0d7 Quantity and quality of research \nreceived from the broker dealer; \n \n \nPage 19 of 22 \uf0d7 Financial responsibility of the broker -\ndealer; \n \n\uf0d7 Confidentiality; \n \n\uf0d7 Reputation and integrity; \n \n\uf0d7 Responsiveness; \n \uf0d7 Recordkeeping; \n \n\uf0d7 Ability and willingness to commit \ncapital; \n \n\uf0d7 Available technology; and \n \n\uf0d7 Ability to address current market \nconditions. \n \nBCW evaluates the execution, performance, and risk profile of the broker -dealers it uses at least \nquarterly. \n \nB. Research and Other Soft Dollar Benefits \n \nSoft dollar practices are arrangements whereby an investment adviser directs transactions to a broker \u2010\ndealer in exchange for certain products and services that are allowable under SEC rules. Client \ncommissions may be used to pay for brokerage and research services and products as long as they are \neligible under Section 28(e) of the Exchange Act of 1934. Section 28(e) sets forth a \u201csafe harbor,\u201d which \nprovides that an investment adviser that has discretion over a client account is not in breach of its \nfiduci ary duty when paying more than the lowest commission rate available if the adviser determines in \ngood faith that the rate paid is commensurate with the value of brokerage and research services provided \nby the broker \u2010dealer. \n \nBCW does not currently have any soft dollar benefit arrangements. \n \nC. Brokerage for Client Referrals \n \nBCW does not receive client referrals from third parties recommending the use of specific broker -dealer \nbrokerage services. \n \nD. Directed Brokerage \n \nBCW does not allow client directed brokerage. \n \n \nE. Order Aggregation \n \nBCW generally does not combine transaction orders on behalf of multiple clients or allocate the \nsecurities or proceeds on an average price basis among the various participants in the transactions. BCW \ngenerally does not believe this practice would benefit clients . \nF. Trade Error Policy \n \nBCW maintains a record of any trading errors that occur in connection with investment activities of its \nclients. Both gains and losses that result from a trading error made by BCW will be borne or realized by \nBCW . \n \n \nPage 20 of 22",
-      "current_text": "Practices\n \nA.\n \nWe\n \nrecommend\n \nthe\n \nbrokerage\n \nand\n \ncustodial\n \nservices\n \nof\n \nRaymond\n \nJames\n \n(whether\n \none\n \nor\n \nmore\n \n\"Custodian\").\n \nYour\n \nassets\n \nmust\n \nbe\n \nmaintained\n \nin\n \nan\n \naccount\n \nat\n \na\n \n\"qualified\n \ncustodian,\"\n \ngenerally\n \na\n \nbroker-dealer\n \nor\n \nbank.\n \nIn\n \nrecognition\n \nof\n \nthe\n \nvalue\n \nof\n \nthe\n \nservices\n \nthe\n \nCustodian\n \nprovides,\n \nyou\n \nmay\n \npay\n \nhigher\n \ncommissions\n \nand/or\n \ntrading\n \ncosts\n \nthan\n \nthose\n \nthat\n \nmay\n \nbe\n \navailable\n \nelsewhere.\n \n \nWe\n \nseek\n \nto\n \nrecommend\n \na\n \ncustodian/broker\n \nthat\n \nwill\n \nhold\n \nyour\n \nassets\n \nand\n \nexecute\n \ntransactions\n \non\n \nterms\n \nthat\n \nare,\n \noverall,\n \nthe\n \nmost\n \nfavorable\n \ncompared\n \nto\n \nother\n \navailable\n \nproviders\n \nand\n \ntheir\n \nservices.\n \nWe\n \nconsider\n \nvarious\n \nfactors,\n \nincluding:\n \n \n\u25cf\n \nCapability\n \nto\n \nbuy\n \nand\n \nsell\n \nsecurities\n \nfor\n \nyour\n \naccount\n \nitself\n \nor\n \nto\n \nfacilitate\n \nsuch\n \nservices.\n \n\u25cf\n \nThe\n \nlikelihood\n \nthat\n \nyour\n \ntrades\n \nwill\n \nbe\n \nexecuted.\n \n\u25cf\n \nAvailability\n \nof\n \ninvestment\n \nresearch\n \nand\n \ntools.\n \n\u25cf\n \nOverall\n \nquality\n \nof\n \nservices.\n \n\u25cf\n \nCompetitiveness\n \nof\n \nprice.\n \n\u25cf\n \nReputation,\n \nfinancial\n \nstrength,\n \nand\n \nstability.\n \n\u25cf\n \nExisting\n \nrelationship\n \nwith\n \nour\n \nfirm\n \nand\n \nour\n \nother\n \nclients.\n \n \nB.\n \nResearch\n \nand\n \nOther\n \nSoft\n \nDollar\n \nBenefits\n \n \nSoft\n \ndollar\n \npractices\n \nare\n \narrangements\n \nwhereby\n \nan\n \ninvestment\n \nadviser\n \ndirects\n \ntransactions\n \nto\n \na\n \nbroker -dealer\n \nin\n \nexchange\n \nfor\n \ncertain\n \nproducts\n \nand\n \nservices\n \nthat\n \nare\n \nallowable\n \nunder\n \nSEC\n \nrules.\n \nClient\n \ncommissions\n \nmay\n \nbe\n \nused\n \nto\n \npay\n \nfor\n \nbrokerage\n \nand\n \nresearch\n \nservices\n \nand\n \nproducts\n \nas\n \nlong\n \nas\n \nthey\n \nare\n \neligible\n \nunder\n \nSection\n \n28(e)\n \nof\n \nthe\n \nExchange\n \nAct\n \nof\n \n1934.\n \nSection\n \n28(e)\n \nsets\n \nforth\n \na\n \n\u201csafe\n \nharbor ,\u201d\n \nwhich\n \nprovides\n \nthat\n \nan\n \ninvestment\n \nadviser\n \nthat\n \nhas\n \ndiscretion\n \nover\n \na\n \nclient\n \naccount\n \nis\n \nnot\n \nin\n \nbreach\n \nof\n \nits\n \nfiduciary\n \nduty\n \nwhen\n \npaying\n \nmore\n \nthan\n \nthe\n \nlowest\n \ncommission\n \nrate\n \navailable\n \nif\n \nthe\n \nadviser\n \ndetermines\n \nin\n \ngood\n \nfaith\n \nthat\n \nthe\n \nrate\n \npaid\n \nis\n \ncommensurate\n \nwith\n \nthe\n \nvalue\n \nof\n \nbrokerage\n \nand\n \nresearch\n \nservices\n \nprovided\n \nby\n \nthe\n \nbroker -dealer .\n \n \nBCW\n \ndoes\n \nnot\n \ncurrently\n \nhave\n \nany\n \nsoft\n \ndollar\n \nbenefit\n \narrangements.\n \n \n\u25cf\n \nBrokerage\n \nfor\n \nClient\n \nReferrals\n \n \nBCW\n \ndoes\n \nnot\n \nreceive\n \nclient\n \nreferrals\n \nfrom\n \nthird\n \nparties\n \nrecommending\n \nthe\n \nuse\n \nof\n \nspecific\n \nbroker -dealer\n \nbrokerage\n \nservices.\n \n \n\u25cf\n \nDirected\n \nBrokerage\n \n \nBCW\n \ndoes\n \nnot\n \nallow\n \nclient\n \ndirected\n \nbrokerage.\n \n \n \n\u25cf\n \nOrder\n \nAggregation\n \n \n \nBCW\n \ngenerally\n \ndoes\n \nnot\n \ncombine\n \ntransaction\n \norders\n \non\n \nbehalf\n \nof\n \nmultiple\n \nclients\n \nor\n \nallocate\n \nthe\n \nsecurities\n \nor\n \nproceeds\n \non\n \nan\n \naverage\n \nprice\n \nbasis\n \namong\n \nthe\n \nvarious\n \nparticipants\n \nin\n \nthe\n \ntransactions.\n \nBCW\n \ngenerally\n \ndoes\n \nnot\n \nbelieve\n \nthis\n \npractice\n \nwould\n \nbenefit\n \nclients.\n \n\u25cf\n \nTrade\n \nError\n \nPolicy\n \n \nBCW\n \nmaintains\n \na\n \nrecord\n \nof\n \nany\n \ntrading\n \nerrors\n \nthat\n \noccur\n \nin\n \nconnection\n \nwith\n \ninvestment\n \nactivities\n \nof\n \nits\n \nclients.\n \nBoth\n \ngains\n \nand\n \nlosses\n \nthat\n \nresult\n \nfrom\n \na\n \ntrading\n \nerror\n \nmade\n \nby\n \nBCW\n \nwill\n \nbe\n \nborne\n \nor\n \nrealized\n \nby\n \nBCW .",
-      "previous_word_count": 668,
-      "current_word_count": 410,
-      "word_delta": -258,
-      "added_terms": [
-        "your",
-        "assets",
-        "may",
-        "overall",
-        "other",
-        "our",
-        "recommend",
-        "brokerage"
-      ],
-      "removed_terms": [
-        "the",
-        "and",
-        "execution",
-        "bcw",
-        "best",
-        "broker",
-        "for",
-        "market"
-      ],
-      "is_material": true,
-      "change_summary": "modified; added terms: your, assets, may, overall, other, our, recommend, brokerage; removed terms: the, and, execution, bcw, best, broker, for, market",
-      "scores": {
-        "marketing_rule_relevance": 5.5,
-        "client_service_mix_change": 10.0,
-        "operational_complexity_change": 7.0,
-        "confidence": 10.0,
-        "composite": 7.67
-      },
-      "matched_keywords": {
-        "marketing_rule_relevance": [],
-        "client_service_mix_change": [
-          "client",
-          "clients",
-          "service",
-          "services"
-        ],
-        "operational_complexity_change": []
-      },
-      "matched_themes": [],
-      "focus_terms": [
-        "assets",
-        "overall",
-        "other",
-        "recommend",
-        "brokerage"
-      ],
-      "evidence_focus_term": "assets",
-      "evidence_focus_hits": [
-        "assets"
-      ],
-      "evidence_excerpt": "Your assets must",
-      "score_rationale": "service-mix signal: client, clients, service"
     },
     {
       "section_key": "item_13",
@@ -398,24 +374,24 @@
       "current_word_count": 207,
       "word_delta": 207,
       "added_terms": [
-        "and",
         "financial",
-        "the",
-        "are",
         "accounts",
         "reviews",
         "plan",
-        "each"
+        "such",
+        "account",
+        "receive",
+        "compliance"
       ],
       "removed_terms": [],
       "is_material": true,
-      "change_summary": "added; added terms: and, financial, the, are, accounts, reviews, plan, each",
+      "change_summary": "added; added terms: financial, accounts, reviews, plan, such, account, receive, compliance",
       "scores": {
         "marketing_rule_relevance": 6.62,
-        "client_service_mix_change": 8.88,
+        "client_service_mix_change": 10.0,
         "operational_complexity_change": 6.62,
         "confidence": 5.5,
-        "composite": 7.19
+        "composite": 7.52
       },
       "matched_keywords": {
         "marketing_rule_relevance": [
@@ -424,6 +400,7 @@
         "client_service_mix_change": [
           "client",
           "clients",
+          "financial planning",
           "retirement"
         ],
         "operational_complexity_change": [
@@ -432,69 +409,105 @@
       },
       "matched_themes": [],
       "focus_terms": [
+        "financial planning",
         "retirement",
         "compliance",
-        "financial"
+        "financial",
+        "receive"
       ],
-      "evidence_focus_term": "compliance",
+      "evidence_focus_term": "financial planning",
       "evidence_focus_hits": [
-        "compliance"
+        "financial planning",
+        "retirement",
+        "compliance",
+        "financial",
+        "receive"
       ],
-      "evidence_excerpt": "Compliance Officer of",
-      "score_rationale": "service-mix signal: retirement; marketing-rule signal: review"
+      "evidence_excerpt": "...statements are prepared and delivered by the custodian. D. Financial Plans All financial planning accounts are reviewed upon financial plan creation and plan delivery by Alan Carroll. There are multiple levels of review for each financial...",
+      "score_rationale": "service-mix signal: financial planning, retirement; marketing-rule signal: review"
     },
     {
-      "section_key": "item_10",
-      "section_title": "Other",
-      "change_type": "added",
-      "similarity": 0.0,
-      "previous_text": "",
-      "current_text": "Financial\n \nIndustry\n \nActivities\n \nand\n \nAffiliations\n \nRegistration\n \nas\n \na\n \nBroker/Dealer\n \nor\n \nBroker/Dealer\n \nRepresentative\n \n \nBCW\n \nis\n \nnot\n \nregistered\n \nand\n \ndoes\n \nnot\n \nhave\n \nan\n \napplication\n \npending\n \nto\n \nregister ,\n \nas\n \na\n \nbroker\n \ndealer\n \nand\n \nits\n \nmanagement\n \npersons\n \nare\n \nnot\n \nregistered\n \nas\n \nbroker/dealer\n \nrepresentative.\n \n \nRegistration\n \nas\n \na\n \nFutures\n \nCommission\n \nmerchant,\n \nCommodity\n \nPool\n \nOperator\n \n \nBCW\n \nand\n \nits\n \nmanagement\n \npersons\n \nare\n \nnot\n \nregistered\n \nand\n \ndo\n \nnot\n \nhave\n \napplication\n \npending\n \nto\n \nregister ,\n \nas\n \na\n \nfutures\n \ncommission\n \nmerchant,\n \ncommodity\n \npool\n \noperator/advisor .\n \n \nRelationships\n \nMaterial\n \nto\n \nthis\n \nAdvisory\n \nBusiness\n \nand\n \nPossible\n \nConflicts\n \nof\n \nInterest\n \nNeither\n \nBCW\n \nnor\n \nany\n \nof\n \nBCW\u2019 s\n \nrepresentatives\n \nmaintain\n \nfinancial\n \nindustry\n \nrelationships\n \nmaterial\n \nto\n \nthis\n \nadvisory\n \nbusiness\n \nor\n \nthat\n \npresent\n \na\n \nconflict\n \nof\n \ninterest.\n \nSelection\n \nof\n \nother\n \nAdvisors\n \nBCW\n \ndoes\n \nnot\n \nrecommend\n \nor\n \nselect\n \nother\n \ninvestment\n \nadvisers\n \nfor\n \nits\n \nclients.",
-      "previous_word_count": 0,
-      "current_word_count": 126,
-      "word_delta": 126,
+      "section_key": "item_12",
+      "section_title": "Brokerage",
+      "change_type": "modified",
+      "similarity": 0.4671,
+      "previous_text": "A. Selection and Recommendation \n \nBCW has an established relationship with a broker -dealer/custodian that the Firm will recommend to \nclients for custody or client transactions. BCW suggests this broker -dealer/custodian be used based on \nexecution and custodial services offered, cost, quality of service and industry reputation. BCW has also \nconsidered factors such as commission price, speed and quality of execution, client management tools, \nand convenience of access for both the Firm and client in making its suggestion. \n \nAs an investment adviser, BCW has a fiduciary duty to seek the best execution for client transactions. \nWhile best execution is difficult to define and challenging to measure, there is some consensus that it \ndoes not solely mean the achievement of the best price on a given transaction. Rather, it appears to be a \ncollec tive consideration of factors concerning the trade in question. Such factors include the security \nbeing traded, the price of the trade, the speed of the execution, apparent conditions in the market, and \nthe specific needs of the client. \n \nBCW utilizes a custodian that it believes offers a competitive price based upon the custodian\u2019s market \naccess, the transaction confirmation and account statement practices, the execution, clearance and \nsettlement capabilities, and the reasonableness of the co mmission or its equivalent for the specific \ntransaction. The Firm will monitor the services offered by the custodian and make any changes, as \nappropriate. \n \nIt is the policy of the Firm to seek best execution in all portfolio trading activities for all investment \ndisciplines and products, regardless of whether commissions are charged. This applies to trading in any \ninstrument, security, or contract including e quities, bonds, and forward or derivative contracts. \n \nThe standards and procedures governing best execution are set forth in several written policies. \nGenerally, to achieve best execution, BCW considers the following factors, without limitation, in \nselecting brokers and intermediaries: \n \n\uf0d7 Execution capability; \n \n\uf0d7 Order size and market depth; \n \n\uf0d7 Availability of competing markets and \nliquidity; \n \n\uf0d7 Trading characteristics of the security; \n\uf0d7 Availability of accurate information \ncomparing markets; \n \n\uf0d7 Quantity and quality of research \nreceived from the broker dealer; \n \n \nPage 19 of 22 \uf0d7 Financial responsibility of the broker -\ndealer; \n \n\uf0d7 Confidentiality; \n \n\uf0d7 Reputation and integrity; \n \n\uf0d7 Responsiveness; \n \uf0d7 Recordkeeping; \n \n\uf0d7 Ability and willingness to commit \ncapital; \n \n\uf0d7 Available technology; and \n \n\uf0d7 Ability to address current market \nconditions. \n \nBCW evaluates the execution, performance, and risk profile of the broker -dealers it uses at least \nquarterly. \n \nB. Research and Other Soft Dollar Benefits \n \nSoft dollar practices are arrangements whereby an investment adviser directs transactions to a broker \u2010\ndealer in exchange for certain products and services that are allowable under SEC rules. Client \ncommissions may be used to pay for brokerage and research services and products as long as they are \neligible under Section 28(e) of the Exchange Act of 1934. Section 28(e) sets forth a \u201csafe harbor,\u201d which \nprovides that an investment adviser that has discretion over a client account is not in breach of its \nfiduci ary duty when paying more than the lowest commission rate available if the adviser determines in \ngood faith that the rate paid is commensurate with the value of brokerage and research services provided \nby the broker \u2010dealer. \n \nBCW does not currently have any soft dollar benefit arrangements. \n \nC. Brokerage for Client Referrals \n \nBCW does not receive client referrals from third parties recommending the use of specific broker -dealer \nbrokerage services. \n \nD. Directed Brokerage \n \nBCW does not allow client directed brokerage. \n \n \nE. Order Aggregation \n \nBCW generally does not combine transaction orders on behalf of multiple clients or allocate the \nsecurities or proceeds on an average price basis among the various participants in the transactions. BCW \ngenerally does not believe this practice would benefit clients . \nF. Trade Error Policy \n \nBCW maintains a record of any trading errors that occur in connection with investment activities of its \nclients. Both gains and losses that result from a trading error made by BCW will be borne or realized by \nBCW . \n \n \nPage 20 of 22",
+      "current_text": "Practices\n \nA.\n \nWe\n \nrecommend\n \nthe\n \nbrokerage\n \nand\n \ncustodial\n \nservices\n \nof\n \nRaymond\n \nJames\n \n(whether\n \none\n \nor\n \nmore\n \n\"Custodian\").\n \nYour\n \nassets\n \nmust\n \nbe\n \nmaintained\n \nin\n \nan\n \naccount\n \nat\n \na\n \n\"qualified\n \ncustodian,\"\n \ngenerally\n \na\n \nbroker-dealer\n \nor\n \nbank.\n \nIn\n \nrecognition\n \nof\n \nthe\n \nvalue\n \nof\n \nthe\n \nservices\n \nthe\n \nCustodian\n \nprovides,\n \nyou\n \nmay\n \npay\n \nhigher\n \ncommissions\n \nand/or\n \ntrading\n \ncosts\n \nthan\n \nthose\n \nthat\n \nmay\n \nbe\n \navailable\n \nelsewhere.\n \n \nWe\n \nseek\n \nto\n \nrecommend\n \na\n \ncustodian/broker\n \nthat\n \nwill\n \nhold\n \nyour\n \nassets\n \nand\n \nexecute\n \ntransactions\n \non\n \nterms\n \nthat\n \nare,\n \noverall,\n \nthe\n \nmost\n \nfavorable\n \ncompared\n \nto\n \nother\n \navailable\n \nproviders\n \nand\n \ntheir\n \nservices.\n \nWe\n \nconsider\n \nvarious\n \nfactors,\n \nincluding:\n \n \n\u25cf\n \nCapability\n \nto\n \nbuy\n \nand\n \nsell\n \nsecurities\n \nfor\n \nyour\n \naccount\n \nitself\n \nor\n \nto\n \nfacilitate\n \nsuch\n \nservices.\n \n\u25cf\n \nThe\n \nlikelihood\n \nthat\n \nyour\n \ntrades\n \nwill\n \nbe\n \nexecuted.\n \n\u25cf\n \nAvailability\n \nof\n \ninvestment\n \nresearch\n \nand\n \ntools.\n \n\u25cf\n \nOverall\n \nquality\n \nof\n \nservices.\n \n\u25cf\n \nCompetitiveness\n \nof\n \nprice.\n \n\u25cf\n \nReputation,\n \nfinancial\n \nstrength,\n \nand\n \nstability.\n \n\u25cf\n \nExisting\n \nrelationship\n \nwith\n \nour\n \nfirm\n \nand\n \nour\n \nother\n \nclients.\n \n \nB.\n \nResearch\n \nand\n \nOther\n \nSoft\n \nDollar\n \nBenefits\n \n \nSoft\n \ndollar\n \npractices\n \nare\n \narrangements\n \nwhereby\n \nan\n \ninvestment\n \nadviser\n \ndirects\n \ntransactions\n \nto\n \na\n \nbroker -dealer\n \nin\n \nexchange\n \nfor\n \ncertain\n \nproducts\n \nand\n \nservices\n \nthat\n \nare\n \nallowable\n \nunder\n \nSEC\n \nrules.\n \nClient\n \ncommissions\n \nmay\n \nbe\n \nused\n \nto\n \npay\n \nfor\n \nbrokerage\n \nand\n \nresearch\n \nservices\n \nand\n \nproducts\n \nas\n \nlong\n \nas\n \nthey\n \nare\n \neligible\n \nunder\n \nSection\n \n28(e)\n \nof\n \nthe\n \nExchange\n \nAct\n \nof\n \n1934.\n \nSection\n \n28(e)\n \nsets\n \nforth\n \na\n \n\u201csafe\n \nharbor ,\u201d\n \nwhich\n \nprovides\n \nthat\n \nan\n \ninvestment\n \nadviser\n \nthat\n \nhas\n \ndiscretion\n \nover\n \na\n \nclient\n \naccount\n \nis\n \nnot\n \nin\n \nbreach\n \nof\n \nits\n \nfiduciary\n \nduty\n \nwhen\n \npaying\n \nmore\n \nthan\n \nthe\n \nlowest\n \ncommission\n \nrate\n \navailable\n \nif\n \nthe\n \nadviser\n \ndetermines\n \nin\n \ngood\n \nfaith\n \nthat\n \nthe\n \nrate\n \npaid\n \nis\n \ncommensurate\n \nwith\n \nthe\n \nvalue\n \nof\n \nbrokerage\n \nand\n \nresearch\n \nservices\n \nprovided\n \nby\n \nthe\n \nbroker -dealer .\n \n \nBCW\n \ndoes\n \nnot\n \ncurrently\n \nhave\n \nany\n \nsoft\n \ndollar\n \nbenefit\n \narrangements.\n \n \n\u25cf\n \nBrokerage\n \nfor\n \nClient\n \nReferrals\n \n \nBCW\n \ndoes\n \nnot\n \nreceive\n \nclient\n \nreferrals\n \nfrom\n \nthird\n \nparties\n \nrecommending\n \nthe\n \nuse\n \nof\n \nspecific\n \nbroker -dealer\n \nbrokerage\n \nservices.\n \n \n\u25cf\n \nDirected\n \nBrokerage\n \n \nBCW\n \ndoes\n \nnot\n \nallow\n \nclient\n \ndirected\n \nbrokerage.\n \n \n \n\u25cf\n \nOrder\n \nAggregation\n \n \n \nBCW\n \ngenerally\n \ndoes\n \nnot\n \ncombine\n \ntransaction\n \norders\n \non\n \nbehalf\n \nof\n \nmultiple\n \nclients\n \nor\n \nallocate\n \nthe\n \nsecurities\n \nor\n \nproceeds\n \non\n \nan\n \naverage\n \nprice\n \nbasis\n \namong\n \nthe\n \nvarious\n \nparticipants\n \nin\n \nthe\n \ntransactions.\n \nBCW\n \ngenerally\n \ndoes\n \nnot\n \nbelieve\n \nthis\n \npractice\n \nwould\n \nbenefit\n \nclients.\n \n\u25cf\n \nTrade\n \nError\n \nPolicy\n \n \nBCW\n \nmaintains\n \na\n \nrecord\n \nof\n \nany\n \ntrading\n \nerrors\n \nthat\n \noccur\n \nin\n \nconnection\n \nwith\n \ninvestment\n \nactivities\n \nof\n \nits\n \nclients.\n \nBoth\n \ngains\n \nand\n \nlosses\n \nthat\n \nresult\n \nfrom\n \na\n \ntrading\n \nerror\n \nmade\n \nby\n \nBCW\n \nwill\n \nbe\n \nborne\n \nor\n \nrealized\n \nby\n \nBCW .",
+      "previous_word_count": 668,
+      "current_word_count": 410,
+      "word_delta": -258,
       "added_terms": [
-        "and",
-        "not",
-        "bcw",
-        "broker/dealer",
-        "its",
-        "financial",
-        "industry",
-        "registration"
+        "assets",
+        "overall",
+        "other",
+        "recommend",
+        "brokerage",
+        "raymond",
+        "james",
+        "one"
       ],
-      "removed_terms": [],
+      "removed_terms": [
+        "execution",
+        "bcw",
+        "best",
+        "broker",
+        "market",
+        "factors",
+        "price",
+        "transaction"
+      ],
       "is_material": true,
-      "change_summary": "added; added terms: and, not, bcw, broker/dealer, its, financial, industry, registration",
+      "change_summary": "modified; added terms: assets, overall, other, recommend, brokerage, raymond, james, one; removed terms: execution, bcw, best, broker, market, factors, price, transaction",
       "scores": {
         "marketing_rule_relevance": 5.5,
         "client_service_mix_change": 8.88,
         "operational_complexity_change": 7.0,
-        "confidence": 5.5,
-        "composite": 6.89
+        "confidence": 10.0,
+        "composite": 7.34
       },
       "matched_keywords": {
         "marketing_rule_relevance": [],
         "client_service_mix_change": [
-          "advisory",
           "client",
-          "clients"
+          "clients",
+          "services"
         ],
         "operational_complexity_change": []
       },
-      "matched_themes": [],
+      "matched_themes": [
+        {
+          "theme_id": "exam_priorities_2026_compliance",
+          "theme_name": "2026 examination priorities: compliance program readiness",
+          "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+          "source_date": "2025-11-17",
+          "keyword_hits": [
+            "fiduciary duty"
+          ]
+        }
+      ],
       "focus_terms": [
-        "broker/dealer",
-        "financial",
-        "industry",
-        "registration"
+        "fiduciary duty",
+        "assets",
+        "overall",
+        "other",
+        "recommend",
+        "brokerage",
+        "raymond",
+        "james"
       ],
-      "evidence_focus_term": "broker/dealer",
+      "evidence_focus_term": "fiduciary duty",
       "evidence_focus_hits": [
-        "broker/dealer"
+        "fiduciary duty",
+        "assets",
+        "overall",
+        "other",
+        "recommend",
+        "brokerage",
+        "raymond",
+        "james"
       ],
-      "evidence_excerpt": "Broker/Dealer or Broker/Dealer",
-      "score_rationale": "service-mix signal: advisory, client, clients"
+      "evidence_excerpt": "...tment adviser that has discretion over a client account is not in breach of its fiduciary duty when paying more than the lowest commission rate available if the adviser determines in good faith that the rate paid is commensurate with the va...",
+      "score_rationale": "service-mix signal: client, clients, services; SEC theme match: 2026 examination priorities: compliance program readiness"
     },
     {
       "section_key": "item_16",
@@ -507,18 +520,18 @@
       "current_word_count": 150,
       "word_delta": 150,
       "added_terms": [
-        "the",
         "bcw",
         "authority",
         "account",
         "discretionary",
-        "and",
         "direct",
-        "this"
+        "any",
+        "granted",
+        "upon"
       ],
       "removed_terms": [],
       "is_material": true,
-      "change_summary": "added; added terms: the, bcw, authority, account, discretionary, and, direct, this",
+      "change_summary": "added; added terms: bcw, authority, account, discretionary, direct, any, granted, upon",
       "scores": {
         "marketing_rule_relevance": 5.5,
         "client_service_mix_change": 7.75,
@@ -539,17 +552,77 @@
       },
       "matched_themes": [],
       "focus_terms": [
-        "discretionary",
         "custody",
         "authority",
-        "direct"
+        "direct",
+        "granted"
       ],
-      "evidence_focus_term": "discretionary",
+      "evidence_focus_term": "custody",
       "evidence_focus_hits": [
-        "discretionary"
+        "custody",
+        "authority",
+        "direct",
+        "granted"
       ],
-      "evidence_excerpt": "The discretionary client",
-      "score_rationale": "service-mix signal: client, clients; ops-complexity signal: custody, discretionary"
+      "evidence_excerpt": "...CW , this discretionary authority does not grant the Firm the authority to have custody of any assets in the client\u2019 s account or to direct the delivery of any securities or the payment of any funds held in the account to BCW . The discreti...",
+      "score_rationale": "service-mix signal: client, clients; ops-complexity signal: custody"
+    },
+    {
+      "section_key": "item_10",
+      "section_title": "Other",
+      "change_type": "added",
+      "similarity": 0.0,
+      "previous_text": "",
+      "current_text": "Financial\n \nIndustry\n \nActivities\n \nand\n \nAffiliations\n \nRegistration\n \nas\n \na\n \nBroker/Dealer\n \nor\n \nBroker/Dealer\n \nRepresentative\n \n \nBCW\n \nis\n \nnot\n \nregistered\n \nand\n \ndoes\n \nnot\n \nhave\n \nan\n \napplication\n \npending\n \nto\n \nregister ,\n \nas\n \na\n \nbroker\n \ndealer\n \nand\n \nits\n \nmanagement\n \npersons\n \nare\n \nnot\n \nregistered\n \nas\n \nbroker/dealer\n \nrepresentative.\n \n \nRegistration\n \nas\n \na\n \nFutures\n \nCommission\n \nmerchant,\n \nCommodity\n \nPool\n \nOperator\n \n \nBCW\n \nand\n \nits\n \nmanagement\n \npersons\n \nare\n \nnot\n \nregistered\n \nand\n \ndo\n \nnot\n \nhave\n \napplication\n \npending\n \nto\n \nregister ,\n \nas\n \na\n \nfutures\n \ncommission\n \nmerchant,\n \ncommodity\n \npool\n \noperator/advisor .\n \n \nRelationships\n \nMaterial\n \nto\n \nthis\n \nAdvisory\n \nBusiness\n \nand\n \nPossible\n \nConflicts\n \nof\n \nInterest\n \nNeither\n \nBCW\n \nnor\n \nany\n \nof\n \nBCW\u2019 s\n \nrepresentatives\n \nmaintain\n \nfinancial\n \nindustry\n \nrelationships\n \nmaterial\n \nto\n \nthis\n \nadvisory\n \nbusiness\n \nor\n \nthat\n \npresent\n \na\n \nconflict\n \nof\n \ninterest.\n \nSelection\n \nof\n \nother\n \nAdvisors\n \nBCW\n \ndoes\n \nnot\n \nrecommend\n \nor\n \nselect\n \nother\n \ninvestment\n \nadvisers\n \nfor\n \nits\n \nclients.",
+      "previous_word_count": 0,
+      "current_word_count": 126,
+      "word_delta": 126,
+      "added_terms": [
+        "bcw",
+        "broker/dealer",
+        "its",
+        "financial",
+        "industry",
+        "registration",
+        "representative",
+        "does"
+      ],
+      "removed_terms": [],
+      "is_material": true,
+      "change_summary": "added; added terms: bcw, broker/dealer, its, financial, industry, registration, representative, does",
+      "scores": {
+        "marketing_rule_relevance": 5.5,
+        "client_service_mix_change": 7.75,
+        "operational_complexity_change": 7.0,
+        "confidence": 5.5,
+        "composite": 6.55
+      },
+      "matched_keywords": {
+        "marketing_rule_relevance": [],
+        "client_service_mix_change": [
+          "advisory",
+          "clients"
+        ],
+        "operational_complexity_change": []
+      },
+      "matched_themes": [],
+      "focus_terms": [
+        "broker/dealer",
+        "financial",
+        "industry",
+        "registration",
+        "representative"
+      ],
+      "evidence_focus_term": "broker/dealer",
+      "evidence_focus_hits": [
+        "broker/dealer",
+        "financial",
+        "industry",
+        "registration",
+        "representative"
+      ],
+      "evidence_excerpt": "Financial Industry Activities and Affiliations Registration as a Broker/Dealer or Broker/Dealer Representative BCW is not registered and does not have an application pending to register , as a broker dealer and its management persons are no...",
+      "score_rationale": "service-mix signal: advisory, clients"
     },
     {
       "section_key": "item_9",
@@ -565,17 +638,17 @@
         "information"
       ],
       "removed_terms": [
-        "and",
-        "not",
         "bcw",
         "other",
         "broker/dealer",
         "its",
-        "are",
-        "material"
+        "material",
+        "business",
+        "management",
+        "financial"
       ],
       "is_material": true,
-      "change_summary": "modified; added terms: information; removed terms: and, not, bcw, other, broker/dealer, its, are, material",
+      "change_summary": "modified; added terms: information; removed terms: bcw, other, broker/dealer, its, material, business, management, financial",
       "scores": {
         "marketing_rule_relevance": 5.5,
         "client_service_mix_change": 7.75,
@@ -599,64 +672,8 @@
       "evidence_focus_hits": [
         "information"
       ],
-      "evidence_excerpt": "Information Registered investment",
+      "evidence_excerpt": "Information Registered investment advisers are required to disclose any legal or disciplinary events that are material to a client\u2019 s or prospective client\u2019 s evaluation of the advisory business or integrity of the Firm\u2019 s management. Be...",
       "score_rationale": "service-mix signal: advisory, client"
-    },
-    {
-      "section_key": "item_17",
-      "section_title": "Voting",
-      "change_type": "added",
-      "similarity": 0.0,
-      "previous_text": "",
-      "current_text": "Client\n \nSecurities\n \nBCW\n \ndoes\n \nnot\n \nperform\n \nproxy\n \nvoting\n \nservices\n \non\n \nthe\n \nclient\u2019 s\n \nbehalf.\n \nClients\n \nare\n \nencouraged\n \nto\n \nread\n \nthrough\n \nthe\n \ninformation\n \nprovided\n \nwith\n \nthe\n \nproxy\n \nvoting\n \ndocuments\n \nand\n \nto\n \nmake\n \na\n \ndetermination\n \nbased\n \non\n \nthe\n \ninformation\n \nprovided.\n \nUpon\n \nthe\n \nclient\u2019 s\n \nrequest,\n \nBCW\u2019 s\n \nrepresentatives\n \nmay\n \nprovide\n \nlimited\n \nclarifications\n \nof\n \nthe\n \nissues\n \npresented\n \nin\n \nthe\n \nproxy\n \nvoting\n \nmaterials\n \nbased\n \non\n \nhis\n \nor\n \nher\n \nunderstanding\n \nof\n \nissues\n \npresented\n \nin\n \nthe\n \nproxy\n \nvoting\n \nmaterials.\n \nHowever ,\n \nclients\n \nhave\n \nthe\n \nultimate\n \nresponsibility\n \nfor\n \nmaking\n \nall\n \nproxy\n \nvoting\n \ndecisions.",
-      "previous_word_count": 0,
-      "current_word_count": 86,
-      "word_delta": 86,
-      "added_terms": [
-        "the",
-        "proxy",
-        "voting",
-        "bcw",
-        "information",
-        "provided",
-        "based",
-        "issues"
-      ],
-      "removed_terms": [],
-      "is_material": true,
-      "change_summary": "added; added terms: the, proxy, voting, bcw, information, provided, based, issues",
-      "scores": {
-        "marketing_rule_relevance": 4.93,
-        "client_service_mix_change": 9.43,
-        "operational_complexity_change": 4.93,
-        "confidence": 5.5,
-        "composite": 6.34
-      },
-      "matched_keywords": {
-        "marketing_rule_relevance": [],
-        "client_service_mix_change": [
-          "client",
-          "clients",
-          "service",
-          "services"
-        ],
-        "operational_complexity_change": []
-      },
-      "matched_themes": [],
-      "focus_terms": [
-        "proxy",
-        "voting",
-        "information",
-        "provided",
-        "based",
-        "issues"
-      ],
-      "evidence_focus_term": "information",
-      "evidence_focus_hits": [
-        "information"
-      ],
-      "evidence_excerpt": "information provided",
-      "score_rationale": "service-mix signal: client, clients, service"
     },
     {
       "section_key": "item_18",
@@ -669,18 +686,18 @@
       "current_word_count": 77,
       "word_delta": 77,
       "added_terms": [
-        "not",
-        "the",
         "bcw",
         "does",
         "more",
         "financial",
         "any",
-        "bankruptcy"
+        "bankruptcy",
+        "petition",
+        "information"
       ],
       "removed_terms": [],
       "is_material": true,
-      "change_summary": "added; added terms: not, the, bcw, does, more, financial, any, bankruptcy",
+      "change_summary": "added; added terms: bcw, does, more, financial, any, bankruptcy, petition, information",
       "scores": {
         "marketing_rule_relevance": 6.28,
         "client_service_mix_change": 7.03,
@@ -699,14 +716,81 @@
       "matched_themes": [],
       "focus_terms": [
         "financial",
-        "bankruptcy"
+        "bankruptcy",
+        "petition",
+        "information"
       ],
       "evidence_focus_term": "financial",
       "evidence_focus_hits": [
-        "financial"
+        "financial",
+        "bankruptcy",
+        "petition",
+        "information"
       ],
-      "evidence_excerpt": "Financial Condition",
+      "evidence_excerpt": "...nt of fees of more than $1200 per client, six (6) months or more in advance. B. Financial Condition BCW does not have any financial impairment that would preclude the Firm from meeting contractual commitments to clients. C. Bankruptcy Petit...",
       "score_rationale": "service-mix signal: client, clients"
+    },
+    {
+      "section_key": "item_17",
+      "section_title": "Voting",
+      "change_type": "added",
+      "similarity": 0.0,
+      "previous_text": "",
+      "current_text": "Client\n \nSecurities\n \nBCW\n \ndoes\n \nnot\n \nperform\n \nproxy\n \nvoting\n \nservices\n \non\n \nthe\n \nclient\u2019 s\n \nbehalf.\n \nClients\n \nare\n \nencouraged\n \nto\n \nread\n \nthrough\n \nthe\n \ninformation\n \nprovided\n \nwith\n \nthe\n \nproxy\n \nvoting\n \ndocuments\n \nand\n \nto\n \nmake\n \na\n \ndetermination\n \nbased\n \non\n \nthe\n \ninformation\n \nprovided.\n \nUpon\n \nthe\n \nclient\u2019 s\n \nrequest,\n \nBCW\u2019 s\n \nrepresentatives\n \nmay\n \nprovide\n \nlimited\n \nclarifications\n \nof\n \nthe\n \nissues\n \npresented\n \nin\n \nthe\n \nproxy\n \nvoting\n \nmaterials\n \nbased\n \non\n \nhis\n \nor\n \nher\n \nunderstanding\n \nof\n \nissues\n \npresented\n \nin\n \nthe\n \nproxy\n \nvoting\n \nmaterials.\n \nHowever ,\n \nclients\n \nhave\n \nthe\n \nultimate\n \nresponsibility\n \nfor\n \nmaking\n \nall\n \nproxy\n \nvoting\n \ndecisions.",
+      "previous_word_count": 0,
+      "current_word_count": 86,
+      "word_delta": 86,
+      "added_terms": [
+        "proxy",
+        "voting",
+        "bcw",
+        "information",
+        "provided",
+        "based",
+        "issues",
+        "presented"
+      ],
+      "removed_terms": [],
+      "is_material": true,
+      "change_summary": "added; added terms: proxy, voting, bcw, information, provided, based, issues, presented",
+      "scores": {
+        "marketing_rule_relevance": 4.93,
+        "client_service_mix_change": 8.31,
+        "operational_complexity_change": 4.93,
+        "confidence": 5.5,
+        "composite": 6.0
+      },
+      "matched_keywords": {
+        "marketing_rule_relevance": [],
+        "client_service_mix_change": [
+          "client",
+          "clients",
+          "services"
+        ],
+        "operational_complexity_change": []
+      },
+      "matched_themes": [],
+      "focus_terms": [
+        "proxy",
+        "voting",
+        "information",
+        "provided",
+        "based",
+        "issues",
+        "presented"
+      ],
+      "evidence_focus_term": "proxy",
+      "evidence_focus_hits": [
+        "proxy",
+        "voting",
+        "information",
+        "provided",
+        "based",
+        "issues",
+        "presented"
+      ],
+      "evidence_excerpt": "Client Securities BCW does not perform proxy voting services on the client\u2019 s behalf. Clients are encouraged to read through the information provided with the proxy voting documents and to make a determination based on the information pr...",
+      "score_rationale": "service-mix signal: client, clients, services"
     },
     {
       "section_key": "item_1",
@@ -720,17 +804,17 @@
       "word_delta": -1239,
       "added_terms": [],
       "removed_terms": [
-        "the",
-        "and",
         "bcw",
         "bell",
         "city",
         "wealth",
-        "for",
-        "planning"
+        "planning",
+        "any",
+        "financial",
+        "management"
       ],
       "is_material": true,
-      "change_summary": "modified; removed terms: the, and, bcw, bell, city, wealth, for, planning",
+      "change_summary": "modified; removed terms: bcw, bell, city, wealth, planning, any, financial, management",
       "scores": {
         "marketing_rule_relevance": 5.5,
         "client_service_mix_change": 5.5,
@@ -764,15 +848,15 @@
         "changes",
         "brochure",
         "disclosure",
-        "this",
         "time",
-        "the",
         "material",
-        "may"
+        "bell",
+        "city",
+        "wealth"
       ],
       "removed_terms": [],
       "is_material": true,
-      "change_summary": "added; added terms: changes, brochure, disclosure, this, time, the, material, may",
+      "change_summary": "added; added terms: changes, brochure, disclosure, time, material, bell, city, wealth",
       "scores": {
         "marketing_rule_relevance": 5.5,
         "client_service_mix_change": 6.62,
@@ -796,9 +880,12 @@
       ],
       "evidence_focus_term": "changes",
       "evidence_focus_hits": [
-        "changes"
+        "changes",
+        "brochure",
+        "disclosure",
+        "material"
       ],
-      "evidence_excerpt": "Changes Since",
+      "evidence_excerpt": "Changes Since Bell City Wealth\u2019 s last filing on January 15, 2026, no material changes have been made to this brochure. Future Changes From time to time, we may amend this Disclosure Brochure to reflect changes in our business practices,...",
       "score_rationale": "service-mix signal: client"
     },
     {
@@ -813,17 +900,17 @@
       "word_delta": 41,
       "added_terms": [
         "bcw",
-        "for",
         "referrals",
         "other",
         "compensation",
-        "not",
         "another",
-        "person"
+        "person",
+        "entity",
+        "soliciting"
       ],
       "removed_terms": [],
       "is_material": true,
-      "change_summary": "added; added terms: bcw, for, referrals, other, compensation, not, another, person",
+      "change_summary": "added; added terms: bcw, referrals, other, compensation, another, person, entity, soliciting",
       "scores": {
         "marketing_rule_relevance": 5.68,
         "client_service_mix_change": 6.43,
@@ -845,14 +932,21 @@
         "other",
         "compensation",
         "another",
-        "person"
+        "person",
+        "entity",
+        "soliciting"
       ],
-      "evidence_focus_term": "other",
+      "evidence_focus_term": "referrals",
       "evidence_focus_hits": [
+        "referrals",
         "other",
-        "another"
+        "compensation",
+        "another",
+        "person",
+        "entity",
+        "soliciting"
       ],
-      "evidence_excerpt": "another person",
+      "evidence_excerpt": "Referrals and Other Compensation Client Referrals BCW will not receive any economic benefit from another person or entity for soliciting or referring clients. Other Compensation BCW does not pay another person or entity for referring or ...",
       "score_rationale": "service-mix signal: client, clients"
     },
     {
@@ -867,17 +961,17 @@
       "word_delta": 14,
       "added_terms": [
         "fees",
-        "and",
         "side-by-side",
         "management",
         "bell",
         "city",
         "wealth",
-        "does"
+        "does",
+        "charge"
       ],
       "removed_terms": [],
       "is_material": true,
-      "change_summary": "added; added terms: fees, and, side-by-side, management, bell, city, wealth, does",
+      "change_summary": "added; added terms: fees, side-by-side, management, bell, city, wealth, does, charge",
       "scores": {
         "marketing_rule_relevance": 4.86,
         "client_service_mix_change": 3.73,
@@ -904,15 +998,15 @@
         }
       ],
       "focus_terms": [
-        "performance",
         "side-by-side",
-        "wealth"
+        "charge"
       ],
       "evidence_focus_term": "side-by-side",
       "evidence_focus_hits": [
-        "side-by-side"
+        "side-by-side",
+        "charge"
       ],
-      "evidence_excerpt": "Side-By-Side Management",
+      "evidence_excerpt": "Fees and Side-By-Side Management Bell City Wealth does not charge or accept performance-based fees.",
       "score_rationale": "SEC theme match: Advisers Act marketing rule disclosures"
     },
     {
@@ -951,7 +1045,7 @@
       "evidence_focus_hits": [
         "contents"
       ],
-      "evidence_excerpt": "Contents .............................................................................................................................",
+      "evidence_excerpt": "of Contents .............................................................................................................................",
       "score_rationale": ""
     },
     {
@@ -970,31 +1064,29 @@
       "change_summary": "modified",
       "scores": {
         "marketing_rule_relevance": 0.2,
-        "client_service_mix_change": 6.2,
+        "client_service_mix_change": 3.95,
         "operational_complexity_change": 1.7,
         "confidence": 6.0,
-        "composite": 2.96
+        "composite": 2.28
       },
       "matched_keywords": {
         "marketing_rule_relevance": [],
         "client_service_mix_change": [
-          "client",
           "clients",
-          "individual",
-          "trust"
+          "high net worth"
         ],
         "operational_complexity_change": []
       },
       "matched_themes": [],
       "focus_terms": [
-        "trust"
+        "high net worth"
       ],
-      "evidence_focus_term": "trust",
+      "evidence_focus_term": "high net worth",
       "evidence_focus_hits": [
-        "trust"
+        "high net worth"
       ],
-      "evidence_excerpt": "trusts, estates,",
-      "score_rationale": "service-mix signal: trust"
+      "evidence_excerpt": "...o many different types of clients. These clients generally include individuals, high net worth individuals, trusts, estates, corporations, and other types of business entities. Minimum Account Size Adviser has a minimum investment account b...",
+      "score_rationale": ""
     },
     {
       "section_key": "item_11",
@@ -1011,10 +1103,10 @@
         "ethics",
         "conflicts",
         "interest",
-        "and",
         "personal",
         "trading",
-        "might"
+        "might",
+        "time-to-time"
       ],
       "removed_terms": [
         "representativ",
@@ -1026,28 +1118,33 @@
         "page"
       ],
       "is_material": true,
-      "change_summary": "modified; added terms: representatives, ethics, conflicts, interest, and, personal, trading, might; removed terms: representativ, representati, ves, migh, time, to-time, page",
+      "change_summary": "modified; added terms: representatives, ethics, conflicts, interest, personal, trading, might, time-to-time; removed terms: representativ, representati, ves, migh, time, to-time, page",
       "scores": {
-        "marketing_rule_relevance": 1.34,
-        "client_service_mix_change": 4.72,
+        "marketing_rule_relevance": 0.22,
+        "client_service_mix_change": 3.59,
         "operational_complexity_change": 0.22,
         "confidence": 8.5,
-        "composite": 2.79
+        "composite": 2.06
       },
       "matched_keywords": {
-        "marketing_rule_relevance": [
-          "review"
-        ],
+        "marketing_rule_relevance": [],
         "client_service_mix_change": [
           "advisory",
-          "client",
           "clients",
-          "service",
           "services"
         ],
         "operational_complexity_change": []
       },
       "matched_themes": [
+        {
+          "theme_id": "exam_priorities_2026_compliance",
+          "theme_name": "2026 examination priorities: compliance program readiness",
+          "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+          "source_date": "2025-11-17",
+          "keyword_hits": [
+            "fiduciary duty"
+          ]
+        },
         {
           "theme_id": "exam_priorities_2026_operations",
           "theme_name": "2026 examination priorities: operations and data protection",
@@ -1059,6 +1156,7 @@
         }
       ],
       "focus_terms": [
+        "fiduciary duty",
         "records",
         "representatives",
         "ethics",
@@ -1066,14 +1164,24 @@
         "interest",
         "personal",
         "trading",
-        "might"
+        "might",
+        "time-to-time"
       ],
-      "evidence_focus_term": "representatives",
+      "evidence_focus_term": "fiduciary duty",
       "evidence_focus_hits": [
-        "representatives"
+        "fiduciary duty",
+        "records",
+        "representatives",
+        "ethics",
+        "conflicts",
+        "interest",
+        "personal",
+        "trading",
+        "might",
+        "time-to-time"
       ],
-      "evidence_excerpt": "All representatives will",
-      "score_rationale": "SEC theme match: 2026 examination priorities: operations and data protection"
+      "evidence_excerpt": "...in the best interest of each of its clients. BCW and its representatives have a fiduciary duty to all clients. BCW and its representatives \u2019fiduciary duty to clients is considered the core underlying principle for BCW\u2019 s Code of Ethics and...",
+      "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
     }
   ]
 }
