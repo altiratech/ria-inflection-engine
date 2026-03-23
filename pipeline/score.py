@@ -12,6 +12,50 @@ DIMENSION_LABELS = {
 }
 MARKETING_CONTEXT_WINDOW = 96
 MARKETING_RULE_CONTEXT_RULES = {
+    "advertisement": {
+        "accept": (
+            "testimonial",
+            "endorsement",
+            "promoter",
+            "solicitor",
+            "rating",
+            "ratings",
+            "review",
+            "reviews",
+            "compensated",
+            "gross performance",
+            "net performance",
+        ),
+        "reject": (
+            "reimbursement for training",
+            "travel expenses",
+            "bonus programs",
+            "gifts, meals",
+            "marketing and/or override fee",
+        ),
+    },
+    "advertising": {
+        "accept": (
+            "testimonial",
+            "endorsement",
+            "promoter",
+            "solicitor",
+            "rating",
+            "ratings",
+            "review",
+            "reviews",
+            "compensated",
+            "gross performance",
+            "net performance",
+        ),
+        "reject": (
+            "reimbursement for training",
+            "travel expenses",
+            "bonus programs",
+            "gifts, meals",
+            "marketing and/or override fee",
+        ),
+    },
     "compensated": {
         "accept": ("testimonial", "endorsement", "promoter", "solicitor", "marketing", "advertising"),
         "reject": (),
@@ -44,14 +88,72 @@ MARKETING_RULE_CONTEXT_RULES = {
         "reject": ("credit rating", "rating agency", "debt security", "bond rating", "security rating"),
     },
     "review": {
-        "accept": ("client", "online", "public", "google", "yelp", "third-party", "third party", "rating", "testimonial", "endorsement"),
-        "reject": ("review of accounts",),
+        "accept": (
+            "client review",
+            "client reviews",
+            "online",
+            "public",
+            "google",
+            "yelp",
+            "third-party",
+            "third party",
+            "rating",
+            "testimonial",
+            "endorsement",
+        ),
+        "reject": (
+            "review of accounts",
+            "accounts are reviewed",
+            "reviewed typically",
+            "regular reviews",
+            "review and discuss",
+            "compare reports",
+            "reviewed in the context",
+            "more frequent reviews",
+        ),
     },
     "third-party": {
-        "accept": ("rating", "ratings", "testimonial", "endorsement", "promoter", "solicitor", "marketing", "advertising"),
+        "accept": ("rating", "ratings", "testimonial", "endorsement", "promoter", "solicitor", "review", "reviews"),
         "reject": ("service provider", "service providers", "research service", "research services"),
     },
 }
+LOW_VALUE_SECTION_RULES = (
+    {
+        "rule_id": "custodian_platform_boilerplate",
+        "patterns": (
+            re.compile(r"\beducational conferences? and events?\b", re.IGNORECASE),
+            re.compile(r"\bpractice management\b", re.IGNORECASE),
+            re.compile(r"\bmarketing consulting and support\b", re.IGNORECASE),
+            re.compile(r"\brecruiting and custodial search consulting\b", re.IGNORECASE),
+            re.compile(r"\bplatform services include\b", re.IGNORECASE),
+            re.compile(r"\badministrative support\b", re.IGNORECASE),
+            re.compile(r"\brecord keeping\b", re.IGNORECASE),
+            re.compile(r"\bresearch and brokerage services\b", re.IGNORECASE),
+            re.compile(r"\bat no additional charge\b", re.IGNORECASE),
+        ),
+        "min_matches": 2,
+        "penalties": {
+            "client_service_mix_change": 1.5,
+            "operational_complexity_change": 1.25,
+        },
+    },
+    {
+        "rule_id": "sponsor_incentive_boilerplate",
+        "patterns": (
+            re.compile(r"\bgifts, meals, or entertainment\b", re.IGNORECASE),
+            re.compile(r"\bbonus programs\b", re.IGNORECASE),
+            re.compile(r"\breimbursement for training\b", re.IGNORECASE),
+            re.compile(r"\btravel expenses to conferences? or events\b", re.IGNORECASE),
+            re.compile(r"\bthird parties or life insurance carriers\b", re.IGNORECASE),
+            re.compile(r"\bmarketing and/?or override fee\b", re.IGNORECASE),
+        ),
+        "min_matches": 2,
+        "penalties": {
+            "marketing_rule_relevance": 1.75,
+            "client_service_mix_change": 0.75,
+        },
+    },
+)
 GENERIC_FOCUS_TERMS = {
     "account",
     "accounts",
@@ -94,7 +196,7 @@ def keyword_hits(text: str, keywords: list[str]) -> list[str]:
 
 
 def marketing_rule_keyword_hits(text: str, keywords: list[str]) -> list[str]:
-    collapsed = " ".join(text.lower().split())
+    collapsed = collapsed_text(text)
     hits: list[str] = []
     for keyword in keywords:
         pattern = keyword_pattern(keyword)
@@ -105,6 +207,31 @@ def marketing_rule_keyword_hits(text: str, keywords: list[str]) -> list[str]:
             continue
         hits.append(keyword)
     return hits
+
+
+def collapsed_text(text: str) -> str:
+    return " ".join(text.lower().split())
+
+
+def low_value_section_penalties(text: str) -> dict[str, float]:
+    collapsed = collapsed_text(text)
+    penalties = {key: 0.0 for key in DIMENSION_LABELS}
+    if not collapsed:
+        return penalties
+
+    for rule in LOW_VALUE_SECTION_RULES:
+        match_count = sum(1 for pattern in rule["patterns"] if pattern.search(collapsed))
+        if match_count < rule["min_matches"]:
+            continue
+        scale = min(1.6, 1.0 + 0.2 * (match_count - rule["min_matches"]))
+        for dimension_key, penalty in rule["penalties"].items():
+            penalties[dimension_key] = round(min(3.0, penalties[dimension_key] + (penalty * scale)), 2)
+    return penalties
+
+
+def low_value_excerpt_penalty(text: str) -> float:
+    penalties = low_value_section_penalties(text)
+    return round(sum(penalties.values()) * 0.25, 2)
 
 
 def has_marketing_rule_context(text: str, keyword: str, matches: list[re.Match[str]]) -> bool:
@@ -379,6 +506,7 @@ def anchored_excerpt(text: str, focus_terms: list[str], *, limit: int = 240) -> 
         if chunk.splitlines() and is_heading_line(chunk.splitlines()[0]):
             score += 0.4
         score -= table_like_penalty(chunk)
+        score -= low_value_excerpt_penalty(chunk)
         score -= max(0.0, (len(collapsed) - 480) / 600)
         score += max(0.0, 0.25 - 0.03 * index)
         if score > best_score:
@@ -433,23 +561,20 @@ def score_rationale(
 def score_dimension(
     delta: dict[str, Any],
     *,
+    search_text: str,
     keywords: list[str],
     preferred_sections: list[str],
     keyword_matcher=keyword_hits,
+    penalty: float = 0.0,
 ) -> tuple[float, list[str]]:
-    search_text = " ".join(
-        [
-            str(delta.get("current_text", "")),
-            " ".join(delta.get("added_terms", [])),
-            " ".join(delta.get("removed_terms", [])),
-        ]
-    )
     hits = keyword_matcher(search_text, keywords)
     hit_factor = min(1.0, len(hits) / 4)
     similarity_factor = min(1.0, max(0.0, 1.0 - float(delta["similarity"])) / 0.4)
     word_factor = min(1.0, abs(int(delta["word_delta"])) / 120)
     section_bonus = 0.15 if delta["section_key"] in preferred_sections else 0.0
     score = min(10.0, round(10 * (0.45 * hit_factor + 0.35 * similarity_factor + 0.2 * word_factor + section_bonus), 2))
+    if penalty:
+        score = round(max(0.0, score - penalty), 2)
     return score, hits
 
 
@@ -502,21 +627,35 @@ def score_firm_delta(
     for delta in section_deltas:
         if not delta["is_material"]:
             continue
+        search_text = " ".join(
+            [
+                str(delta.get("current_text", "")),
+                " ".join(delta.get("added_terms", [])),
+                " ".join(delta.get("removed_terms", [])),
+            ]
+        )
+        low_value_penalties = low_value_section_penalties(search_text)
         marketing_score, marketing_hits = score_dimension(
             delta,
+            search_text=search_text,
             keywords=dimensions["marketing_rule_relevance"]["keywords"],
             preferred_sections=dimensions["marketing_rule_relevance"]["preferred_sections"],
             keyword_matcher=marketing_rule_keyword_hits,
+            penalty=low_value_penalties["marketing_rule_relevance"],
         )
         client_score, client_hits = score_dimension(
             delta,
+            search_text=search_text,
             keywords=dimensions["client_service_mix_change"]["keywords"],
             preferred_sections=dimensions["client_service_mix_change"]["preferred_sections"],
+            penalty=low_value_penalties["client_service_mix_change"],
         )
         ops_score, ops_hits = score_dimension(
             delta,
+            search_text=search_text,
             keywords=dimensions["operational_complexity_change"]["keywords"],
             preferred_sections=dimensions["operational_complexity_change"]["preferred_sections"],
+            penalty=low_value_penalties["operational_complexity_change"],
         )
         confidence = score_confidence(delta)
         composite = round(

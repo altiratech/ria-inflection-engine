@@ -3,7 +3,13 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from pipeline.score import anchored_excerpt, keyword_hits, marketing_rule_keyword_hits, score_firm_delta
+from pipeline.score import (
+    anchored_excerpt,
+    keyword_hits,
+    low_value_section_penalties,
+    marketing_rule_keyword_hits,
+    score_firm_delta,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -151,6 +157,43 @@ def test_marketing_rule_keyword_hits_require_marketing_context() -> None:
     assert signal_hits == ["rating", "third-party", "review", "compensated", "advertising", "performance"]
 
 
+def test_marketing_rule_keyword_hits_ignore_generic_account_review_language() -> None:
+    text = (
+        "Accounts are reviewed typically each quarter in the context of each client's stated investment objectives. "
+        "More frequent reviews may be triggered by material changes, and clients are urged to compare reports from custodians."
+    )
+
+    hits = marketing_rule_keyword_hits(text, ["review"])
+
+    assert hits == []
+
+
+def test_marketing_rule_keyword_hits_ignore_sponsor_reimbursement_boilerplate() -> None:
+    text = (
+        "The incentives likely include gifts, meals, or entertainment of reasonable value, participation in bonus programs, "
+        "reimbursement for training, marketing, educational efforts, advertising, or travel expenses to conferences or events "
+        "sponsored by third parties or life insurance carriers."
+    )
+
+    hits = marketing_rule_keyword_hits(text, ["advertising", "third-party"])
+
+    assert hits == []
+
+
+def test_low_value_section_penalties_flag_custodian_platform_boilerplate() -> None:
+    text = (
+        "Schwab also offers other services intended to help us manage and further develop our business enterprise. "
+        "These services include educational conferences and events, publications and conferences on practice management, "
+        "marketing consulting and support, and recruiting and custodial search consulting."
+    )
+
+    penalties = low_value_section_penalties(text)
+
+    assert penalties["marketing_rule_relevance"] == 0.0
+    assert penalties["client_service_mix_change"] > 0.0
+    assert penalties["operational_complexity_change"] > 0.0
+
+
 def test_score_firm_delta_does_not_promote_rating_from_operating_fragment() -> None:
     firm_context = {
         "firm_id": "326354",
@@ -230,3 +273,42 @@ def test_score_firm_delta_does_not_treat_credit_ratings_as_marketing_rule_signal
     assert evidence["focus_term"] != "rating"
     assert "marketing-rule signal" not in evidence["score_rationale"].lower()
     assert evidence["matched_themes"] == []
+
+
+def test_score_firm_delta_does_not_treat_account_review_cycles_as_marketing_signal() -> None:
+    firm_context = {
+        "firm_id": "312325",
+        "firm_name": "Edgerock Wealth Management",
+        "state": "KS",
+        "sec_number": "801-312325",
+        "current_snapshot": {"submitted_at": "20260218", "file_name": "current.pdf"},
+        "prior_snapshot": {"submitted_at": "20260121", "file_name": "prior.pdf"},
+        "filing_context": {"raum_current": "315000000", "raum_prior": "302000000"},
+    }
+    section_deltas = [
+        {
+            "section_key": "item_13",
+            "section_title": "Review of Accounts",
+            "change_type": "modified",
+            "similarity": 0.58,
+            "previous_text": "Accounts were reviewed periodically.",
+            "current_text": (
+                "Accounts are reviewed typically each quarter in the context of each client's stated investment objectives "
+                "and guidelines. More frequent reviews may be triggered by material changes, and clients are urged to compare "
+                "reports from custodians."
+            ),
+            "previous_word_count": 5,
+            "current_word_count": 31,
+            "word_delta": 26,
+            "added_terms": ["quarter", "objectives", "guidelines", "custodians"],
+            "removed_terms": [],
+            "is_material": True,
+            "change_summary": "modified; expanded account review cadence disclosure",
+        }
+    ]
+
+    scored = score_firm_delta(firm_context, section_deltas, RUBRIC, THEMES)
+    section = scored["section_deltas"][0]
+
+    assert section["matched_keywords"]["marketing_rule_relevance"] == []
+    assert "marketing-rule signal" not in section["score_rationale"].lower()

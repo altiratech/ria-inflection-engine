@@ -28,20 +28,11 @@
   "score": {
     "marketing_rule_relevance": 8.12,
     "client_service_mix_change": 10.0,
-    "operational_complexity_change": 10.0,
+    "operational_complexity_change": 8.25,
     "confidence": 8.41,
-    "overall_score": 9.18
+    "overall_score": 8.75
   },
   "themes": [
-    {
-      "theme_id": "exam_priorities_2026_operations",
-      "theme_name": "2026 examination priorities: operations and data protection",
-      "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
-      "source_date": "2025-11-17",
-      "keyword_hits": [
-        "records"
-      ]
-    },
     {
       "theme_id": "marketing_rule_2025_12_16",
       "theme_name": "Advisers Act marketing rule disclosures",
@@ -52,28 +43,25 @@
       ]
     },
     {
+      "theme_id": "exam_priorities_2026_operations",
+      "theme_name": "2026 examination priorities: operations and data protection",
+      "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+      "source_date": "2025-11-17",
+      "keyword_hits": [
+        "records"
+      ]
+    },
+    {
       "theme_id": "exam_priorities_2026_compliance",
       "theme_name": "2026 examination priorities: compliance program readiness",
       "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
       "source_date": "2025-11-17",
       "keyword_hits": [
-        "policies and procedures"
+        "fiduciary duty"
       ]
     }
   ],
   "evidence": [
-    {
-      "section_key": "item_12",
-      "section_title": "Brokerage Practices",
-      "change_summary": "modified; added terms: schwab, account, other, accounts, assets, custody, execution, broker; removed terms: any, soft, dollar, arrangements, executio, requires, execu, tion",
-      "current_excerpt": "...ess E nterprise. These services include: \u2022 Educational conferences and events \u2022 Consulting on technology and busine ss needs \u2022 Consulting on legal and compliance related needs \u2022 Publications and conferences on practice management and busine...",
-      "focus_term": "consulting",
-      "score_rationale": "service-mix signal: consulting, institutional; ops-complexity signal: compliance, custody, vendor; SEC theme match: 2026 examination priorities: operations and data protection",
-      "composite": 8.43,
-      "matched_themes": [
-        "2026 examination priorities: operations and data protection"
-      ]
-    },
     {
       "section_key": "item_14",
       "section_title": "Client Referrals and Other Compensation",
@@ -84,6 +72,18 @@
       "composite": 7.97,
       "matched_themes": [
         "Advisers Act marketing rule disclosures"
+      ]
+    },
+    {
+      "section_key": "item_12",
+      "section_title": "Brokerage Practices",
+      "change_summary": "modified; added terms: schwab, account, other, accounts, assets, custody, execution, broker; removed terms: any, soft, dollar, arrangements, executio, requires, execu, tion",
+      "current_excerpt": "...broad range of investment products, execution of securities transacti ons, and custody of client assets. The investment products available through Schwab include some to which we might not otherwise have access or that would require a sign...",
+      "focus_term": "custody",
+      "score_rationale": "ops-complexity signal: compliance, custody, vendor; service-mix signal: consulting, institutional; SEC theme match: 2026 examination priorities: operations and data protection",
+      "composite": 7.36,
+      "matched_themes": [
+        "2026 examination priorities: operations and data protection"
       ]
     },
     {
@@ -98,103 +98,6 @@
     }
   ],
   "section_deltas": [
-    {
-      "section_key": "item_12",
-      "section_title": "Brokerage Practices",
-      "change_type": "modified",
-      "similarity": 0.4124,
-      "previous_text": "Saperston Legacy Advisors, Inc. does not have any soft -dollar arrangements and does not \nreceive any soft -dollar benefits. \nSaperston Legacy Advisors, Inc. will block (aggregate) trades where possible and when \nadvantageous to clients. This blocking of trades permits the trading of aggregate blocks of \nsecurities composed of assets from multiple client accounts, so long as transaction costs are \nshared equally between all accounts included in any such block. \nBlock trading may allow us to execute equity trades in a timelier, more equitable manner, at \nan average share price. Saperston Legacy Advisor s, Inc. will typically aggregate trades \namong clients whose accounts are traded at Charles Schwab . Saperston Legacy Advisors, \nInc.'s block trading policy and procedures are as follows: \n1) Transactions for any client account may not be aggregated for executio n if the practice \nis prohibited by or inconsistent with the client's advisory agreement with Saperston \nLegacy Advisors, Inc. , or our firm's order allocation policy. \n 2) The trading desk in concert with the portfolio manager must determine that the \npurchase or sale of the particular security involved is appropriate for the client and \nconsistent with the client's investment objectives and with any investment guidelines or \nrestrictions applicable to the client's account. \n3) The portfolio manager must reasonably believe that the order aggregation will benefit, \nand will enable Saperston Legacy Advisors, Inc. to seek best execution for each client \nparticipating in the aggregated order. This requires a good faith judgment at the time \nthe order is placed for the execu tion. It does not mean that the determination made in \nadvance of the transaction must always prove to have been correct in the light of a \"20 -\nhindsight\" perspective. Best execution includes the duty to seek the best quality of \nexecution, as well as the best net price. \n4) Prior to entry of an aggregated order, a written order ticket must be completed which \nidentifies each client account participating in the order and the proposed allocation of \nthe order, upon completion, to those clients. \n5) If the order cannot be executed in full at the same price or time, the securities actually \npurchased or sold by the close of each business day must be allocated among the \nparticipating client accounts in accordance with the initial order ticket o r other written \nstatement of allocation. However, adjustments to this allocation may be made to \nparticipating client accounts in accordance with the initial order ticket or other written \nstatement of allocation. Furthermore, adjustments to this allocation may be made to \navoid having odd amounts of shares held in any client account, or to avoid excessive \nticket charges in smaller accounts. \n6) Generally, each client that participates in the aggregated order must do so at the \naverage price for all separate transa ctions made to fill the order, and must share in the \ncommissions on a pro rata basis in proportion to the client's participation. Under the \nclient\u2019s agreement with the custodian/broker, transaction costs may be based on the \nnumber of shares traded for each client. \n7) If the order will be allocated in a manner other than that stated in the initial statement of \nallocation, a written explanation of the change must be provided to and approved by \nthe Chief Compliance Officer no later than the morning following the execution of the \naggregate trade. \n8) Funds and securities for aggregated orders are clearly identified on Saperston Legacy \nAdvisors, Inc. 's records and to the broker -dealers or other intermediaries handling the \ntransactions, by the appropriate account numbers for each participating client. \n9) No client or account will be favored over another.",
-      "current_text": "Saperston Legacy Advisors, Inc. will block (aggregate) trades where possible and when advantageous \nto clients. This blocking of trades permits the tra ding of aggregate blocks of securities composed of \nassets from multiple client accounts, so long as transaction costs are shared equally between all \naccounts included in any such block. \nBlock trading may allow us to execute equity trades in a timelier, mor e equitable manner, at an \naverage share price. Saperston Legacy Advisors, Inc. will typically aggregate trades among clients \nwhose accounts are traded at Charles Schwab . Saperston Legacy Advisors, Inc.'s block trading \npolicy and procedures are as follows: \n1) Transactions for any client account may not be aggregated for execution if the practice is \nprohibited by or inconsistent with the client's advisory agreement with Saperston Legacy \nAdvisors, Inc. , or our firm's order allocation policy. \n2) The trading desk in concert with the portfolio manager must determine that the purchase or \nsale of the particular security involved is appropriate for the client and consistent with the \nclient's investment objectives and with any investment guidelines or restrictions appl icable to \nthe client's account. \n 3) The portfolio manager must reasonably believe that the order aggregation will benefit, and will \nenable Saperston Legacy Advisors, Inc. to seek best execution for each client participating in \nthe aggregated order. This requi res a good faith judgment at the time the order is placed for \nthe execution. It does not mean that the determination made in advance of the transaction \nmust always prove to have been correct in the light of a \"20 -20 hindsight\" perspective. Best \nexecution i ncludes the duty to seek the best quality of execution, as well as the best net price. \n4) Prior to entry of an aggregated order, a written log must be completed which \nidentifies each client account participating in the order and th e proposed allocation of the order, \nupon completion, to those clients. \n5) If the order cannot be executed in full at the same price or time, the securities actually \npurchased or sold by the close of each business day must be allocated among the participating \nclient accounts in accordance with the initial order ticket or other written statement of \nallocation. However, adjustments to this allocation may be made to participating client \naccounts in accordance with the initial order ticket or other written stateme nt of allocation. \nFurthermore, adjustments to this allocation may be made to avoid having odd amounts of \nshares held in any client account, or to avoid excessive ticket charges in smaller accounts. \n6) Generally, each client that participates in the aggregated order must do so at the average price \nfor all separate transactions made to fill the order, and must share in the commissions on a pro \nrata basis in proportion to the client's participation. Under the client\u2019s agreement with the \ncustodian/broker, transact ion costs may be based on the number of shares traded for each \nclient. \n7) If the order will be allocated in a manner other than that stated in the initial statement of \nallocation, a written explanation of the change must be provided to and approved by the Chi ef \nCompliance Officer no later than the morning following the execution of the aggregate trade. \n8) Funds and securities for aggregated orders are clearly identified on Saperston Legacy \nAdvisors, Inc. 's records and to the broker -dealers or other intermediaries handling the \ntransactions, by the appropriate account numbers for each participating client. \n9) No client or account will be favored over another. \n \nSaperston Legacy Advisors does not maintain custody of your assets that we manage or on which we \nadvise. Alt hough we may be deemed to have custody of your assets if you give us authority to \nwithdraw assets from your account (see Item 15 \u2014Custody, below). Your assets must be maintained in \nan account at a \u201cqualified custodian,\u201d generally a broker -dealer or bank. We recommend that our \nclients use Charles Schwab & Co., Inc. (Schwab), a registered broker -dealer, member SIPC, as the \nqualified custodian. \n \nWe are independently owned and operated and are not affiliated with Schwab. Schwab will hold your \nassets in a brokera ge account and buy and sell securities if you instruct them to do this . While we \nrecommend that you use Schwab as custodian/broker, you will decide whether to do so and will open \nyour account with Schwab by entering into an account Agreement directly with them. Conflicts of \ninterest associated with this arrangement are described below as well as in Item 14 (Client referrals \nand other compensation). You should consider these conflicts of interest when selecting your \ncustodian. \n \nWe do not open the account for you, although we may assist you in doing so. If you do not wish to \nplace your assets with Schwab , we would attempt to work with the custodian of your choice. If your \naccount is maintained at Schwab, we anticipate that most trades w ill be executed through Schwab. \n \n How We Select Brokers/C ustodians : \n \nWe recommend Schwab, a s custodian/broker, to hold your assets and execute transactions. When \nconsidering whether the terms that Schwab provides are, overall, most advantageous to you when \ncompared with other a vailable providers and their services, we take into account a wide range of \nfactors, including: \n \n\u2022 Combination of transaction execution services and asset custody services (generally without a \n separate fee for custody) \n \n\u2022 Capability to execute, clear, and settle trades (buy and sell securities for your account) \n \n\u2022 Capability to facilitate transfers and payments to and from accounts (wire transfers, check requests, \n bill payment, etc.) \n \n\u2022 Breadth of available investment products (stocks, bonds, mutual funds, exchange -traded funds \n (ETFs), etc.) \n \n\u2022 Availability of investment research and tools that assist us in making investment decisions \n \n\u2022 Quality of services \n \n\u2022 Competitiveness of the price of those services (commission rates, margin interest rates, other fees, \n etc.) and willingness to negotiate the prices \n \n\u2022 Reputation, financial strength, security and stability \n \n\u2022 Prior service to us and our clients \n \n\u2022 Services delivered or paid for by Schwab \n \n\u2022 Availability of other products and services that benefit us, as discussed below (see \u201cProducts and \n services available to us from Schwab\u201d) \n \nYour Brokerage and Custody C osts: \n \nFor our clients\u2019 accounts that Schwab maintains, Schwab generally does not charge you separately for \ncustody services but is co mpensated by charging you commissions or other fees on trades that it \nexecutes or that settle into your Schwab account. Certain trades (for example, mutual funds and \nETFs) do not incur Schwab commissions or transaction fees. Schwab is also compensated by e arning \ninterest on the un -invested cash in your account in Schwab\u2019s Cash Features Program . Schwab\u2019s \ncommission rates applicable to our client accounts were negotiated and not based on the condition \nthat our clients collectively maintain a specific amount of their assets in accounts at Schwab . This \ncommitment benefits you because the overall commission rates you pay are lower than they would be \notherwise. In addition to commissions, Schwab charges you a flat dollar amount as a \u201cprime broker\u201d or \n\u201ctrade away\u201d fee for each trade that we have executed by a different broker -dealer but where the \nsecurities bought or the funds from the securities sold are deposited (settled) into your Schwab \naccount. These fees are in addition to the commissions or other compensatio n you pay the executing \nbroker -dealer. Because of this, in order to minimize your trading costs, we have Schwab execute most \ntrades for your account. \n \n \n We are not required to select the broker or dealer that charges the lowest transaction cost, even if tha t \nbroker provides execution quality comparable to other brokers or dealers. Although we are not \nrequired to execute all trades through Schwab, we have determined that having Schwab execute most \ntrades is consistent with our duty to seek \u201cbest execution\u201d of your trades. Best execution means the \nmost favorable terms for a transaction based on all relevant factors, including those listed above (see \n\u201cHow we select brokers/custodians\u201d). By using another broker or dealer you may pay lower transaction \ncosts. \n \nProd ucts and Services Available to U s from Schwab. \n \nSchwab Advisor Services\u2122 is Schwab\u2019s business serving independent investment advisory firms like \nus. They provide our clients and us with access to their institutional brokerage services (trading, \ncustody, re porting and related services), many of which are not typically available to Schwab retail \ncustomers. \n \nHowever, certain retail investors may be able to get institutional brokerage services from Schwab \nwithout going through us. Schwab also makes available va rious support services. Some of those \nservices help us manage or administer our clients\u2019 accounts, while others help us manage and grow \nour business. \n \nSchwab\u2019s support services are generally available on an unsolicited basis (we don\u2019t have to request \nthem) and at no charge to us. Following is a more detailed description of Schwab\u2019s support services: \n \nServices That Benefit Y ou \n \nSchwab\u2019s institutional brokerage services include access to a broad range of investment products, \nexecution of securities transacti ons, and custody of client assets. The investment products available \nthrough Schwab include some to which we might not otherwise have access or that would require a \nsignificantly higher minimum initial investment by our clients. Schwab\u2019s services described in this \nparagraph generally benefit you and your account. \n \nServices That Do Not Directly Benefit Y ou \n \nSchwab also makes available to us other products and services that benefit us but do not directly \nbenefit you or your account. These products and servic es assist us in managing and administering our \nclients\u2019 accounts and operating our firm. They include investment research, both Schwab\u2019s own and \nthat of third parties. We use this research to service all or a substantial number of our clients\u2019 \naccounts, in cluding accounts not maintained at Schwab. In addition to investment research, Schwab \nalso makes available software and other technology that: \n \n\u2022 provide access to client account data (such as duplicate trade confirmations and account \n statements) \n\u2022 facil itate trade execution and allocate aggregated trade orders for multiple client accounts \n\u2022 provide pricing and other market data \n\u2022 facilitate payment of our fees from our clients\u2019 accounts \n\u2022 assist with back -office functions, recordkeeping, and client repor ting Services that generally benefit \nonly us. \n \n \n \n \n Schwab Also Offers Other Services Intended To H elp Us Manage and Further Develop Our \nBusiness E nterprise. \nThese services include: \n\u2022 Educational conferences and events \n\u2022 Consulting on technology and busine ss needs \n\u2022 Consulting on legal and compliance related needs \n\u2022 Publications and conferences on practice management and business succession \n\u2022 Access to employee benefits providers, human capital consultants, and insurance providers \n\u2022 Marketing consulting and support \n\u2022 Recruiting and custodial search consulting Schwab provides some of these services itself. In other \ncases, it will arrange for third -party vendors to provide the services to us. \n \nSchwab also discounts or waives its fees for some of these service s or pays all or a part of a third \nparty\u2019s fees. If you did not maintain your account with Schwab, we would be required to pay for those \nservices from our own resources . These services are utilized to better serve our clients. No client is \nrequired to have their account at Schwab. \n \nOur I nterest in Schwab \u2019s Services \n \nThe availability of these services from Schwab benefits us because we do not have to produce or \npurchase them. We don\u2019t have to pay for Schwab\u2019s services. Schwab has also agreed to pay for \ncertain technology, research, marketing, and compliance consulting products and services on our \nbehalf through October of 2026 for a maximum specific amount once the value of our clients\u2019 assets in \naccounts at S chwab reaches certain threshold (referred to as s oft dollars) . \n \nThe fact that we receive these benefits from Schwab is an incentive for us to recommend the use of \nSchwab rather than making such a decision bas ed exclusively on your interest in receiving the best \nvalue in custody services and the most favo rable execution of your transactions. This is a conflict of \ninterest . We believe, however, that taken in the aggregate our recommendation of Schwab as \ncustodian and broker is in the best interests of our clients. Our selection is primarily supported by th e \nscope, quality, and price of Schwab\u2019s services (see \u201cHow we select brokers/custodians\u201d) and not \nSchwab\u2019s services that benefit only us.",
-      "previous_word_count": 602,
-      "current_word_count": 2068,
-      "word_delta": 1466,
-      "added_terms": [
-        "schwab",
-        "account",
-        "other",
-        "accounts",
-        "assets",
-        "custody",
-        "execution",
-        "broker"
-      ],
-      "removed_terms": [
-        "any",
-        "soft",
-        "dollar",
-        "arrangements",
-        "executio",
-        "requires",
-        "execu",
-        "tion"
-      ],
-      "is_material": true,
-      "change_summary": "modified; added terms: schwab, account, other, accounts, assets, custody, execution, broker; removed terms: any, soft, dollar, arrangements, executio, requires, execu, tion",
-      "scores": {
-        "marketing_rule_relevance": 5.5,
-        "client_service_mix_change": 10.0,
-        "operational_complexity_change": 10.0,
-        "confidence": 10.0,
-        "composite": 8.43
-      },
-      "matched_keywords": {
-        "marketing_rule_relevance": [],
-        "client_service_mix_change": [
-          "advisory",
-          "client",
-          "clients",
-          "consulting",
-          "institutional",
-          "service",
-          "services"
-        ],
-        "operational_complexity_change": [
-          "compliance",
-          "custody",
-          "third-party",
-          "vendor"
-        ]
-      },
-      "matched_themes": [
-        {
-          "theme_id": "exam_priorities_2026_operations",
-          "theme_name": "2026 examination priorities: operations and data protection",
-          "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
-          "source_date": "2025-11-17",
-          "keyword_hits": [
-            "records",
-            "vendor"
-          ]
-        }
-      ],
-      "focus_terms": [
-        "institutional",
-        "consulting",
-        "compliance",
-        "custody",
-        "vendor",
-        "records",
-        "schwab",
-        "other",
-        "assets",
-        "execution",
-        "broker"
-      ],
-      "evidence_focus_term": "consulting",
-      "evidence_focus_hits": [
-        "consulting",
-        "compliance",
-        "custody",
-        "vendor",
-        "schwab",
-        "other",
-        "assets",
-        "execution",
-        "broker"
-      ],
-      "evidence_excerpt": "...ess E nterprise. These services include: \u2022 Educational conferences and events \u2022 Consulting on technology and busine ss needs \u2022 Consulting on legal and compliance related needs \u2022 Publications and conferences on practice management and busine...",
-      "score_rationale": "service-mix signal: consulting, institutional; ops-complexity signal: compliance, custody, vendor; SEC theme match: 2026 examination priorities: operations and data protection"
-    },
     {
       "section_key": "item_14",
       "section_title": "Client Referrals and Other Compensation",
@@ -274,6 +177,101 @@
       ],
       "evidence_excerpt": "...erage Practices). It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm. It is Saperston Legacy Advisors, Inc. 's policy not to accept...",
       "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: solicitor; SEC theme match: Advisers Act marketing rule disclosures"
+    },
+    {
+      "section_key": "item_12",
+      "section_title": "Brokerage Practices",
+      "change_type": "modified",
+      "similarity": 0.4124,
+      "previous_text": "Saperston Legacy Advisors, Inc. does not have any soft -dollar arrangements and does not \nreceive any soft -dollar benefits. \nSaperston Legacy Advisors, Inc. will block (aggregate) trades where possible and when \nadvantageous to clients. This blocking of trades permits the trading of aggregate blocks of \nsecurities composed of assets from multiple client accounts, so long as transaction costs are \nshared equally between all accounts included in any such block. \nBlock trading may allow us to execute equity trades in a timelier, more equitable manner, at \nan average share price. Saperston Legacy Advisor s, Inc. will typically aggregate trades \namong clients whose accounts are traded at Charles Schwab . Saperston Legacy Advisors, \nInc.'s block trading policy and procedures are as follows: \n1) Transactions for any client account may not be aggregated for executio n if the practice \nis prohibited by or inconsistent with the client's advisory agreement with Saperston \nLegacy Advisors, Inc. , or our firm's order allocation policy. \n 2) The trading desk in concert with the portfolio manager must determine that the \npurchase or sale of the particular security involved is appropriate for the client and \nconsistent with the client's investment objectives and with any investment guidelines or \nrestrictions applicable to the client's account. \n3) The portfolio manager must reasonably believe that the order aggregation will benefit, \nand will enable Saperston Legacy Advisors, Inc. to seek best execution for each client \nparticipating in the aggregated order. This requires a good faith judgment at the time \nthe order is placed for the execu tion. It does not mean that the determination made in \nadvance of the transaction must always prove to have been correct in the light of a \"20 -\nhindsight\" perspective. Best execution includes the duty to seek the best quality of \nexecution, as well as the best net price. \n4) Prior to entry of an aggregated order, a written order ticket must be completed which \nidentifies each client account participating in the order and the proposed allocation of \nthe order, upon completion, to those clients. \n5) If the order cannot be executed in full at the same price or time, the securities actually \npurchased or sold by the close of each business day must be allocated among the \nparticipating client accounts in accordance with the initial order ticket o r other written \nstatement of allocation. However, adjustments to this allocation may be made to \nparticipating client accounts in accordance with the initial order ticket or other written \nstatement of allocation. Furthermore, adjustments to this allocation may be made to \navoid having odd amounts of shares held in any client account, or to avoid excessive \nticket charges in smaller accounts. \n6) Generally, each client that participates in the aggregated order must do so at the \naverage price for all separate transa ctions made to fill the order, and must share in the \ncommissions on a pro rata basis in proportion to the client's participation. Under the \nclient\u2019s agreement with the custodian/broker, transaction costs may be based on the \nnumber of shares traded for each client. \n7) If the order will be allocated in a manner other than that stated in the initial statement of \nallocation, a written explanation of the change must be provided to and approved by \nthe Chief Compliance Officer no later than the morning following the execution of the \naggregate trade. \n8) Funds and securities for aggregated orders are clearly identified on Saperston Legacy \nAdvisors, Inc. 's records and to the broker -dealers or other intermediaries handling the \ntransactions, by the appropriate account numbers for each participating client. \n9) No client or account will be favored over another.",
+      "current_text": "Saperston Legacy Advisors, Inc. will block (aggregate) trades where possible and when advantageous \nto clients. This blocking of trades permits the tra ding of aggregate blocks of securities composed of \nassets from multiple client accounts, so long as transaction costs are shared equally between all \naccounts included in any such block. \nBlock trading may allow us to execute equity trades in a timelier, mor e equitable manner, at an \naverage share price. Saperston Legacy Advisors, Inc. will typically aggregate trades among clients \nwhose accounts are traded at Charles Schwab . Saperston Legacy Advisors, Inc.'s block trading \npolicy and procedures are as follows: \n1) Transactions for any client account may not be aggregated for execution if the practice is \nprohibited by or inconsistent with the client's advisory agreement with Saperston Legacy \nAdvisors, Inc. , or our firm's order allocation policy. \n2) The trading desk in concert with the portfolio manager must determine that the purchase or \nsale of the particular security involved is appropriate for the client and consistent with the \nclient's investment objectives and with any investment guidelines or restrictions appl icable to \nthe client's account. \n 3) The portfolio manager must reasonably believe that the order aggregation will benefit, and will \nenable Saperston Legacy Advisors, Inc. to seek best execution for each client participating in \nthe aggregated order. This requi res a good faith judgment at the time the order is placed for \nthe execution. It does not mean that the determination made in advance of the transaction \nmust always prove to have been correct in the light of a \"20 -20 hindsight\" perspective. Best \nexecution i ncludes the duty to seek the best quality of execution, as well as the best net price. \n4) Prior to entry of an aggregated order, a written log must be completed which \nidentifies each client account participating in the order and th e proposed allocation of the order, \nupon completion, to those clients. \n5) If the order cannot be executed in full at the same price or time, the securities actually \npurchased or sold by the close of each business day must be allocated among the participating \nclient accounts in accordance with the initial order ticket or other written statement of \nallocation. However, adjustments to this allocation may be made to participating client \naccounts in accordance with the initial order ticket or other written stateme nt of allocation. \nFurthermore, adjustments to this allocation may be made to avoid having odd amounts of \nshares held in any client account, or to avoid excessive ticket charges in smaller accounts. \n6) Generally, each client that participates in the aggregated order must do so at the average price \nfor all separate transactions made to fill the order, and must share in the commissions on a pro \nrata basis in proportion to the client's participation. Under the client\u2019s agreement with the \ncustodian/broker, transact ion costs may be based on the number of shares traded for each \nclient. \n7) If the order will be allocated in a manner other than that stated in the initial statement of \nallocation, a written explanation of the change must be provided to and approved by the Chi ef \nCompliance Officer no later than the morning following the execution of the aggregate trade. \n8) Funds and securities for aggregated orders are clearly identified on Saperston Legacy \nAdvisors, Inc. 's records and to the broker -dealers or other intermediaries handling the \ntransactions, by the appropriate account numbers for each participating client. \n9) No client or account will be favored over another. \n \nSaperston Legacy Advisors does not maintain custody of your assets that we manage or on which we \nadvise. Alt hough we may be deemed to have custody of your assets if you give us authority to \nwithdraw assets from your account (see Item 15 \u2014Custody, below). Your assets must be maintained in \nan account at a \u201cqualified custodian,\u201d generally a broker -dealer or bank. We recommend that our \nclients use Charles Schwab & Co., Inc. (Schwab), a registered broker -dealer, member SIPC, as the \nqualified custodian. \n \nWe are independently owned and operated and are not affiliated with Schwab. Schwab will hold your \nassets in a brokera ge account and buy and sell securities if you instruct them to do this . While we \nrecommend that you use Schwab as custodian/broker, you will decide whether to do so and will open \nyour account with Schwab by entering into an account Agreement directly with them. Conflicts of \ninterest associated with this arrangement are described below as well as in Item 14 (Client referrals \nand other compensation). You should consider these conflicts of interest when selecting your \ncustodian. \n \nWe do not open the account for you, although we may assist you in doing so. If you do not wish to \nplace your assets with Schwab , we would attempt to work with the custodian of your choice. If your \naccount is maintained at Schwab, we anticipate that most trades w ill be executed through Schwab. \n \n How We Select Brokers/C ustodians : \n \nWe recommend Schwab, a s custodian/broker, to hold your assets and execute transactions. When \nconsidering whether the terms that Schwab provides are, overall, most advantageous to you when \ncompared with other a vailable providers and their services, we take into account a wide range of \nfactors, including: \n \n\u2022 Combination of transaction execution services and asset custody services (generally without a \n separate fee for custody) \n \n\u2022 Capability to execute, clear, and settle trades (buy and sell securities for your account) \n \n\u2022 Capability to facilitate transfers and payments to and from accounts (wire transfers, check requests, \n bill payment, etc.) \n \n\u2022 Breadth of available investment products (stocks, bonds, mutual funds, exchange -traded funds \n (ETFs), etc.) \n \n\u2022 Availability of investment research and tools that assist us in making investment decisions \n \n\u2022 Quality of services \n \n\u2022 Competitiveness of the price of those services (commission rates, margin interest rates, other fees, \n etc.) and willingness to negotiate the prices \n \n\u2022 Reputation, financial strength, security and stability \n \n\u2022 Prior service to us and our clients \n \n\u2022 Services delivered or paid for by Schwab \n \n\u2022 Availability of other products and services that benefit us, as discussed below (see \u201cProducts and \n services available to us from Schwab\u201d) \n \nYour Brokerage and Custody C osts: \n \nFor our clients\u2019 accounts that Schwab maintains, Schwab generally does not charge you separately for \ncustody services but is co mpensated by charging you commissions or other fees on trades that it \nexecutes or that settle into your Schwab account. Certain trades (for example, mutual funds and \nETFs) do not incur Schwab commissions or transaction fees. Schwab is also compensated by e arning \ninterest on the un -invested cash in your account in Schwab\u2019s Cash Features Program . Schwab\u2019s \ncommission rates applicable to our client accounts were negotiated and not based on the condition \nthat our clients collectively maintain a specific amount of their assets in accounts at Schwab . This \ncommitment benefits you because the overall commission rates you pay are lower than they would be \notherwise. In addition to commissions, Schwab charges you a flat dollar amount as a \u201cprime broker\u201d or \n\u201ctrade away\u201d fee for each trade that we have executed by a different broker -dealer but where the \nsecurities bought or the funds from the securities sold are deposited (settled) into your Schwab \naccount. These fees are in addition to the commissions or other compensatio n you pay the executing \nbroker -dealer. Because of this, in order to minimize your trading costs, we have Schwab execute most \ntrades for your account. \n \n \n We are not required to select the broker or dealer that charges the lowest transaction cost, even if tha t \nbroker provides execution quality comparable to other brokers or dealers. Although we are not \nrequired to execute all trades through Schwab, we have determined that having Schwab execute most \ntrades is consistent with our duty to seek \u201cbest execution\u201d of your trades. Best execution means the \nmost favorable terms for a transaction based on all relevant factors, including those listed above (see \n\u201cHow we select brokers/custodians\u201d). By using another broker or dealer you may pay lower transaction \ncosts. \n \nProd ucts and Services Available to U s from Schwab. \n \nSchwab Advisor Services\u2122 is Schwab\u2019s business serving independent investment advisory firms like \nus. They provide our clients and us with access to their institutional brokerage services (trading, \ncustody, re porting and related services), many of which are not typically available to Schwab retail \ncustomers. \n \nHowever, certain retail investors may be able to get institutional brokerage services from Schwab \nwithout going through us. Schwab also makes available va rious support services. Some of those \nservices help us manage or administer our clients\u2019 accounts, while others help us manage and grow \nour business. \n \nSchwab\u2019s support services are generally available on an unsolicited basis (we don\u2019t have to request \nthem) and at no charge to us. Following is a more detailed description of Schwab\u2019s support services: \n \nServices That Benefit Y ou \n \nSchwab\u2019s institutional brokerage services include access to a broad range of investment products, \nexecution of securities transacti ons, and custody of client assets. The investment products available \nthrough Schwab include some to which we might not otherwise have access or that would require a \nsignificantly higher minimum initial investment by our clients. Schwab\u2019s services described in this \nparagraph generally benefit you and your account. \n \nServices That Do Not Directly Benefit Y ou \n \nSchwab also makes available to us other products and services that benefit us but do not directly \nbenefit you or your account. These products and servic es assist us in managing and administering our \nclients\u2019 accounts and operating our firm. They include investment research, both Schwab\u2019s own and \nthat of third parties. We use this research to service all or a substantial number of our clients\u2019 \naccounts, in cluding accounts not maintained at Schwab. In addition to investment research, Schwab \nalso makes available software and other technology that: \n \n\u2022 provide access to client account data (such as duplicate trade confirmations and account \n statements) \n\u2022 facil itate trade execution and allocate aggregated trade orders for multiple client accounts \n\u2022 provide pricing and other market data \n\u2022 facilitate payment of our fees from our clients\u2019 accounts \n\u2022 assist with back -office functions, recordkeeping, and client repor ting Services that generally benefit \nonly us. \n \n \n \n \n Schwab Also Offers Other Services Intended To H elp Us Manage and Further Develop Our \nBusiness E nterprise. \nThese services include: \n\u2022 Educational conferences and events \n\u2022 Consulting on technology and busine ss needs \n\u2022 Consulting on legal and compliance related needs \n\u2022 Publications and conferences on practice management and business succession \n\u2022 Access to employee benefits providers, human capital consultants, and insurance providers \n\u2022 Marketing consulting and support \n\u2022 Recruiting and custodial search consulting Schwab provides some of these services itself. In other \ncases, it will arrange for third -party vendors to provide the services to us. \n \nSchwab also discounts or waives its fees for some of these service s or pays all or a part of a third \nparty\u2019s fees. If you did not maintain your account with Schwab, we would be required to pay for those \nservices from our own resources . These services are utilized to better serve our clients. No client is \nrequired to have their account at Schwab. \n \nOur I nterest in Schwab \u2019s Services \n \nThe availability of these services from Schwab benefits us because we do not have to produce or \npurchase them. We don\u2019t have to pay for Schwab\u2019s services. Schwab has also agreed to pay for \ncertain technology, research, marketing, and compliance consulting products and services on our \nbehalf through October of 2026 for a maximum specific amount once the value of our clients\u2019 assets in \naccounts at S chwab reaches certain threshold (referred to as s oft dollars) . \n \nThe fact that we receive these benefits from Schwab is an incentive for us to recommend the use of \nSchwab rather than making such a decision bas ed exclusively on your interest in receiving the best \nvalue in custody services and the most favo rable execution of your transactions. This is a conflict of \ninterest . We believe, however, that taken in the aggregate our recommendation of Schwab as \ncustodian and broker is in the best interests of our clients. Our selection is primarily supported by th e \nscope, quality, and price of Schwab\u2019s services (see \u201cHow we select brokers/custodians\u201d) and not \nSchwab\u2019s services that benefit only us.",
+      "previous_word_count": 602,
+      "current_word_count": 2068,
+      "word_delta": 1466,
+      "added_terms": [
+        "schwab",
+        "account",
+        "other",
+        "accounts",
+        "assets",
+        "custody",
+        "execution",
+        "broker"
+      ],
+      "removed_terms": [
+        "any",
+        "soft",
+        "dollar",
+        "arrangements",
+        "executio",
+        "requires",
+        "execu",
+        "tion"
+      ],
+      "is_material": true,
+      "change_summary": "modified; added terms: schwab, account, other, accounts, assets, custody, execution, broker; removed terms: any, soft, dollar, arrangements, executio, requires, execu, tion",
+      "scores": {
+        "marketing_rule_relevance": 5.5,
+        "client_service_mix_change": 7.9,
+        "operational_complexity_change": 8.25,
+        "confidence": 10.0,
+        "composite": 7.36
+      },
+      "matched_keywords": {
+        "marketing_rule_relevance": [],
+        "client_service_mix_change": [
+          "advisory",
+          "client",
+          "clients",
+          "consulting",
+          "institutional",
+          "service",
+          "services"
+        ],
+        "operational_complexity_change": [
+          "compliance",
+          "custody",
+          "third-party",
+          "vendor"
+        ]
+      },
+      "matched_themes": [
+        {
+          "theme_id": "exam_priorities_2026_operations",
+          "theme_name": "2026 examination priorities: operations and data protection",
+          "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+          "source_date": "2025-11-17",
+          "keyword_hits": [
+            "records",
+            "vendor"
+          ]
+        }
+      ],
+      "focus_terms": [
+        "compliance",
+        "custody",
+        "vendor",
+        "institutional",
+        "consulting",
+        "records",
+        "schwab",
+        "other",
+        "assets",
+        "execution",
+        "broker"
+      ],
+      "evidence_focus_term": "custody",
+      "evidence_focus_hits": [
+        "custody",
+        "institutional",
+        "schwab",
+        "other",
+        "assets",
+        "execution",
+        "broker"
+      ],
+      "evidence_excerpt": "...broad range of investment products, execution of securities transacti ons, and custody of client assets. The investment products available through Schwab include some to which we might not otherwise have access or that would require a sign...",
+      "score_rationale": "ops-complexity signal: compliance, custody, vendor; service-mix signal: consulting, institutional; SEC theme match: 2026 examination priorities: operations and data protection"
     },
     {
       "section_key": "item_15",
@@ -381,16 +379,14 @@
       "is_material": true,
       "change_summary": "modified; added terms: ment, legacy, advisors, investmen, new, shareholder, contro, lling; removed terms: advisor, sharehol, der, controlling, managemen, provides, objec, tives",
       "scores": {
-        "marketing_rule_relevance": 3.04,
+        "marketing_rule_relevance": 1.91,
         "client_service_mix_change": 6.41,
         "operational_complexity_change": 3.04,
         "confidence": 8.5,
-        "composite": 4.6
+        "composite": 4.2
       },
       "matched_keywords": {
-        "marketing_rule_relevance": [
-          "review"
-        ],
+        "marketing_rule_relevance": [],
         "client_service_mix_change": [
           "advisory",
           "client",
@@ -425,89 +421,6 @@
       ],
       "evidence_excerpt": "Saperston Legacy Advisors, Inc. is a S EC-registered investmen t adviser with its principal place of business located in New York. Saperston Legacy Advisors, Inc. (formerly Willard B. Saperston, Inc.) began conducting business in 1989. L...",
       "score_rationale": "service-mix signal: consulting, portfolio management"
-    },
-    {
-      "section_key": "item_5",
-      "section_title": "Fees and Compensation",
-      "change_type": "modified",
-      "similarity": 0.9764,
-      "previous_text": "INVESTMENT S UPERVISORY SERVICES (\"ISS\") \nINDIVIDUAL PORTFOLIO MANAGEMENT FEES \n \nAdvisory Fees: the maximum annual fee on the programs is 2% of assets under \nmanagement, based upon the market value of assets accepted for management on the date \nof such acceptance and there after using the portfolio value on the last business day of the \npreceding quarter . This is true whether the fees are billed in arrears or advance . \nOur advisory fees are negotiable and can be varied for certain clients in our sole \ndiscretion. Lower fees fo r comparable services could be available from other sources. \nIn the event fees are billed in advance and the client relationship is terminated prior to the end \nof a billing period, the unearned portion of the fee, calculated by means of a daily rate, is \nreturned to the client . \n \nLimited Negotiability of Advisory Fees : Although Saperston Legacy Advisors, Inc. has \nestablished the aforementioned maximum fee, we retain the discretion to waive or negotiate \nfees on a client -by-client basis , not to exceed our 2% ma ximum fee . Client facts, \ncircumstances and needs are considered in determining the fee. These include the \ncomplexity of the client, assets to be placed under management, anticipated future additional \nassets; related accounts; portfolio style, account compo sition, reports, among other factors. \nThe specific annual fee is identified in the contract between the adviser and each client. \nDiscounts, not generally available to our advisory clients, may be offered to family members \nand friends of associated persons of our firm. \nAdditions and Withdrawals: Client may make additions or withdrawals within their account \nat any time . Additional assets received, into an account , after it i s opened shall be charged a \npro-rata fee based upon the number of days remaining in th e quarter . This applies only to \naccounts which are billed quarterly in advance . Client may withdraw a ccount assets upon \nnotice to the Adviser, subject to the usual and customary securities settlement procedures. \nNo fee adjustments shall be mad e for partial withdrawals or for a ccount appreciation or \ndepreciation within a billing period (quarterly) . A pro rata refund of fee s charged shall be \nmade if the a ccount is closed within a billing period. Adviser shall impose no start up, closing \nor penal ty fees in co nnection with the a ccount . SLAI retains the right to make a fee \nadjustment for withdrawals from an account on a case -by-case basis. \nManagement personnel and other related persons of our firm are licensed as insurance \nagents or brokers. In their separate capacities, these individuals are able to implement \ninvestment recommendations for advisory clients for separate and typical c ompensation (i.e., \ncommission or other sales -related forms of compensation). This presents a conflict of interest \nto the extent th at these individuals recommend that a client invest in a security which results \nin a commission being paid to the individuals. The implementation of any or all \nrecommendations is solely at the discretion of the client. \n \n \n GENERAL INFORMATION \nTermination of the Advisory Relationship : A client agreement may be canceled at any \ntime, by either party, for any reason upon receipt of 30 days written notice. As disclosed \nabove, certain fees are paid in advance of services provided. Upon termination of any \naccount, a ny prepaid, unearned fees will be refunded. In calculating a client\u2019s reimbursement \nof fees, we will pro rate the reimbursement according to the number of days remaining in the \nbilling period. \nIn the event of termination of the agreement in any manner, SLAI will have no independent \nobligation to recommend or take any action with regard to the securities, cash or other \ninvestments in the account and SLAI will be under no obligation to liquidate securities owned \nby client. \nMutual Fund Fees : All fees paid to Saperston Legacy Advisors, Inc. for investment advisory \nservices are separate and distinct from the fees and expenses charged by mutual funds \nand/or ETFs to their shareholders. These fees and expenses are described in each fund's \nprospectus. These fees wi ll generally include a management fee, other fund expenses, and a \npossible distribution fee. If the fund also imposes sales charges, a client may pay an initial or \ndeferred sales charge. A client could invest in a mutual fund directly, without our services . In \nthat case, the client would not receive the services provided by our firm which are designed, \namong other things, to assist the client in determining which mutual fund or funds are most \nappropriate to each client's financial condition and objectives. Accordingly, the client should \nreview both the fees charged by the funds and our fees to fully understand the total amount of \nfees to be paid by the client and to thereby evaluate the advisory services being provided. \nAdditional Fees and Expenses : In addi tion to our advisory fees, clients are also responsible \nfor the fees and expenses charged by custodians and imposed by broker dealers, including, \nbut not limited to, any transaction charges imposed by a broker dealer with which an \nindependent investment ma nager effects transactions for the client's account(s). Please refer \nto the \"Brokerage Practices\" section (Item 12) of this Form ADV for additional information. \nGrandfathering of Minimum Account Requirements : Pre-existing advisory clients may \nhave been subject to Saperston Legacy Advisors, Inc. 's minimum account requirements and \nadvisory fees in effect at the time the client entered into the advisory relationship. Therefore, \nour firm's minimum account requirements may differ among clients. \nERISA Accounts : Saperston Legacy Advisors, Inc. is deemed to be a fiduciary to advisory \nclients that are employee benefit plans or individual retirement accounts (IRAs) pursuant to \nthe Employee Retirement Income and Securities Act (\"ERISA\"), and regulations under the \nInternal Revenue Code of 1986 (the \"Code\"), respectively. \nAdvisory Fees in General : Clients should note that similar advisory services may (or may \nnot) be available from other registered (or unregistered) investment advisers for similar or \nlower fees. \nLimit ed Prepayment of Fees : Under no circumstances do we require or solicit payment of \nfees in excess of $1200 and more than six months in advance of services rendered.",
-      "current_text": "INVESTMENT SUPERVISORY SERVICES (\"IS S\") \nINDIVIDUAL PORTFOLIO MANAGEMENT FEES \n \nAdvisory Fees: the maximum annual fee on the programs is 2% of assets under management, based \nupon the market value of assets accepted for management on the date of such acceptance and \nthereafter using the portfoli o value on the last business day of the preceding quarter . This is true \nwhether the fees are billed in arrears or advance. \nOur advisory fees are negotiable and can be varied for certain clients in our sole \ndiscretion. Lower fees for comparable services co uld be available from other sources. \nIn the event fees are billed in advance and the client relationship is terminated prior to the end of a \nbilling period, the unearned portion of the fee, calculated by means of a daily rate, is returned to the \nclient . \n \nLimited Negotiability of Advisory Fees : Although Saperston Legacy Advisors, Inc. has established \nthe aforementioned maximum fee, we retain the discretion to waive or negotiate fees on a client -by-\nclient basis , not to exceed our 2% maximum fee . Client facts, circumstances and needs are \nconsidered in determining the fee. These include the complexity of the client, assets to be placed \nunder management, anticipated future additional assets; related accounts; portfolio style, account \ncomposition, reports, among o ther factors. The specific annual fee is identified in the contract between \nthe adviser and each client. \nDiscounts, not generally available to our advisory clients, may be offered to family members and \nfriends of associated persons of our firm. \nAdditions a nd Withdrawals: Client may make additions or withdrawals within their account at any \ntime. Additional assets received, into an account , after it i s opened shall be charged a pro -rata fee \nbased upon the number of days remaining in the quarter . This applies only to accounts which are \nbilled quarterly in advance . Client may withdraw a ccount assets upon notice to the Adviser, subject to \nthe usual and customary securities settlement procedures. No fee adjustments shall be mad e for \naccount appreciation or depreci ation within a billing period (quarterly) . A pro rata refund of fee s \ncharged shall be made if the a ccount is closed within a billing period. Adviser shall impose no start \nup, closing or penal ty fees in connection with the a ccount . SLAI retains the right to make a fee \nadjustment for withdrawals from an account on a case -by-case basis. \nManagement personnel and other related persons of our firm are licensed as insurance agents or \nbrokers. In their separate capacities, these individuals are able to implement investment \nrecommendations for advisory clients for separate and typical c ompensation (i.e., commission or other \nsales -related forms of compensation). This presents a conflict of interest to the extent that these \nindividuals recommend that a client invest in a product which results in a commission being paid to the \nindividuals. The implementation of any or all recommendations is solely at the discretion of the client. \n \n \n \n \n \n GENERAL INFORMATION \nTermination of the Advisory Relationship : A client agreement may be canceled at any time, by \neither party, for any reason upon receipt of 30 days written notice. As disclosed above, certain fees \nare paid in advance of services provided. Upon termination of any account, any prepaid, unearned \nfees will be refunded. In ca lculating a client\u2019s reimbursement of fees, we will pro rate the \nreimbursement according to the number of days remaining in the billing period. \nIn the event of termination of the agreement in any manner, SLAI will have no independent obligation \nto recomme nd or take any action with regard to the securities, cash or other investments in the \naccount and SLAI will be under no obligation to liquidate securities owned by client. \nMutual Fund Fees : All fees paid to Saperston Legacy Advisors, Inc. for investment a dvisory services \nare separate and distinct from the fees and expenses charged by mutual funds and/or ETFs to their \nshareholders. These fees and expenses are described in each fund's prospectus. These fees will \ngenerally include a management fee, other fund expenses, and a possible distribution fee. If the fund \nalso imposes sales charges, a client may pay an initial or deferred sales charge. A client could invest \nin a mutual fund directly, without our services. In that case, the client would not receive the services \nprovided by our firm which are designed, among other things, to assist the client in determining which \nmutual fund or funds are most appropriate to each client's financial condition and objectives. \nAccordingly, the client should review both the fe es charged by the funds and our fees to fully \nunderstand the total amount of fees to be paid by the client and to thereby evaluate the advisory \nservices being provided. \nAdditional Fees and Expenses : In addition to our advisory fees, clients are also respo nsible for the \nfees and expenses charged by custodians and imposed by broker dealers, including, but not limited \nto, any transaction charges imposed by a broker dealer with which an independent investment \nmanager effects transactions for the client's accou nt(s). Please refer to the \"Brokerage Practices\" \nsection (Item 12) of this Form ADV for additional information. \nGrandfathering of Minimum Account Requirements : Pre-existing advisory clients may have been \nsubject to Saperston Legacy Advisors, Inc. 's minimu m account requirements and advisory fees in \neffect at the time the client entered into the advisory relationship. Therefore, our firm's minimum \naccount requirements may differ among clients. \nERISA Accounts : Saperston Legacy Advisors, Inc. is deemed to be a fiduciary to advisory clients that \nare employee benefit plans or individual retirement accounts (IRAs) pursuant to the Employee \nRetirement Income and Securities Act (\"ERISA\"), and regulations under the Internal Revenue Code of \n1986 (the \"Code\"), respect ively. \nAdvisory Fees in General : Clients should note that similar advisory services may (or may not) be \navailable from other registered (or unregistered) investment advisers for similar or lower fees. \nLimited Prepayment of Fees : Under no circumstances do we require or solicit payment of fees in \nexcess of $1200 and more than six months in advance of services rendered.",
-      "previous_word_count": 1032,
-      "current_word_count": 1027,
-      "word_delta": -5,
-      "added_terms": [
-        "supervisory",
-        "maximum",
-        "thereafter",
-        "portfoli",
-        "uld",
-        "limited",
-        "by-",
-        "composition"
-      ],
-      "removed_terms": [
-        "upervisory",
-        "iss",
-        "portfolio",
-        "fees",
-        "after",
-        "could",
-        "other",
-        "by-client"
-      ],
-      "is_material": true,
-      "change_summary": "modified; added terms: supervisory, maximum, thereafter, portfoli, uld, limited, by-, composition; removed terms: upervisory, iss, portfolio, fees, after, could, other, by-client",
-      "scores": {
-        "marketing_rule_relevance": 2.91,
-        "client_service_mix_change": 6.29,
-        "operational_complexity_change": 1.41,
-        "confidence": 8.5,
-        "composite": 4.11
-      },
-      "matched_keywords": {
-        "marketing_rule_relevance": [
-          "review"
-        ],
-        "client_service_mix_change": [
-          "advisory",
-          "client",
-          "clients",
-          "individual",
-          "portfolio management",
-          "retirement",
-          "service",
-          "services"
-        ],
-        "operational_complexity_change": [
-          "billing"
-        ]
-      },
-      "matched_themes": [],
-      "focus_terms": [
-        "portfolio management",
-        "retirement",
-        "billing",
-        "supervisory",
-        "maximum",
-        "thereafter",
-        "portfoli",
-        "limited",
-        "composition"
-      ],
-      "evidence_focus_term": "portfolio management",
-      "evidence_focus_hits": [
-        "portfolio management",
-        "billing",
-        "supervisory",
-        "maximum",
-        "thereafter",
-        "portfoli",
-        "limited",
-        "composition"
-      ],
-      "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"IS S\") INDIVIDUAL PORTFOLIO MANAGEMENT FEES Advisory Fees: the maximum annual fee on the programs is 2% of assets under management, based upon the market value of assets accepted for management on the da...",
-      "score_rationale": "service-mix signal: portfolio management, retirement"
     },
     {
       "section_key": "item_6",
@@ -550,6 +463,87 @@
       "evidence_focus_hits": [],
       "evidence_excerpt": "Management Saperston Le gacy Advisors, Inc. does not charge performance -based fees.",
       "score_rationale": ""
+    },
+    {
+      "section_key": "item_5",
+      "section_title": "Fees and Compensation",
+      "change_type": "modified",
+      "similarity": 0.9764,
+      "previous_text": "INVESTMENT S UPERVISORY SERVICES (\"ISS\") \nINDIVIDUAL PORTFOLIO MANAGEMENT FEES \n \nAdvisory Fees: the maximum annual fee on the programs is 2% of assets under \nmanagement, based upon the market value of assets accepted for management on the date \nof such acceptance and there after using the portfolio value on the last business day of the \npreceding quarter . This is true whether the fees are billed in arrears or advance . \nOur advisory fees are negotiable and can be varied for certain clients in our sole \ndiscretion. Lower fees fo r comparable services could be available from other sources. \nIn the event fees are billed in advance and the client relationship is terminated prior to the end \nof a billing period, the unearned portion of the fee, calculated by means of a daily rate, is \nreturned to the client . \n \nLimited Negotiability of Advisory Fees : Although Saperston Legacy Advisors, Inc. has \nestablished the aforementioned maximum fee, we retain the discretion to waive or negotiate \nfees on a client -by-client basis , not to exceed our 2% ma ximum fee . Client facts, \ncircumstances and needs are considered in determining the fee. These include the \ncomplexity of the client, assets to be placed under management, anticipated future additional \nassets; related accounts; portfolio style, account compo sition, reports, among other factors. \nThe specific annual fee is identified in the contract between the adviser and each client. \nDiscounts, not generally available to our advisory clients, may be offered to family members \nand friends of associated persons of our firm. \nAdditions and Withdrawals: Client may make additions or withdrawals within their account \nat any time . Additional assets received, into an account , after it i s opened shall be charged a \npro-rata fee based upon the number of days remaining in th e quarter . This applies only to \naccounts which are billed quarterly in advance . Client may withdraw a ccount assets upon \nnotice to the Adviser, subject to the usual and customary securities settlement procedures. \nNo fee adjustments shall be mad e for partial withdrawals or for a ccount appreciation or \ndepreciation within a billing period (quarterly) . A pro rata refund of fee s charged shall be \nmade if the a ccount is closed within a billing period. Adviser shall impose no start up, closing \nor penal ty fees in co nnection with the a ccount . SLAI retains the right to make a fee \nadjustment for withdrawals from an account on a case -by-case basis. \nManagement personnel and other related persons of our firm are licensed as insurance \nagents or brokers. In their separate capacities, these individuals are able to implement \ninvestment recommendations for advisory clients for separate and typical c ompensation (i.e., \ncommission or other sales -related forms of compensation). This presents a conflict of interest \nto the extent th at these individuals recommend that a client invest in a security which results \nin a commission being paid to the individuals. The implementation of any or all \nrecommendations is solely at the discretion of the client. \n \n \n GENERAL INFORMATION \nTermination of the Advisory Relationship : A client agreement may be canceled at any \ntime, by either party, for any reason upon receipt of 30 days written notice. As disclosed \nabove, certain fees are paid in advance of services provided. Upon termination of any \naccount, a ny prepaid, unearned fees will be refunded. In calculating a client\u2019s reimbursement \nof fees, we will pro rate the reimbursement according to the number of days remaining in the \nbilling period. \nIn the event of termination of the agreement in any manner, SLAI will have no independent \nobligation to recommend or take any action with regard to the securities, cash or other \ninvestments in the account and SLAI will be under no obligation to liquidate securities owned \nby client. \nMutual Fund Fees : All fees paid to Saperston Legacy Advisors, Inc. for investment advisory \nservices are separate and distinct from the fees and expenses charged by mutual funds \nand/or ETFs to their shareholders. These fees and expenses are described in each fund's \nprospectus. These fees wi ll generally include a management fee, other fund expenses, and a \npossible distribution fee. If the fund also imposes sales charges, a client may pay an initial or \ndeferred sales charge. A client could invest in a mutual fund directly, without our services . In \nthat case, the client would not receive the services provided by our firm which are designed, \namong other things, to assist the client in determining which mutual fund or funds are most \nappropriate to each client's financial condition and objectives. Accordingly, the client should \nreview both the fees charged by the funds and our fees to fully understand the total amount of \nfees to be paid by the client and to thereby evaluate the advisory services being provided. \nAdditional Fees and Expenses : In addi tion to our advisory fees, clients are also responsible \nfor the fees and expenses charged by custodians and imposed by broker dealers, including, \nbut not limited to, any transaction charges imposed by a broker dealer with which an \nindependent investment ma nager effects transactions for the client's account(s). Please refer \nto the \"Brokerage Practices\" section (Item 12) of this Form ADV for additional information. \nGrandfathering of Minimum Account Requirements : Pre-existing advisory clients may \nhave been subject to Saperston Legacy Advisors, Inc. 's minimum account requirements and \nadvisory fees in effect at the time the client entered into the advisory relationship. Therefore, \nour firm's minimum account requirements may differ among clients. \nERISA Accounts : Saperston Legacy Advisors, Inc. is deemed to be a fiduciary to advisory \nclients that are employee benefit plans or individual retirement accounts (IRAs) pursuant to \nthe Employee Retirement Income and Securities Act (\"ERISA\"), and regulations under the \nInternal Revenue Code of 1986 (the \"Code\"), respectively. \nAdvisory Fees in General : Clients should note that similar advisory services may (or may \nnot) be available from other registered (or unregistered) investment advisers for similar or \nlower fees. \nLimit ed Prepayment of Fees : Under no circumstances do we require or solicit payment of \nfees in excess of $1200 and more than six months in advance of services rendered.",
+      "current_text": "INVESTMENT SUPERVISORY SERVICES (\"IS S\") \nINDIVIDUAL PORTFOLIO MANAGEMENT FEES \n \nAdvisory Fees: the maximum annual fee on the programs is 2% of assets under management, based \nupon the market value of assets accepted for management on the date of such acceptance and \nthereafter using the portfoli o value on the last business day of the preceding quarter . This is true \nwhether the fees are billed in arrears or advance. \nOur advisory fees are negotiable and can be varied for certain clients in our sole \ndiscretion. Lower fees for comparable services co uld be available from other sources. \nIn the event fees are billed in advance and the client relationship is terminated prior to the end of a \nbilling period, the unearned portion of the fee, calculated by means of a daily rate, is returned to the \nclient . \n \nLimited Negotiability of Advisory Fees : Although Saperston Legacy Advisors, Inc. has established \nthe aforementioned maximum fee, we retain the discretion to waive or negotiate fees on a client -by-\nclient basis , not to exceed our 2% maximum fee . Client facts, circumstances and needs are \nconsidered in determining the fee. These include the complexity of the client, assets to be placed \nunder management, anticipated future additional assets; related accounts; portfolio style, account \ncomposition, reports, among o ther factors. The specific annual fee is identified in the contract between \nthe adviser and each client. \nDiscounts, not generally available to our advisory clients, may be offered to family members and \nfriends of associated persons of our firm. \nAdditions a nd Withdrawals: Client may make additions or withdrawals within their account at any \ntime. Additional assets received, into an account , after it i s opened shall be charged a pro -rata fee \nbased upon the number of days remaining in the quarter . This applies only to accounts which are \nbilled quarterly in advance . Client may withdraw a ccount assets upon notice to the Adviser, subject to \nthe usual and customary securities settlement procedures. No fee adjustments shall be mad e for \naccount appreciation or depreci ation within a billing period (quarterly) . A pro rata refund of fee s \ncharged shall be made if the a ccount is closed within a billing period. Adviser shall impose no start \nup, closing or penal ty fees in connection with the a ccount . SLAI retains the right to make a fee \nadjustment for withdrawals from an account on a case -by-case basis. \nManagement personnel and other related persons of our firm are licensed as insurance agents or \nbrokers. In their separate capacities, these individuals are able to implement investment \nrecommendations for advisory clients for separate and typical c ompensation (i.e., commission or other \nsales -related forms of compensation). This presents a conflict of interest to the extent that these \nindividuals recommend that a client invest in a product which results in a commission being paid to the \nindividuals. The implementation of any or all recommendations is solely at the discretion of the client. \n \n \n \n \n \n GENERAL INFORMATION \nTermination of the Advisory Relationship : A client agreement may be canceled at any time, by \neither party, for any reason upon receipt of 30 days written notice. As disclosed above, certain fees \nare paid in advance of services provided. Upon termination of any account, any prepaid, unearned \nfees will be refunded. In ca lculating a client\u2019s reimbursement of fees, we will pro rate the \nreimbursement according to the number of days remaining in the billing period. \nIn the event of termination of the agreement in any manner, SLAI will have no independent obligation \nto recomme nd or take any action with regard to the securities, cash or other investments in the \naccount and SLAI will be under no obligation to liquidate securities owned by client. \nMutual Fund Fees : All fees paid to Saperston Legacy Advisors, Inc. for investment a dvisory services \nare separate and distinct from the fees and expenses charged by mutual funds and/or ETFs to their \nshareholders. These fees and expenses are described in each fund's prospectus. These fees will \ngenerally include a management fee, other fund expenses, and a possible distribution fee. If the fund \nalso imposes sales charges, a client may pay an initial or deferred sales charge. A client could invest \nin a mutual fund directly, without our services. In that case, the client would not receive the services \nprovided by our firm which are designed, among other things, to assist the client in determining which \nmutual fund or funds are most appropriate to each client's financial condition and objectives. \nAccordingly, the client should review both the fe es charged by the funds and our fees to fully \nunderstand the total amount of fees to be paid by the client and to thereby evaluate the advisory \nservices being provided. \nAdditional Fees and Expenses : In addition to our advisory fees, clients are also respo nsible for the \nfees and expenses charged by custodians and imposed by broker dealers, including, but not limited \nto, any transaction charges imposed by a broker dealer with which an independent investment \nmanager effects transactions for the client's accou nt(s). Please refer to the \"Brokerage Practices\" \nsection (Item 12) of this Form ADV for additional information. \nGrandfathering of Minimum Account Requirements : Pre-existing advisory clients may have been \nsubject to Saperston Legacy Advisors, Inc. 's minimu m account requirements and advisory fees in \neffect at the time the client entered into the advisory relationship. Therefore, our firm's minimum \naccount requirements may differ among clients. \nERISA Accounts : Saperston Legacy Advisors, Inc. is deemed to be a fiduciary to advisory clients that \nare employee benefit plans or individual retirement accounts (IRAs) pursuant to the Employee \nRetirement Income and Securities Act (\"ERISA\"), and regulations under the Internal Revenue Code of \n1986 (the \"Code\"), respect ively. \nAdvisory Fees in General : Clients should note that similar advisory services may (or may not) be \navailable from other registered (or unregistered) investment advisers for similar or lower fees. \nLimited Prepayment of Fees : Under no circumstances do we require or solicit payment of fees in \nexcess of $1200 and more than six months in advance of services rendered.",
+      "previous_word_count": 1032,
+      "current_word_count": 1027,
+      "word_delta": -5,
+      "added_terms": [
+        "supervisory",
+        "maximum",
+        "thereafter",
+        "portfoli",
+        "uld",
+        "limited",
+        "by-",
+        "composition"
+      ],
+      "removed_terms": [
+        "upervisory",
+        "iss",
+        "portfolio",
+        "fees",
+        "after",
+        "could",
+        "other",
+        "by-client"
+      ],
+      "is_material": true,
+      "change_summary": "modified; added terms: supervisory, maximum, thereafter, portfoli, uld, limited, by-, composition; removed terms: upervisory, iss, portfolio, fees, after, could, other, by-client",
+      "scores": {
+        "marketing_rule_relevance": 1.79,
+        "client_service_mix_change": 6.29,
+        "operational_complexity_change": 1.41,
+        "confidence": 8.5,
+        "composite": 3.72
+      },
+      "matched_keywords": {
+        "marketing_rule_relevance": [],
+        "client_service_mix_change": [
+          "advisory",
+          "client",
+          "clients",
+          "individual",
+          "portfolio management",
+          "retirement",
+          "service",
+          "services"
+        ],
+        "operational_complexity_change": [
+          "billing"
+        ]
+      },
+      "matched_themes": [],
+      "focus_terms": [
+        "portfolio management",
+        "retirement",
+        "billing",
+        "supervisory",
+        "maximum",
+        "thereafter",
+        "portfoli",
+        "limited",
+        "composition"
+      ],
+      "evidence_focus_term": "portfolio management",
+      "evidence_focus_hits": [
+        "portfolio management",
+        "billing",
+        "supervisory",
+        "maximum",
+        "thereafter",
+        "portfoli",
+        "limited",
+        "composition"
+      ],
+      "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"IS S\") INDIVIDUAL PORTFOLIO MANAGEMENT FEES Advisory Fees: the maximum annual fee on the programs is 2% of assets under management, based upon the market value of assets accepted for management on the da...",
+      "score_rationale": "service-mix signal: portfolio management, retirement"
     },
     {
       "section_key": "item_2",
@@ -616,90 +610,6 @@
       ],
       "evidence_excerpt": "...Karen L. Saperston klsap@saperston.com replaced Kristina L. Sape rston as Chief Compliance Officer as well as contact person on cover page.",
       "score_rationale": ""
-    },
-    {
-      "section_key": "item_10",
-      "section_title": "Other Financial Industry Activities and Affiliations",
-      "change_type": "modified",
-      "similarity": 0.9601,
-      "previous_text": "Management personnel and other related persons of our firm are licensed as insurance \nagents o r brokers. In their separate capacities, these individuals are able to implement \ninvestment recommendations for advisory clients for separate and typical c ompensation (i.e., \ncommission or other sales -related forms of compensation). This presents a conflict of interest \nto the extent that these individuals recommend that a client invest in a security which results \nin a commission being paid to the individuals. The implementation of any or all \nrecommendations is solely at the discretion of the client. \nWhile Saperston Legacy Advisors, Inc. and these individuals endeavor at all times to put the \ninterest of the clients first as part of our fiduciary duty, clients should be aware that the receipt \nof additional compensation itself creates a conflict of interest, and may affect the judgment of \nthese individuals when making recommendations. \nThe primary business of the executive officer and related persons is providing advisory \nservices to the retail investing public as Investment Advisor Reps through Saperston Legacy \nAdvisors, Inc. \nRelated persons of applicant may buy or sell securities it recommends to clients. Client \ntransactions will be executed prior to those of related persons as a matter of policy unless \nblock traded. \nClients should be aware that the receipt of a dditional compensation by Saperston Legacy \nAdvisors, Inc. and its management persons or employees may create a conflict of interest that \nmay impair the objectivity of our firm and these individuals when making advisory \nrecommendations. Saperston Legacy Adv isors, Inc. endeavors at all times to put the interest \nof its clients first as part of our fiduciary duty as a registered investment adviser; we take the \n following steps to address this conflict: \n\uf0b7 We disclose to clients the existence of all material conf licts of interest, including the \npotential for our firm and our employees to earn compensation from advisory clients in \naddition to our firm's advisory fees; \n\uf0b7 We disclose to clients that they are not obligated to purchase recommended investment \nproducts from our employees or affiliated companies; \n\uf0b7 We collect, maintain and document accurate, complete and relevant client background \ninformation, including the client\u2019s financial goals, objectives and risk tolerance; \n\uf0b7 Our firm's management conducts regula r reviews of each client account to verify that all \nrecommendations made to a client are suitable to the client\u2019s needs and circumstances; \n\uf0b7 We require that our employees seek prior approval of any outside employment activity so \nthat we may ensure that a ny conflicts of interests in such activities are properly addressed; \n\uf0b7 We periodically monitor these outside employment activities to verify that any conflicts of \ninterest continue to be properly addressed by our firm; and \n\uf0b7 We educate our employees re garding the responsibilities of a fiduciary, including the need \nfor having a reasonable and independent basis for the investment advice provided to \nclients. \n \nRelated persons of applicant additionally act in the capacity of officers to the following \ncompani es: \nSaperston Management Services, Inc. - Is a company that provides Private Client Services, \nnamely bill paying and bookkeeping services for an hourly fee. The employees of Saperston \nManagement Services, Inc. are not the same as the adviser. The bookkeepi ng employees \ncan provide check preparation services for clients. This can be for real estate taxes, personal \npurchases, business, etc. None of the bookkeeping employees can sign those checks. \nSaperston Management Services, Inc. dba Franklin Management Se rvices offers Life, Fixed \nAnnuity and Long -Term Care Insurance. Employees of Franklin Management are paid a \ncommission. \nNo advisory client is required to utilize the services of Saperston Management Services, Inc. \nor Franklin Management Services. \nSapers ton Real Estate Corp. - A company whose primary business is selling commercial real \nestate and some residential real estate for a commission. The adviser has no business \ndealings with the real estate company in connection with the advisory services we prov ide our \nclients. Saperston Real Estate is at a separate location in downtown Buffalo.",
-      "current_text": "Management personnel and other related persons of our firm are licensed as insurance agents . In \ntheir separate capacities, these individuals are able to implement investme nt recommendations for \nadvisory clients for separate and typical compensation (i.e., commission or other sales -related forms \nof compensation). This presents a conflict of interest to the extent that these individuals recommend \nthat a client invest in a product which results in a commission being paid to the individuals. The \nimplementation of any or all recommendations is solely at the discretion of the client. \nWhile Saperston Legacy Advisors, Inc. and these individuals endeavor at all times to put the inter est \nof the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional \ncompensation itself creates a conflict of interest, and may affect the judgment of these individuals \nwhen making recommendations. \nThe primary bus iness of the executive officer and related persons is providing advisory services to the \nretail investing public as Investment Advisor Reps through Saperston Legacy Advisors, Inc. \nRelated persons of applicant may buy or sell securities it recommends to cli ents. Client transactions \nwill be executed prior to those of related persons as a matter of policy unless block traded. \nClients should be aware that the receipt of additional compensation by Saperston Legacy Advisors, \nInc. and its management persons or em ployees may create a conflict of interest that may impair the \nobjectivity of our firm and these individuals when making advisory recommendations. Saperston \nLegacy Advisors, Inc. endeavors at all times to put the interest of its clients first as part of our fiduciary \nduty as a registered investment adviser; we take the following steps to address this conflict: \n\uf0b7 We disclose to clients the existence of all material conflicts of interest, including the potential for \nour firm and our employees to earn compensa tion from advisory clients in addition to our firm's \nadvisory fees; \n\uf0b7 We disclose to clients that they are not obligated to purchase recommended investment products \nfrom our employees or affiliated companies; \n\uf0b7 We collect, maintain and document accurate, complete and relevant client background \ninformation, including the client\u2019s financial goals, objectives and risk tolerance; \n\uf0b7 Our firm's management conducts regular reviews of each client account to verify that all \nrecommendations made to a client are s uitable to the client\u2019s needs and circumstances; \n\uf0b7 We require that our employees seek prior approval of any outside employment activity so that we \nmay ensure that any conflicts of interests in such activities are properly addressed; \n\uf0b7 We periodically m onitor these outside employment activities to verify that any conflicts of interest \ncontinue to be properly addressed by our firm; and \n\uf0b7 We educate our employees regarding the responsibilities of a fiduciary, including the need for \nhaving a reasonable an d independent basis for the investment advice provided to clients. \n \nRelated persons of applicant additionally act in the capacity of officers to the following companies: \nSaperston Management Services, Inc. - Is a company that provides Private Client Service s, namely bill \npaying and bookkeeping services for an hourly fee. The employees of Saperston Management \nServices, Inc. are not the same as the adviser. The bookkeeping employees can provide check \npreparation services for clients. This can be for real esta te taxes, personal purchases, business, etc. \nNone of the bookkeeping employees can sign those checks. \nSaperston Management Services, Inc. dba Franklin Management Services offers Life, Fixed Annuity \nand Long -Term Care Insurance. Employees of Franklin Mana gement are paid a commission. \n No advisory client is required to utilize the services of Saperston Management Services, Inc. or \nFranklin Management Services. \nSaperston Real Estate Corp. - A company whose primary business is selling commercial real estate \nand some residential real estate for a commission. The adviser has no business dealings with the real \nestate company in connection with the advisory services we provide our clients. Saperston Real \nEstate is at a separate location in downtown Buffalo.",
-      "previous_word_count": 662,
-      "current_word_count": 660,
-      "word_delta": -2,
-      "added_terms": [
-        "investme",
-        "product",
-        "any",
-        "saperston",
-        "advisors",
-        "inter",
-        "est",
-        "additional"
-      ],
-      "removed_terms": [
-        "management",
-        "brokers",
-        "ompensation",
-        "interest",
-        "security",
-        "business",
-        "dditional",
-        "employees"
-      ],
-      "is_material": true,
-      "change_summary": "modified; added terms: investme, product, any, saperston, advisors, inter, est, additional; removed terms: management, brokers, ompensation, interest, security, business, dditional, employees",
-      "scores": {
-        "marketing_rule_relevance": 1.51,
-        "client_service_mix_change": 4.88,
-        "operational_complexity_change": 1.88,
-        "confidence": 8.5,
-        "composite": 3.31
-      },
-      "matched_keywords": {
-        "marketing_rule_relevance": [
-          "review"
-        ],
-        "client_service_mix_change": [
-          "advisory",
-          "client",
-          "clients",
-          "individual",
-          "service",
-          "services"
-        ],
-        "operational_complexity_change": []
-      },
-      "matched_themes": [
-        {
-          "theme_id": "exam_priorities_2026_compliance",
-          "theme_name": "2026 examination priorities: compliance program readiness",
-          "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
-          "source_date": "2025-11-17",
-          "keyword_hits": [
-            "fiduciary duty"
-          ]
-        }
-      ],
-      "focus_terms": [
-        "fiduciary duty",
-        "investme",
-        "product",
-        "saperston",
-        "inter",
-        "additional"
-      ],
-      "evidence_focus_term": "fiduciary duty",
-      "evidence_focus_hits": [
-        "fiduciary duty",
-        "investme",
-        "product",
-        "saperston",
-        "inter",
-        "additional"
-      ],
-      "evidence_excerpt": "...endeavor at all times to put the inter est of the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional compensation itself creates a conflict of interest, and may affect the judgment of these...",
-      "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness"
     },
     {
       "section_key": "item_11",
@@ -800,80 +710,86 @@
       "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
     },
     {
-      "section_key": "item_13",
-      "section_title": "Review of Accounts",
+      "section_key": "item_10",
+      "section_title": "Other Financial Industry Activities and Affiliations",
       "change_type": "modified",
-      "similarity": 0.9827,
-      "previous_text": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") \nINDIVIDUAL PORTFOLIO MANAGEMENT \nREVIEWS: While the underlying securities within Individual Por tfolio Management Services \naccounts are continually monitored, these accounts are randomly reviewed at least quarterly . \nAccounts are reviewed in the context of each client's stated investment objectives and \nguidelines. More frequent reviews may be triggere d by material changes in variables such as \nthe client's individual circumstances, or the market, political or economic environment. These \naccounts are reviewed by: Kristina L. Saperston, Chief Compliance Officer \nREPORTS: In addition to the statements and c onfirmations of transactions that clients receive \nfrom their custodian , we provide reports summarizing account performance, balances and \nholdings at regular client meetings or upon request.",
-      "current_text": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") \nINDIVIDUAL PORTFOLIO MANAGEMENT \nREVIEWS: While the underlying securities within Individual Portfolio Management Services accounts \nare continually monitored, these accounts are randomly reviewed at least quarterly . Accounts are \nreviewed in the context of each client's stated investment objectives and g uidelines. More frequent \nreviews may be triggered by material changes in variables such as the client's individual \ncircumstances, or the market, political or economic environment. These accounts are reviewed by: \nKaren L. Saperston, the Chief Compliance Off icer. \nREPORTS: In addition to the statements and confirmations of transactions that clients receive from \ntheir custodian , we provide reports summarizing account performance, balances and holdings at \nregular client meetings or upon request.",
-      "previous_word_count": 115,
-      "current_word_count": 115,
-      "word_delta": 0,
+      "similarity": 0.9601,
+      "previous_text": "Management personnel and other related persons of our firm are licensed as insurance \nagents o r brokers. In their separate capacities, these individuals are able to implement \ninvestment recommendations for advisory clients for separate and typical c ompensation (i.e., \ncommission or other sales -related forms of compensation). This presents a conflict of interest \nto the extent that these individuals recommend that a client invest in a security which results \nin a commission being paid to the individuals. The implementation of any or all \nrecommendations is solely at the discretion of the client. \nWhile Saperston Legacy Advisors, Inc. and these individuals endeavor at all times to put the \ninterest of the clients first as part of our fiduciary duty, clients should be aware that the receipt \nof additional compensation itself creates a conflict of interest, and may affect the judgment of \nthese individuals when making recommendations. \nThe primary business of the executive officer and related persons is providing advisory \nservices to the retail investing public as Investment Advisor Reps through Saperston Legacy \nAdvisors, Inc. \nRelated persons of applicant may buy or sell securities it recommends to clients. Client \ntransactions will be executed prior to those of related persons as a matter of policy unless \nblock traded. \nClients should be aware that the receipt of a dditional compensation by Saperston Legacy \nAdvisors, Inc. and its management persons or employees may create a conflict of interest that \nmay impair the objectivity of our firm and these individuals when making advisory \nrecommendations. Saperston Legacy Adv isors, Inc. endeavors at all times to put the interest \nof its clients first as part of our fiduciary duty as a registered investment adviser; we take the \n following steps to address this conflict: \n\uf0b7 We disclose to clients the existence of all material conf licts of interest, including the \npotential for our firm and our employees to earn compensation from advisory clients in \naddition to our firm's advisory fees; \n\uf0b7 We disclose to clients that they are not obligated to purchase recommended investment \nproducts from our employees or affiliated companies; \n\uf0b7 We collect, maintain and document accurate, complete and relevant client background \ninformation, including the client\u2019s financial goals, objectives and risk tolerance; \n\uf0b7 Our firm's management conducts regula r reviews of each client account to verify that all \nrecommendations made to a client are suitable to the client\u2019s needs and circumstances; \n\uf0b7 We require that our employees seek prior approval of any outside employment activity so \nthat we may ensure that a ny conflicts of interests in such activities are properly addressed; \n\uf0b7 We periodically monitor these outside employment activities to verify that any conflicts of \ninterest continue to be properly addressed by our firm; and \n\uf0b7 We educate our employees re garding the responsibilities of a fiduciary, including the need \nfor having a reasonable and independent basis for the investment advice provided to \nclients. \n \nRelated persons of applicant additionally act in the capacity of officers to the following \ncompani es: \nSaperston Management Services, Inc. - Is a company that provides Private Client Services, \nnamely bill paying and bookkeeping services for an hourly fee. The employees of Saperston \nManagement Services, Inc. are not the same as the adviser. The bookkeepi ng employees \ncan provide check preparation services for clients. This can be for real estate taxes, personal \npurchases, business, etc. None of the bookkeeping employees can sign those checks. \nSaperston Management Services, Inc. dba Franklin Management Se rvices offers Life, Fixed \nAnnuity and Long -Term Care Insurance. Employees of Franklin Management are paid a \ncommission. \nNo advisory client is required to utilize the services of Saperston Management Services, Inc. \nor Franklin Management Services. \nSapers ton Real Estate Corp. - A company whose primary business is selling commercial real \nestate and some residential real estate for a commission. The adviser has no business \ndealings with the real estate company in connection with the advisory services we prov ide our \nclients. Saperston Real Estate is at a separate location in downtown Buffalo.",
+      "current_text": "Management personnel and other related persons of our firm are licensed as insurance agents . In \ntheir separate capacities, these individuals are able to implement investme nt recommendations for \nadvisory clients for separate and typical compensation (i.e., commission or other sales -related forms \nof compensation). This presents a conflict of interest to the extent that these individuals recommend \nthat a client invest in a product which results in a commission being paid to the individuals. The \nimplementation of any or all recommendations is solely at the discretion of the client. \nWhile Saperston Legacy Advisors, Inc. and these individuals endeavor at all times to put the inter est \nof the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional \ncompensation itself creates a conflict of interest, and may affect the judgment of these individuals \nwhen making recommendations. \nThe primary bus iness of the executive officer and related persons is providing advisory services to the \nretail investing public as Investment Advisor Reps through Saperston Legacy Advisors, Inc. \nRelated persons of applicant may buy or sell securities it recommends to cli ents. Client transactions \nwill be executed prior to those of related persons as a matter of policy unless block traded. \nClients should be aware that the receipt of additional compensation by Saperston Legacy Advisors, \nInc. and its management persons or em ployees may create a conflict of interest that may impair the \nobjectivity of our firm and these individuals when making advisory recommendations. Saperston \nLegacy Advisors, Inc. endeavors at all times to put the interest of its clients first as part of our fiduciary \nduty as a registered investment adviser; we take the following steps to address this conflict: \n\uf0b7 We disclose to clients the existence of all material conflicts of interest, including the potential for \nour firm and our employees to earn compensa tion from advisory clients in addition to our firm's \nadvisory fees; \n\uf0b7 We disclose to clients that they are not obligated to purchase recommended investment products \nfrom our employees or affiliated companies; \n\uf0b7 We collect, maintain and document accurate, complete and relevant client background \ninformation, including the client\u2019s financial goals, objectives and risk tolerance; \n\uf0b7 Our firm's management conducts regular reviews of each client account to verify that all \nrecommendations made to a client are s uitable to the client\u2019s needs and circumstances; \n\uf0b7 We require that our employees seek prior approval of any outside employment activity so that we \nmay ensure that any conflicts of interests in such activities are properly addressed; \n\uf0b7 We periodically m onitor these outside employment activities to verify that any conflicts of interest \ncontinue to be properly addressed by our firm; and \n\uf0b7 We educate our employees regarding the responsibilities of a fiduciary, including the need for \nhaving a reasonable an d independent basis for the investment advice provided to clients. \n \nRelated persons of applicant additionally act in the capacity of officers to the following companies: \nSaperston Management Services, Inc. - Is a company that provides Private Client Service s, namely bill \npaying and bookkeeping services for an hourly fee. The employees of Saperston Management \nServices, Inc. are not the same as the adviser. The bookkeeping employees can provide check \npreparation services for clients. This can be for real esta te taxes, personal purchases, business, etc. \nNone of the bookkeeping employees can sign those checks. \nSaperston Management Services, Inc. dba Franklin Management Services offers Life, Fixed Annuity \nand Long -Term Care Insurance. Employees of Franklin Mana gement are paid a commission. \n No advisory client is required to utilize the services of Saperston Management Services, Inc. or \nFranklin Management Services. \nSaperston Real Estate Corp. - A company whose primary business is selling commercial real estate \nand some residential real estate for a commission. The adviser has no business dealings with the real \nestate company in connection with the advisory services we provide our clients. Saperston Real \nEstate is at a separate location in downtown Buffalo.",
+      "previous_word_count": 662,
+      "current_word_count": 660,
+      "word_delta": -2,
       "added_terms": [
-        "portfolio",
-        "uidelines",
-        "triggered",
-        "karen",
-        "off",
-        "icer",
-        "confirmations"
+        "investme",
+        "product",
+        "any",
+        "saperston",
+        "advisors",
+        "inter",
+        "est",
+        "additional"
       ],
       "removed_terms": [
-        "por",
-        "tfolio",
-        "guidelines",
-        "triggere",
-        "kristina",
-        "officer",
-        "onfirmations"
+        "management",
+        "brokers",
+        "ompensation",
+        "interest",
+        "security",
+        "business",
+        "dditional",
+        "employees"
       ],
       "is_material": true,
-      "change_summary": "modified; added terms: portfolio, uidelines, triggered, karen, off, icer, confirmations; removed terms: por, tfolio, guidelines, triggere, kristina, officer, onfirmations",
+      "change_summary": "modified; added terms: investme, product, any, saperston, advisors, inter, est, additional; removed terms: management, brokers, ompensation, interest, security, business, dditional, employees",
       "scores": {
-        "marketing_rule_relevance": 1.28,
-        "client_service_mix_change": 4.65,
-        "operational_complexity_change": 1.28,
+        "marketing_rule_relevance": 0.38,
+        "client_service_mix_change": 4.88,
+        "operational_complexity_change": 1.88,
         "confidence": 8.5,
-        "composite": 3.01
+        "composite": 2.92
       },
       "matched_keywords": {
-        "marketing_rule_relevance": [
-          "review"
-        ],
+        "marketing_rule_relevance": [],
         "client_service_mix_change": [
+          "advisory",
           "client",
           "clients",
           "individual",
-          "portfolio management",
           "service",
           "services"
         ],
-        "operational_complexity_change": [
-          "compliance"
-        ]
+        "operational_complexity_change": []
       },
-      "matched_themes": [],
+      "matched_themes": [
+        {
+          "theme_id": "exam_priorities_2026_compliance",
+          "theme_name": "2026 examination priorities: compliance program readiness",
+          "source_url": "https://www.sec.gov/files/2026-exam-priorities.pdf",
+          "source_date": "2025-11-17",
+          "keyword_hits": [
+            "fiduciary duty"
+          ]
+        }
+      ],
       "focus_terms": [
-        "portfolio management",
-        "compliance",
-        "portfolio",
-        "uidelines",
-        "triggered",
-        "karen",
-        "confirmations"
+        "fiduciary duty",
+        "investme",
+        "product",
+        "saperston",
+        "inter",
+        "additional"
       ],
-      "evidence_focus_term": "portfolio management",
+      "evidence_focus_term": "fiduciary duty",
       "evidence_focus_hits": [
-        "portfolio management",
-        "compliance",
-        "portfolio",
-        "uidelines",
-        "triggered",
-        "karen",
-        "confirmations"
+        "fiduciary duty",
+        "investme",
+        "product",
+        "saperston",
+        "inter",
+        "additional"
       ],
-      "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
-      "score_rationale": ""
+      "evidence_excerpt": "...endeavor at all times to put the inter est of the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional compensation itself creates a conflict of interest, and may affect the judgment of these...",
+      "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness"
     },
     {
       "section_key": "item_16",
@@ -928,6 +844,80 @@
         "limit"
       ],
       "evidence_excerpt": "...ority includes the ability to do the following without contacting the client: \uf0b7 determine the security to buy or sell; and/or \uf0b7 determine the amount of the security to buy or sell \uf0b7 Determine when to buy and sell Clients give us discretiona...",
+      "score_rationale": ""
+    },
+    {
+      "section_key": "item_13",
+      "section_title": "Review of Accounts",
+      "change_type": "modified",
+      "similarity": 0.9827,
+      "previous_text": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") \nINDIVIDUAL PORTFOLIO MANAGEMENT \nREVIEWS: While the underlying securities within Individual Por tfolio Management Services \naccounts are continually monitored, these accounts are randomly reviewed at least quarterly . \nAccounts are reviewed in the context of each client's stated investment objectives and \nguidelines. More frequent reviews may be triggere d by material changes in variables such as \nthe client's individual circumstances, or the market, political or economic environment. These \naccounts are reviewed by: Kristina L. Saperston, Chief Compliance Officer \nREPORTS: In addition to the statements and c onfirmations of transactions that clients receive \nfrom their custodian , we provide reports summarizing account performance, balances and \nholdings at regular client meetings or upon request.",
+      "current_text": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") \nINDIVIDUAL PORTFOLIO MANAGEMENT \nREVIEWS: While the underlying securities within Individual Portfolio Management Services accounts \nare continually monitored, these accounts are randomly reviewed at least quarterly . Accounts are \nreviewed in the context of each client's stated investment objectives and g uidelines. More frequent \nreviews may be triggered by material changes in variables such as the client's individual \ncircumstances, or the market, political or economic environment. These accounts are reviewed by: \nKaren L. Saperston, the Chief Compliance Off icer. \nREPORTS: In addition to the statements and confirmations of transactions that clients receive from \ntheir custodian , we provide reports summarizing account performance, balances and holdings at \nregular client meetings or upon request.",
+      "previous_word_count": 115,
+      "current_word_count": 115,
+      "word_delta": 0,
+      "added_terms": [
+        "portfolio",
+        "uidelines",
+        "triggered",
+        "karen",
+        "off",
+        "icer",
+        "confirmations"
+      ],
+      "removed_terms": [
+        "por",
+        "tfolio",
+        "guidelines",
+        "triggere",
+        "kristina",
+        "officer",
+        "onfirmations"
+      ],
+      "is_material": true,
+      "change_summary": "modified; added terms: portfolio, uidelines, triggered, karen, off, icer, confirmations; removed terms: por, tfolio, guidelines, triggere, kristina, officer, onfirmations",
+      "scores": {
+        "marketing_rule_relevance": 0.15,
+        "client_service_mix_change": 4.65,
+        "operational_complexity_change": 1.28,
+        "confidence": 8.5,
+        "composite": 2.62
+      },
+      "matched_keywords": {
+        "marketing_rule_relevance": [],
+        "client_service_mix_change": [
+          "client",
+          "clients",
+          "individual",
+          "portfolio management",
+          "service",
+          "services"
+        ],
+        "operational_complexity_change": [
+          "compliance"
+        ]
+      },
+      "matched_themes": [],
+      "focus_terms": [
+        "portfolio management",
+        "compliance",
+        "portfolio",
+        "uidelines",
+        "triggered",
+        "karen",
+        "confirmations"
+      ],
+      "evidence_focus_term": "portfolio management",
+      "evidence_focus_hits": [
+        "portfolio management",
+        "compliance",
+        "portfolio",
+        "uidelines",
+        "triggered",
+        "karen",
+        "confirmations"
+      ],
+      "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
       "score_rationale": ""
     }
   ]

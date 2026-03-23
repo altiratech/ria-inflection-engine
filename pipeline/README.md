@@ -20,7 +20,7 @@ Current first-slice modules:
 - `iapd.py` for reports metadata, filing ZIPs, firm-detail pulls, and cache-only guardrails
 - `brochures.py` for snapshot-first brochure text reuse, PDF extraction, and brochure-type checks
 - `normalize.py` for section extraction and deterministic deltas
-- `score.py` for rubric scoring, subsection-aware excerpt selection, and rationale packaging
+- `score.py` for rubric scoring, subsection-aware excerpt selection, rationale packaging, and low-value evidence filtering for generic review/reimbursement/platform boilerplate
 - `refresh_queue.py` for previewing and applying the `next_refresh_targets` recache queue
 
 Current first-slice outputs:
