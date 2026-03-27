@@ -87,14 +87,17 @@
       ]
     },
     {
-      "section_key": "item_15",
-      "section_title": "Custody",
-      "change_summary": "modified; added terms: schwab, custody, assets, account, receive, under, government, regulations; removed terms: brochu, important, custodial, verify, accuracy, calculation, among, other",
-      "current_excerpt": "Under government regulations, we are deemed to have custody of your assets if, for example, you authorize us to instruct Schwab to deduct our advisory fees directly from your account or if you grant us authority to move your money to ano...",
-      "focus_term": "custody",
-      "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: custody",
-      "composite": 6.43,
-      "matched_themes": []
+      "section_key": "item_11",
+      "section_title": "Code of Ethics, Participation or Interest in Client Transactions and Personal Trading",
+      "change_summary": "modified; added terms: plicable, saperston, eneral, reports, rsons, private, keep, ing; removed terms: transactions, personal, lients, general, eports, persons, priv, ate",
+      "current_excerpt": "...hical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws. Saperston Legacy Advisors, Inc. and our personnel owe a duty of loyalty, fairness and good faith towards ou...",
+      "focus_term": "compliance",
+      "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection",
+      "composite": 3.01,
+      "matched_themes": [
+        "2026 examination priorities: compliance program readiness",
+        "2026 examination priorities: operations and data protection"
+      ]
     }
   ],
   "section_deltas": [

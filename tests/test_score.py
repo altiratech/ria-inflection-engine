@@ -8,6 +8,7 @@ from pipeline.score import (
     keyword_hits,
     low_value_section_penalties,
     marketing_rule_keyword_hits,
+    select_evidence_sections,
     score_firm_delta,
 )
 
@@ -479,3 +480,55 @@ def test_score_firm_delta_prefers_retirement_plan_consulting_over_platform_suppo
 
     assert scored["evidence"][0]["section_key"] == "item_5"
     assert section_scores["item_5"] > section_scores["item_14"]
+
+
+def test_select_evidence_sections_prefers_explainable_third_slot_over_empty_fee_table() -> None:
+    scored_sections = [
+        {
+            "section_key": "item_2",
+            "scores": {"composite": 7.97},
+            "evidence_focus_term": "financial planning",
+            "score_rationale": "service-mix signal: financial planning, consulting",
+            "matched_themes": [{"theme_name": "theme"}],
+            "evidence_excerpt": "Financial planning services include retirement planning and portfolio management.",
+        },
+        {
+            "section_key": "item_15",
+            "scores": {"composite": 7.34},
+            "evidence_focus_term": "custody",
+            "score_rationale": "ops-complexity signal: custody",
+            "matched_themes": [],
+            "evidence_excerpt": "The firm is deemed to have limited custody of client funds.",
+        },
+        {
+            "section_key": "item_5",
+            "scores": {"composite": 6.47},
+            "evidence_focus_term": "",
+            "score_rationale": "",
+            "matched_themes": [],
+            "evidence_excerpt": (
+                "Fee schedule. Less than $500,000 1.50%. $500,000 to $999,999 1.35%. "
+                "$1,000,000 to $2,999,999 1.20%."
+            ),
+        },
+        {
+            "section_key": "item_13",
+            "scores": {"composite": 6.08},
+            "evidence_focus_term": "edgerock",
+            "score_rationale": "service-mix signal: advisory, client, clients",
+            "matched_themes": [],
+            "evidence_excerpt": "EdgeRock has an arrangement with Fidelity that provides platform services and research support.",
+        },
+        {
+            "section_key": "item_3",
+            "scores": {"composite": 5.84},
+            "evidence_focus_term": "retirement",
+            "score_rationale": "service-mix signal: retirement",
+            "matched_themes": [],
+            "evidence_excerpt": "Retirement planning, insurance planning, and education planning are included in the written plan.",
+        },
+    ]
+
+    selected = select_evidence_sections(scored_sections, "EDGEROCK WEALTH MANAGEMENT", limit=3)
+
+    assert [section["section_key"] for section in selected] == ["item_2", "item_15", "item_3"]

@@ -102,14 +102,17 @@
           ]
         },
         {
-          "section_key": "item_15",
-          "section_title": "Custody",
-          "change_summary": "modified; added terms: schwab, custody, assets, account, receive, under, government, regulations; removed terms: brochu, important, custodial, verify, accuracy, calculation, among, other",
-          "current_excerpt": "Under government regulations, we are deemed to have custody of your assets if, for example, you authorize us to instruct Schwab to deduct our advisory fees directly from your account or if you grant us authority to move your money to ano...",
-          "focus_term": "custody",
-          "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: custody",
-          "composite": 6.43,
-          "matched_themes": []
+          "section_key": "item_11",
+          "section_title": "Code of Ethics, Participation or Interest in Client Transactions and Personal Trading",
+          "change_summary": "modified; added terms: plicable, saperston, eneral, reports, rsons, private, keep, ing; removed terms: transactions, personal, lients, general, eports, persons, priv, ate",
+          "current_excerpt": "...hical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws. Saperston Legacy Advisors, Inc. and our personnel owe a duty of loyalty, fairness and good faith towards ou...",
+          "focus_term": "compliance",
+          "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection",
+          "composite": 3.01,
+          "matched_themes": [
+            "2026 examination priorities: compliance program readiness",
+            "2026 examination priorities: operations and data protection"
+          ]
         }
       ],
       "section_deltas": [
@@ -1006,14 +1009,16 @@
           "matched_themes": []
         },
         {
-          "section_key": "item_5",
-          "section_title": "FEES AND COMPENSATION",
-          "change_summary": "removed; removed terms: fees, fee, management, account, edgerock, custodian, financial, independent",
-          "current_excerpt": "Investment Supervisory Services Our standard annual fee, based on a percentage of your assets under our management, follows the table below: Less than $500,000.00 1.50% From $500,000.00 to $999,999.99 1.35% From $1,000,000.00 to $2,999,9...",
-          "focus_term": "",
-          "score_rationale": "",
-          "composite": 6.47,
-          "matched_themes": []
+          "section_key": "item_12",
+          "section_title": "Brokerage Practices",
+          "change_summary": "modified; added terms: brochure, form, adv, part, brokerage, edgerock, wealth, management; removed terms: broker-, decision, back-office, dealers, rev, iew, third-, appropriat",
+          "current_excerpt": "...at all times to put your interests first. As an adviser, we have access to the institutional platform of your account custodian. As such, we will also have access to research products and services from your account custodian and/or other b...",
+          "focus_term": "institutional",
+          "score_rationale": "service-mix signal: institutional; SEC theme match: 2026 examination priorities: compliance program readiness",
+          "composite": 5.89,
+          "matched_themes": [
+            "2026 examination priorities: compliance program readiness"
+          ]
         }
       ],
       "section_deltas": [
@@ -1972,14 +1977,16 @@
           "matched_themes": []
         },
         {
-          "section_key": "item_10",
-          "section_title": "Other",
-          "change_summary": "added; added terms: bcw, broker/dealer, its, financial, industry, registration, representative, does",
-          "current_excerpt": "Financial Industry Activities and Affiliations Registration as a Broker/Dealer or Broker/Dealer Representative BCW is not registered and does not have an application pending to register , as a broker dealer and its management persons are no...",
-          "focus_term": "broker/dealer",
-          "score_rationale": "service-mix signal: advisory, client, clients",
-          "composite": 6.89,
-          "matched_themes": []
+          "section_key": "item_12",
+          "section_title": "Brokerage",
+          "change_summary": "modified; added terms: assets, overall, other, recommend, brokerage, raymond, james, one; removed terms: execution, bcw, best, broker, market, factors, price, transaction",
+          "current_excerpt": "...tment adviser that has discretion over a client account is not in breach of its fiduciary duty when paying more than the lowest commission rate available if the adviser determines in good faith that the rate paid is commensurate with the va...",
+          "focus_term": "fiduciary duty",
+          "score_rationale": "service-mix signal: client, clients, service; SEC theme match: 2026 examination priorities: compliance program readiness",
+          "composite": 6.67,
+          "matched_themes": [
+            "2026 examination priorities: compliance program readiness"
+          ]
         }
       ],
       "section_deltas": [
@@ -3113,14 +3120,16 @@
           "matched_themes": []
         },
         {
-          "section_key": "item_12",
-          "section_title": "Brokerage Practices",
-          "change_summary": "added; added terms: blvd, soft, broker, accounts, dollar, dealer, research, securities",
-          "current_excerpt": "A. Factors Used to Select Custodians and/or Broker/Dealers While BLVD has no formal soft dollar\u2019s program in which soft dollars are used to pay for third party services, BLVD may receive research, products, or other services from custodi...",
-          "focus_term": "broker",
-          "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: third-party",
-          "composite": 7.5,
-          "matched_themes": []
+          "section_key": "item_14",
+          "section_title": "Client Referrals and Other Compensation",
+          "change_summary": "modified; added terms: blvd, fee, accounts, fees, business, trade, statements, all; removed terms: financial, generally, advice, respect, upon, plan, basis, receive",
+          "current_excerpt": "...rprise. These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers...",
+          "focus_term": "consulting",
+          "score_rationale": "service-mix signal: consulting; ops-complexity signal: compliance, custody, vendor; SEC theme match: 2026 examination priorities: operations and data protection",
+          "composite": 7.45,
+          "matched_themes": [
+            "2026 examination priorities: operations and data protection"
+          ]
         }
       ],
       "section_deltas": [

@@ -378,6 +378,18 @@ def unique_terms(terms: list[str]) -> list[str]:
     return ordered
 
 
+def normalized_alpha_tokens(text: str) -> list[str]:
+    return [token for token in re.findall(r"[a-z]+", text.lower()) if len(token) >= 4]
+
+
+def focus_term_matches_firm_name(focus_term: str, firm_name: str) -> bool:
+    focus_tokens = normalized_alpha_tokens(focus_term)
+    firm_tokens = set(normalized_alpha_tokens(firm_name))
+    if not focus_tokens or not firm_tokens:
+        return False
+    return all(token in firm_tokens for token in focus_tokens)
+
+
 def clean_line(line: str) -> str:
     return " ".join(line.split()).strip()
 
@@ -626,6 +638,51 @@ def score_rationale(
     return preview(rationale, limit=220)
 
 
+def section_evidence_priority(section: dict[str, Any], firm_name: str) -> tuple[float, float]:
+    rationale = section.get("score_rationale", "").strip()
+    focus_term = section.get("evidence_focus_term", "").strip()
+    excerpt = section.get("evidence_excerpt", "")
+
+    explainability = 0.0
+    if rationale:
+        explainability += 2.0
+    if focus_term:
+        explainability += 1.0
+        if is_specific_focus_term(focus_term):
+            explainability += 1.5
+        if focus_term_matches_firm_name(focus_term, firm_name):
+            explainability -= 1.5
+    if section.get("matched_themes"):
+        explainability += 0.75
+    if excerpt:
+        explainability += 0.5 if table_like_penalty(excerpt) < 1.0 else -1.0
+    if not rationale and not focus_term:
+        explainability -= 3.0
+
+    return round(explainability, 2), float(section["scores"]["composite"])
+
+
+def select_evidence_sections(scored_sections: list[dict[str, Any]], firm_name: str, *, limit: int = 3) -> list[dict[str, Any]]:
+    if limit <= 0 or not scored_sections:
+        return []
+    if len(scored_sections) <= limit:
+        return scored_sections[:limit]
+
+    preserve_count = min(2, limit)
+    selected = scored_sections[:preserve_count]
+    remaining = sorted(
+        scored_sections[preserve_count:],
+        key=lambda section: section_evidence_priority(section, firm_name),
+        reverse=True,
+    )
+
+    for section in remaining:
+        if len(selected) >= limit:
+            break
+        selected.append(section)
+    return selected[:limit]
+
+
 def score_dimension(
     delta: dict[str, Any],
     *,
@@ -785,6 +842,7 @@ def score_firm_delta(
         for theme in section["matched_themes"]:
             theme_lookup[theme["theme_id"]] = theme
 
+    evidence_sections = select_evidence_sections(scored_sections, firm_context["firm_name"], limit=3)
     evidence = [
         {
             "section_key": section["section_key"],
@@ -796,7 +854,7 @@ def score_firm_delta(
             "composite": section["scores"]["composite"],
             "matched_themes": [theme["theme_name"] for theme in section["matched_themes"]],
         }
-        for section in scored_sections[:3]
+        for section in evidence_sections
     ]
 
     return {
