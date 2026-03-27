@@ -638,10 +638,56 @@ def score_rationale(
     return preview(rationale, limit=220)
 
 
-def section_evidence_priority(section: dict[str, Any], firm_name: str) -> tuple[float, float]:
+def section_operator_value(section: dict[str, Any], firm_name: str) -> float:
+    matched_keywords = section.get("matched_keywords", {})
+    focus_term = section.get("evidence_focus_term", "").strip()
+    source_text = section.get("current_text") or section.get("previous_text") or section.get("evidence_excerpt", "")
+
+    specific_service_hits = [
+        hit for hit in matched_keywords.get("client_service_mix_change", []) if is_specific_focus_term(hit)
+    ]
+    specific_ops_hits = [
+        hit for hit in matched_keywords.get("operational_complexity_change", []) if is_specific_focus_term(hit)
+    ]
+    specific_marketing_hits = [
+        hit for hit in matched_keywords.get("marketing_rule_relevance", []) if is_specific_focus_term(hit)
+    ]
+
+    operator_value = 0.0
+    if specific_service_hits:
+        operator_value += 2.0 + min(1.25, 0.45 * len(unique_terms(specific_service_hits)))
+    elif specific_ops_hits:
+        operator_value += 1.0 + min(0.75, 0.3 * len(unique_terms(specific_ops_hits)))
+    elif specific_marketing_hits:
+        operator_value += 0.75 + min(0.5, 0.25 * len(unique_terms(specific_marketing_hits)))
+
+    if focus_term and not focus_term_matches_firm_name(focus_term, firm_name):
+        if is_specific_focus_term(focus_term):
+            operator_value += 1.25
+            if " " in focus_term:
+                operator_value += 0.5
+        else:
+            operator_value += 0.25
+
+    rationale = section.get("score_rationale", "").strip()
+    if rationale.startswith("SEC theme match:"):
+        operator_value -= 1.25
+
+    low_value_penalty = sum(low_value_section_penalties(source_text).values())
+    if low_value_penalty:
+        operator_value -= min(2.5, round(low_value_penalty * 0.5, 2))
+
+    if table_like_penalty(section.get("evidence_excerpt", "")) >= 1.0:
+        operator_value -= 1.25
+
+    return round(operator_value, 2)
+
+
+def section_evidence_priority(section: dict[str, Any], firm_name: str) -> tuple[float, float, float]:
     rationale = section.get("score_rationale", "").strip()
     focus_term = section.get("evidence_focus_term", "").strip()
     excerpt = section.get("evidence_excerpt", "")
+    operator_value = section_operator_value(section, firm_name)
 
     explainability = 0.0
     if rationale:
@@ -659,7 +705,7 @@ def section_evidence_priority(section: dict[str, Any], firm_name: str) -> tuple[
     if not rationale and not focus_term:
         explainability -= 3.0
 
-    return round(explainability, 2), float(section["scores"]["composite"])
+    return operator_value, round(explainability, 2), float(section["scores"]["composite"])
 
 
 def select_evidence_sections(scored_sections: list[dict[str, Any]], firm_name: str, *, limit: int = 3) -> list[dict[str, Any]]:

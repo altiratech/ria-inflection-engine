@@ -36,3 +36,4 @@ Selection behavior note:
 - the `20`-pair evaluation window now prefers evaluation-ready pairs (detail + brochure cache available) before raw recency order
 - every pair inside that evaluation window is scored before the live top `5` shortlist is finalized
 - deferred fully cached firms can now be promoted into the shortlist when they outscore the current shortlist floor
+- the visible third evidence slot now prefers the most operator-useful explainable section instead of generic platform/support leftovers when both are available

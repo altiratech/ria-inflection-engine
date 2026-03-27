@@ -85,7 +85,7 @@ The `20`-pair evaluation window now prioritizes firms that are already ready for
 
 The scorer now also suppresses low-value evidence patterns that were making the shortlist harder to trust: generic account-review cadence no longer counts as marketing-rule signal, sponsor-reimbursement / conference boilerplate no longer reads as real advertising signal, custodial-platform support copy is downweighted so it is less likely to outrank actual service-change paragraphs, and generic methods/risk plus brokerage-support boilerplate now lose to real advisory-service sections when both appear in the same brochure slice.
 
-The visible top-three evidence list now uses a lighter explainability pass on top of firm scoring: the first two evidence slots still follow the strongest scored sections, but the final slot now prefers sections with a real focus term and rationale over blank fee-table leftovers when a weaker-but-more-explainable section exists below them.
+The visible top-three evidence list now uses a lighter explainability pass on top of firm scoring: the first two evidence slots still follow the strongest scored sections, but the final slot now prefers sections with a real focus term and rationale over blank fee-table leftovers when a weaker-but-more-explainable section exists below them. Among those explainable leftovers, the selector now also prefers the most operator-useful section instead of generic custodian/support copy when a cleaner service-change paragraph exists lower in the same firm delta.
 
 To preview the recache queue without fetching anything:
 

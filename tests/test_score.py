@@ -532,3 +532,78 @@ def test_select_evidence_sections_prefers_explainable_third_slot_over_empty_fee_
     selected = select_evidence_sections(scored_sections, "EDGEROCK WEALTH MANAGEMENT", limit=3)
 
     assert [section["section_key"] for section in selected] == ["item_2", "item_15", "item_3"]
+
+
+def test_select_evidence_sections_prefers_actionable_service_section_over_support_copy() -> None:
+    scored_sections = [
+        {
+            "section_key": "item_2",
+            "scores": {"composite": 7.97},
+            "matched_keywords": {
+                "marketing_rule_relevance": [],
+                "client_service_mix_change": ["consulting", "financial planning", "portfolio management"],
+                "operational_complexity_change": ["billing", "custody"],
+            },
+            "evidence_focus_term": "financial planning",
+            "score_rationale": (
+                "service-mix signal: consulting, financial planning, portfolio management; "
+                "ops-complexity signal: billing, custody"
+            ),
+            "matched_themes": [{"theme_name": "theme"}],
+            "evidence_excerpt": "Financial planning services include retirement planning and portfolio management.",
+            "current_text": "Financial planning services include retirement planning and portfolio management.",
+            "previous_text": "",
+        },
+        {
+            "section_key": "item_15",
+            "scores": {"composite": 7.34},
+            "matched_keywords": {
+                "marketing_rule_relevance": [],
+                "client_service_mix_change": ["advisory", "client", "clients"],
+                "operational_complexity_change": ["custody"],
+            },
+            "evidence_focus_term": "custody",
+            "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: custody",
+            "matched_themes": [],
+            "evidence_excerpt": "The firm is deemed to have limited custody of client funds.",
+            "current_text": "The firm is deemed to have limited custody of client funds.",
+            "previous_text": "",
+        },
+        {
+            "section_key": "item_12",
+            "scores": {"composite": 5.89},
+            "matched_keywords": {
+                "marketing_rule_relevance": [],
+                "client_service_mix_change": ["institutional"],
+                "operational_complexity_change": ["discretionary"],
+            },
+            "evidence_focus_term": "institutional",
+            "score_rationale": "service-mix signal: institutional; SEC theme match: operations and data protection",
+            "matched_themes": [{"theme_name": "operations and data protection"}],
+            "evidence_excerpt": "The adviser has access to the institutional platform of the account custodian.",
+            "current_text": (
+                "The institutional platform includes administrative support, record keeping, practice "
+                "management, and educational conferences and events."
+            ),
+            "previous_text": "",
+        },
+        {
+            "section_key": "item_3",
+            "scores": {"composite": 5.84},
+            "matched_keywords": {
+                "marketing_rule_relevance": [],
+                "client_service_mix_change": ["retirement"],
+                "operational_complexity_change": [],
+            },
+            "evidence_focus_term": "retirement",
+            "score_rationale": "service-mix signal: retirement",
+            "matched_themes": [],
+            "evidence_excerpt": "Retirement planning and education planning are included in the written financial plan.",
+            "current_text": "Retirement planning and education planning are included in the written financial plan.",
+            "previous_text": "",
+        },
+    ]
+
+    selected = select_evidence_sections(scored_sections, "EDGEROCK WEALTH MANAGEMENT", limit=3)
+
+    assert [section["section_key"] for section in selected] == ["item_2", "item_15", "item_3"]

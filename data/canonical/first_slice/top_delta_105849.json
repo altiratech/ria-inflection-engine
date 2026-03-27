@@ -87,17 +87,14 @@
       ]
     },
     {
-      "section_key": "item_11",
-      "section_title": "Code of Ethics, Participation or Interest in Client Transactions and Personal Trading",
-      "change_summary": "modified; added terms: plicable, saperston, eneral, reports, rsons, private, keep, ing; removed terms: transactions, personal, lients, general, eports, persons, priv, ate",
-      "current_excerpt": "...hical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws. Saperston Legacy Advisors, Inc. and our personnel owe a duty of loyalty, fairness and good faith towards ou...",
-      "focus_term": "compliance",
-      "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection",
-      "composite": 3.01,
-      "matched_themes": [
-        "2026 examination priorities: compliance program readiness",
-        "2026 examination priorities: operations and data protection"
-      ]
+      "section_key": "item_13",
+      "section_title": "Review of Accounts",
+      "change_summary": "modified; added terms: portfolio, uidelines, triggered, karen, off, icer, confirmations; removed terms: por, tfolio, guidelines, triggere, kristina, officer, onfirmations",
+      "current_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
+      "focus_term": "portfolio management",
+      "score_rationale": "",
+      "composite": 2.62,
+      "matched_themes": []
     }
   ],
   "section_deltas": [

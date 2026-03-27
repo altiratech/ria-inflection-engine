@@ -102,17 +102,14 @@
           ]
         },
         {
-          "section_key": "item_11",
-          "section_title": "Code of Ethics, Participation or Interest in Client Transactions and Personal Trading",
-          "change_summary": "modified; added terms: plicable, saperston, eneral, reports, rsons, private, keep, ing; removed terms: transactions, personal, lients, general, eports, persons, priv, ate",
-          "current_excerpt": "...hical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws. Saperston Legacy Advisors, Inc. and our personnel owe a duty of loyalty, fairness and good faith towards ou...",
-          "focus_term": "compliance",
-          "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection",
-          "composite": 3.01,
-          "matched_themes": [
-            "2026 examination priorities: compliance program readiness",
-            "2026 examination priorities: operations and data protection"
-          ]
+          "section_key": "item_13",
+          "section_title": "Review of Accounts",
+          "change_summary": "modified; added terms: portfolio, uidelines, triggered, karen, off, icer, confirmations; removed terms: por, tfolio, guidelines, triggere, kristina, officer, onfirmations",
+          "current_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
+          "focus_term": "portfolio management",
+          "score_rationale": "",
+          "composite": 2.62,
+          "matched_themes": []
         }
       ],
       "section_deltas": [
@@ -1009,16 +1006,14 @@
           "matched_themes": []
         },
         {
-          "section_key": "item_12",
-          "section_title": "Brokerage Practices",
-          "change_summary": "modified; added terms: brochure, form, adv, part, brokerage, edgerock, wealth, management; removed terms: broker-, decision, back-office, dealers, rev, iew, third-, appropriat",
-          "current_excerpt": "...at all times to put your interests first. As an adviser, we have access to the institutional platform of your account custodian. As such, we will also have access to research products and services from your account custodian and/or other b...",
-          "focus_term": "institutional",
-          "score_rationale": "service-mix signal: institutional; SEC theme match: 2026 examination priorities: compliance program readiness",
-          "composite": 5.89,
-          "matched_themes": [
-            "2026 examination priorities: compliance program readiness"
-          ]
+          "section_key": "item_3",
+          "section_title": "Item 3",
+          "change_summary": "removed; removed terms: edgerock, financial, account, planning, portfolio, plan, any, retirement",
+          "current_excerpt": "...which typically address one or more the following topics: investment planning, retirement planning, insurance planning, education planning, portfolio review, and asset allocation. When providing financial planning and consulting services,...",
+          "focus_term": "retirement",
+          "score_rationale": "service-mix signal: retirement",
+          "composite": 5.84,
+          "matched_themes": []
         }
       ],
       "section_deltas": [
@@ -1977,16 +1972,14 @@
           "matched_themes": []
         },
         {
-          "section_key": "item_12",
-          "section_title": "Brokerage",
-          "change_summary": "modified; added terms: assets, overall, other, recommend, brokerage, raymond, james, one; removed terms: execution, bcw, best, broker, market, factors, price, transaction",
-          "current_excerpt": "...tment adviser that has discretion over a client account is not in breach of its fiduciary duty when paying more than the lowest commission rate available if the adviser determines in good faith that the rate paid is commensurate with the va...",
-          "focus_term": "fiduciary duty",
-          "score_rationale": "service-mix signal: client, clients, service; SEC theme match: 2026 examination priorities: compliance program readiness",
-          "composite": 6.67,
-          "matched_themes": [
-            "2026 examination priorities: compliance program readiness"
-          ]
+          "section_key": "item_7",
+          "section_title": "Types",
+          "change_summary": "modified",
+          "current_excerpt": "...o many different types of clients. These clients generally include individuals, high net worth individuals, trusts, estates, corporations, and other types of business entities. Minimum Account Size Adviser has a minimum investment account b...",
+          "focus_term": "high net worth",
+          "score_rationale": "service-mix signal: high net worth, trust",
+          "composite": 2.96,
+          "matched_themes": []
         }
       ],
       "section_deltas": [
@@ -3120,16 +3113,14 @@
           "matched_themes": []
         },
         {
-          "section_key": "item_14",
-          "section_title": "Client Referrals and Other Compensation",
-          "change_summary": "modified; added terms: blvd, fee, accounts, fees, business, trade, statements, all; removed terms: financial, generally, advice, respect, upon, plan, basis, receive",
-          "current_excerpt": "...rprise. These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers...",
-          "focus_term": "consulting",
-          "score_rationale": "service-mix signal: consulting; ops-complexity signal: compliance, custody, vendor; SEC theme match: 2026 examination priorities: operations and data protection",
-          "composite": 7.45,
-          "matched_themes": [
-            "2026 examination priorities: operations and data protection"
-          ]
+          "section_key": "item_13",
+          "section_title": "Review of Accounts",
+          "change_summary": "modified; added terms: schwab, financial, generally, custody, receive, available, upon, plan; removed terms: all, more, accounts, use, broker, would, such, order",
+          "current_excerpt": "A. Frequency and Nature of Periodic Reviews and Who Makes Those Reviews All financial planning relationships are reviewed upon financial plan creation and plan delivery. Financial planning clients are provided a one-time financial plan conc...",
+          "focus_term": "financial planning",
+          "score_rationale": "service-mix signal: financial planning, institutional, retirement",
+          "composite": 6.07,
+          "matched_themes": []
         }
       ],
       "section_deltas": [
