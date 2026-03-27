@@ -122,13 +122,21 @@ LOW_VALUE_SECTION_RULES = (
         "rule_id": "custodian_platform_boilerplate",
         "patterns": (
             re.compile(r"\beducational conferences? and events?\b", re.IGNORECASE),
+            re.compile(r"\beducational events?\b", re.IGNORECASE),
             re.compile(r"\bpractice management\b", re.IGNORECASE),
             re.compile(r"\bmarketing consulting and support\b", re.IGNORECASE),
             re.compile(r"\brecruiting and custodial search consulting\b", re.IGNORECASE),
             re.compile(r"\bplatform services include\b", re.IGNORECASE),
             re.compile(r"\badministrative support\b", re.IGNORECASE),
+            re.compile(r"\bbusiness entertainment\b", re.IGNORECASE),
+            re.compile(r"\bsporting events?\b", re.IGNORECASE),
+            re.compile(r"\bgolf tournaments?\b", re.IGNORECASE),
+            re.compile(r"\bback-?office training and support\b", re.IGNORECASE),
             re.compile(r"\brecord keeping\b", re.IGNORECASE),
             re.compile(r"\bresearch and brokerage services\b", re.IGNORECASE),
+            re.compile(r"\bbusiness succession\b", re.IGNORECASE),
+            re.compile(r"\bhuman capital consultants?\b", re.IGNORECASE),
+            re.compile(r"\binsurance and marketing\b", re.IGNORECASE),
             re.compile(r"\bat no additional charge\b", re.IGNORECASE),
         ),
         "min_matches": 2,
@@ -151,6 +159,63 @@ LOW_VALUE_SECTION_RULES = (
         "penalties": {
             "marketing_rule_relevance": 1.75,
             "client_service_mix_change": 0.75,
+        },
+    },
+    {
+        "rule_id": "generic_investment_risk_boilerplate",
+        "patterns": (
+            re.compile(r"\binvestment strategies and risk of loss\b", re.IGNORECASE),
+            re.compile(r"\bmethods of analysis\b", re.IGNORECASE),
+            re.compile(r"\bfundamental analysis\b", re.IGNORECASE),
+            re.compile(r"\blong-?term purchases\b", re.IGNORECASE),
+            re.compile(r"\bstrategic asset allocation\b", re.IGNORECASE),
+            re.compile(r"\bclients may suffer loss of all or part of (?:a )?principal investment\b", re.IGNORECASE),
+            re.compile(r"\btemporary or extended bear markets\b", re.IGNORECASE),
+        ),
+        "reject_patterns": (
+            re.compile(r"\bfinancial planning services?\b", re.IGNORECASE),
+            re.compile(r"\bportfolio management\b", re.IGNORECASE),
+            re.compile(r"\bretirement planning\b", re.IGNORECASE),
+            re.compile(r"\bwritten financial plans?\b", re.IGNORECASE),
+            re.compile(r"\bconsulting services?\b", re.IGNORECASE),
+        ),
+        "min_matches": 2,
+        "penalties": {
+            "client_service_mix_change": 1.5,
+            "operational_complexity_change": 1.25,
+        },
+    },
+    {
+        "rule_id": "brokerage_support_boilerplate",
+        "patterns": (
+            re.compile(r"\bsoft dollar practices\b", re.IGNORECASE),
+            re.compile(r"\bsection 28\(e\)\b", re.IGNORECASE),
+            re.compile(r"\bbrokerage and research services\b", re.IGNORECASE),
+            re.compile(r"\blowest commission rate available\b", re.IGNORECASE),
+            re.compile(r"\bdirected brokerage\b", re.IGNORECASE),
+            re.compile(r"\border aggregation\b", re.IGNORECASE),
+            re.compile(r"\btrade error policy\b", re.IGNORECASE),
+        ),
+        "min_matches": 2,
+        "penalties": {
+            "client_service_mix_change": 1.25,
+            "operational_complexity_change": 1.0,
+        },
+    },
+    {
+        "rule_id": "routine_account_review_boilerplate",
+        "patterns": (
+            re.compile(r"\bperiodic reviews?\b", re.IGNORECASE),
+            re.compile(r"\bintermittent review factors\b", re.IGNORECASE),
+            re.compile(r"\baccounts are reviewed\b", re.IGNORECASE),
+            re.compile(r"\bconfirmations and statements\b", re.IGNORECASE),
+            re.compile(r"\breports clients may receive\b", re.IGNORECASE),
+            re.compile(r"\bfinancial planning accounts are reviewed\b", re.IGNORECASE),
+        ),
+        "min_matches": 2,
+        "penalties": {
+            "client_service_mix_change": 1.0,
+            "operational_complexity_change": 0.75,
         },
     },
 )
@@ -222,6 +287,9 @@ def low_value_section_penalties(text: str) -> dict[str, float]:
     for rule in LOW_VALUE_SECTION_RULES:
         match_count = sum(1 for pattern in rule["patterns"] if pattern.search(collapsed))
         if match_count < rule["min_matches"]:
+            continue
+        reject_patterns = rule.get("reject_patterns", ())
+        if reject_patterns and any(pattern.search(collapsed) for pattern in reject_patterns):
             continue
         scale = min(1.6, 1.0 + 0.2 * (match_count - rule["min_matches"]))
         for dimension_key, penalty in rule["penalties"].items():

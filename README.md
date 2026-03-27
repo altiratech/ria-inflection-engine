@@ -83,7 +83,7 @@ Cache-only reruns now reuse existing brochure text snapshots before touching PDF
 
 The `20`-pair evaluation window now prioritizes firms that are already ready for a full local comparison (detail + brochure cache available) before falling back to raw recency order, which makes cache-only reruns less sensitive to archive arrival order. Every pair inside that window is then scored locally before the top `5` firms are chosen, and fully cached deferred firms can now displace the shortlist floor when the comparison artifact shows they truly beat it.
 
-The scorer now also suppresses low-value evidence patterns that were making the shortlist harder to trust: generic account-review cadence no longer counts as marketing-rule signal, sponsor-reimbursement / conference boilerplate no longer reads as real advertising signal, and custodial-platform support copy is downweighted so it is less likely to outrank actual service-change paragraphs.
+The scorer now also suppresses low-value evidence patterns that were making the shortlist harder to trust: generic account-review cadence no longer counts as marketing-rule signal, sponsor-reimbursement / conference boilerplate no longer reads as real advertising signal, custodial-platform support copy is downweighted so it is less likely to outrank actual service-change paragraphs, and generic methods/risk plus brokerage-support boilerplate now lose to real advisory-service sections when both appear in the same brochure slice.
 
 To preview the recache queue without fetching anything:
 

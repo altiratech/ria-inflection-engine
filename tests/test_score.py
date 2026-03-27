@@ -194,6 +194,18 @@ def test_low_value_section_penalties_flag_custodian_platform_boilerplate() -> No
     assert penalties["operational_complexity_change"] > 0.0
 
 
+def test_low_value_section_penalties_flag_generic_risk_boilerplate() -> None:
+    text = (
+        "Investment Strategies and Risk of Loss. Methods of Analysis include fundamental analysis and long-term "
+        "purchases. Clients may suffer loss of all or part of principal investment."
+    )
+
+    penalties = low_value_section_penalties(text)
+
+    assert penalties["client_service_mix_change"] > 0.0
+    assert penalties["operational_complexity_change"] > 0.0
+
+
 def test_score_firm_delta_does_not_promote_rating_from_operating_fragment() -> None:
     firm_context = {
         "firm_id": "326354",
@@ -312,3 +324,158 @@ def test_score_firm_delta_does_not_treat_account_review_cycles_as_marketing_sign
 
     assert section["matched_keywords"]["marketing_rule_relevance"] == []
     assert "marketing-rule signal" not in section["score_rationale"].lower()
+
+
+def test_score_firm_delta_prefers_service_change_over_risk_and_support_boilerplate() -> None:
+    firm_context = {
+        "firm_id": "326354",
+        "firm_name": "Bell City Wealth, Inc.",
+        "state": "AL",
+        "sec_number": "801-326354",
+        "current_snapshot": {"submitted_at": "20260220", "file_name": "current.pdf"},
+        "prior_snapshot": {"submitted_at": "20260115", "file_name": "prior.pdf"},
+        "filing_context": {"raum_current": "145000000", "raum_prior": "0"},
+    }
+    section_deltas = [
+        {
+            "section_key": "item_4",
+            "section_title": "Advisory",
+            "change_type": "added",
+            "similarity": 0.0,
+            "previous_text": "",
+            "current_text": (
+                "Types of Advisory Services\n"
+                "BCW offers portfolio management, investment analysis, financial planning, retirement planning, "
+                "and estate planning for individuals and high net worth families."
+            ),
+            "previous_word_count": 0,
+            "current_word_count": 23,
+            "word_delta": 23,
+            "added_terms": ["portfolio management", "financial planning", "retirement", "high net worth"],
+            "removed_terms": [],
+            "is_material": True,
+            "change_summary": "added advisory services for portfolio management and planning",
+        },
+        {
+            "section_key": "item_8",
+            "section_title": "Methods",
+            "change_type": "modified",
+            "similarity": 0.42,
+            "previous_text": "The firm discusses investment risks.",
+            "current_text": (
+                "Investment Strategies and Risk of Loss. Methods of Analysis include fundamental analysis, long-term "
+                "purchases, and strategic asset allocation. Clients may suffer loss of all or part of principal investment."
+            ),
+            "previous_word_count": 5,
+            "current_word_count": 28,
+            "word_delta": 23,
+            "added_terms": ["analysis", "strategies", "risk", "clients"],
+            "removed_terms": [],
+            "is_material": True,
+            "change_summary": "expanded generic methods and risk disclosure",
+        },
+        {
+            "section_key": "item_12",
+            "section_title": "Brokerage Practices",
+            "change_type": "modified",
+            "similarity": 0.51,
+            "previous_text": "The firm describes brokerage relationships.",
+            "current_text": (
+                "Soft dollar practices are arrangements where an investment adviser directs transactions to a broker-dealer "
+                "for brokerage and research services. Section 28(e) provides a safe harbor when paying more than the lowest "
+                "commission rate available. The brochure also discusses directed brokerage, order aggregation, and trade error policy."
+            ),
+            "previous_word_count": 6,
+            "current_word_count": 46,
+            "word_delta": 40,
+            "added_terms": ["brokerage", "research", "commission", "client"],
+            "removed_terms": [],
+            "is_material": True,
+            "change_summary": "expanded brokerage support disclosure",
+        },
+        {
+            "section_key": "item_13",
+            "section_title": "Review of Accounts",
+            "change_type": "modified",
+            "similarity": 0.48,
+            "previous_text": "Accounts were reviewed periodically.",
+            "current_text": (
+                "Periodic Reviews are conducted at least annually. Intermittent review factors include market changes "
+                "or client life events. Reports clients may receive include confirmations and statements, and financial "
+                "planning accounts are reviewed upon plan delivery."
+            ),
+            "previous_word_count": 4,
+            "current_word_count": 36,
+            "word_delta": 32,
+            "added_terms": ["reviews", "clients", "financial planning", "reports"],
+            "removed_terms": [],
+            "is_material": True,
+            "change_summary": "expanded routine account review disclosure",
+        },
+    ]
+
+    scored = score_firm_delta(firm_context, section_deltas, RUBRIC, THEMES)
+    section_scores = {section["section_key"]: section["scores"]["composite"] for section in scored["section_deltas"]}
+
+    assert scored["evidence"][0]["section_key"] == "item_4"
+    assert section_scores["item_4"] > section_scores["item_8"]
+    assert section_scores["item_4"] > section_scores["item_12"]
+    assert section_scores["item_4"] > section_scores["item_13"]
+
+
+def test_score_firm_delta_prefers_retirement_plan_consulting_over_platform_support_boilerplate() -> None:
+    firm_context = {
+        "firm_id": "310682",
+        "firm_name": "BLVD Private Wealth, LLC",
+        "state": "TX",
+        "sec_number": "801-310682",
+        "current_snapshot": {"submitted_at": "20260226", "file_name": "current.pdf"},
+        "prior_snapshot": {"submitted_at": "20260129", "file_name": "prior.pdf"},
+        "filing_context": {"raum_current": "220351220", "raum_prior": "207441113"},
+    }
+    section_deltas = [
+        {
+            "section_key": "item_14",
+            "section_title": "Economic Benefits",
+            "change_type": "modified",
+            "similarity": 0.39,
+            "previous_text": "The firm described third-party benefits.",
+            "current_text": (
+                "Schwab makes available educational events, business entertainment, sporting events, golf tournaments, "
+                "back-office training and support, record keeping, and services to help BLVD manage and further develop its "
+                "business enterprise. These services include compliance, legal and business consulting, business succession, "
+                "human capital consultants, insurance and marketing support."
+            ),
+            "previous_word_count": 6,
+            "current_word_count": 52,
+            "word_delta": 46,
+            "added_terms": ["consulting", "compliance", "vendor", "clients"],
+            "removed_terms": [],
+            "is_material": True,
+            "change_summary": "expanded Schwab support disclosure",
+        },
+        {
+            "section_key": "item_5",
+            "section_title": "Fees",
+            "change_type": "modified",
+            "similarity": 0.33,
+            "previous_text": "The firm listed advisory fees.",
+            "current_text": (
+                "Financial Planning Fees are negotiated based on complexity. Retirement Plan Consulting services are billed "
+                "based on plan assets, and portfolio management fees may be billed directly or through the client's account."
+            ),
+            "previous_word_count": 5,
+            "current_word_count": 30,
+            "word_delta": 25,
+            "added_terms": ["financial planning", "retirement", "consulting", "portfolio management", "billing"],
+            "removed_terms": [],
+            "is_material": True,
+            "change_summary": "expanded retirement plan consulting and billing disclosure",
+        },
+    ]
+
+    scored = score_firm_delta(firm_context, section_deltas, RUBRIC, THEMES)
+    section_scores = {section["section_key"]: section["scores"]["composite"] for section in scored["section_deltas"]}
+
+    assert scored["evidence"][0]["section_key"] == "item_5"
+    assert section_scores["item_5"] > section_scores["item_14"]

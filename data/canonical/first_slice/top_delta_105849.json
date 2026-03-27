@@ -28,9 +28,9 @@
   "score": {
     "marketing_rule_relevance": 8.12,
     "client_service_mix_change": 10.0,
-    "operational_complexity_change": 8.25,
+    "operational_complexity_change": 8.0,
     "confidence": 8.41,
-    "overall_score": 8.75
+    "overall_score": 8.68
   },
   "themes": [
     {
@@ -81,7 +81,7 @@
       "current_excerpt": "...broad range of investment products, execution of securities transacti ons, and custody of client assets. The investment products available through Schwab include some to which we might not otherwise have access or that would require a sign...",
       "focus_term": "custody",
       "score_rationale": "ops-complexity signal: compliance, custody, vendor; service-mix signal: consulting, institutional; SEC theme match: 2026 examination priorities: operations and data protection",
-      "composite": 7.36,
+      "composite": 7.21,
       "matched_themes": [
         "2026 examination priorities: operations and data protection"
       ]
@@ -212,10 +212,10 @@
       "change_summary": "modified; added terms: schwab, account, other, accounts, assets, custody, execution, broker; removed terms: any, soft, dollar, arrangements, executio, requires, execu, tion",
       "scores": {
         "marketing_rule_relevance": 5.5,
-        "client_service_mix_change": 7.9,
-        "operational_complexity_change": 8.25,
+        "client_service_mix_change": 7.6,
+        "operational_complexity_change": 8.0,
         "confidence": 10.0,
-        "composite": 7.36
+        "composite": 7.21
       },
       "matched_keywords": {
         "marketing_rule_relevance": [],

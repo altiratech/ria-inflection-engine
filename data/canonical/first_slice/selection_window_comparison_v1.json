@@ -39,28 +39,28 @@
       "comparison_status": "scored",
       "shadow_score": {
         "marketing_rule_relevance": 0.94,
-        "client_service_mix_change": 6.35,
-        "operational_complexity_change": 4.85,
+        "client_service_mix_change": 4.85,
+        "operational_complexity_change": 3.6,
         "confidence": 7.25,
-        "overall_score": 4.17
+        "overall_score": 3.41
       },
-      "score_gap_to_shortlist_floor": -2.91,
+      "score_gap_to_shortlist_floor": -3.67,
       "dimension_gaps_to_shortlist_floor": {
         "marketing_rule_relevance": -3.38,
-        "client_service_mix_change": -2.47,
-        "operational_complexity_change": -2.84,
+        "client_service_mix_change": -3.97,
+        "operational_complexity_change": -4.09,
         "confidence": -2.75,
-        "overall_score": -2.91
+        "overall_score": -3.67
       },
       "would_enter_shortlist": false,
-      "comparison_summary": "Trails the shortlist floor by 2.91; the largest gap is marketing-rule signal.",
+      "comparison_summary": "Trails the shortlist floor by 3.67; the largest gap is ops-complexity signal.",
       "top_evidence": {
         "section_title": "Client Contact w ith Portfolio",
         "change_summary": "modified; added terms: thrivent, pursuant, introdu, cing, policy, r2-26; removed terms: pursuan, fees, what, introducing, olicy, thr, ivent, r1-26",
         "focus_term": "alternative",
-        "score_rationale": "service-mix signal: institutional, portfolio management, retirement; SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection",
+        "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection",
         "current_excerpt": "...non- standard assets, which include but are not limited to Foreign Securities, Alternative Investments and Non- Marketable Securities , cash and cash equivalents. This creates conflicts of interest for Thrivent as we ha ve an incentive to...",
-        "composite": 4.09
+        "composite": 3.33
       },
       "comparison_rank": 1
     },
