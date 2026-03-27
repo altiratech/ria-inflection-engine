@@ -37,3 +37,4 @@ Selection behavior note:
 - every pair inside that evaluation window is scored before the live top `5` shortlist is finalized
 - deferred fully cached firms can now be promoted into the shortlist when they outscore the current shortlist floor
 - the visible third evidence slot now prefers the most operator-useful explainable section instead of generic platform/support leftovers when both are available
+- selected evidence sections now get a fallback plain-language rationale when a specific visible change exists but the old score threshold would otherwise leave the rationale blank

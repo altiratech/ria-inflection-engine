@@ -613,22 +613,43 @@ def score_rationale(
     scores: dict[str, float],
     matched_keywords: dict[str, list[str]],
     matched_themes: list[dict[str, Any]],
+    *,
+    focus_term: str = "",
 ) -> str:
     parts: list[str] = []
+    focus_term = focus_term.strip()
+    specific_focus_term = focus_term if is_specific_focus_term(focus_term) else ""
     dimension_order = sorted(
         DIMENSION_LABELS,
         key=lambda key: scores[key],
         reverse=True,
     )
+    non_theme_part_added = False
     for dimension_key in dimension_order:
         hits = [term for term in matched_keywords.get(dimension_key, []) if is_specific_focus_term(term)]
         if not hits:
             hits = matched_keywords.get(dimension_key, [])
         if scores[dimension_key] < 6 or not hits:
             continue
-        parts.append(f"{DIMENSION_LABELS[dimension_key]}: {', '.join(hits[:3])}")
+        generic_hits_only = not any(is_specific_focus_term(term) for term in hits[:3])
+        if specific_focus_term and " " in specific_focus_term and generic_hits_only:
+            parts.append(f"visible section change: {specific_focus_term}")
+        else:
+            parts.append(f"{DIMENSION_LABELS[dimension_key]}: {', '.join(hits[:3])}")
+        non_theme_part_added = True
         if len(parts) >= 2:
             break
+
+    if not non_theme_part_added and specific_focus_term:
+        for dimension_key in dimension_order:
+            specific_hits = [term for term in matched_keywords.get(dimension_key, []) if is_specific_focus_term(term)]
+            if scores[dimension_key] >= 4.5 and any(term.lower() == specific_focus_term.lower() for term in specific_hits):
+                parts.append(f"{DIMENSION_LABELS[dimension_key]}: {specific_focus_term}")
+                non_theme_part_added = True
+                break
+
+    if not non_theme_part_added and specific_focus_term and matched_themes:
+        parts.append(f"visible section change: {specific_focus_term}")
 
     if matched_themes:
         theme_names = [theme["theme_name"] for theme in matched_themes[:2]]
@@ -861,7 +882,12 @@ def score_firm_delta(
                 "evidence_focus_term": focus_term,
                 "evidence_focus_hits": excerpt_hits,
                 "evidence_excerpt": excerpt,
-                "score_rationale": score_rationale(section_scores, matched_keywords, theme_matches),
+                "score_rationale": score_rationale(
+                    section_scores,
+                    matched_keywords,
+                    theme_matches,
+                    focus_term=focus_term,
+                ),
             }
         )
 

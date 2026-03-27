@@ -107,7 +107,7 @@
           "change_summary": "modified; added terms: portfolio, uidelines, triggered, karen, off, icer, confirmations; removed terms: por, tfolio, guidelines, triggere, kristina, officer, onfirmations",
           "current_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
           "focus_term": "portfolio management",
-          "score_rationale": "",
+          "score_rationale": "service-mix signal: portfolio management",
           "composite": 2.62,
           "matched_themes": []
         }
@@ -722,7 +722,7 @@
             "private"
           ],
           "evidence_excerpt": "...hical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws. Saperston Legacy Advisors, Inc. and our personnel owe a duty of loyalty, fairness and good faith towards ou...",
-          "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
+          "score_rationale": "visible section change: compliance; SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
         },
         {
           "section_key": "item_10",
@@ -804,7 +804,7 @@
             "additional"
           ],
           "evidence_excerpt": "...endeavor at all times to put the inter est of the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional compensation itself creates a conflict of interest, and may affect the judgment of these...",
-          "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness"
+          "score_rationale": "visible section change: fiduciary duty; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
           "section_key": "item_16",
@@ -933,7 +933,7 @@
             "confirmations"
           ],
           "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
-          "score_rationale": ""
+          "score_rationale": "service-mix signal: portfolio management"
         }
       ]
     },
@@ -2335,7 +2335,7 @@
             "james"
           ],
           "evidence_excerpt": "...tment adviser that has discretion over a client account is not in breach of its fiduciary duty when paying more than the lowest commission rate available if the adviser determines in good faith that the rate paid is commensurate with the va...",
-          "score_rationale": "service-mix signal: client, clients, service; SEC theme match: 2026 examination priorities: compliance program readiness"
+          "score_rationale": "visible section change: fiduciary duty; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
           "section_key": "item_9",
@@ -3033,7 +3033,7 @@
             "time-to-time"
           ],
           "evidence_excerpt": "...in the best interest of each of its clients. BCW and its representatives have a fiduciary duty to all clients. BCW and its representatives \u2019fiduciary duty to clients is considered the core underlying principle for BCW\u2019 s Code of Ethics and...",
-          "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
+          "score_rationale": "visible section change: fiduciary duty; SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
         }
       ]
     },
@@ -4105,7 +4105,7 @@
           "change_summary": "modified; added terms: artificial, intelligence, service, companie, machine, learning, providers, risk; removed terms: companies, securities, overa, declines, standardized, small, mid, cap",
           "current_excerpt": "...nce that the investment objective of any fund or investment will be achieved. \u2022 Artificial Intelligence and Machine Learning Risk: Certain service providers utilized by the Firm to service client accounts have artificial intelligence compon...",
           "focus_term": "artificial intelligence",
-          "score_rationale": "service-mix signal: client, clients, individual; SEC theme match: 2026 examination priorities: operations and data protection",
+          "score_rationale": "visible section change: artificial intelligence; SEC theme match: 2026 examination priorities: operations and data protection",
           "composite": 4.14,
           "matched_themes": [
             "2026 examination priorities: operations and data protection"
@@ -4349,7 +4349,7 @@
             "providers"
           ],
           "evidence_excerpt": "...nce that the investment objective of any fund or investment will be achieved. \u2022 Artificial Intelligence and Machine Learning Risk: Certain service providers utilized by the Firm to service client accounts have artificial intelligence compon...",
-          "score_rationale": "service-mix signal: client, clients, individual; SEC theme match: 2026 examination priorities: operations and data protection"
+          "score_rationale": "visible section change: artificial intelligence; SEC theme match: 2026 examination priorities: operations and data protection"
         }
       ]
     }

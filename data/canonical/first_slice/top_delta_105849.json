@@ -92,7 +92,7 @@
       "change_summary": "modified; added terms: portfolio, uidelines, triggered, karen, off, icer, confirmations; removed terms: por, tfolio, guidelines, triggere, kristina, officer, onfirmations",
       "current_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
       "focus_term": "portfolio management",
-      "score_rationale": "",
+      "score_rationale": "service-mix signal: portfolio management",
       "composite": 2.62,
       "matched_themes": []
     }
@@ -707,7 +707,7 @@
         "private"
       ],
       "evidence_excerpt": "...hical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws. Saperston Legacy Advisors, Inc. and our personnel owe a duty of loyalty, fairness and good faith towards ou...",
-      "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
+      "score_rationale": "visible section change: compliance; SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
     },
     {
       "section_key": "item_10",
@@ -789,7 +789,7 @@
         "additional"
       ],
       "evidence_excerpt": "...endeavor at all times to put the inter est of the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional compensation itself creates a conflict of interest, and may affect the judgment of these...",
-      "score_rationale": "SEC theme match: 2026 examination priorities: compliance program readiness"
+      "score_rationale": "visible section change: fiduciary duty; SEC theme match: 2026 examination priorities: compliance program readiness"
     },
     {
       "section_key": "item_16",
@@ -918,7 +918,7 @@
         "confirmations"
       ],
       "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
-      "score_rationale": ""
+      "score_rationale": "service-mix signal: portfolio management"
     }
   ]
 }

@@ -9,6 +9,7 @@ from pipeline.score import (
     low_value_section_penalties,
     marketing_rule_keyword_hits,
     select_evidence_sections,
+    score_rationale,
     score_firm_delta,
 )
 
@@ -607,3 +608,47 @@ def test_select_evidence_sections_prefers_actionable_service_section_over_suppor
     selected = select_evidence_sections(scored_sections, "EDGEROCK WEALTH MANAGEMENT", limit=3)
 
     assert [section["section_key"] for section in selected] == ["item_2", "item_15", "item_3"]
+
+
+def test_score_rationale_backfills_specific_focus_term_below_primary_threshold() -> None:
+    rationale = score_rationale(
+        {
+            "marketing_rule_relevance": 0.15,
+            "client_service_mix_change": 4.65,
+            "operational_complexity_change": 1.28,
+            "confidence": 8.5,
+            "composite": 2.62,
+        },
+        {
+            "marketing_rule_relevance": [],
+            "client_service_mix_change": ["client", "clients", "individual", "portfolio management", "service", "services"],
+            "operational_complexity_change": ["compliance"],
+        },
+        [],
+        focus_term="portfolio management",
+    )
+
+    assert rationale == "service-mix signal: portfolio management"
+
+
+def test_score_rationale_prefers_visible_focus_over_generic_terms_when_available() -> None:
+    rationale = score_rationale(
+        {
+            "marketing_rule_relevance": 2.34,
+            "client_service_mix_change": 6.84,
+            "operational_complexity_change": 1.09,
+            "confidence": 10.0,
+            "composite": 4.14,
+        },
+        {
+            "marketing_rule_relevance": [],
+            "client_service_mix_change": ["client", "clients", "individual", "service"],
+            "operational_complexity_change": [],
+        },
+        [{"theme_name": "2026 examination priorities: operations and data protection"}],
+        focus_term="artificial intelligence",
+    )
+
+    assert rationale.startswith("visible section change: artificial intelligence")
+    assert "client, clients, individual" not in rationale
+    assert "SEC theme match" in rationale
