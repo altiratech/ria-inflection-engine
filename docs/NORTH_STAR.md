@@ -4,25 +4,25 @@ Status: long-term ambition document
 
 ## Product Ambition
 
-Build the most useful evidence-backed operating-intelligence layer for adviser change, regulatory stress, and buying moments.
+Build the most useful evidence-backed supervisory-intelligence layer for adviser disclosure change, review burden, and peer-relative context.
 
 ## Why This Could Matter
 
 - advisory workflows are public-data rich and operationally noisy
-- current tools skew static or generic
-- a strong diff-plus-theme engine can expand into broader RIA operating intelligence
+- current tools skew static, downstream, or generic
+- a strong diff-plus-theme engine can become the upstream intelligence layer that informs review queues, benchmarking, and later workflows
 
 ## Long-Term Product Shape
 
 - Future workflow layers:
-  - merger compatibility
-  - service/provider routing
-  - issue-theme benchmarking
+  - peer benchmarking
+  - exam-readiness review packs
+  - targeted thematic review programs
 
 - Future outputs:
-  - ranked firm queues
-  - benchmark views
-  - workflow playbooks
+  - ranked review queues
+  - peer-relative benchmark views
+  - evidence packets for annual review and exam prep
 
 ## Expansion Logic
 
@@ -32,8 +32,8 @@ Build the most useful evidence-backed operating-intelligence layer for adviser c
 
 ## Strategic Positioning
 
-- Eventual category: adviser operating-intelligence product
-- Should not become: generic CRM or generic compliance task manager
+- Eventual category: supervisory intelligence / filing-delta intelligence product for RIAs and their compliance partners
+- Should not become: generic CRM, generic compliance task manager, or generic policy library
 - Defensible if: change detection, theme mapping, and evidence UX become materially better than manual review
 
 ## Suite / Platform Relationship

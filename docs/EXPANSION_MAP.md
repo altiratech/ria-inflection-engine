@@ -7,8 +7,8 @@ Status: parked ideas and future lanes
 | Idea | Why It Matters | Why It Is Parked | Pull-In Trigger |
 |---|---|---|---|
 | merger breakage scoring | strong buyer wedge | pairwise complexity too early | core delta loop trusted |
-| outreach automation | commercial leverage | product drift into CRM | ranked shortlist proves value |
-| broader benchmarking | useful context | not required for first proof | enough firm coverage exists |
+| outreach automation | commercial leverage | product drift into CRM | upstream intelligence proves value first |
+| deeper peer benchmarking | useful context | not required for first proof | enough firm coverage exists |
 
 ## Adjacent Product Lanes
 
@@ -17,6 +17,7 @@ Status: parked ideas and future lanes
 | RIA operating stress OS | natural expansion of the core inflection loop | bloats MVP |
 | compliance workflow tooling | same buyer set | turns product into a task manager |
 | M&A compatibility tooling | strong second wedge | pairwise data complexity |
+| exam readiness workflow | same data and buyer context | pulls the product downstream before the intelligence layer is trusted |
 
 ## Anti-Leak Rule
 

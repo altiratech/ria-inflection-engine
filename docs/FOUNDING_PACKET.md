@@ -11,27 +11,31 @@ Status: canonical current-scope document
 
 ## 2. One-Sentence Product Definition
 
-`This product helps outsourced compliance providers and RIA-focused GTM teams find advisers with fresh buying-moment signals using public filing deltas and current SEC themes, without becoming a generic compliance operating system.`
+`This product helps outsourced compliance teams and RIAs identify disclosure changes that may warrant closer review under current SEC themes by scoring public filing deltas with visible evidence and peer context, without turning into a generic compliance workflow system.`
 
 ## 3. First User
 
 - Primary user: outsourced compliance provider serving RIAs
-- What they are trying to get done: find firms worth contacting now
-- What they do today instead: manual search, intuition, and broad list-building
-- Why they would switch: ranked evidence-backed targets are faster and more legible
+- What they are trying to get done: identify which firms or client relationships look newly worth reviewing now, and why
+- What they do today instead: manual brochure review, annual review prep, ad hoc exam-theme checks, and spreadsheet watchlists
+- Why they would switch: ranked evidence-backed review priority is faster, more legible, and easier to defend than intuition alone
+- Adjacent users:
+  - RIAs doing self-surveillance or exam-readiness review
+  - consultants or providers doing peer benchmarking
+  - GTM teams reading the same evidence as a secondary buying-moment lens
 
 ## 4. First Workflow
 
-1. user opens a ranked list of recently changed advisers
-2. user filters by segment and recency
-3. user inspects the evidence behind high-scoring firms
-4. user exports or records a shortlist to contact or monitor
+1. user opens a ranked table of recently changed advisers prioritized for review
+2. user filters by peer segment, recency, section, and exam-theme relevance
+3. user inspects the evidence packet behind a high-priority firm delta
+4. user decides whether to review now, monitor, or compare the firm against peers
 
 ## 5. Canonical Object
 
 - Canonical object: `firm_delta`
-- Why this is the product center: the product is about meaningful adviser change over time
-- What is explicitly not the canonical object: CRM record, full firm dossier, or generalized compliance task
+- Why this is the product center: the product is about meaningful adviser disclosure change over time
+- What is explicitly not the canonical object: CRM record, compliance task, policy document, or generic firm profile
 
 ## 6. Current Scope
 
@@ -39,31 +43,42 @@ Status: canonical current-scope document
   - adviser metadata ingest
   - brochure snapshot normalization
   - section-level diffing
-  - buying-moment scoring
-  - ranked evidence-backed UI
+  - evidence-backed scoring
+  - exam-theme mapping
+  - ranked table-first and diff-first review outputs
+- Secondary adjacent lens:
+  - the same evidence can still support GTM / buying-moment workflows, but that is no longer the primary framing
 
 ## 7. Explicit Non-Goals
 
 - Not in scope now:
   - outreach automation
-  - workflow/task management
+  - CRM workflow
+  - task management or attestation
+  - policy-library software
   - pairwise merger compatibility
+  - predicting who the SEC will audit
   - full RIA operating system scope
 
 ## 8. Do-Not-Drift-Into
 
 - Drift risks to avoid:
   - generic lead scoring
+  - black-box risk scoring with no reasoning
   - broad enterprise compliance platform
+  - audit prediction claims
   - M&A product before the core loop works
 
 ## 9. Approved Terminology
 
 | Use | Avoid | Why |
 |---|---|---|
-| `buying moment` | `hot lead` | keeps the product grounded in evidence rather than sales hype |
-| `firm delta` | `signal` alone | forces the product to stay tied to observed change |
-| `regulatory theme` | `warning` | avoids overclaiming certainty |
+| `supervisory triage` | `lead scoring` | sounds serious and review-oriented |
+| `review priority` | `hot lead` | keeps the product grounded in supervision, not sales hype |
+| `firm_delta` | `signal` alone | forces the product to stay tied to observed change |
+| `exam-theme mapping` | `warning` | avoids overclaiming certainty |
+| `self-surveillance` | `self-audit prediction` | keeps the product focused on review burden, not forecasting enforcement |
+| `peer-relative context` | `league table` | keeps benchmarking analytical rather than gamified |
 
 ## 10. Repo / Architecture Pattern
 
@@ -79,10 +94,12 @@ Status: canonical current-scope document
 ## 11. Data Truth Rules
 
 - Source of truth: official adviser and SEC sources
-- What is observed vs inferred: filings/deltas are observed, scores are inferred
-- What can be missing: historical coverage and confidence
-- What must never be faked: adviser records, filing text, or source timestamps
-- How uncertainty should be shown: confidence plus evidence snippets
+- What is observed vs inferred:
+  - filings, snapshots, sections, and deltas are observed
+  - scores, supervisory interpretations, and peer-relative context are inferred
+- What can be missing: historical coverage, theme confidence, and peer coverage
+- What must never be faked: adviser records, filing text, source timestamps, or evidence links
+- How uncertainty should be shown: confidence plus evidence snippets plus explicit peer-coverage limits
 
 ## 12. Quality Gates
 
@@ -90,6 +107,7 @@ Status: canonical current-scope document
   - parser works on representative brochures
   - diffing suppresses cosmetic noise
   - no score without evidence
+  - current SEC-theme mapping is visible where it affects ranking
 
 ## 13. First 2-4 Week Build Sequence
 
@@ -97,14 +115,15 @@ Status: canonical current-scope document
 |---|---|---|
 | 1 | schema and ingest | foundation for everything else |
 | 2 | brochure normalization and diffs | core product truth |
-| 3 | scoring and evidence storage | creates decision value |
-| 4 | ranked UI and shortlist workflow | proves usability |
+| 3 | scoring and evidence storage | creates review value |
+| 4 | ranked UI and review workflow | proves usability |
 
 ## 14. Open Questions That Do Not Block Start
 
 - Open but non-blocking:
   - kickoff decisions are now locked in `docs/FIRST_SLICE.md`
-  - whether export should be CSV only in v1 or wait until after the first trusted shortlist loop
+  - when peer benchmarking should graduate from cohort-relative context to a first-class surface
+  - when the secondary GTM lens should be expressed in product copy, if at all
 
 ## 15. Go / No-Go Check Before Real Code
 

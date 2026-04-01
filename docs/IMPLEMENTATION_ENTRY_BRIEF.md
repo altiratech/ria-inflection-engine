@@ -1,6 +1,6 @@
 # RIA Inflection Engine Implementation Entry Brief
 
-Purpose: keep the first engineering passes aligned with the founding inflection loop.
+Purpose: keep the first engineering passes aligned with the filing-delta intelligence loop.
 
 ## Current Product Center
 
@@ -9,8 +9,8 @@ Build the smallest serious loop:
 1. ingest recent adviser snapshots
 2. normalize brochure sections
 3. compute meaningful diffs
-4. score likely buying moments
-5. let the user inspect evidence and shortlist firms
+4. score which firms or sections may warrant closer review
+5. let the user inspect evidence, theme mapping, and ranked review priority
 
 ## First Build Blocks
 
@@ -28,8 +28,8 @@ Lock schemas for:
 ### 2. Core APIs or payloads
 
 Initial product access should support:
-- ranked adviser list
-- filterable segment views
+- ranked adviser review list
+- filterable segment or peer views
 - firm detail
 - evidence-backed diff retrieval
 
@@ -46,9 +46,11 @@ Initial web surfaces should support:
 Do not treat these as founding blockers:
 - CRM workflow
 - outreach sequencing
-- merger scoring
-- broad benchmarking
+- task management
+- attestation or policy storage
+- predicting who the SEC will audit
+- broad peer benchmarking at national scale
 
 ## Design Guardrail
 
-This product should feel like serious operating intelligence, not like a flashy sales tool.
+This product should feel like serious supervisory intelligence, not like a flashy sales tool.

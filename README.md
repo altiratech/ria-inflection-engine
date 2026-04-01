@@ -4,13 +4,21 @@ RIA Inflection Engine is a standalone repo scaffold hydrated from the KarpathyMe
 
 ## Product Center
 
-Build a ranked buying-moment engine for RIAs using public filing deltas and current SEC regulatory themes.
+Build an evidence-backed filing-delta intelligence system for RIAs using public filing deltas, current SEC themes, and visible evidence.
+
+Primary product lenses:
+- supervisory triage
+- firm self-surveillance
+- peer benchmarking
+
+Secondary adjacent lens:
+- GTM / buying-moment workflows can still use the same evidence, but that is no longer the primary framing.
 
 The founding loop is:
 1. ingest adviser data and brochure snapshots
-2. detect meaningful changes
-3. score likely buying moments
-4. show evidence-backed ranked output
+2. detect meaningful section-level disclosure changes
+3. score which firms or changes warrant closer review
+4. show evidence-backed ranked output and diff drill-down
 
 ## Current Repo Status
 
@@ -20,8 +28,14 @@ Current shipped capabilities:
 - cache the latest SEC brochure + filing archives and IAPD firm detail inputs locally
 - pair consecutive brochure snapshots for a starter national cohort
 - normalize brochure sections into deterministic deltas
-- score buying-moment signals against the locked rubric and SEC themes
-- publish ranked JSON/CSV shortlist artifacts with focus terms, anchored excerpts, and concise rationales
+- score filing deltas against the current base rubric and SEC themes
+- publish ranked JSON/CSV artifacts with focus terms, anchored excerpts, and concise rationales
+
+Current framing status:
+- the repo kernel is unchanged
+- the primary product framing is now supervisory / regtech intelligence, not sales-intel first
+- the current executable code still uses the original base score dimensions
+- the next scoring expansion is a supervisory overlay plus peer-relative context layered on top of the current dimensions
 
 ## Canonical Build Truth
 
@@ -58,7 +72,7 @@ Treat these docs as authoritative:
 
 ## Build Rule
 
-Do not drift into a broad RIA operating system before the inflection loop works.
+Do not drift into a broad RIA operating system, task manager, policy library, or CRM before the filing-delta intelligence loop is trusted.
 
 ## First Slice CLI
 
@@ -87,7 +101,42 @@ The scorer now also suppresses low-value evidence patterns that were making the 
 
 The visible top-three evidence list now uses a lighter explainability pass on top of firm scoring: the first two evidence slots still follow the strongest scored sections, but the final slot now prefers sections with a real focus term and rationale over blank fee-table leftovers when a weaker-but-more-explainable section exists below them. Among those explainable leftovers, the selector now also prefers the most operator-useful section instead of generic custodian/support copy when a cleaner service-change paragraph exists lower in the same firm delta, and the rationale builder now backfills plain-language explanations for those selected sections when the old score threshold would have left the rationale thin or blank.
 
-The excerpt builder now also prefers sentence-aligned focus hits over mid-chunk ellipses, and it joins short risk/heading labels with the explanatory sentence that follows so the visible evidence starts closer to the actual buying-moment language.
+The excerpt builder now also prefers sentence-aligned focus hits over mid-chunk ellipses, and it joins short risk/heading labels with the explanatory sentence that follows so the visible evidence starts closer to the actual review-relevant language.
+
+## Scoring Direction
+
+Keep the current base dimensions:
+- marketing-rule relevance
+- client / service-mix change
+- operational complexity change
+- confidence
+
+Layer the next supervisory dimensions on top:
+- exam-priority relevance
+- disclosure / materiality severity
+- likely policy / procedure impact
+- urgency
+- evidence quality
+
+Do not collapse this into an opaque risk score. The preferred shape is:
+- observed filing-delta profile
+- supervisory review profile
+- peer-relative context
+- clear evidence packet behind every ranked firm
+
+## Commercial Position
+
+Most regtech starts downstream with task management, attestation, policy storage, or workflow software.
+
+RIA Inflection Engine starts upstream by identifying meaningful disclosure change in public filings before that change gets buried in workflow. That upstream intelligence can feed:
+- outsourced compliance review queues
+- annual review preparation
+- targeted marketing-rule reviews
+- surveillance programs
+- exam readiness workflows
+- peer benchmarking
+
+Commercial GTM or buying-moment use remains valid, but as a secondary read of the same evidence rather than the lead product claim.
 
 To preview the recache queue without fetching anything:
 

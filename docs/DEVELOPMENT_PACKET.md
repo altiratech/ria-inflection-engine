@@ -20,16 +20,17 @@ This file pulls the detailed product, data, schema, workflow, and execution guid
 
 ## Product Thesis
 
-Use time-series diffs across adviser filings and brochures to detect moments when firms are under new operational or regulatory stress and therefore more likely to buy.
+Use time-series diffs across adviser filings and brochures to detect meaningful disclosure changes that may warrant closer review under current SEC themes.
 
 This is not a static adviser atlas.
-It is a ranked buying-moment engine with a strong "why now" drill-down.
+It is an evidence-backed filing-delta intelligence system with a strong "why now" drill-down.
 
 ## Why This Exists
 
 - static firm directories do not answer who changed in a way that matters now
-- RIA/compliance teams need evidence-backed prioritization, not broad segmentation
-- filing deltas plus current SEC themes create a more actionable surface than a generic lead list
+- outsourced compliance teams and RIAs need evidence-backed prioritization, not broad segmentation
+- filing deltas plus current SEC themes create a more actionable review surface than downstream workflow systems alone
+- the same upstream intelligence can later feed GTM or commercial workflows, but that is not the primary framing
 
 ## First Users
 
@@ -37,12 +38,14 @@ Primary first buyer:
 - outsourced compliance providers serving RIAs
 
 Strong secondary buyers:
+- RIAs doing self-surveillance or annual review preparation
+- consultants performing peer benchmarking or targeted thematic reviews
 - RIA-focused GTM teams at compliance or workflow software companies
-- tuck-in acquirers and RIA consolidators
+- tuck-in acquirers and RIA consolidators reading the same evidence as a secondary lens
 
 ## Job To Be Done
 
-Identify advisers whose recent public disclosure changes signal new operational complexity, compliance strain, or a near-term buying moment.
+Identify advisers whose recent public disclosure changes signal new compliance review burden, supervisory relevance, or peer-relative outlier behavior.
 
 ## Canonical Units
 
@@ -91,8 +94,8 @@ Useful later overlays:
 
 - adviser records, filing text, source URLs, and source timestamps must never be fabricated
 - filings and deltas are observed
-- scores and buying-moment interpretations are inferred
-- raw source artifacts, normalized text, and scored outputs must remain separate layers
+- review-priority, supervisory, and peer-relative interpretations are inferred
+- raw source artifacts, normalized text, observed deltas, scored outputs, and peer-relative outputs must remain separate layers
 - no score should appear without visible evidence
 
 ## Canonical Schema
@@ -155,10 +158,18 @@ Useful later overlays:
 - `score_id`
 - `firm_id`
 - `delta_id`
-- `buying_moment_strength`
-- `operational_complexity_jump`
-- `regulatory_relevance`
+- `marketing_rule_relevance`
+- `client_service_mix_change`
+- `operational_complexity_change`
 - `confidence`
+- `exam_priority_relevance`
+- `disclosure_materiality_severity`
+- `policy_procedure_impact`
+- `urgency`
+- `evidence_quality`
+- `peer_relative_percentile`
+- `outlier_status`
+- `trend_direction`
 - `rationale`
 - `model_name`
 - `rubric_version`
@@ -175,24 +186,31 @@ Useful later overlays:
 
 ## Scoring Model
 
-Core v1 score dimensions:
-- `buying_moment_strength`
-- `operational_complexity_jump`
-- `regulatory_relevance`
+Current implemented base dimensions:
+- `marketing_rule_relevance`
+- `client_service_mix_change`
+- `operational_complexity_change`
 - `confidence`
 
-Additional candidate dimensions preserved from the source packet:
-- exam vulnerability
-- operational stress
-- business-model drift
-- disclosure delta severity
-- new-rule sensitivity
+Supervisory overlay dimensions to add next:
+- `exam_priority_relevance`
+- `disclosure_materiality_severity`
+- `policy_procedure_impact`
+- `urgency`
+- `evidence_quality`
+
+Peer-relative dimensions to add when cohort coverage is credible:
+- `peer_relative_percentile`
+- `outlier_status`
+- `trend_direction`
 
 Scoring rules:
 - first separate material from cosmetic deltas
 - score section-delta units before any firm-level aggregation
 - keep deterministic diff evidence visible beside any model scoring
 - version rubrics and model outputs
+- keep observed filing change, supervisory interpretation, and peer-relative context as separate readable layers
+- do not collapse the output into a black-box enforcement or audit prediction score
 
 ## Evidence Standard
 
@@ -209,14 +227,15 @@ Without this, the product collapses into vague compliance theater.
 ## Product Surfaces
 
 Primary surface:
-- ranked table of firms by urgency or buying-moment strength
+- ranked table of firms by review priority and visible evidence
 
 Secondary surfaces:
 - filter panel by state, AUM band, recency, and service/client mix
 - firm detail view
 - section-level diff viewer
 - regulatory theme panel
-- shortlist export
+- review queue export
+- peer-relative context panel
 
 UI choice:
 - do not treat treemap as the primary v1 entry point
@@ -258,7 +277,7 @@ Phase 3:
 Phase 4:
 - publish ranked list payloads
 - build firm detail and diff surfaces
-- support shortlist export or monitoring
+- support review-queue export or monitoring
 
 Phase 5:
 - tune thresholds
@@ -288,19 +307,21 @@ Source and linkage risks:
 Scoring risks:
 - cosmetic deltas may look material
 - brochure tone can be over-interpreted
-- compliance complexity is not always software-buying urgency
+- review burden is not the same thing as enforcement risk
+- peer-relative context can mislead if cohort quality is weak
 
 Framing risks:
 - avoid age-based or speculative succession claims
-- avoid language that implies certain enforcement risk
+- avoid language that implies certain enforcement or audit prediction
 - avoid fear-marketing posture
+- avoid regtech drift into workflow software before the upstream intelligence layer is trusted
 
 Safer framing:
 - operational complexity
-- service-model sprawl
-- compliance load
-- modernization leverage
-- likely signal with visible confidence
+- service-model change
+- compliance review burden
+- closer-review signal under current SEC themes
+- peer-relative outlier with visible confidence
 
 ## Validation Checklist
 
@@ -309,7 +330,7 @@ Safer framing:
 3. Test brochure section normalization on a mixed sample.
 4. Build a manual material-versus-cosmetic review set.
 5. Translate SEC overlays into 2-4 sharp rubric dimensions.
-6. Show mocked ranked output to one likely buyer type.
+6. Show mocked ranked output to one likely review-oriented buyer type.
 
 ## Placeholder Rule
 
