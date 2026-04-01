@@ -87,6 +87,8 @@ The scorer now also suppresses low-value evidence patterns that were making the 
 
 The visible top-three evidence list now uses a lighter explainability pass on top of firm scoring: the first two evidence slots still follow the strongest scored sections, but the final slot now prefers sections with a real focus term and rationale over blank fee-table leftovers when a weaker-but-more-explainable section exists below them. Among those explainable leftovers, the selector now also prefers the most operator-useful section instead of generic custodian/support copy when a cleaner service-change paragraph exists lower in the same firm delta, and the rationale builder now backfills plain-language explanations for those selected sections when the old score threshold would have left the rationale thin or blank.
 
+The excerpt builder now also prefers sentence-aligned focus hits over mid-chunk ellipses, and it joins short risk/heading labels with the explanatory sentence that follows so the visible evidence starts closer to the actual buying-moment language.
+
 To preview the recache queue without fetching anything:
 
 `python3 -m pipeline.refresh_queue --limit 5`

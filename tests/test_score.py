@@ -125,6 +125,43 @@ Non-discretionary assets: $0
     assert "non-discretionary assets" not in lowered
 
 
+def test_anchored_excerpt_prefers_sentence_aligned_focus_hit_over_mid_chunk_ellipsis() -> None:
+    text = """
+We receive an economic benefit from Schwab in the form of support products and services. The related conflicts
+of interest are described above in Item 12.
+
+It is Saperston Legacy Advisors, Inc.'s policy not to engage solicitors or to pay related or non-related persons
+for referring potential clients to our firm. It is also the firm's policy not to accept compensation from a
+non-client in conjunction with advisory services.
+"""
+
+    excerpt, focus_term, excerpt_hits = anchored_excerpt(text, ["solicitor", "schwab"])
+
+    assert focus_term == "solicitor"
+    assert "solicitor" in {hit.lower() for hit in excerpt_hits}
+    assert excerpt.startswith("It is Saperston Legacy Advisors")
+    assert not excerpt.startswith("...")
+
+
+def test_anchored_excerpt_joins_heading_label_with_following_explanation() -> None:
+    text = """
+Methods of Analysis
+Security analysis methods may include fundamental analysis and technical analysis.
+
+Artificial Intelligence and Machine Learning Risk:
+Certain service providers utilized by the Firm to service client accounts have artificial intelligence components
+that may introduce model or automation risk.
+"""
+
+    excerpt, focus_term, excerpt_hits = anchored_excerpt(text, ["artificial intelligence", "service providers"])
+
+    lowered = excerpt.lower()
+    assert focus_term == "artificial intelligence"
+    assert "artificial intelligence" in {hit.lower() for hit in excerpt_hits}
+    assert excerpt.startswith("Artificial Intelligence and Machine Learning Risk:")
+    assert "certain service providers" in lowered
+
+
 def test_keyword_hits_uses_phrase_boundaries_instead_of_substrings() -> None:
     text = "BCW began operating as a registered investment advisor in 2023."
 

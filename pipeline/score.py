@@ -254,6 +254,8 @@ TABLE_SIGNAL_PATTERN = re.compile(
     r"\b(?:annual fees|assets under management|date calculated|fee schedule|discretionary amounts|non-?discretionary amounts|discretionary assets|non-?discretionary assets)\b",
     re.IGNORECASE,
 )
+EXCERPT_SENTENCE_SPLIT_PATTERN = re.compile(r"(?<=[.!?])\s+|(?<=:)\s+(?=(?:[A-Z]|•))")
+ENTITY_SUFFIX_SENTENCE_PATTERN = re.compile(r"\b(?:inc|llc|ltd|co|corp)\.$", re.IGNORECASE)
 
 
 def keyword_hits(text: str, keywords: list[str]) -> list[str]:
@@ -520,6 +522,30 @@ def trim_table_like_tail(text: str) -> str:
     return "\n".join(lines).strip()
 
 
+def heading_like_excerpt_fragment(text: str) -> bool:
+    candidate = clean_line(text)
+    return bool(candidate) and (is_heading_line(candidate) or candidate.endswith(":"))
+
+
+def trim_leading_heading_noise(text: str, focus_term: str) -> str:
+    cleaned = clean_line(text)
+    if not cleaned or not focus_term:
+        return cleaned
+
+    focus_index = cleaned.lower().find(focus_term.lower())
+    if focus_index <= 0:
+        return cleaned
+
+    prefix = cleaned[:focus_index]
+    letters = [character for character in prefix if character.isalpha()]
+    uppercase_ratio = (sum(character.isupper() for character in letters) / len(letters)) if letters else 0.0
+    if len(prefix.split()) >= 3 and uppercase_ratio >= 0.7:
+        trimmed = cleaned[focus_index:].lstrip(":-–— ,")
+        if trimmed:
+            return trimmed
+    return cleaned
+
+
 def table_like_penalty(text: str) -> float:
     lines = [clean_line(line) for line in text.splitlines() if clean_line(line)]
     if not lines:
@@ -534,6 +560,46 @@ def table_like_penalty(text: str) -> float:
     if numeric_line_count / len(lines) >= 0.35:
         penalty += 0.75
     return penalty
+
+
+def focused_sentence_excerpt(text: str, focus_term: str, *, limit: int = 240) -> str:
+    collapsed = " ".join(text.split())
+    if not collapsed or not focus_term:
+        return ""
+
+    raw_sentences = [sentence.strip() for sentence in EXCERPT_SENTENCE_SPLIT_PATTERN.split(collapsed) if sentence.strip()]
+    sentences: list[str] = []
+    for sentence in raw_sentences:
+        if (
+            sentences
+            and (sentence.startswith(("'", "’")) or (sentence[:1].islower() and ENTITY_SUFFIX_SENTENCE_PATTERN.search(sentences[-1])))
+        ):
+            sentences[-1] = f"{sentences[-1]} {sentence}".strip()
+            continue
+        sentences.append(sentence)
+    if not sentences:
+        return ""
+
+    focus_pattern = keyword_pattern(focus_term)
+    focus_index = next((index for index, sentence in enumerate(sentences) if focus_pattern.search(sentence)), -1)
+    if focus_index < 0:
+        return ""
+
+    candidate = sentences[focus_index]
+    if heading_like_excerpt_fragment(candidate) and focus_index + 1 < len(sentences):
+        next_sentence = sentences[focus_index + 1]
+        if table_like_penalty(next_sentence) < 1.0:
+            candidate = f"{candidate} {next_sentence}"
+
+    if len(candidate) < limit * 0.7 and focus_index + 1 < len(sentences):
+        next_sentence = sentences[focus_index + 1]
+        if not heading_like_excerpt_fragment(next_sentence) and table_like_penalty(next_sentence) < 1.0:
+            expanded = f"{candidate} {next_sentence}".strip()
+            if len(expanded) <= limit + 40:
+                candidate = expanded
+
+    candidate = trim_leading_heading_noise(candidate, focus_term)
+    return preview(candidate, limit=limit)
 
 
 def focus_terms_for_section(
@@ -605,7 +671,7 @@ def anchored_excerpt(text: str, focus_terms: list[str], *, limit: int = 240) -> 
         if len(candidate) <= limit + 40 and table_like_penalty(next_chunk) < 1.0:
             excerpt = candidate
     excerpt = trim_table_like_tail(excerpt)
-    excerpt = preview_around(excerpt, best_hits[0], limit=limit)
+    excerpt = focused_sentence_excerpt(excerpt, best_hits[0], limit=limit) or preview_around(excerpt, best_hits[0], limit=limit)
     return excerpt, best_hits[0], best_hits
 
 

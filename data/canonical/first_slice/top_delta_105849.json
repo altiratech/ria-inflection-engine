@@ -66,7 +66,7 @@
       "section_key": "item_14",
       "section_title": "Client Referrals and Other Compensation",
       "change_summary": "modified; added terms: schwab, benefit, products, pay, interest, other, accounts, certain; removed terms: sapers, ton, provide",
-      "current_excerpt": "...erage Practices). It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm. It is Saperston Legacy Advisors, Inc. 's policy not to accept...",
+      "current_excerpt": "It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm.",
       "focus_term": "solicitor",
       "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: solicitor; SEC theme match: Advisers Act marketing rule disclosures",
       "composite": 7.97,
@@ -78,7 +78,7 @@
       "section_key": "item_12",
       "section_title": "Brokerage Practices",
       "change_summary": "modified; added terms: schwab, account, other, accounts, assets, custody, execution, broker; removed terms: any, soft, dollar, arrangements, executio, requires, execu, tion",
-      "current_excerpt": "...broad range of investment products, execution of securities transacti ons, and custody of client assets. The investment products available through Schwab include some to which we might not otherwise have access or that would require a sign...",
+      "current_excerpt": "Services That Benefit Y ou Schwab\u2019s institutional brokerage services include access to a broad range of investment products, execution of securities transacti ons, and custody of client assets.",
       "focus_term": "custody",
       "score_rationale": "ops-complexity signal: compliance, custody, vendor; service-mix signal: consulting, institutional; SEC theme match: 2026 examination priorities: operations and data protection",
       "composite": 7.21,
@@ -90,7 +90,7 @@
       "section_key": "item_13",
       "section_title": "Review of Accounts",
       "change_summary": "modified; added terms: portfolio, uidelines, triggered, karen, off, icer, confirmations; removed terms: por, tfolio, guidelines, triggere, kristina, officer, onfirmations",
-      "current_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
+      "current_excerpt": "PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at least quarterly .",
       "focus_term": "portfolio management",
       "score_rationale": "service-mix signal: portfolio management",
       "composite": 2.62,
@@ -175,7 +175,7 @@
         "other",
         "certain"
       ],
-      "evidence_excerpt": "...erage Practices). It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm. It is Saperston Legacy Advisors, Inc. 's policy not to accept...",
+      "evidence_excerpt": "It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm.",
       "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: solicitor; SEC theme match: Advisers Act marketing rule disclosures"
     },
     {
@@ -270,7 +270,7 @@
         "execution",
         "broker"
       ],
-      "evidence_excerpt": "...broad range of investment products, execution of securities transacti ons, and custody of client assets. The investment products available through Schwab include some to which we might not otherwise have access or that would require a sign...",
+      "evidence_excerpt": "Services That Benefit Y ou Schwab\u2019s institutional brokerage services include access to a broad range of investment products, execution of securities transacti ons, and custody of client assets.",
       "score_rationale": "ops-complexity signal: compliance, custody, vendor; service-mix signal: consulting, institutional; SEC theme match: 2026 examination priorities: operations and data protection"
     },
     {
@@ -419,7 +419,7 @@
         "contro",
         "lling"
       ],
-      "evidence_excerpt": "Saperston Legacy Advisors, Inc. is a S EC-registered investmen t adviser with its principal place of business located in New York. Saperston Legacy Advisors, Inc. (formerly Willard B. Saperston, Inc.) began conducting business in 1989. L...",
+      "evidence_excerpt": "Saperston Legacy Advisors, Inc. is a S EC-registered investmen t adviser with its principal place of business located in New York. Saperston Legacy Advisors, Inc.",
       "score_rationale": "service-mix signal: consulting, portfolio management"
     },
     {
@@ -542,7 +542,7 @@
         "limited",
         "composition"
       ],
-      "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"IS S\") INDIVIDUAL PORTFOLIO MANAGEMENT FEES Advisory Fees: the maximum annual fee on the programs is 2% of assets under management, based upon the market value of assets accepted for management on the da...",
+      "evidence_excerpt": "PORTFOLIO MANAGEMENT FEES Advisory Fees: the maximum annual fee on the programs is 2% of assets under management, based upon the market value of assets accepted for management on the date of such acceptance and thereafter using the portf...",
       "score_rationale": "service-mix signal: portfolio management, retirement"
     },
     {
@@ -608,7 +608,7 @@
         "jan/feb",
         "cover"
       ],
-      "evidence_excerpt": "...Karen L. Saperston klsap@saperston.com replaced Kristina L. Sape rston as Chief Compliance Officer as well as contact person on cover page.",
+      "evidence_excerpt": "Sape rston as Chief Compliance Officer as well as contact person on cover page.",
       "score_rationale": ""
     },
     {
@@ -706,7 +706,7 @@
         "rsons",
         "private"
       ],
-      "evidence_excerpt": "...hical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws. Saperston Legacy Advisors, Inc. and our personnel owe a duty of loyalty, fairness and good faith towards ou...",
+      "evidence_excerpt": "Trading Our firm has adopted a Code of Ethics which sets forth high ethical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws.",
       "score_rationale": "visible section change: compliance; SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
     },
     {
@@ -788,7 +788,7 @@
         "inter",
         "additional"
       ],
-      "evidence_excerpt": "...endeavor at all times to put the inter est of the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional compensation itself creates a conflict of interest, and may affect the judgment of these...",
+      "evidence_excerpt": "While Saperston Legacy Advisors, Inc. and these individuals endeavor at all times to put the inter est of the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional compensation itself creates...",
       "score_rationale": "visible section change: fiduciary duty; SEC theme match: 2026 examination priorities: compliance program readiness"
     },
     {
@@ -843,7 +843,7 @@
         "determine",
         "limit"
       ],
-      "evidence_excerpt": "...ority includes the ability to do the following without contacting the client: \uf0b7 determine the security to buy or sell; and/or \uf0b7 determine the amount of the security to buy or sell \uf0b7 Determine when to buy and sell Clients give us discretiona...",
+      "evidence_excerpt": "Our discretionary authority includes the ability to do the following without contacting the client: \uf0b7 determine the security to buy or sell; and/or \uf0b7 determine the amount of the security to buy or sell \uf0b7 Determine when to buy and sell Cl...",
       "score_rationale": ""
     },
     {
@@ -917,7 +917,7 @@
         "karen",
         "confirmations"
       ],
-      "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
+      "evidence_excerpt": "PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at least quarterly .",
       "score_rationale": "service-mix signal: portfolio management"
     }
   ]

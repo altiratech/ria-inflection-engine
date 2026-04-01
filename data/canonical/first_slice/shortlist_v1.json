@@ -81,7 +81,7 @@
           "section_key": "item_14",
           "section_title": "Client Referrals and Other Compensation",
           "change_summary": "modified; added terms: schwab, benefit, products, pay, interest, other, accounts, certain; removed terms: sapers, ton, provide",
-          "current_excerpt": "...erage Practices). It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm. It is Saperston Legacy Advisors, Inc. 's policy not to accept...",
+          "current_excerpt": "It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm.",
           "focus_term": "solicitor",
           "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: solicitor; SEC theme match: Advisers Act marketing rule disclosures",
           "composite": 7.97,
@@ -93,7 +93,7 @@
           "section_key": "item_12",
           "section_title": "Brokerage Practices",
           "change_summary": "modified; added terms: schwab, account, other, accounts, assets, custody, execution, broker; removed terms: any, soft, dollar, arrangements, executio, requires, execu, tion",
-          "current_excerpt": "...broad range of investment products, execution of securities transacti ons, and custody of client assets. The investment products available through Schwab include some to which we might not otherwise have access or that would require a sign...",
+          "current_excerpt": "Services That Benefit Y ou Schwab\u2019s institutional brokerage services include access to a broad range of investment products, execution of securities transacti ons, and custody of client assets.",
           "focus_term": "custody",
           "score_rationale": "ops-complexity signal: compliance, custody, vendor; service-mix signal: consulting, institutional; SEC theme match: 2026 examination priorities: operations and data protection",
           "composite": 7.21,
@@ -105,7 +105,7 @@
           "section_key": "item_13",
           "section_title": "Review of Accounts",
           "change_summary": "modified; added terms: portfolio, uidelines, triggered, karen, off, icer, confirmations; removed terms: por, tfolio, guidelines, triggere, kristina, officer, onfirmations",
-          "current_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
+          "current_excerpt": "PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at least quarterly .",
           "focus_term": "portfolio management",
           "score_rationale": "service-mix signal: portfolio management",
           "composite": 2.62,
@@ -190,7 +190,7 @@
             "other",
             "certain"
           ],
-          "evidence_excerpt": "...erage Practices). It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm. It is Saperston Legacy Advisors, Inc. 's policy not to accept...",
+          "evidence_excerpt": "It is Saperston Legacy Advisors, Inc. 's policy not to engage solicitors or to pay related or non -related persons for referring potential clien ts to our firm.",
           "score_rationale": "service-mix signal: advisory, client, clients; marketing-rule signal: solicitor; SEC theme match: Advisers Act marketing rule disclosures"
         },
         {
@@ -285,7 +285,7 @@
             "execution",
             "broker"
           ],
-          "evidence_excerpt": "...broad range of investment products, execution of securities transacti ons, and custody of client assets. The investment products available through Schwab include some to which we might not otherwise have access or that would require a sign...",
+          "evidence_excerpt": "Services That Benefit Y ou Schwab\u2019s institutional brokerage services include access to a broad range of investment products, execution of securities transacti ons, and custody of client assets.",
           "score_rationale": "ops-complexity signal: compliance, custody, vendor; service-mix signal: consulting, institutional; SEC theme match: 2026 examination priorities: operations and data protection"
         },
         {
@@ -434,7 +434,7 @@
             "contro",
             "lling"
           ],
-          "evidence_excerpt": "Saperston Legacy Advisors, Inc. is a S EC-registered investmen t adviser with its principal place of business located in New York. Saperston Legacy Advisors, Inc. (formerly Willard B. Saperston, Inc.) began conducting business in 1989. L...",
+          "evidence_excerpt": "Saperston Legacy Advisors, Inc. is a S EC-registered investmen t adviser with its principal place of business located in New York. Saperston Legacy Advisors, Inc.",
           "score_rationale": "service-mix signal: consulting, portfolio management"
         },
         {
@@ -557,7 +557,7 @@
             "limited",
             "composition"
           ],
-          "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"IS S\") INDIVIDUAL PORTFOLIO MANAGEMENT FEES Advisory Fees: the maximum annual fee on the programs is 2% of assets under management, based upon the market value of assets accepted for management on the da...",
+          "evidence_excerpt": "PORTFOLIO MANAGEMENT FEES Advisory Fees: the maximum annual fee on the programs is 2% of assets under management, based upon the market value of assets accepted for management on the date of such acceptance and thereafter using the portf...",
           "score_rationale": "service-mix signal: portfolio management, retirement"
         },
         {
@@ -623,7 +623,7 @@
             "jan/feb",
             "cover"
           ],
-          "evidence_excerpt": "...Karen L. Saperston klsap@saperston.com replaced Kristina L. Sape rston as Chief Compliance Officer as well as contact person on cover page.",
+          "evidence_excerpt": "Sape rston as Chief Compliance Officer as well as contact person on cover page.",
           "score_rationale": ""
         },
         {
@@ -721,7 +721,7 @@
             "rsons",
             "private"
           ],
-          "evidence_excerpt": "...hical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws. Saperston Legacy Advisors, Inc. and our personnel owe a duty of loyalty, fairness and good faith towards ou...",
+          "evidence_excerpt": "Trading Our firm has adopted a Code of Ethics which sets forth high ethical standards of business conduct that we require of our employees, including compliance with ap plicable federal securities laws.",
           "score_rationale": "visible section change: compliance; SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
         },
         {
@@ -803,7 +803,7 @@
             "inter",
             "additional"
           ],
-          "evidence_excerpt": "...endeavor at all times to put the inter est of the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional compensation itself creates a conflict of interest, and may affect the judgment of these...",
+          "evidence_excerpt": "While Saperston Legacy Advisors, Inc. and these individuals endeavor at all times to put the inter est of the clients first as part of our fiduciary duty, clients should be aware that the receipt of additional compensation itself creates...",
           "score_rationale": "visible section change: fiduciary duty; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -858,7 +858,7 @@
             "determine",
             "limit"
           ],
-          "evidence_excerpt": "...ority includes the ability to do the following without contacting the client: \uf0b7 determine the security to buy or sell; and/or \uf0b7 determine the amount of the security to buy or sell \uf0b7 Determine when to buy and sell Clients give us discretiona...",
+          "evidence_excerpt": "Our discretionary authority includes the ability to do the following without contacting the client: \uf0b7 determine the security to buy or sell; and/or \uf0b7 determine the amount of the security to buy or sell \uf0b7 Determine when to buy and sell Cl...",
           "score_rationale": ""
         },
         {
@@ -932,7 +932,7 @@
             "karen",
             "confirmations"
           ],
-          "evidence_excerpt": "INVESTMENT SUPERVISORY SERVICES (\"ISS\") INDIVIDUAL PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at ...",
+          "evidence_excerpt": "PORTFOLIO MANAGEMENT REVIEWS: While the underlying securities within Individual Portfolio Management Services accounts are continually monitored, these accounts are randomly reviewed at least quarterly .",
           "score_rationale": "service-mix signal: portfolio management"
         }
       ]
@@ -987,7 +987,7 @@
           "section_key": "item_2",
           "section_title": "Material Changes",
           "change_summary": "added; added terms: edgerock, fees, item, management, financial, account, planning, accounts",
-          "current_excerpt": "FINANCIAL PLANNING & CONSULTING SERVICES EdgeRock offers financial planning services, which involve preparing a written financial plan covering specific or multiple topics. We provide full written financial plans, which typically address...",
+          "current_excerpt": "FINANCIAL PLANNING & CONSULTING SERVICES EdgeRock offers financial planning services, which involve preparing a written financial plan covering specific or multiple topics.",
           "focus_term": "financial planning",
           "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: alternative, billing, custody; SEC theme match: 2026 examination priorities: compliance program readiness",
           "composite": 7.97,
@@ -999,7 +999,7 @@
           "section_key": "item_15",
           "section_title": "Custody",
           "change_summary": "modified; added terms: edgerock, securities, management, discretionary, limited, account, form, adv; removed terms: constructive",
-          "current_excerpt": "EdgeRock is deemed to have limited custody of client funds as the result of debiting investment advisory fees from separately managed accounts. Physical custody of client funds are maintained at a qualified custodian. Debiting of fees is...",
+          "current_excerpt": "EdgeRock is deemed to have limited custody of client funds as the result of debiting investment advisory fees from separately managed accounts. Physical custody of client funds are maintained at a qualified custodian.",
           "focus_term": "custody",
           "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: custody",
           "composite": 7.34,
@@ -1009,7 +1009,7 @@
           "section_key": "item_3",
           "section_title": "Item 3",
           "change_summary": "removed; removed terms: edgerock, financial, account, planning, portfolio, plan, any, retirement",
-          "current_excerpt": "...which typically address one or more the following topics: investment planning, retirement planning, insurance planning, education planning, portfolio review, and asset allocation. When providing financial planning and consulting services,...",
+          "current_excerpt": "We provide full written financial plans, which typically address one or more the following topics: investment planning, retirement planning, insurance planning, education planning, portfolio review, and asset allocation.",
           "focus_term": "retirement",
           "score_rationale": "service-mix signal: retirement",
           "composite": 5.84,
@@ -1104,7 +1104,7 @@
             "financial",
             "planning"
           ],
-          "evidence_excerpt": "FINANCIAL PLANNING & CONSULTING SERVICES EdgeRock offers financial planning services, which involve preparing a written financial plan covering specific or multiple topics. We provide full written financial plans, which typically address...",
+          "evidence_excerpt": "FINANCIAL PLANNING & CONSULTING SERVICES EdgeRock offers financial planning services, which involve preparing a written financial plan covering specific or multiple topics.",
           "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: alternative, billing, custody; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -1168,7 +1168,7 @@
             "securities",
             "limited"
           ],
-          "evidence_excerpt": "EdgeRock is deemed to have limited custody of client funds as the result of debiting investment advisory fees from separately managed accounts. Physical custody of client funds are maintained at a qualified custodian. Debiting of fees is...",
+          "evidence_excerpt": "EdgeRock is deemed to have limited custody of client funds as the result of debiting investment advisory fees from separately managed accounts. Physical custody of client funds are maintained at a qualified custodian.",
           "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: custody"
         },
         {
@@ -1275,7 +1275,7 @@
             "brokerage",
             "rates"
           ],
-          "evidence_excerpt": "Form ADV Part 2A: Brochure EdgeRock Wealth Management Page 21 Form ADV Part 2A: Brochure Item 14: Client Referrals & Other Compensation EdgeRock has an arrangement with Fidelity through which Fidelity provides EdgeRock with Fidelity\u2019s \u201cp...",
+          "evidence_excerpt": "Brochure EdgeRock Wealth Management Page 21 Form ADV Part 2A: Brochure Item 14:",
           "score_rationale": "service-mix signal: advisory, client, clients"
         },
         {
@@ -1381,7 +1381,7 @@
             "products",
             "agent"
           ],
-          "evidence_excerpt": "...e eligible to receive incentives and other compensation based on achieving life insurance carrier and third-party (which include affiliates of AE) criteria related to life insurance/annuity transactions, including your life insurance produc...",
+          "evidence_excerpt": "Other Financial Industry Activities & Affiliations (Cont\u2019d) I nvestment adviser representatives are eligible to receive incentives and other compensation based on achieving life insurance carrier and third-party (which include affiliates...",
           "score_rationale": "service-mix signal: trust; ops-complexity signal: third-party"
         },
         {
@@ -1462,7 +1462,7 @@
             "brokerage",
             "edgerock"
           ],
-          "evidence_excerpt": "...at all times to put your interests first. As an adviser, we have access to the institutional platform of your account custodian. As such, we will also have access to research products and services from your account custodian and/or other b...",
+          "evidence_excerpt": "As an adviser, we have access to the institutional platform of your account custodian. As such, we will also have access to research products and services from your account custodian and/or other brokerage firm .",
           "score_rationale": "service-mix signal: institutional; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -1552,7 +1552,7 @@
           "evidence_focus_hits": [
             "retirement"
           ],
-          "evidence_excerpt": "...which typically address one or more the following topics: investment planning, retirement planning, insurance planning, education planning, portfolio review, and asset allocation. When providing financial planning and consulting services,...",
+          "evidence_excerpt": "We provide full written financial plans, which typically address one or more the following topics: investment planning, retirement planning, insurance planning, education planning, portfolio review, and asset allocation.",
           "score_rationale": "service-mix signal: retirement"
         },
         {
@@ -1677,7 +1677,7 @@
             "trading",
             "ethics"
           ],
-          "evidence_excerpt": ".... Our employees must certify at least annually their receipt, understanding and compliance with our Code of Ethics. A copy of our Code of Ethics is available to our advisory clients and prospective clients, upon request to the Chief Complia...",
+          "evidence_excerpt": "Our employees must certify at least annually their receipt, understanding and compliance with our Code of Ethics.",
           "score_rationale": "service-mix signal: advisory, client, clients; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -1736,7 +1736,7 @@
             "principal",
             "place"
           ],
-          "evidence_excerpt": "...y from the issuer of the security or the custodian. We may provide clients with consulting assistance regarding proxy issues if they contact us with questions at our principal place of business.",
+          "evidence_excerpt": "We may provide clients with consulting assistance regarding proxy issues if they contact us with questions at our principal place of business.",
           "score_rationale": "service-mix signal: consulting"
         },
         {
@@ -1848,7 +1848,7 @@
             "brochure",
             "edgerock"
           ],
-          "evidence_excerpt": "Form ADV P art 2 A: Brochure EdgeRock Wealth Management Page 11 Form ADV Part 2A: Brochure Item 8: Methods of Analysis, Investment Strategies And Risk of Loss (Cont\u2019d)",
+          "evidence_excerpt": "Brochure EdgeRock Wealth Management Page 11 Form ADV Part 2A: Brochure Item 8:",
           "score_rationale": "service-mix signal: retirement, trust"
         },
         {
@@ -1953,7 +1953,7 @@
           "section_key": "item_4",
           "section_title": "Advisory",
           "change_summary": "added; added terms: bcw, bell, city, wealth, financial, planning, management, plan",
-          "current_excerpt": "...g. Types of Advisory Services BCW offers a large variety of services, including portfolio management, investment analysis and financial planning, retirement planning, and financial planning-focused estate planning for individuals and high n...",
+          "current_excerpt": "Types of Advisory Services BCW offers a large variety of services, including portfolio management, investment analysis and financial planning, retirement planning, and financial planning-focused estate planning for individuals and high n...",
           "focus_term": "portfolio management",
           "score_rationale": "service-mix signal: consulting, financial planning, high net worth; ops-complexity signal: alternative, compliance, wrap fee; SEC theme match: 2026 examination priorities: compliance program readiness",
           "composite": 8.5,
@@ -1965,7 +1965,7 @@
           "section_key": "item_15",
           "section_title": "Custody",
           "change_summary": "added; added terms: funds, bcw, custodian, securities, account, custody, does, fees",
-          "current_excerpt": "...rization permitting fees to be paid directly from the custodian. As part of the billing process, the client\u2019 s custodian is advised of the amount of the fee to be deducted from that client\u2019 s account. On at least a quarterly basis, the cust...",
+          "current_excerpt": "As part of the billing process, the client\u2019 s custodian is advised of the amount of the fee to be deducted from that client\u2019 s account.",
           "focus_term": "billing",
           "score_rationale": "ops-complexity signal: billing, custody; service-mix signal: advisory, client, clients",
           "composite": 7.45,
@@ -1975,7 +1975,7 @@
           "section_key": "item_7",
           "section_title": "Types",
           "change_summary": "modified",
-          "current_excerpt": "...o many different types of clients. These clients generally include individuals, high net worth individuals, trusts, estates, corporations, and other types of business entities. Minimum Account Size Adviser has a minimum investment account b...",
+          "current_excerpt": "These clients generally include individuals, high net worth individuals, trusts, estates, corporations, and other types of business entities. Minimum Account Size Adviser has a minimum investment account balance of $250,000, which can be...",
           "focus_term": "high net worth",
           "score_rationale": "service-mix signal: high net worth, trust",
           "composite": 2.96,
@@ -2073,7 +2073,7 @@
             "financial",
             "planning"
           ],
-          "evidence_excerpt": "...g. Types of Advisory Services BCW offers a large variety of services, including portfolio management, investment analysis and financial planning, retirement planning, and financial planning-focused estate planning for individuals and high n...",
+          "evidence_excerpt": "Types of Advisory Services BCW offers a large variety of services, including portfolio management, investment analysis and financial planning, retirement planning, and financial planning-focused estate planning for individuals and high n...",
           "score_rationale": "service-mix signal: consulting, financial planning, high net worth; ops-complexity signal: alternative, compliance, wrap fee; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -2134,7 +2134,7 @@
             "custodian",
             "securities"
           ],
-          "evidence_excerpt": "...rization permitting fees to be paid directly from the custodian. As part of the billing process, the client\u2019 s custodian is advised of the amount of the fee to be deducted from that client\u2019 s account. On at least a quarterly basis, the cust...",
+          "evidence_excerpt": "As part of the billing process, the client\u2019 s custodian is advised of the amount of the fee to be deducted from that client\u2019 s account.",
           "score_rationale": "ops-complexity signal: billing, custody; service-mix signal: advisory, client, clients"
         },
         {
@@ -2192,7 +2192,7 @@
             "registration",
             "representative"
           ],
-          "evidence_excerpt": "Financial Industry Activities and Affiliations Registration as a Broker/Dealer or Broker/Dealer Representative BCW is not registered and does not have an application pending to register , as a broker dealer and its management persons are no...",
+          "evidence_excerpt": "Financial Industry Activities and Affiliations Registration as a Broker/Dealer or Broker/Dealer Representative BCW is not registered and does not have an application pending to register , as a broker dealer and its management persons are...",
           "score_rationale": "service-mix signal: advisory, client, clients"
         },
         {
@@ -2250,7 +2250,7 @@
             "direct",
             "granted"
           ],
-          "evidence_excerpt": "...CW , this discretionary authority does not grant the Firm the authority to have custody of any assets in the client\u2019 s account or to direct the delivery of any securities or the payment of any funds held in the account to BCW . The discreti...",
+          "evidence_excerpt": "Other than agreed upon management fees due to BCW , this discretionary authority does not grant the Firm the authority to have custody of any assets in the client\u2019 s account or to direct the delivery of any securities or the payment of a...",
           "score_rationale": "service-mix signal: client, clients; ops-complexity signal: custody"
         },
         {
@@ -2334,7 +2334,7 @@
             "raymond",
             "james"
           ],
-          "evidence_excerpt": "...tment adviser that has discretion over a client account is not in breach of its fiduciary duty when paying more than the lowest commission rate available if the adviser determines in good faith that the rate paid is commensurate with the va...",
+          "evidence_excerpt": "Section 28(e) sets forth a \u201csafe harbor ,\u201d which provides that an investment adviser that has discretion over a client account is not in breach of its fiduciary duty when paying more than the lowest commission rate available if the advis...",
           "score_rationale": "visible section change: fiduciary duty; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -2385,7 +2385,7 @@
           "evidence_focus_hits": [
             "information"
           ],
-          "evidence_excerpt": "Information Registered investment advisers are required to disclose any legal or disciplinary events that are material to a client\u2019 s or prospective client\u2019 s evaluation of the advisory business or integrity of the Firm\u2019 s management. Be...",
+          "evidence_excerpt": "Information Registered investment advisers are required to disclose any legal or disciplinary events that are material to a client\u2019 s or prospective client\u2019 s evaluation of the advisory business or integrity of the Firm\u2019 s management.",
           "score_rationale": "service-mix signal: advisory, client"
         },
         {
@@ -2467,7 +2467,7 @@
             "strategies",
             "including"
           ],
-          "evidence_excerpt": "...t rates, and specific industry changes. Such price fluctuations subject certain strategies to potential losses. During temporary or extended bear markets, the value of common stocks will decline, which could also result in losses for each s...",
+          "evidence_excerpt": "Such price fluctuations subject certain strategies to potential losses. During temporary or extended bear markets, the value of common stocks will decline, which could also result in losses for each strategy .",
           "score_rationale": "service-mix signal: trust; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -2528,7 +2528,7 @@
             "financial",
             "receive"
           ],
-          "evidence_excerpt": "...statements are prepared and delivered by the custodian. D. Financial Plans All financial planning accounts are reviewed upon financial plan creation and plan delivery by Alan Carroll. There are multiple levels of review for each financial...",
+          "evidence_excerpt": "Financial Plans All financial planning accounts are reviewed upon financial plan creation and plan delivery by Alan Carroll. There are multiple levels of review for each financial plan.",
           "score_rationale": "service-mix signal: financial planning, retirement"
         },
         {
@@ -2646,7 +2646,7 @@
             "petition",
             "information"
           ],
-          "evidence_excerpt": "...nt of fees of more than $1200 per client, six (6) months or more in advance. B. Financial Condition BCW does not have any financial impairment that would preclude the Firm from meeting contractual commitments to clients. C. Bankruptcy Petit...",
+          "evidence_excerpt": "Financial Condition BCW does not have any financial impairment that would preclude the Firm from meeting contractual commitments to clients. C.",
           "score_rationale": "service-mix signal: client, clients"
         },
         {
@@ -2742,7 +2742,7 @@
             "disclosure",
             "material"
           ],
-          "evidence_excerpt": "Changes Since Bell City Wealth\u2019 s last filing on January 15, 2026, no material changes have been made to this brochure. Future Changes From time to time, we may amend this Disclosure Brochure to reflect changes in our business practices,...",
+          "evidence_excerpt": "Changes Since Bell City Wealth\u2019 s last filing on January 15, 2026, no material changes have been made to this brochure.",
           "score_rationale": "service-mix signal: client"
         },
         {
@@ -2935,7 +2935,7 @@
             "high net worth",
             "trust"
           ],
-          "evidence_excerpt": "...o many different types of clients. These clients generally include individuals, high net worth individuals, trusts, estates, corporations, and other types of business entities. Minimum Account Size Adviser has a minimum investment account b...",
+          "evidence_excerpt": "These clients generally include individuals, high net worth individuals, trusts, estates, corporations, and other types of business entities. Minimum Account Size Adviser has a minimum investment account balance of $250,000, which can be...",
           "score_rationale": "service-mix signal: high net worth, trust"
         },
         {
@@ -3032,7 +3032,7 @@
             "might",
             "time-to-time"
           ],
-          "evidence_excerpt": "...in the best interest of each of its clients. BCW and its representatives have a fiduciary duty to all clients. BCW and its representatives \u2019fiduciary duty to clients is considered the core underlying principle for BCW\u2019 s Code of Ethics and...",
+          "evidence_excerpt": "BCW and its representatives have a fiduciary duty to all clients. BCW and its representatives \u2019fiduciary duty to clients is considered the core underlying principle for BCW\u2019 s Code of Ethics and represents the expected basis for all repr...",
           "score_rationale": "visible section change: fiduciary duty; SEC theme match: 2026 examination priorities: compliance program readiness, 2026 examination priorities: operations and data protection"
         }
       ]
@@ -3106,7 +3106,7 @@
           "section_key": "item_16",
           "section_title": "Investment Discretion",
           "change_summary": "modified; added terms: nor, authority, per, issuer, security, neither, more, discretionary; removed terms: fee, accounts, blvd, schwab, other, trade, statements, fees",
-          "current_excerpt": "...The advisory contract established with each client sets forth the discretionary authority for trading. Where investment discretion has been granted, BLVD generally manages the client \u2019s account and makes investment decisions without consult...",
+          "current_excerpt": "The advisory contract established with each client sets forth the discretionary authority for trading.",
           "focus_term": "authority",
           "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: discretionary",
           "composite": 7.58,
@@ -3116,7 +3116,7 @@
           "section_key": "item_13",
           "section_title": "Review of Accounts",
           "change_summary": "modified; added terms: schwab, financial, generally, custody, receive, available, upon, plan; removed terms: all, more, accounts, use, broker, would, such, order",
-          "current_excerpt": "A. Frequency and Nature of Periodic Reviews and Who Makes Those Reviews All financial planning relationships are reviewed upon financial plan creation and plan delivery. Financial planning clients are provided a one-time financial plan conc...",
+          "current_excerpt": "Frequency and Nature of Periodic Reviews and Who Makes Those Reviews All financial planning relationships are reviewed upon financial plan creation and plan delivery. Financial planning clients are provided a one-time financial plan conc...",
           "focus_term": "financial planning",
           "score_rationale": "service-mix signal: financial planning, institutional, retirement",
           "composite": 6.07,
@@ -3258,7 +3258,7 @@
             "security",
             "neither"
           ],
-          "evidence_excerpt": "...The advisory contract established with each client sets forth the discretionary authority for trading. Where investment discretion has been granted, BLVD generally manages the client \u2019s account and makes investment decisions without consult...",
+          "evidence_excerpt": "The advisory contract established with each client sets forth the discretionary authority for trading.",
           "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: discretionary"
         },
         {
@@ -3320,7 +3320,7 @@
             "research",
             "securities"
           ],
-          "evidence_excerpt": "A. Factors Used to Select Custodians and/or Broker/Dealers While BLVD has no formal soft dollar\u2019s program in which soft dollars are used to pay for third party services, BLVD may receive research, products, or other services from custodi...",
+          "evidence_excerpt": "Factors Used to Select Custodians and/or Broker/Dealers While BLVD has no formal soft dollar\u2019s program in which soft dollars are used to pay for third party services, BLVD may receive research, products, or other services from custodians...",
           "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: third-party"
         },
         {
@@ -3406,7 +3406,7 @@
             "trade",
             "statements"
           ],
-          "evidence_excerpt": "...rprise. These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers...",
+          "evidence_excerpt": "These servic es may include professional compliance, legal and business consulting, publications and conferences on practice management, information technology, business succession, regulatory compliance, employee benefits providers, hum...",
           "score_rationale": "service-mix signal: consulting; ops-complexity signal: compliance, custody, vendor; SEC theme match: 2026 examination priorities: operations and data protection"
         },
         {
@@ -3500,7 +3500,7 @@
             "program",
             "types"
           ],
-          "evidence_excerpt": "...ent of Fiduciary Status When we provide investment advice to you regarding your retirement plan account or individual retirement account, we are fiduciaries within the meaning of Title I of the Employee Retirement Income Security Act and/or...",
+          "evidence_excerpt": "Written Acknowledgement of Fiduciary Status When we provide investment advice to you regarding your retirement plan account or individual retirement account, we are fiduciaries within the meaning of Title I of the Employee Retirement Inc...",
           "score_rationale": "service-mix signal: consulting, financial planning, portfolio management; ops-complexity signal: compliance, wrap fee; SEC theme match: 2026 examination priorities: compliance program readiness"
         },
         {
@@ -3576,7 +3576,7 @@
             "outside",
             "during"
           ],
-          "evidence_excerpt": "...retail operators on business decisions and filing support. He contributes a few hours monthly during and outside trading hours. Chris Edward Brady is affiliated with Fellowship Sticks as a member in a tobacco distributorship. The role is no...",
+          "evidence_excerpt": "He contributes a few hours monthly during and outside trading hours. Chris Edward Brady is affiliated with Fellowship Sticks as a member in a tobacco distributorship.",
           "score_rationale": "service-mix signal: advisory, client, clients"
         },
         {
@@ -3648,7 +3648,7 @@
             "representative",
             "commodity"
           ],
-          "evidence_excerpt": "A. Registration as a Broker/Dealer or Broker/Dealer Representative B. Registration as a Futures Commission Merchant, Commodity Pool Operator, or a Commodity Trading Advisor",
+          "evidence_excerpt": "Registration as a Broker/Dealer or Broker/Dealer Representative B. Registration as a Futures Commission Merchant, Commodity Pool Operator, or a Commodity Trading Advisor",
           "score_rationale": "service-mix signal: advisory, client, clients; ops-complexity signal: compliance"
         },
         {
@@ -3699,7 +3699,7 @@
             "clients",
             "client"
           ],
-          "evidence_excerpt": "Contractual Commitments to Clients C. Bankruptcy Petitions in Previous Ten Years",
+          "evidence_excerpt": "Contractual Commitments to Clients C.",
           "score_rationale": "service-mix signal: client, clients"
         },
         {
@@ -3810,7 +3810,7 @@
             "trading",
             "recommendations"
           ],
-          "evidence_excerpt": "...s, and this practice may cost more money. BLVD recommends clients to use Schwab Institutional, a division of Charles Schwab & Co., Inc. and Betterment Securities (CRD# 47788).",
+          "evidence_excerpt": "BLVD recommends clients to use Schwab Institutional, a division of Charles Schwab & Co., Inc. and Betterment Securities (CRD# 47788).",
           "score_rationale": "service-mix signal: institutional"
         },
         {
@@ -3893,7 +3893,7 @@
             "receive",
             "available"
           ],
-          "evidence_excerpt": "A. Frequency and Nature of Periodic Reviews and Who Makes Those Reviews All financial planning relationships are reviewed upon financial plan creation and plan delivery. Financial planning clients are provided a one-time financial plan conc...",
+          "evidence_excerpt": "Frequency and Nature of Periodic Reviews and Who Makes Those Reviews All financial planning relationships are reviewed upon financial plan creation and plan delivery. Financial planning clients are provided a one-time financial plan conc...",
           "score_rationale": "service-mix signal: financial planning, institutional, retirement"
         },
         {
@@ -3967,7 +3967,7 @@
             "interest",
             "value"
           ],
-          "evidence_excerpt": "C. Risks of Specific Securities Utilized possibility of inadequate regulatory compliance. Risks in investing in ETFs include trading risks, liquidity and shutdown risks, risks associated with a change in authorized participants and non -par...",
+          "evidence_excerpt": "Risks of Specific Securities Utilized possibility of inadequate regulatory compliance.",
           "score_rationale": "service-mix signal: client, clients, individual"
         },
         {
@@ -4028,7 +4028,7 @@
             "methods",
             "fundamental"
           ],
-          "evidence_excerpt": "...es a risk of loss that you, as a client, should be prepared to bear. Methods of Analysis Fundamental analysis concentrates on factors that determine a company \u2019s value and expected future earnings. This strategy would normally encourage equ...",
+          "evidence_excerpt": "Methods of Analysis Fundamental analysis concentrates on factors that determine a company \u2019s value and expected future earnings. This strategy would normally encourage equity purchases in stocks that are undervalued or priced below their...",
           "score_rationale": "service-mix signal: client, individual"
         }
       ]
@@ -4093,7 +4093,7 @@
           "section_key": "item_5",
           "section_title": "Fees and Compensation",
           "change_summary": "modified; added terms: fees, coordination, fee, planning, estate, vanilla, platform, engagement; removed terms: management, billing, written, mid",
-          "current_excerpt": "ESTATE PLANNING For clients electing to utilize the Estate Planning Coordination service via the Vanilla platform, the Firm charges a fixed fee ranging up to $15,000, depending on the complexity of the engagement. The fee is due in full imm...",
+          "current_excerpt": "ESTATE PLANNING For clients electing to utilize the Estate Planning Coordination service via the Vanilla platform, the Firm charges a fixed fee ranging up to $15,000, depending on the complexity of the engagement.",
           "focus_term": "coordination",
           "score_rationale": "service-mix signal: financial planning",
           "composite": 6.52,
@@ -4103,7 +4103,7 @@
           "section_key": "item_8",
           "section_title": "Methods of Analysis, Investment Strategies and Risk of Loss",
           "change_summary": "modified; added terms: artificial, intelligence, service, companie, machine, learning, providers, risk; removed terms: companies, securities, overa, declines, standardized, small, mid, cap",
-          "current_excerpt": "...nce that the investment objective of any fund or investment will be achieved. \u2022 Artificial Intelligence and Machine Learning Risk: Certain service providers utilized by the Firm to service client accounts have artificial intelligence compon...",
+          "current_excerpt": "\u2022 Artificial Intelligence and Machine Learning Risk: Certain service providers utilized by the Firm to service client accounts have artificial intelligence components.",
           "focus_term": "artificial intelligence",
           "score_rationale": "visible section change: artificial intelligence; SEC theme match: 2026 examination priorities: operations and data protection",
           "composite": 4.14,
@@ -4266,7 +4266,7 @@
             "platform",
             "engagement"
           ],
-          "evidence_excerpt": "ESTATE PLANNING For clients electing to utilize the Estate Planning Coordination service via the Vanilla platform, the Firm charges a fixed fee ranging up to $15,000, depending on the complexity of the engagement. The fee is due in full imm...",
+          "evidence_excerpt": "ESTATE PLANNING For clients electing to utilize the Estate Planning Coordination service via the Vanilla platform, the Firm charges a fixed fee ranging up to $15,000, depending on the complexity of the engagement.",
           "score_rationale": "service-mix signal: financial planning"
         },
         {
@@ -4348,7 +4348,7 @@
             "learning",
             "providers"
           ],
-          "evidence_excerpt": "...nce that the investment objective of any fund or investment will be achieved. \u2022 Artificial Intelligence and Machine Learning Risk: Certain service providers utilized by the Firm to service client accounts have artificial intelligence compon...",
+          "evidence_excerpt": "\u2022 Artificial Intelligence and Machine Learning Risk: Certain service providers utilized by the Firm to service client accounts have artificial intelligence components.",
           "score_rationale": "visible section change: artificial intelligence; SEC theme match: 2026 examination priorities: operations and data protection"
         }
       ]
