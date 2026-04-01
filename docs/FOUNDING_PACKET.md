@@ -21,7 +21,7 @@ Status: canonical current-scope document
 - Why they would switch: ranked evidence-backed review priority is faster, more legible, and easier to defend than intuition alone
 - Adjacent users:
   - RIAs doing self-surveillance or exam-readiness review
-  - consultants or providers doing peer benchmarking
+  - RIAs and consultants doing peer benchmarking or self-benchmarking
   - compliance analytics teams building broader surveillance programs
 
 ## 4. First Workflow

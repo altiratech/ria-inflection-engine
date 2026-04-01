@@ -39,7 +39,7 @@ Primary first buyer:
 
 Strong secondary buyers:
 - RIAs doing self-surveillance or annual review preparation
-- consultants performing peer benchmarking or targeted thematic reviews
+- RIAs and consultants performing peer benchmarking, self-benchmarking, or targeted thematic reviews
 - compliance analytics teams building broader surveillance programs
 
 ## Job To Be Done

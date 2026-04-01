@@ -13,8 +13,8 @@ Ship one evidence-backed, table-first review queue for a national starter cohort
 - First primary lens: supervisory triage.
 - Supported adjacent lenses:
   - firm self-surveillance
-  - peer-relative context where coverage allows
-  - hidden-signal discovery across filings and themes
+  - peer-relative context and self-benchmarking where coverage allows
+  - hidden review-signal discovery across filings and themes
 - Current implemented base score dimensions:
   - marketing-rule relevance
   - client or service-mix change

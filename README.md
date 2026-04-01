@@ -9,8 +9,8 @@ Build an evidence-backed filing-delta intelligence system for RIAs using public 
 Primary product lenses:
 - supervisory triage
 - firm self-surveillance
-- peer benchmarking
-- hidden-signal discovery across fragmented adviser disclosures
+- peer benchmarking and self-benchmarking
+- hidden review-signal discovery across fragmented adviser disclosures
 
 The founding loop is:
 1. ingest adviser data and brochure snapshots
@@ -132,7 +132,7 @@ RIA Inflection Engine starts upstream by identifying meaningful disclosure chang
 - targeted marketing-rule reviews
 - surveillance programs
 - exam readiness workflows
-- peer benchmarking
+- peer benchmarking and self-benchmarking for RIAs and their advisors
 
 The product should be understood as compliance intelligence and supervisory analytics for RIAs and their compliance partners.
 

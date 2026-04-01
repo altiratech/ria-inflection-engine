@@ -4,7 +4,7 @@ Status: long-term ambition document
 
 ## Product Ambition
 
-Build the most useful evidence-backed supervisory-intelligence layer for adviser disclosure change, review burden, and peer-relative context.
+Build the most useful evidence-backed supervisory-intelligence layer for adviser disclosure change, hidden review signals, review burden, and peer-relative context.
 
 ## Why This Could Matter
 
@@ -15,7 +15,7 @@ Build the most useful evidence-backed supervisory-intelligence layer for adviser
 ## Long-Term Product Shape
 
 - Future workflow layers:
-  - peer benchmarking
+  - peer benchmarking and self-benchmarking
   - exam-readiness review packs
   - targeted thematic review programs
 

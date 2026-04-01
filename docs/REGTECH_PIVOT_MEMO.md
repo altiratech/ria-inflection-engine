@@ -4,14 +4,14 @@ Status: framing and scoring memo for the supervisory-intelligence pivot
 
 ## Strategy Memo
 
-RIA Inflection Engine should keep its current kernel intact and sharpen the product identity around that kernel. The product already does the hard upstream work that most compliance tooling does not: it ingests public adviser disclosures, pairs brochure snapshots, detects section-level deltas, scores firms with visible evidence, and publishes table-first, diff-first outputs. The right framing is a serious filing-delta intelligence system for supervisory review, self-surveillance, peer benchmarking, and hidden-signal discovery across fragmented public disclosures.
+RIA Inflection Engine should keep its current kernel intact and sharpen the product identity around that kernel. The product already does the hard upstream work that most compliance tooling does not: it ingests public adviser disclosures, pairs brochure snapshots, detects section-level deltas, scores firms with visible evidence, and publishes table-first, diff-first outputs. The right framing is a serious filing-delta intelligence system for supervisory review, self-surveillance, peer benchmarking, self-benchmarking, and hidden review-signal discovery across fragmented public disclosures.
 
 The new primary claim should be modest and credible: the product helps identify firms or disclosure changes that may warrant closer review under current SEC themes. It should not claim to predict who the SEC will examine or audit. Its value is upstream intelligence that flags meaningful disclosure change before that change gets buried inside downstream workflow systems.
 
 That framing supports three credible lenses at once:
 - supervisory triage: which firms look newly worth reviewing, and why
 - firm self-surveillance: if I were this firm, where do my recent disclosure changes increase potential review burden
-- peer benchmarking: how unusual is this firm’s recent disclosure-change and risk posture versus similar firms
+- peer benchmarking and self-benchmarking: how unusual is this firm’s recent disclosure-change and risk posture versus similar firms, including firms like mine
 
 ## Revised Product Definition
 
