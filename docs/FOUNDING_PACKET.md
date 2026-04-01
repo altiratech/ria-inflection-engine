@@ -22,7 +22,7 @@ Status: canonical current-scope document
 - Adjacent users:
   - RIAs doing self-surveillance or exam-readiness review
   - consultants or providers doing peer benchmarking
-  - GTM teams reading the same evidence as a secondary buying-moment lens
+  - compliance analytics teams building broader surveillance programs
 
 ## 4. First Workflow
 
@@ -46,13 +46,10 @@ Status: canonical current-scope document
   - evidence-backed scoring
   - exam-theme mapping
   - ranked table-first and diff-first review outputs
-- Secondary adjacent lens:
-  - the same evidence can still support GTM / buying-moment workflows, but that is no longer the primary framing
 
 ## 7. Explicit Non-Goals
 
 - Not in scope now:
-  - outreach automation
   - CRM workflow
   - task management or attestation
   - policy-library software
@@ -63,20 +60,20 @@ Status: canonical current-scope document
 ## 8. Do-Not-Drift-Into
 
 - Drift risks to avoid:
-  - generic lead scoring
   - black-box risk scoring with no reasoning
   - broad enterprise compliance platform
   - audit prediction claims
   - M&A product before the core loop works
+  - non-compliance product drift that weakens supervisory focus
 
 ## 9. Approved Terminology
 
 | Use | Avoid | Why |
 |---|---|---|
-| `supervisory triage` | `lead scoring` | sounds serious and review-oriented |
-| `review priority` | `hot lead` | keeps the product grounded in supervision, not sales hype |
+| `supervisory triage` | `generic signal ranking` | keeps the product review-oriented and grounded |
+| `review priority` | `warning` | avoids overclaiming certainty |
 | `firm_delta` | `signal` alone | forces the product to stay tied to observed change |
-| `exam-theme mapping` | `warning` | avoids overclaiming certainty |
+| `exam-theme mapping` | `risk score` alone | requires visible reasoning instead of opaque labels |
 | `self-surveillance` | `self-audit prediction` | keeps the product focused on review burden, not forecasting enforcement |
 | `peer-relative context` | `league table` | keeps benchmarking analytical rather than gamified |
 
@@ -123,7 +120,7 @@ Status: canonical current-scope document
 - Open but non-blocking:
   - kickoff decisions are now locked in `docs/FIRST_SLICE.md`
   - when peer benchmarking should graduate from cohort-relative context to a first-class surface
-  - when the secondary GTM lens should be expressed in product copy, if at all
+  - which additional public regulatory data sources most improve hidden-signal detection after the first slice
 
 ## 15. Go / No-Go Check Before Real Code
 

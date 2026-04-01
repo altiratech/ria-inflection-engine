@@ -14,7 +14,7 @@ Ship one evidence-backed, table-first review queue for a national starter cohort
 - Supported adjacent lenses:
   - firm self-surveillance
   - peer-relative context where coverage allows
-  - GTM / buying-moment read as a secondary interpretation only
+  - hidden-signal discovery across filings and themes
 - Current implemented base score dimensions:
   - marketing-rule relevance
   - client or service-mix change
@@ -26,7 +26,7 @@ Ship one evidence-backed, table-first review queue for a national starter cohort
   - likely policy / procedure impact
   - urgency
   - evidence quality
-- First output artifact: one ranked JSON payload plus one CSV export that read as firms to review now, not firms to contact.
+- First output artifact: one ranked JSON payload plus one CSV export that read as a review queue with visible evidence.
 
 ## First Source Set
 
@@ -54,7 +54,6 @@ Ship one evidence-backed, table-first review queue for a national starter cohort
 ## Not Yet
 
 - CRM workflows
-- outreach sequencing
 - task management / attestation
 - policy-library software
 - predicting who the SEC will audit

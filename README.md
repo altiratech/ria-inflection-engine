@@ -10,9 +10,7 @@ Primary product lenses:
 - supervisory triage
 - firm self-surveillance
 - peer benchmarking
-
-Secondary adjacent lens:
-- GTM / buying-moment workflows can still use the same evidence, but that is no longer the primary framing.
+- hidden-signal discovery across fragmented adviser disclosures
 
 The founding loop is:
 1. ingest adviser data and brochure snapshots
@@ -33,7 +31,7 @@ Current shipped capabilities:
 
 Current framing status:
 - the repo kernel is unchanged
-- the primary product framing is now supervisory / regtech intelligence, not sales-intel first
+- the product framing is now compliance intelligence and supervisory analytics
 - the current executable code still uses the original base score dimensions
 - the next scoring expansion is a supervisory overlay plus peer-relative context layered on top of the current dimensions
 
@@ -124,7 +122,7 @@ Do not collapse this into an opaque risk score. The preferred shape is:
 - peer-relative context
 - clear evidence packet behind every ranked firm
 
-## Commercial Position
+## Category Position
 
 Most regtech starts downstream with task management, attestation, policy storage, or workflow software.
 
@@ -136,7 +134,7 @@ RIA Inflection Engine starts upstream by identifying meaningful disclosure chang
 - exam readiness workflows
 - peer benchmarking
 
-Commercial GTM or buying-moment use remains valid, but as a secondary read of the same evidence rather than the lead product claim.
+The product should be understood as compliance intelligence and supervisory analytics for RIAs and their compliance partners.
 
 To preview the recache queue without fetching anything:
 

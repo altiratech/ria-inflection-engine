@@ -4,7 +4,7 @@ Status: framing and scoring memo for the supervisory-intelligence pivot
 
 ## Strategy Memo
 
-RIA Inflection Engine should keep its current kernel intact and change the primary framing around that kernel. The product already does the hard upstream work that most compliance tooling does not: it ingests public adviser disclosures, pairs brochure snapshots, detects section-level deltas, scores firms with visible evidence, and publishes table-first, diff-first outputs. The pivot is to position that same engine as a serious filing-delta intelligence system for supervisory review, self-surveillance, and peer benchmarking rather than as a GTM-first buying-moment tool.
+RIA Inflection Engine should keep its current kernel intact and sharpen the product identity around that kernel. The product already does the hard upstream work that most compliance tooling does not: it ingests public adviser disclosures, pairs brochure snapshots, detects section-level deltas, scores firms with visible evidence, and publishes table-first, diff-first outputs. The right framing is a serious filing-delta intelligence system for supervisory review, self-surveillance, peer benchmarking, and hidden-signal discovery across fragmented public disclosures.
 
 The new primary claim should be modest and credible: the product helps identify firms or disclosure changes that may warrant closer review under current SEC themes. It should not claim to predict who the SEC will examine or audit. Its value is upstream intelligence that flags meaningful disclosure change before that change gets buried inside downstream workflow systems.
 
@@ -12,8 +12,6 @@ That framing supports three credible lenses at once:
 - supervisory triage: which firms look newly worth reviewing, and why
 - firm self-surveillance: if I were this firm, where do my recent disclosure changes increase potential review burden
 - peer benchmarking: how unusual is this firm’s recent disclosure-change and risk posture versus similar firms
-
-The GTM / buying-moment read still survives, but as a secondary interpretation of the same evidence rather than the lead product story.
 
 ## Revised Product Definition
 
@@ -102,10 +100,6 @@ Prefer:
 - review queue
 
 Avoid:
-- lead score
-- hot lead
-- firms to contact
-- likely buyer
 - audit prediction
 - warning engine
 - compliance OS
@@ -114,7 +108,7 @@ Avoid:
 
 Keep the product table-first and diff-first, but change the reading posture:
 - rename the top table conceptually from contact shortlist to review queue
-- show “why this firm is worth review now” before any commercial interpretation
+- show “why this firm is worth review now” with visible evidence and peer context
 - display the evidence packet more explicitly:
   - changed section
   - before / after excerpt
@@ -122,7 +116,6 @@ Keep the product table-first and diff-first, but change the reading posture:
   - score breakdown
   - confidence / evidence-quality cue
 - add a peer-relative context column or drawer when available
-- keep GTM / buying-moment interpretation behind a secondary label or export path, not the primary UI language
 
 ## What The Current Repo Already Supports
 
@@ -157,4 +150,4 @@ Still missing:
 5. Compute peer-relative percentile and outlier status for the current first-slice cohort.
 6. Reframe canonical artifacts and CSV headings from shortlist/contact language to review-queue language.
 7. Add visible exam-theme mapping to every top-ranked firm packet where that mapping affects rank.
-8. Preserve GTM as a secondary export or interpretation path after the supervisory framing is stable.
+8. Add additional public regulatory sources that improve hidden-signal detection and cross-source consistency analysis.

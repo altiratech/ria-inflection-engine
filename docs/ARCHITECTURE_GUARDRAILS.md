@@ -4,8 +4,7 @@
 
 - Build the ranked filing-delta intelligence loop first.
 - Keep the first user and workflow fixed.
-- Keep supervisory triage as the primary framing.
-- Preserve GTM / buying-moment interpretation as a secondary read of the same evidence, not the primary product claim.
+- Keep supervisory triage, compliance intelligence, and hidden-signal discovery as the sole framing.
 - Do not add merger, CRM, task-management, or policy-library layers before the core loop is working.
 
 ## Data Guardrails

@@ -30,7 +30,7 @@ It is an evidence-backed filing-delta intelligence system with a strong "why now
 - static firm directories do not answer who changed in a way that matters now
 - outsourced compliance teams and RIAs need evidence-backed prioritization, not broad segmentation
 - filing deltas plus current SEC themes create a more actionable review surface than downstream workflow systems alone
-- the same upstream intelligence can later feed GTM or commercial workflows, but that is not the primary framing
+- fragmented public adviser disclosures contain non-obvious patterns that manual review often misses
 
 ## First Users
 
@@ -40,8 +40,7 @@ Primary first buyer:
 Strong secondary buyers:
 - RIAs doing self-surveillance or annual review preparation
 - consultants performing peer benchmarking or targeted thematic reviews
-- RIA-focused GTM teams at compliance or workflow software companies
-- tuck-in acquirers and RIA consolidators reading the same evidence as a secondary lens
+- compliance analytics teams building broader surveillance programs
 
 ## Job To Be Done
 
@@ -63,9 +62,9 @@ Operational unit:
 - `ria_launch_complexity_atlas`
   - contributes segmentation and workflow context, but is not the v1 product
 - `ria_merger_breakage_map`
-  - remains a later adjacency, not a founding blocker
+  - remains outside the current product direction
 - `ai_automation_surface_map_regulated_workflows`
-  - is a useful internal design layer, not the v1 commercial surface
+  - is a useful internal design layer, not the v1 user-facing surface
 - `ria_operating_stress_os`
   - is the long-range expansion path after the ranked inflection loop works
 

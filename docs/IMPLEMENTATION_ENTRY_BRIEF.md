@@ -45,7 +45,6 @@ Initial web surfaces should support:
 
 Do not treat these as founding blockers:
 - CRM workflow
-- outreach sequencing
 - task management
 - attestation or policy storage
 - predicting who the SEC will audit
@@ -53,4 +52,4 @@ Do not treat these as founding blockers:
 
 ## Design Guardrail
 
-This product should feel like serious supervisory intelligence, not like a flashy sales tool.
+This product should feel like serious compliance intelligence and supervisory analytics, not like a flashy AI PDF reader or generic productivity app.
