@@ -1,8 +1,8 @@
 # RIA Inflection Engine
 
-RIA Inflection Engine is an evidence-backed filing-delta intelligence system for RIAs.
+RIA Inflection Engine is the public-disclosure intelligence engine intended to feed Altira Trace.
 
-It uses public adviser filings, brochure snapshots, section-level disclosure changes, and visible evidence scoring to surface review-worthy changes before they disappear into downstream workflow.
+It uses public adviser filings, brochure snapshots, section-level disclosure changes, and visible evidence scoring to produce source-backed intelligence artifacts that Trace can consume in compliance workflows.
 
 ## Product Center
 
@@ -34,6 +34,7 @@ The next material build step is a supervisory overlay and peer-relative context 
 
 ## Key Docs
 
+- `docs/TRACE_INTEGRATION.md`
 - `docs/FOUNDING_PACKET.md`
 - `docs/FIRST_SLICE.md`
 - `docs/REGTECH_PIVOT_MEMO.md`
@@ -113,7 +114,9 @@ tests/     parser, diff, score, and integration coverage
 
 ## Product Boundary
 
-RIA Inflection Engine is compliance intelligence and supervisory analytics. It does not replace legal advice, compliance judgment, or firm-specific policy review.
+RIA Inflection Engine is a data and analytics engine, not the customer-facing workflow product. Trace owns workflow, evidence capture, annual review, exam room, marketing review, vendor oversight, and operator-facing interpretation.
+
+This repo should stay focused on source-backed artifacts such as `firm_delta`, `review_signal`, `evidence_packet`, `theme_mapping`, `peer_context`, and `source_provenance`.
 
 ## License
 

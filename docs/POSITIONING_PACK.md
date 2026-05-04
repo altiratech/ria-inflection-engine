@@ -1,10 +1,10 @@
 # RIA Inflection Engine Positioning Pack
 
-Status: external messaging and category-language pack
+Status: module-level messaging pack; superseded for standalone external positioning by `TRACE_INTEGRATION.md`
 
 ## Purpose
 
-This document translates the product doctrine into clear external language for buyer conversations, homepage copy, product summaries, and future go-to-market materials.
+This document preserves useful category language for the public-disclosure intelligence module. It should not be used to position RIA Inflection Engine as a standalone customer-facing product.
 
 The product identity should stay fixed:
 - compliance intelligence
