@@ -32,6 +32,13 @@ Current capabilities:
 
 The next material build step is a supervisory overlay and peer-relative context layered on top of the current scoring kernel.
 
+## Key Docs
+
+- `docs/FOUNDING_PACKET.md`
+- `docs/FIRST_SLICE.md`
+- `docs/REGTECH_PIVOT_MEMO.md`
+- `docs/POSITIONING_PACK.md`
+
 ## Quick Start
 
 ```bash
