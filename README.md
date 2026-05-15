@@ -78,7 +78,7 @@ The first-slice command:
 - caches raw SEC/IAPD pulls under `data/raw/`
 - stores extracted brochure text under `data/snapshots/`
 - writes committed shortlist and delta outputs under `data/canonical/first_slice/`
-- mirrors JSON/CSV artifacts under `artifacts/first_slice/`
+- does not currently mirror JSON/CSV outputs under `artifacts/first_slice/`; treat `data/canonical/first_slice/` as the committed first-slice output location
 - writes cache and selection-window reports that explain skip reasons and deferred candidates
 
 Fresh uncached runs may require PDF extraction dependencies. Cache-only reruns reuse existing brochure text snapshots when available.
@@ -104,9 +104,9 @@ The preferred shape is not an opaque risk score. It should remain an observed fi
 
 ```text
 configs/   source definitions and rubric versions
-data/      raw pulls, snapshots, staging, and canonical data layers
+data/      raw pulls, snapshots, staging, and canonical first-slice outputs
 pipeline/  ingest, normalize, extract, score, and publish logic
-artifacts/ scored payloads and site outputs
+artifacts/ reserved export/report surface; not the current committed output layer
 docs/      build truth and guardrails
 scripts/   local dev, ingest, and publish helpers
 tests/     parser, diff, score, and integration coverage
